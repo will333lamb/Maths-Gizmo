@@ -3,5 +3,37 @@
 header {
     font-family: 'Montserrat', sans-serif;
     color: darkslategrey;
+    height: 100%;
+    width: auto;
+    border-bottom: darkslategrey 1px solid;
+    display: flex;
     
 }
+
+nav {
+    float: right;
+    margin-right: 5%;
+    margin-top: 1%;
+    
+}
+
+.navigation {
+    display: inline-flex;
+    padding-right: 100%;
+    margin: 0 auto;
+    width: 100%;
+    list-style-type: none;
+}
+
+.navigation li {
+    
+    width: 100%;
+}
+
+#header-title {
+    float: left;
+    padding: 0 auto;
+    margin: 0 auto;
+    margin-left: 1%;
+}
+
