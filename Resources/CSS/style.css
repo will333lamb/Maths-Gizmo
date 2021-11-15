@@ -1,23 +1,31 @@
 /* UNIVERSAL STYLES */
 
+*{
+    background-color: paleturquoise;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header Section */
+
 header {
     font-family: 'Montserrat', sans-serif;
     color: darkslategrey;
     height: 100%;
-    width: auto;
+    width: 100%;
     border-bottom: darkslategrey 1px solid;
     display: flex;
-    
+    z-index: 5;
 }
 
 nav {
     float: right;
     margin-right: 5%;
     margin-top: 1%;
+    width: 20%;
     
 }
 
-.navigation {
+.ul-navigation {
     display: inline-flex;
     padding-right: 100%;
     margin: 0 auto;
@@ -25,9 +33,16 @@ nav {
     list-style-type: none;
 }
 
-.navigation li {
+.ul-navigation a {
     
     width: 100%;
+    padding: 0 5%;
+    padding-bottom: 2%;
+    text-decoration: none;
+    color: darkslategrey;
+}
+.ul-navigation a:hover{
+    color: black;
 }
 
 #header-title {
@@ -37,3 +52,18 @@ nav {
     margin-left: 1%;
 }
 
+/* Body section */
+
+.selectordiv {
+    width: 25%;
+    height: 1000px;
+    border-right: darkslategrey solid 1px;
+    float: left;
+}
+
+.question-container {
+    width: 74;
+    height: 1000px;
+    padding-left: 10%;
+    text-align: center;
+}
