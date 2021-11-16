@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="../Resources/JavaScript/script.js" defer></script>
+    <script src="../Resources/JavaScript/jquery-3.6.0.min.js"></script>
   </head>
 
   <header>
@@ -28,9 +29,20 @@
         This will be where I need to have navigation system for q's
     </div>
     <div class="question-container">
-      This is where the question will be displayed
+      <div class="buttons-container">
+        This is where the buttons will be
+      </div>
       <div class="question-box">
-        <p><span id="name1"></span> drives a distance of </p>
+        <p><span class="name1"></span> drives a distance of <span class="name1Distance"></span>km in <span class="name1Time"></span> hours.</p>
+        <p><span class="name2"></span> drives a distance of <span class="name2Distance"></span>km in <span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes.</p>
+        <p>Who has the highest average speed?</p>
+        <p>Show how you decide.</p>
+      </div>
+      <div class="solution-box">
+        <p><span class="name1Distance"></span><span> &#247 </span><span class="name1Time"></span> = <span class="name1Speed"></span>. Therefore <span class="name1"></span>'s speed is <span class="name1Speed"></span>km/h</p>
+        <p><span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes can be written as <span class="name2TimeDecimal"></span> hours.</p>
+        <p><span class="name2Distance"></span><span> &#247 </span><span class="name2TimeDecimal"></span> = <span class="name2SpeedSol"></span>. Therefore <span class="name2"></span>'s speed is <span class="name2SpeedSol"></span>km/h</p>
+        <p><span class="fastestName"></span> is the fastest.</p>
       </div>
     </div>
   </body>
