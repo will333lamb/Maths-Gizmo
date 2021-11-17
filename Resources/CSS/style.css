@@ -73,8 +73,14 @@ nav {
     height: 100px;
     text-align: center;
     border-bottom: solid 1px darkslategrey;
+    display: block;
 }
 
 .solution-box {
     color: red;
+    display: none;
+}
+
+.question-box {
+    display: none;
 }
