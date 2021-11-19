@@ -26,20 +26,34 @@
 
   <body>
     <div class="selectordiv">
-        This will be where I need to have navigation system for q's
+      <div class="navigationTopicHeadings">
+        <div class="topicHeadingBoxes"><h2>Number</h2></div>
+        <div class="topicHeadingBoxes"><h2>Algebra</h2></div>
+        <div class="topicHeadingBoxes"><h2>Geometry & Measures</h2></div>
+        <div class="topicHeadingBoxes"><h2>Ratio & Proportion</h2></div>
+        <div class="topicHeadingBoxes">
+          <h2 id="probabilityHeading">Probability & Statistics</h2>
+          <div class="secondaryTopicHeadings">
+            <div class="secondaryTopicHeadingBoxes"><h3>Averages</h3></div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="question-container">
       <div class="buttons-container">
         <button id="generateQButton" class="button">Generate new question</button>
+        <button id="generateQButtonDiff3" class="button">Generate harder Q</button>
         <button id="showSolutionButton" class="button">Show solution</button>
       </div>
       <div class="question-box">
-        <p><span class="name1"></span> drives a distance of <span class="name1Distance"></span>km in <span class="name1Time"></span> hours.</p>
-        <p><span class="name2"></span> drives a distance of <span class="name2Distance"></span>km in <span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes.</p>
+        <p>Question <span class="questionNumber"></span>.</p>
+        <p><span class="name1"></span> drives a distance of <span class="name1Distance"></span> km in <span class="name1Time"></span> hours.</p>
+        <p><span class="name2"></span> drives a distance of <span class="name2Distance"></span> km in <span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes.</p>
         <p>Who has the highest average speed?</p>
         <p>Show how you decide.</p>
       </div>
       <div class="solution-box">
+        <p>Solution <span class="questionNumber"></span>.</p>
         <p><span class="name1Distance"></span><span> &#247 </span><span class="name1Time"></span> = <span class="name1Speed"></span> therefore <span class="name1"></span>'s speed is <span class="name1Speed"></span>km/h</p>
         <p><span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes can be written as <span class="name2TimeDecimal"></span> hours.</p>
         <p><span class="name2Distance"></span><span> &#247 </span><span class="name2TimeDecimal"></span> = <span class="name2SpeedSol"></span> therefore <span class="name2"></span>'s speed is <span class="name2SpeedSol"></span>km/h</p>
