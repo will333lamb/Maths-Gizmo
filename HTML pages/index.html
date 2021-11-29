@@ -10,54 +10,63 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <script src="../Resources/JavaScript/script.js" defer></script>
     <script src="../Resources/JavaScript/jquery-3.6.0.min.js"></script>
   </head>
 
-  <header>
-    <h1 id="header-title">Maths Gizmo</h1>
-    <nav>
-        <ul class="ul-navigation">
-            <a href="#"><li>GCSE</li></a>
-            <a href="#"><li>Functional Skills</li></a>
-        </ul>
-    </nav> 
-  </header>
-
   <body>
-    <div class="selectordiv">
-      <div class="navigationTopicHeadings">
-        <div class="topicHeadingBoxes"><h2>Number</h2></div>
-        <div class="topicHeadingBoxes"><h2>Algebra</h2></div>
-        <div class="topicHeadingBoxes"><h2>Geometry & Measures</h2></div>
-        <div class="topicHeadingBoxes"><h2>Ratio & Proportion</h2></div>
-        <div class="topicHeadingBoxes">
-          <h2 id="probabilityHeading">Probability & Statistics</h2>
-          <div class="secondaryTopicHeadings">
-            <div class="secondaryTopicHeadingBoxes"><h3>Averages</h3></div>
-          </div>
+    <div class="wrapper">
+      <div class="sidebar">
+        <h1>Maths Gizmo</h1>
+        <div class="dropDownMenus">
+          <label>Level:</label>
+          <select id="levelSelect">
+            <option value="1">GCSE</option>
+            <option value="2">Functional Skills</option>
+            <option value="3">A-Level</option>
+          </select>
+        </div>
+        <div class="dropDownMenus">
+          <label>Tier:</label>
+          <select id="tierSelect">
+            <option value="1">Foundation</option>
+            <option value="2">Higher</option>
+          </select>
+        </div>
+        <div class="dropDownMenus">
+          <label>Topic area:</label>
+          <select id="topicAreaSelect">
+            <option value="1">Number</option>
+            <option value="2">Algebra</option>
+            <option value="3">Ratio & Proportion</option>
+            <option value="4">Geometry & Measures</option>
+            <option value="5">Probability & Statistics</option>
+          </select>
+        </div>
+        <div class="dropDownMenus">
+          <label>Topic:</label>
+          <select id="topicSelect">
+            <option value="1">Speed, distance, time</option>
+          </select>
         </div>
       </div>
     </div>
     <div class="question-container">
       <div class="buttons-container">
         <button id="generateQButton" class="button">Generate new question</button>
-        <button id="generateQButtonDiff3" class="button">Generate harder Q</button>
-        <button id="showSolutionButton" class="button">Show solution</button>
+        <button id="showSolutionButton" class="button">Show Solution</button>
+        <select id="difficultyDropDown" onchange="getSelectedDifficultyValue()">
+          <option value="1">Bronze</option>
+          <option selected value="2">Silver</option>
+          <option value="3">Gold</option>
+        </select>
       </div>
       <div class="question-box">
-        <p>Question <span class="questionNumber"></span>.</p>
-        <p><span class="name1"></span> drives a distance of <span class="name1Distance"></span> km in <span class="name1Time"></span> hours.</p>
-        <p><span class="name2"></span> drives a distance of <span class="name2Distance"></span> km in <span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes.</p>
-        <p>Who has the highest average speed?</p>
-        <p>Show how you decide.</p>
+        <p id="questionText"></p>
       </div>
       <div class="solution-box">
-        <p>Solution <span class="questionNumber"></span>.</p>
-        <p><span class="name1Distance"></span><span> &#247 </span><span class="name1Time"></span> = <span class="name1Speed"></span> therefore <span class="name1"></span>'s speed is <span class="name1Speed"></span>km/h</p>
-        <p><span class="name2Time"></span> hours <span class="name2TimeMins"></span> minutes can be written as <span class="name2TimeDecimal"></span> hours.</p>
-        <p><span class="name2Distance"></span><span> &#247 </span><span class="name2TimeDecimal"></span> = <span class="name2SpeedSol"></span> therefore <span class="name2"></span>'s speed is <span class="name2SpeedSol"></span>km/h</p>
-        <p>Hence, <span class="fastestName"></span> is the fastest.</p>
+        <p id="solutionText"></p>
       </div>
     </div>
   </body>
