@@ -35,8 +35,8 @@ select:hover{
 }
 
 .wrapper .sidebar{
-    position: fixed;
-    width: 350px;
+    position: absolute;
+    width: 300px;
     height: 100%;
     background-color: #009870;
     padding: 30px 0;
@@ -68,10 +68,12 @@ select:hover{
 }
 
 .question-container {
-    width: 100%;
+    width: calc(100% - 300px);
     height: 100%;
-    padding-left: 10%;
+    margin-left: 300px;
     text-align: left;
+    position: relative;
+    
 }
 
 .buttons-container {
@@ -88,7 +90,6 @@ select:hover{
     padding-left: 1%;
     padding-top: 1%;
     outline: blue 1px solid;
-    margin-left: 10%;
     height: 100%;
     width: 60%;
 }
@@ -98,8 +99,10 @@ select:hover{
     padding-top: 1%;
     outline: red 1px solid;
     width: 60%;
-    margin-left: 10%;
     height: 100%;
-    
+}
+
+.questionSolutionContainer {
+    padding-left: 1%;
 }
 

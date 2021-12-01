@@ -39,29 +39,20 @@ let nameArray = ["Alex", "Anelia", "Ava", "Abigail", "Anthony", "Andrew", "Aaron
 "Woody", "Wade", "Walter", "Warren", "Wendy", "Wayne", "Wesley", "Wilfred", "Whyatt", "Xander", "Xavier", "Yohana", 
 "Yakub", "Yasmin", "Yolanda", "Youssef", "Yvonne", "Zara", "Zachary", "Zoe", "Zane", "Zakirullah", "Ziggy"];
 
-console.log(nameArray.length);
-
 let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
-function getSelectedDifficultyValue(){
-    let difficultySelection = document.getElementById("difficultyDropDown").value;
-    if (difficultySelection === '3'){
-        globalDifficultySelection = 3;
-    } else if (difficultySelection === '2'){
-        globalDifficultySelection = 2;
-    } else if (difficultySelection === '1'){
-        globalDifficultySelection = 1;
-    };
 
+function getSelectedDifficultyValue(){
+    globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value);
 };
 
 
 const Qid0001 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
-    let name1Distance = (Math.ceil(Math.random()*99)) + 25 + '0';
+    let name1Distance = (Math.ceil(Math.random()*19)) + 25 + '0';
     let name1Time = Math.ceil(Math.random()*9 + 1);
 
     let name1Speed = Math.round((name1Distance / name1Time)*10)/10;
