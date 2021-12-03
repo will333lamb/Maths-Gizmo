@@ -88,7 +88,7 @@ select:hover{
   touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
-  width: 10%;
+  width: fit-content;
 }
 
 .question-container {
@@ -115,19 +115,19 @@ select:hover{
 .solution-box {
     color: red;
     display: none;
-    padding: 1% 1%;
+    padding: 1% 10% 1% 1%;
     border:#009870 1px solid;
     height: 100%;
-    width: calc(100% - 350px);;
+    width: 99%;
     margin: 1% 1%;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .question-box {
-    padding: 1% 1%;
+    padding: 1% 10% 1% 1%;
     border: #009870 1px solid;
-    width: calc(100% - 350px);
+    width: 99%;
     height: 100%;
     margin: 1% 1%;
     border-radius: 30px;
@@ -170,6 +170,7 @@ select:hover{
   touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
+  width: fit-content;
 }
 .button:hover {
   background-color: #009885;

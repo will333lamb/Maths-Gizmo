@@ -178,18 +178,26 @@ const Qid0001 = () => {
 const Qid0002 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
-
+    questionNumber++;
 
     //Return difficulty Silver
+    if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML =
-    `${name1} is planning a presentation evening. <br>
+    `Question ${questionNumber}.<br>
+    ${name1} is planning a presentation evening. <br>
     ${name1} writes down their costs and income. <br>
     <style>
+
+    .questionSolutionContainer{
+        font-size: 1rem;
+        line-height: 2;
+        width: 100%;
+    }
     table {
         border: 1px solid black;
         border-collapse: collapse;
-        font-size: 0.7em;
-        width: 100%;
+        font-size: 1em;
+        width: fit-content;
         line-height: 1.5;
 
     }
@@ -231,7 +239,11 @@ const Qid0002 = () => {
         <tr>
             <td> number prizes at £number each </td>
         </tr>
-    </table>`
+    </table> 
+    ${name1} thinks they will make a profit. <br>
+    Use estimation to decide if ${name1} is correct. <br>
+    Show all of your working.`
+}
 }
 
 let generateQButton = document.getElementById("generateQButton");
