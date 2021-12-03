@@ -36,7 +36,7 @@
         </div>
         <div class="dropDownMenus">
           <label>Topic area:</label>
-          <select id="topicAreaSelect">
+          <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
             <option value="1">Number</option>
             <option value="2">Algebra</option>
             <option value="3">Ratio & Proportion</option>
@@ -46,8 +46,9 @@
         </div>
         <div class="dropDownMenus">
           <label>Topic:</label>
-          <select id="topicSelect">
+          <select id="topicSelect" onchange="getSelectedTopic()">
             <option value="1">Speed, distance, time</option>
+            <option value="2">Estimation</option>
           </select>
         </div>
       </div>
@@ -66,7 +67,7 @@
       </div>
       <div class="questionSolutionContainer">
         <div class="question-box">
-          <p id="questionText"></p>
+          <p id="questionText">Please use the options on the left to navigate to a question</p>
         </div>
         <div class="solution-box">
           <p id="solutionText"></p>

@@ -43,12 +43,25 @@ let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
+let globalTopicAreaSelection = 1;
+
+function getSelectedTopicArea(){
+    globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
+};
+
+let globalSelectedTopic = 1;
+
+function getSelectedTopic(){
+    globalSelectedTopic = parseInt(document.getElementById("topicSelect").value);
+}
 
 function getSelectedDifficultyValue(){
     globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value);
 };
 
-
+/************************************
+ Question functions
+ ****************************************/
 const Qid0001 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
@@ -162,11 +175,74 @@ const Qid0001 = () => {
     }
 };
 
+const Qid0002 = () => {
+    let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
+
+
+
+    //Return difficulty Silver
+    document.getElementById("questionText").innerHTML =
+    `${name1} is planning a presentation evening. <br>
+    ${name1} writes down their costs and income. <br>
+    <style>
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 0.7em;
+        width: 100%;
+        line-height: 1.5;
+
+    }
+    td {
+        padding: 0 1%;
+        border-right: 1px solid black;
+    }
+    th {
+        padding: 0 1%;
+        border-right: 1px solid black;
+    }
+    .tableHeadings{
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+</style>
+    <table>
+        <tr>
+            <th class="tableHeadings">Costs</th>
+            <th class="tableHeadings">Income</th>
+        </tr>
+        <tr>
+            <th> Staff: </th>
+            <th> Sponsership: </th>
+        </tr>
+        <tr>
+            <td> number staff each working number hours at £number per hour </td>
+            <td> number guests each paying £number </td>
+        </tr>
+        <tr>
+            <th> Food: </th>
+        </tr>
+        <tr>
+            <td> number meals at £number each </td>
+        </tr>
+        <tr>
+            <th> Prizes: </th>
+        </tr>
+        <tr>
+            <td> number prizes at £number each </td>
+        </tr>
+    </table>`
+}
+
 let generateQButton = document.getElementById("generateQButton");
 
-generateQButton.onclick = Qid0001;
-    
-let generateQButtonDiff3 = document.getElementById("generateQButtonDiff3");
+generateQButton.onclick = function(){
+    if(globalTopicAreaSelection === 4 && globalSelectedTopic === 1){
+    Qid0001();
+} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
+    Qid0002();
+  };
+};
 
 let showSolutionButton = document.getElementById("showSolutionButton");
 
