@@ -32,18 +32,19 @@ select:hover{
 
 .wrapper{
     display: flex;
+    height: 100%;
 }
 
 .wrapper .sidebar{
     position: absolute;
-    width: 350px;
-    height: 100%;
+    width: 20%;
+    height: 150%;
     background-color: #009870;
     padding: 30px 0;
     align-items: center;
 }
 
-.wrapper .sidebar h1{
+.wrapper .sidebar h1, h2{
     color: #fff;
     text-transform: uppercase;
     text-align: center;
@@ -92,9 +93,9 @@ select:hover{
 }
 
 .question-container {
-    width: calc(100% - 350px);
+    width: 80%;
     height: 100%;
-    margin-left: 350px;
+    margin-left: 20%;
     text-align: left;
     position: relative;
     
@@ -125,6 +126,16 @@ select:hover{
 }
 
 .question-box {
+    padding: 1% 10% 1% 1%;
+    border: #009870 1px solid;
+    width: 99%;
+    height: 100%;
+    margin: 1% 1%;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.question-info-box{
     padding: 1% 10% 1% 1%;
     border: #009870 1px solid;
     width: 99%;

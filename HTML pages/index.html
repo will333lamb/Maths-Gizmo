@@ -19,21 +19,7 @@
     <div class="wrapper">
       <div class="sidebar">
         <h1>Maths Gizmo</h1>
-        <div class="dropDownMenus">
-          <label>Level:</label>
-          <select id="levelSelect">
-            <option value="1">GCSE</option>
-            <option value="2">Functional Skills</option>
-            <option value="3">A-Level</option>
-          </select>
-        </div>
-        <div class="dropDownMenus">
-          <label>Tier:</label>
-          <select id="tierSelect">
-            <option value="1">Foundation</option>
-            <option value="2">Higher</option>
-          </select>
-        </div>
+        <h2>GCSE</h2>
         <div class="dropDownMenus">
           <label>Topic area:</label>
           <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
@@ -57,6 +43,7 @@
       <div class="buttons-container">
         <button id="generateQButton" class="button">Generate new question</button>
         <button id="showSolutionButton" class="button">Show Solution</button>
+        <button id="fullscreenButton" class="button">Make question fullscreen</button>
       </div>
       <div class="difficultyContainer">
         <select id="difficultyDropDown" onchange="getSelectedDifficultyValue()">
@@ -71,6 +58,9 @@
         </div>
         <div class="solution-box">
           <p id="solutionText"></p>
+        </div>
+        <div class="question-info-box">
+          <p id="questionInfoText"></p>
         </div>
       </div>
     </div>

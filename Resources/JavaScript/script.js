@@ -45,19 +45,13 @@ let globalDifficultySelection = 2;
 
 let globalTopicAreaSelection = 1;
 
-function getSelectedTopicArea(){
-    globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
-};
+function getSelectedTopicArea(){globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value)};
 
 let globalSelectedTopic = 1;
 
-function getSelectedTopic(){
-    globalSelectedTopic = parseInt(document.getElementById("topicSelect").value);
-}
+function getSelectedTopic(){globalSelectedTopic = parseInt(document.getElementById("topicSelect").value)}
 
-function getSelectedDifficultyValue(){
-    globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value);
-};
+function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
 /************************************
  Question functions
@@ -127,14 +121,14 @@ const Qid0001 = () => {
     //Difficulty Silver
     if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML = 
-    `Question ${questionNumber}. <br>
+    `
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
     Show how you decide.`
 
     document.getElementById("solutionText").innerHTML = 
-    `Solution ${questionNumber}. <br>
+    `
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins} minutes can be written as ${name2TimeDecimal}. <br>
     ${name2Distance} ÷ ${name2TimeDecimal} = ${name2SpeedSol}. Therefore, ${name2}'s speed is ${name2SpeedSol} km/h <br>
@@ -144,14 +138,14 @@ const Qid0001 = () => {
     //Difficulty Gold
     else if (globalDifficultySelection === 3){
     document.getElementById("questionText").innerHTML = 
-    `Question ${questionNumber}. <br>
+    `
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance2}km in ${name2Time} hours ${name2TimeMins2} minutes. <br>
     Who has the highest average speed? <br>
     Show how you decide.`
 
     document.getElementById("solutionText").innerHTML = 
-    `Solution ${questionNumber}. <br>
+    `
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins2} minutes can be written as ${name2TimeDecimal2}. <br>
     ${name2Distance2} ÷ ${name2TimeDecimal2} = ${name2SpeedSol2}. Therefore, ${name2}'s speed is ${name2SpeedSol2} km/h <br>
@@ -161,14 +155,14 @@ const Qid0001 = () => {
     //Difficulty Bronze
     else if (globalDifficultySelection === 1){
     document.getElementById("questionText").innerHTML = 
-    `Question ${questionNumber}. <br>
+    `
     ${name1} drives a distance of ${name1DistanceBronze}km in ${BronzeName1Time} hours. <br>
     ${name2} drives a distance of ${name2DistanceBronze}km in ${name2TimeBronze} hours. <br>
     Who has the highest average speed? <br>
     Show how you decide.`
 
     document.getElementById("solutionText").innerHTML = 
-    `Solution ${questionNumber}. <br>
+    `
     ${name1DistanceBronze} ÷ ${BronzeName1Time} = ${name1SpeedBronze}. Therefore, ${name1}'s speed is ${name1SpeedBronze} km/h <br>
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
     Hence, ${fastestNameBronze} is the fastest.`
@@ -177,19 +171,82 @@ const Qid0001 = () => {
 
 const Qid0002 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
+    let costsArrayHelper = [10, Math.floor(Math.random()*8)+2];
+    let costsArrayHelper2 = [10, Math.floor(Math.random()*8)+2];
+    let costsArrayHelper3 = [10, Math.floor(Math.random()*8)+5];
+    let arrayOdd = [3,5,7,9];
+    let arrayEven = [4,6,8];
+    let staffNum = costsArrayHelper[Math.floor(Math.random()*costsArrayHelper.length)];
+    let staffHoursNum = costsArrayHelper2[Math.floor(Math.random()*costsArrayHelper2.length)];
+    let staffPay = costsArrayHelper3[Math.floor(Math.random()*costsArrayHelper3.length)];
+    if (staffNum === 10){
+        staffHoursNum = arrayOdd[Math.floor(Math.random()*arrayOdd.length)];
+        staffPay = arrayEven[Math.floor(Math.random()*arrayEven.length)];
+    } else if (staffHoursNum === 10){
+        staffNum = arrayOdd[Math.floor(Math.random()*arrayOdd.length)];
+        staffPay = arrayEven[Math.floor(Math.random()*arrayEven.length)];
+    } else if (staffPay === 10){
+        staffNum = arrayOdd[Math.floor(Math.random()*arrayOdd.length)];
+        staffHoursNum = arrayEven[Math.floor(Math.random()*arrayEven.length)];
+    } else if (staffNum != 10 && staffHoursNum != 10 && staffPay != 10){
+        staffPay = 10;
+    };
+    let numMeals = Math.ceil(Math.random()*9) + '0';
+    let mealsCostPounds = Math.ceil(Math.random()*8)+1;
+    let mealsCost = mealsCostPounds + .95;
+    let numPrizes = Math.ceil(Math.random()*11)+1;
+    let prizesCostPounds = Math.ceil(Math.random()*7)+2;
+    let prizesCost = 10*(prizesCostPounds) + 9.99;
+    let numGuests = Math.ceil((Math.random()*9)+1)*10; 
+    let guestsCost = Math.ceil(Math.random()*7)+2;
+    let Sponsorship = 1000; 
+    
+    let staffTotalCost = staffNum*staffHoursNum*staffPay;
+    let mealsCostSigFig = parseFloat(mealsCost.toPrecision(1));
+    let totalMealsCost = mealsCostSigFig*numMeals;
+    let prizesCostsSigFig = parseFloat(prizesCost.toPrecision(1));
+    let totalPrizesCost = prizesCostsSigFig*numPrizes;
+    let totalCosts = staffTotalCost+totalMealsCost+totalPrizesCost;
+    let numPrizesSigFig = parseFloat(numPrizes.toPrecision(1));
+    let NoteAltMethodTotal = prizesCostsSigFig*numPrizesSigFig;
+    let totalAltMethodCosts = staffTotalCost+totalMealsCost+NoteAltMethodTotal;
+    let guestTotalIncome = numGuests*guestsCost;
+    let totalIncome = Sponsorship+guestTotalIncome;
+
+    let profit = totalIncome-totalCosts;
+    let profitAltMethod = totalIncome-totalAltMethodCosts;
+    let conclusionStatement
+    if(profit>0 && profitAltMethod>0){
+        conclusionStatement = 'Since the total income is more than the total costs, then ' + name1 + ' is correct.';
+    } else if (profit<=0 && profitAltMethod<=0){
+        conclusionStatement = 'Since the total income is less than the total costs, then ' + name1 + ' is incorrect.';
+    } else{
+        conclusionStatement = `Since the total income is less than the total costs, then ${name1} is incorrect. <span class="note">(Note - ${name1} would be correct if used alternative method)</span>`
+    }
+
+    //Question info.
+
+    document.getElementById("questionInfoText").innerHTML = 
+    `<h3>Question Information</h3><br>
+    This question is based off of the following exam paper question: <br>
+    Exam tier: Foundation <br>
+    Exam board: OCR <br>
+    Paper: 2 (non-calculator) <br>
+    Month: November <br>
+    Year: 2019 <br>
+    Question: 15 <br><br> 
+    For difficulty silver, I have tried to replicate the style of question from the exam paper.`
 
     questionNumber++;
 
-    //Return difficulty Silver
+    //Difficulty Silver
     if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML =
-    `Question ${questionNumber}.<br>
-    ${name1} is planning a presentation evening. <br>
+    `${name1} is planning a presentation evening. <br>
     ${name1} writes down their costs and income. <br>
     <style>
-
     .questionSolutionContainer{
-        font-size: 1rem;
+        font-size: 0.97rem;
         line-height: 2;
         width: 100%;
     }
@@ -197,23 +254,36 @@ const Qid0002 = () => {
         border: 1px solid black;
         border-collapse: collapse;
         font-size: 1em;
-        width: fit-content;
+        width: 100%;
+        white-space: pre-line;
         line-height: 1.5;
-
     }
     td {
         padding: 0 1%;
         border-right: 1px solid black;
+        width: fit-content;
     }
     th {
         padding: 0 1%;
         border-right: 1px solid black;
+        width: fit-content;
     }
     .tableHeadings{
         text-align: center;
         border-bottom: 1px solid black;
+        width: fit-content;
     }
-</style>
+    .underline{
+        text-decoration: underline;
+    }
+    .totalCostIncome{
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    .note{
+        color: black;
+    }
+    </style>
     <table>
         <tr>
             <th class="tableHeadings">Costs</th>
@@ -221,28 +291,61 @@ const Qid0002 = () => {
         </tr>
         <tr>
             <th> Staff: </th>
-            <th> Sponsership: </th>
+            <th> Guests: </th>
         </tr>
         <tr>
-            <td> number staff each working number hours at £number per hour </td>
-            <td> number guests each paying £number </td>
+            <td> ${staffNum} staff each working ${staffHoursNum} hours at £${staffPay} per hour </td>
+            <td> ${numGuests} guests each paying £${guestsCost} </td>
         </tr>
         <tr>
             <th> Food: </th>
+            <th> Sponsorship:</th>
         </tr>
         <tr>
-            <td> number meals at £number each </td>
+            <td> ${numMeals} meals at £${mealsCost} each </td>
+            <td> £${Sponsorship} </td>
         </tr>
         <tr>
             <th> Prizes: </th>
         </tr>
         <tr>
-            <td> number prizes at £number each </td>
+            <td> ${numPrizes} prizes at £${prizesCost} each </td>
         </tr>
-    </table> 
+    </table> <br>
     ${name1} thinks they will make a profit. <br>
     Use estimation to decide if ${name1} is correct. <br>
     Show all of your working.`
+
+
+    
+    document.getElementById("solutionText").innerHTML = 
+    `<span class="underline">Costs:</span> <br>
+    Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
+    Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig} and ${numMeals} meals at £${mealsCostSigFig} means ${numMeals} &#215 £${mealsCostSigFig} = <span class="underline">£${totalMealsCost}</span> <br>
+    Prize costs: Rounding £${prizesCost} gives £${prizesCostsSigFig} and ${numPrizes} prizes at £${prizesCostsSigFig} means ${numPrizes} &#215 £${prizesCostsSigFig} = <span class="underline">£${totalPrizesCost}</span> <br>
+    Therefore total costs are £${staffTotalCost} + £${totalMealsCost} + £${totalPrizesCost} = <span class="totalCostIncome">£${totalCosts}</span> <br> 
+    <span class="underline">Income:</span> <br>
+    Guests income: ${numGuests} guests each paying £${guestsCost} means ${numGuests} &#215 £${guestsCost} = <span class="underline">£${guestTotalIncome}</span> <br>
+    With a sponsorship of £${Sponsorship} then the total income is <span class="totalCostIncome">£${totalIncome}</span> <br>
+    ${conclusionStatement}` 
+
+
+    if(numPrizes>10){
+    document.getElementById("solutionText").innerHTML = 
+    `<span class="underline">Costs:</span> <br>
+    Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
+    Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig} and ${numMeals} meals at £${mealsCostSigFig} means ${numMeals} &#215 £${mealsCostSigFig} = <span class="underline">£${totalMealsCost}</span> <br>
+    Prize costs: Rounding £${prizesCost} gives £${prizesCostsSigFig} and ${numPrizes} prizes at £${prizesCostsSigFig} means ${numPrizes} &#215 £${prizesCostsSigFig} = <span class="underline">£${totalPrizesCost}</span>. <br>
+    <span class="note">(Note - Mark scheme also allows an alternative method of rounding ${numPrizes} prizes to ${numPrizesSigFig} and doing ${numPrizesSigFig} &#215 £${prizesCostsSigFig} = <span class="underline">£${NoteAltMethodTotal}</span>)</span>  <br>
+    Therefore total costs are £${staffTotalCost} + £${totalMealsCost} + £${totalPrizesCost} = <span class="totalCostIncome">£${totalCosts}</span>. <br> 
+    <span class="note">(Note - If used previous note then total costs would be <span class="totalCostIncome">£${totalAltMethodCosts})</span></span> <br>
+    <span class="underline">Income:</span> <br>
+    Guests income: ${numGuests} guests each paying £${guestsCost} means ${numGuests} &#215 £${guestsCost} = <span class="underline">£${guestTotalIncome}</span> <br>
+    With a sponsorship of £${Sponsorship} then the total income is <span class="totalCostIncome">£${totalIncome}</span> <br>
+    ${conclusionStatement}`
+    }
+ 
+
 }
 }
 
@@ -254,6 +357,7 @@ generateQButton.onclick = function(){
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
     Qid0002();
   };
+
 };
 
 let showSolutionButton = document.getElementById("showSolutionButton");
@@ -267,3 +371,17 @@ showSolutionButton.onclick = function(){
         document.querySelector('.solution-box').style.display = 'none';
     };
 };
+
+
+/*
+let fullscreenButton = document.getElementById("fullscreenButton");
+
+fullscreenButton.onclick = function(){
+    document.querySelector('.question-box').css({
+        width: '100%'
+        
+
+    }) 
+}
+*/
+    
