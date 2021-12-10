@@ -190,57 +190,108 @@ const Qid0002 = () => {
         staffHoursNum = arrayEven[Math.floor(Math.random()*arrayEven.length)];
     } else if (staffNum != 10 && staffHoursNum != 10 && staffPay != 10){
         staffPay = 10;
-    };
+    }
+    if(globalDifficultySelection === 1){
+        staffNum = 10;
+        staffHoursNum = 10;
+        staffPay = Math.ceil(Math.random()*8)+1;
+    }
     let numMeals = Math.ceil(Math.random()*9) + '0';
     let mealsCostPounds = Math.ceil(Math.random()*8)+1;
     let mealsCost = mealsCostPounds + .95;
-    let numPrizes = Math.ceil(Math.random()*11)+1;
+    if (globalDifficultySelection === 3){
+        let mealsCostPence = ((Math.ceil(Math.random()*80)/10 + Math.ceil(Math.random()*90)/100)+1).toFixed(2);
+        mealsCost = mealsCostPence
+    };
+    let numPrizes = Math.ceil(Math.random()*8)+1;
     let prizesCostPounds = Math.ceil(Math.random()*7)+2;
     let prizesCost = 10*(prizesCostPounds) + 9.99;
+    if (globalDifficultySelection === 3){
+        prizesCostGold = (prizesCostPounds)+((Math.ceil(Math.random()*80)/10 + Math.ceil(Math.random()*90)/100)+1).toFixed(2);
+        prizesCost = prizesCostGold;
+    }
     let numGuests = Math.ceil((Math.random()*9)+1)*10; 
     let guestsCost = Math.ceil(Math.random()*7)+2;
     let Sponsorship = 1000; 
+    if(globalDifficultySelection === 3){
+        SponsorshipGoldArray = [Math.ceil(Math.random()*500),Math.ceil(Math.random()*-500)];
+        Sponsorship = 1000 + SponsorshipGoldArray[Math.floor(Math.random()*SponsorshipGoldArray.length)];
+    }
+    if(globalDifficultySelection === 1){
+        guestsCostArray = [5,2,10];
+        guestsCost = guestsCostArray[Math.floor(Math.random()*guestsCostArray.length)];
+    }
     
     let staffTotalCost = staffNum*staffHoursNum*staffPay;
-    let mealsCostSigFig = parseFloat(mealsCost.toPrecision(1));
-    let totalMealsCost = mealsCostSigFig*numMeals;
-    let prizesCostsSigFig = parseFloat(prizesCost.toPrecision(1));
-    let totalPrizesCost = prizesCostsSigFig*numPrizes;
+    let mealsCostSigFig = parseFloat(mealsCost);
+    let mealsCostSigFig2 = parseFloat(mealsCostSigFig.toPrecision(1));
+    let totalMealsCost = mealsCostSigFig2*numMeals;
+    let prizesCostsSigFig = parseFloat(prizesCost);
+    let prizesCostsSigFig2 = parseFloat(prizesCostsSigFig.toPrecision(1));
+    let totalPrizesCost = prizesCostsSigFig2*numPrizes;
     let totalCosts = staffTotalCost+totalMealsCost+totalPrizesCost;
-    let numPrizesSigFig = parseFloat(numPrizes.toPrecision(1));
-    let NoteAltMethodTotal = prizesCostsSigFig*numPrizesSigFig;
-    let totalAltMethodCosts = staffTotalCost+totalMealsCost+NoteAltMethodTotal;
     let guestTotalIncome = numGuests*guestsCost;
-    let totalIncome = Sponsorship+guestTotalIncome;
+    let sponsorshipSigFig = parseFloat(Sponsorship.toPrecision(1));
+    let totalIncome = sponsorshipSigFig+guestTotalIncome;
 
     let profit = totalIncome-totalCosts;
-    let profitAltMethod = totalIncome-totalAltMethodCosts;
     let conclusionStatement
-    if(profit>0 && profitAltMethod>0){
+    if(profit>0){
         conclusionStatement = 'Since the total income is more than the total costs, then ' + name1 + ' is correct.';
-    } else if (profit<=0 && profitAltMethod<=0){
+    } else if (profit<=0){
         conclusionStatement = 'Since the total income is less than the total costs, then ' + name1 + ' is incorrect.';
-    } else{
-        conclusionStatement = `Since the total income is less than the total costs, then ${name1} is incorrect. <span class="note">(Note - ${name1} would be correct if used alternative method)</span>`
     }
 
     //Question info.
 
     document.getElementById("questionInfoText").innerHTML = 
     `<h3>Question Information</h3><br>
-    This question is based off of the following exam paper question: <br>
-    Exam tier: Foundation <br>
-    Exam board: OCR <br>
-    Paper: 2 (non-calculator) <br>
-    Month: November <br>
-    Year: 2019 <br>
-    Question: 15 <br><br> 
-    For difficulty silver, I have tried to replicate the style of question from the exam paper.`
+    This question was inspired by the following: <br><br>
+    <style>
+        .tableinfo{
+            border: none;
+            border-collapse: none;
+        }
+        .tableinfo th{
+            border: none;
+            text-align: right;
+        }
+        .tableinfo td{
+            border: none;
+            text-align: left;
+        }
+    </style>
+
+    <table class="tableinfo">
+        <tr>
+            <th>Exam Board</th>
+            <td>OCR</td>
+        </tr>
+        <tr>
+            <th>Tier</th>
+            <td>Foundation</td>
+        </tr>
+        <tr>
+            <th>Paper</th>
+            <td>2 (Non-calculator)</td>
+        </tr>
+        <tr>
+            <th>Month</th>
+            <td>November</td>
+        </tr>
+        <tr>
+            <th>Year</th>
+            <td>2019</td>
+        </tr>
+        <tr>
+            <th>Question</th>
+            <td>15</td>
+        </tr>
+    </table>`
+    
 
     questionNumber++;
 
-    //Difficulty Silver
-    if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML =
     `${name1} is planning a presentation evening. <br>
     ${name1} writes down their costs and income. <br>
@@ -321,32 +372,15 @@ const Qid0002 = () => {
     document.getElementById("solutionText").innerHTML = 
     `<span class="underline">Costs:</span> <br>
     Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
-    Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig} and ${numMeals} meals at £${mealsCostSigFig} means ${numMeals} &#215 £${mealsCostSigFig} = <span class="underline">£${totalMealsCost}</span> <br>
-    Prize costs: Rounding £${prizesCost} gives £${prizesCostsSigFig} and ${numPrizes} prizes at £${prizesCostsSigFig} means ${numPrizes} &#215 £${prizesCostsSigFig} = <span class="underline">£${totalPrizesCost}</span> <br>
+    Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig2} and ${numMeals} meals at £${mealsCostSigFig2} means ${numMeals} &#215 £${mealsCostSigFig2} = <span class="underline">£${totalMealsCost}</span> <br>
+    Prize costs: Rounding £${prizesCost} gives £${prizesCostsSigFig2} and ${numPrizes} prizes at £${prizesCostsSigFig2} means ${numPrizes} &#215 £${prizesCostsSigFig2} = <span class="underline">£${totalPrizesCost}</span> <br>
     Therefore total costs are £${staffTotalCost} + £${totalMealsCost} + £${totalPrizesCost} = <span class="totalCostIncome">£${totalCosts}</span> <br> 
     <span class="underline">Income:</span> <br>
     Guests income: ${numGuests} guests each paying £${guestsCost} means ${numGuests} &#215 £${guestsCost} = <span class="underline">£${guestTotalIncome}</span> <br>
-    With a sponsorship of £${Sponsorship} then the total income is <span class="totalCostIncome">£${totalIncome}</span> <br>
+    Sponsorship: Rounding £${Sponsorship} gives <span class="underline">£${sponsorshipSigFig}.</span> <br>
+    Therefore the total income is £${guestTotalIncome} + £${sponsorshipSigFig} = <span class="totalCostIncome">£${totalIncome}</span> <br>
     ${conclusionStatement}` 
 
-
-    if(numPrizes>10){
-    document.getElementById("solutionText").innerHTML = 
-    `<span class="underline">Costs:</span> <br>
-    Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
-    Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig} and ${numMeals} meals at £${mealsCostSigFig} means ${numMeals} &#215 £${mealsCostSigFig} = <span class="underline">£${totalMealsCost}</span> <br>
-    Prize costs: Rounding £${prizesCost} gives £${prizesCostsSigFig} and ${numPrizes} prizes at £${prizesCostsSigFig} means ${numPrizes} &#215 £${prizesCostsSigFig} = <span class="underline">£${totalPrizesCost}</span>. <br>
-    <span class="note">(Note - Mark scheme also allows an alternative method of rounding ${numPrizes} prizes to ${numPrizesSigFig} and doing ${numPrizesSigFig} &#215 £${prizesCostsSigFig} = <span class="underline">£${NoteAltMethodTotal}</span>)</span>  <br>
-    Therefore total costs are £${staffTotalCost} + £${totalMealsCost} + £${totalPrizesCost} = <span class="totalCostIncome">£${totalCosts}</span>. <br> 
-    <span class="note">(Note - If used previous note then total costs would be <span class="totalCostIncome">£${totalAltMethodCosts})</span></span> <br>
-    <span class="underline">Income:</span> <br>
-    Guests income: ${numGuests} guests each paying £${guestsCost} means ${numGuests} &#215 £${guestsCost} = <span class="underline">£${guestTotalIncome}</span> <br>
-    With a sponsorship of £${Sponsorship} then the total income is <span class="totalCostIncome">£${totalIncome}</span> <br>
-    ${conclusionStatement}`
-    }
- 
-
-}
 }
 
 let generateQButton = document.getElementById("generateQButton");

@@ -20,6 +20,7 @@
       <div class="sidebar">
         <h1>Maths Gizmo</h1>
         <h2>GCSE</h2>
+        <h3>Question Search</h3>
         <div class="dropDownMenus">
           <label>Topic area:</label>
           <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
@@ -36,6 +37,9 @@
             <option value="1">Speed, distance, time</option>
             <option value="2">Estimation</option>
           </select>
+        </div>
+        <div class="question-info-box">
+          <p id="questionInfoText"></p>
         </div>
       </div>
     </div>
@@ -58,9 +62,6 @@
         </div>
         <div class="solution-box">
           <p id="solutionText"></p>
-        </div>
-        <div class="question-info-box">
-          <p id="questionInfoText"></p>
         </div>
       </div>
     </div>

@@ -36,9 +36,9 @@ select:hover{
 }
 
 .wrapper .sidebar{
-    position: absolute;
+    position: fixed;
     width: 20%;
-    height: 150%;
+    height: 100%;
     background-color: #009870;
     padding: 30px 0;
     align-items: center;
@@ -52,10 +52,25 @@ select:hover{
     border-bottom: #fff 1px solid;
 }
 
+.wrapper .sidebar h3{
+    color: #fff;
+    text-align: center;
+}
+
 .dropDownMenus{
     position: relative;
     text-align: left;
     padding: 1em 0;
+}
+
+.question-info-box{
+    padding: 1% 10% 1% 1em;
+    border-top: #fff 1px solid;
+    border-bottom: #fff 1px solid;
+    color: #fff;
+    width: 100%;
+    height: fit-content;
+    text-align: left;
 }
 
 
@@ -126,16 +141,6 @@ select:hover{
 }
 
 .question-box {
-    padding: 1% 10% 1% 1%;
-    border: #009870 1px solid;
-    width: 99%;
-    height: 100%;
-    margin: 1% 1%;
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-}
-
-.question-info-box{
     padding: 1% 10% 1% 1%;
     border: #009870 1px solid;
     width: 99%;
