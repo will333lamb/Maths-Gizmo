@@ -68,9 +68,10 @@ select:hover{
     border-top: #fff 1px solid;
     border-bottom: #fff 1px solid;
     color: #fff;
-    width: 100%;
     height: fit-content;
     text-align: left;
+    min-width: 100%;
+
 }
 
 

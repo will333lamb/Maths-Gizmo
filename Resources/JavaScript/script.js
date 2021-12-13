@@ -1,5 +1,5 @@
 
-let nameArray = ["Alex", "Anelia", "Ava", "Abigail", "Anthony", "Andrew", "Aaron", "Adam", "Anna", "Amy", "Andy", "Alan", "Alicia",
+let nameArray = ["Alex", "Amelia", "Ava", "Abigail", "Anthony", "Andrew", "Aaron", "Adam", "Anna", "Amy", "Andy", "Alan", "Alicia",
 "Archie", "Angie", "Angela", "Abdullah", "Agnes", "Ben", "Brandon", "Brian", "Bruce", "Bernard", "Boris", "Bradley", "Bobby", "Bella",
 "Bridget", "Bria", "Belinda", "Beatriz", "Betsy", "Britney", "Billie", "Becky", "Brooke", "Bethany", "Barry", "Blake", "Brianna",
 "Charlie", "Charlotte", "Connor", "Cameron", "Caitlin", "Cara", "Chloe", "Catherine", "Calum", "Chris", "Casper", "Calvin", "Charles",
@@ -38,6 +38,97 @@ let nameArray = ["Alex", "Anelia", "Ava", "Abigail", "Anthony", "Andrew", "Aaron
 "Uma", "Victoria", "Violet", "Vanessa", "Victor", "Valerie", "Vince", "Vinnie", "Vivienne", "Will", "William", "Willow", 
 "Woody", "Wade", "Walter", "Warren", "Wendy", "Wayne", "Wesley", "Wilfred", "Whyatt", "Xander", "Xavier", "Yohana", 
 "Yakub", "Yasmin", "Yolanda", "Youssef", "Yvonne", "Zara", "Zachary", "Zoe", "Zane", "Zakirullah", "Ziggy"];
+
+let maleNameArray = ["Alex", "Anthony", "Andrew", "Aaron", "Adam", "Andy", "Alan", 
+"Archie", "Abdullah", "Ben", "Brandon", "Brian", "Bruce", "Bernard", "Boris", "Bradley", "Bobby", 
+"Barry", "Charlie", "Connor", "Cameron", "Calum", "Chris", "Casper", "Calvin", "Charles",
+"Christian", "Chester", "Clive", "Cody", "Colin", "Craig", "Curtis",
+"Daniel", "Dylan", "David", "Dominic",  "Dean", "Declan", "Douglas", "Dale", "Dalton", "Dieumerci",
+"Damian",  "Darren", "Daryl", "Derek", "Dennis", "Derry", "Dion", "Dexter", "Diogo", "Donald",
+"Ethan","Eddy", "Edward", "Evan", "Elliot", 
+"Elijah", "Ellis", "Eli", "Elvis", "Emiliano", "Eric", "Ernie", "Etienne", "Ewan",
+"Finley", "Frankie", "Frank", "Farrah", "Felix", "Fraser", "Fergus",
+"Fletcher", "Francis", "Fred", "Fabian", "Fabio", "Francisco", 
+"George", "Gregor", "Greg", "Gareth", "Gary", "Gavin", "Gene",
+"Geoffrey", "Gerard", "Gideon", "Giovannie", "Glen", "Graeme", "Gordon", "Grant", "Guy",
+"Harry", "Henry", "Harrison", "Harley", "Harvey", "Hugo", 
+"Hayden", "Hamish", "Haashim",
+"Isaac", "Ian", "Idris", "Ibrahim", 
+"Ivan", "Jack", "Jacob", "James", "Joshua", "Jake", "Jamie", "John", "Jasper", "Joe", 
+"Joel", "Jaden", "Jude","Jason","Jordan", "Jimmy", "Jonah",  
+"Kyle", "Kai", "Kian", "Kaiden", "Kevin", 
+"Kieran", "Keelan", "Kaleb", "Kain", "Kanye", "Karl", "Karim", "Keith", 
+"Logan", "Leo", "Leon", "Lucas", "Lewis", "Liam", "Luke", "Luca", 
+"Layton", "Lance", "Lawrence", "Larry", 
+"Max", "Mason", "Matthew", "Michael","Mohammed", 
+"Mark", "Magnus", "Marcus", "Miles", "Mustafa", "Mac", 
+"Noah", 
+"Nathan", "Nathaniel", "Ned", "Neil", "Neville", "Niall", "Nick", "Noel", "Norbert", 
+"Oliver", "Ollie", "Oli", "Olly", "Orban", "Olaf", "Omar", "Orson", "Oscar", "Owen", "Otis", 
+"Patrick", "Peter", "Pablo", "Paddy", 
+"Paul", "Pavan", "Perry", "Percy", "Phillip", "Piers", "Pierre", 
+"Quentin", "Riley","Ryan", "Rory", "Rhys", "Reuben", "Reece", "Robbie", 
+"Rowan", "Rio", "Roman", "Ralph", "Ross", "Richard", "Ricky", "Rishi", "Rogan", 
+"Samuel", "Seb", "Stanley", "Scott", "Shaun", "Sean", 
+"Simon", "Spencer",  
+"Thomas", "Tyler", "Theo", "Toby", "Taylor", "Teddy", "Tristan",  
+"Tony", "Terry", "Teemu", "Thor", "Thierry", "Tim", "Todd", "Trent", "Trevor", "Troy", 
+"Victor", "Vince", "Vinnie", "Will", "William", 
+"Woody", "Wade", "Walter", "Warren", "Wayne", "Wesley", "Wilfred", "Whyatt", "Xander", "Xavier", "Yohana", 
+"Yakub", "Youssef", "Zachary", "Zane", "Zakirullah", "Ziggy"];
+
+let femaleNameArray = ["Amelia", "Ava", "Abigail", "Anna", "Amy", "Alicia",
+"Angie", "Angela", "Agnes", "Bella",
+"Bridget", "Bria", "Belinda", "Beatriz", "Betsy", "Britney", "Billie", "Becky", "Brooke", "Bethany", "Brianna",
+"Charlotte", "Caitlin", "Cara", "Chloe", "Catherine", 
+"Courtney", "Carla", "Caroline", "Carol", "Cassie", "Catrina", "Claire", 
+"Daisy", "Darcey", "Danielle","Demi",
+"Dominika", "Daphne", "Davina", "Debbie", "Denise", 
+"Emily", "Evie", "Eva", "Erin", "Ellie", "Emma","Elizabeth", "Esme", "Elsie", "Eliza",  
+"Eloise", "Ellen", "Evelina",
+"Freya", "Florence", "Faith", "Francesca", "Faye", "Fatima", "Felicity", 
+"Fallon", "Ferne", "Felicia", "Fiona", "Freyja",
+"Grace", "Georgia", "Gabby", "Georgie", "Gabriella","Gemma",
+"Gina",
+"Holly", "Hannah", "Hollie", "Harriet", "Heidi", "Hallie", 
+"Hope", "Hattie", "Hayley", "Hazel", "Honey", "Helen", "Heather", "Helena", "Hermione", 
+"Isla", "Isabelle", "Immogen", "Ivy", "Iris", "India", "Iona", "Ida", "Ingrid", 
+"Irene", "Ines", "Isha", "Izzy",
+"Jessica", "Julia", "Jasmine",  
+"Jan", "Jennifer", "Jemima", "Josie", "Jodie", "Jackie", 
+"Katie", "Kayla", "Kiera", "Kaitlyn", "Kara", "Kate", "Kayleigh", "Khloe", 
+"Karina", "Karis", "Katherine", "Katrina", 
+"Lily", "Lola", "Leah", "Lottie", "Libby", "Lexie", 
+"Lillie", "Layla", "Lillian", "Louise", "Lucia", "Larissa", "Lauren", "Laura", 
+"Mia", "Millie", "Maisie", "Megan", "Mollie", "Matilda", "Maddison", 
+"Mya", "Maria", "Madeleine", "Maggie", "Melissa", "Mary", "Marissa", 
+"Niamh", "Nicole", "Neve", "Nia", "Nicola", "Nina", "Nadia", "Nadine", "Naomi", "Nancy", "Neicy", "Natalie", 
+"Natasha", "Nikhita","Nora", 
+"Olivia", "Ophelia", "Olga",  
+"Poppy", "Phoebe", "Paige", "Polly", "Paris", "Penny", "Penelope", "Peyton", "Pippa",  
+"Paisley", "Pamela", "Patricia","Pauline", "Pearl",  
+"Ruby", "Rosie", "Rebecca", "Rose",  
+"Rachel", "Ruth", "Rihanna",  "Robin",  
+"Sophie", "Sophia", "Scarlett", "Sienna", "Summer", "Sarah", "Skye",  
+"Sasha", "Sian", "Shelby", "Stella", "Stephanie", "Sabina", "Sadia", "Sardha", "Sardhadebie", "Samara", 
+"Tabitha", "Tegan", "Tallulah", "Tara", "Tess", "Tallie", 
+"Tasmin", "Theresa",  "Tiffany", "Tracey",  
+"Uma", "Victoria", "Violet", "Vanessa", "Valerie", "Vivienne",  "Willow", 
+"Wendy", 
+"Yasmin", "Yolanda", "Yvonne", "Zara","Zoe"];
+
+let namesObject = {
+    maleNames: {
+        name: maleNameArray,
+        heOrShe: "he",
+        hisOrHer: "his"
+    },
+    femaleNames: {
+        name: femaleNameArray,
+        heOrShe: "she",
+        hisOrHer: "her"
+    }
+};
 
 let questionNumber = 0
 
@@ -170,7 +261,23 @@ const Qid0001 = () => {
 };
 
 const Qid0002 = () => {
-    let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
+
+    let nameFemale = namesObject.femaleNames.name[Math.floor(Math.random()*femaleNameArray.length)];
+    let nameMale = namesObject.maleNames.name[Math.floor(Math.random()*maleNameArray.length)];
+    let name1Array = [nameFemale,nameMale];
+    let name1 = name1Array[Math.floor(Math.random()*name1Array.length)];
+    let heOrShe
+    if (name1 === nameMale){
+        heOrShe = "he";
+    } else {
+        heOrShe = "she"
+    };
+    let hisOrHer
+    if (name1 === nameMale){
+        hisOrHer = "his";
+    } else {
+        hisOrHer = "her"
+    };
     let costsArrayHelper = [10, Math.floor(Math.random()*8)+2];
     let costsArrayHelper2 = [10, Math.floor(Math.random()*8)+2];
     let costsArrayHelper3 = [10, Math.floor(Math.random()*8)+5];
@@ -294,7 +401,7 @@ const Qid0002 = () => {
 
     document.getElementById("questionText").innerHTML =
     `${name1} is planning a presentation evening. <br>
-    ${name1} writes down their costs and income. <br>
+    ${name1} writes down ${hisOrHer} costs and income. <br>
     <style>
     .questionSolutionContainer{
         font-size: 0.97rem;
@@ -363,7 +470,7 @@ const Qid0002 = () => {
             <td> ${numPrizes} prizes at £${prizesCost} each </td>
         </tr>
     </table> <br>
-    ${name1} thinks they will make a profit. <br>
+    ${name1} thinks ${heOrShe} will make a profit. <br>
     Use estimation to decide if ${name1} is correct. <br>
     Show all of your working.`
 
@@ -383,6 +490,10 @@ const Qid0002 = () => {
 
 }
 
+/**********************************************
+ * Buttons *
+ *******************************************/
+
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
@@ -390,7 +501,7 @@ generateQButton.onclick = function(){
     Qid0001();
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
     Qid0002();
-  };
+};
 
 };
 
