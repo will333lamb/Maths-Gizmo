@@ -37,11 +37,16 @@ select:hover{
 
 .wrapper .sidebar{
     position: fixed;
-    width: 20%;
+    width: 315px;
     height: 100%;
     background-color: #009870;
     padding: 30px 0;
     align-items: center;
+}
+
+.wrapper .sidebar a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .wrapper .sidebar h1, h2{
@@ -135,9 +140,9 @@ select:hover{
 }
 
 .question-container {
-    width: 80%;
+    width: calc(100%-315px);
     height: 100%;
-    margin-left: 20%;
+    margin-left: 315px;
     text-align: left;
     position:relative;
 }
@@ -146,6 +151,7 @@ select:hover{
     width: 100%;
     display: inline-flex;
     outline: #009870 1px solid;
+    line-height: 2em;
 
 }
 

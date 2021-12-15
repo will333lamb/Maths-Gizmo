@@ -20,7 +20,6 @@
     <div class="wrapper">
       <div class="sidebar">
         <h1><a href="index.html"><i class='bx bxs-home'></i> Maths Gizmo</a></h1>
-        <h2><a href="GCSEDisplay.html">Display GCSE questions</a></h2>
         <h2>GCSE</h2>
         <h3>Question Search</h3>
         <div class="dropDownMenus">
@@ -78,6 +77,36 @@
         </div>
       </div>
     </div>
-    
+    <div class="question-container">
+      <div class="buttonsAndPrintingContainer">
+        <div class="buttons-container">
+          <button id="generateQButton" class="button">Generate new question</button>
+          <button id="showSolutionButton" class="button">Show Solution</button>
+          <div class="difficultyContainer">
+            <select id="difficultyDropDown" onchange="getSelectedDifficultyValue()">
+              <option value="1">Bronze</option>
+              <option selected value="2">Silver</option>
+              <option value="3">Gold</option>
+            </select>
+          </div>
+        </div>
+        <div class="printingSectionContainer">
+          <h3>Create a workbook</h3>
+          <div class="printingManipulatives">
+            <p> options here</p>
+          </div>
+          <button class="button" onclick="generatePDF()">Create</button>
+        </div>
+      </div>
+      
+      <div class="questionSolutionContainer">
+        <div class="question-box">
+          <p id="questionText">Please use the options on the left to navigate to a question</p>
+        </div>
+        <div class="solution-box">
+          <p id="solutionText"></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
