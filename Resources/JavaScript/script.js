@@ -136,7 +136,17 @@ let globalDifficultySelection = 2;
 
 let globalTopicAreaSelection = 1;
 
-function getSelectedTopicArea(){globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value)};
+function getSelectedTopicArea(){
+    globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
+    if (globalTopicAreaSelection === 1){
+        document.querySelector(".numberTopics").style.display = "block";
+        document.querySelector(".geometryMeasuresTopics").style.display = "none";
+    }
+    else if (globalTopicAreaSelection === 4){
+        document.querySelector(".geometryMeasuresTopics").style.display = "block";
+        document.querySelector(".numberTopics").style.display = "none";
+    };
+};
 
 let globalSelectedTopic = 1;
 
@@ -208,6 +218,18 @@ const Qid0001 = () => {
     };
 
     questionNumber ++;
+
+
+    //Question Info ***********************
+
+    document.getElementById("examBoardText").innerHTML = "OCR";
+    document.getElementById("tierText").innerHTML = "Foundation";
+    document.getElementById("paperText").innerHTML = "1";
+    document.getElementById("monthText").innerHTML = "November";
+    document.getElementById("yearText").innerHTML = "2019";
+    document.getElementById("questionInfoText").innerHTML = 14;
+    document.getElementById("calculatorText").innerHTML = "Yes";
+    document.querySelector(".tableinfo").style.display = "inline-table";
 
     //Difficulty Silver
     if (globalDifficultySelection === 2){
@@ -349,55 +371,18 @@ const Qid0002 = () => {
         conclusionStatement = 'Since the total income is less than the total costs, then ' + name1 + ' is incorrect.';
     }
 
-    //Question info.
-
-    document.getElementById("questionInfoText").innerHTML = 
-    `<h3>Question Information</h3><br>
-    This question was inspired by the following: <br><br>
-    <style>
-        .tableinfo{
-            border: none;
-            border-collapse: none;
-        }
-        .tableinfo th{
-            border: none;
-            text-align: right;
-        }
-        .tableinfo td{
-            border: none;
-            text-align: left;
-        }
-    </style>
-
-    <table class="tableinfo">
-        <tr>
-            <th>Exam Board</th>
-            <td>OCR</td>
-        </tr>
-        <tr>
-            <th>Tier</th>
-            <td>Foundation</td>
-        </tr>
-        <tr>
-            <th>Paper</th>
-            <td>2 (Non-calculator)</td>
-        </tr>
-        <tr>
-            <th>Month</th>
-            <td>November</td>
-        </tr>
-        <tr>
-            <th>Year</th>
-            <td>2019</td>
-        </tr>
-        <tr>
-            <th>Question</th>
-            <td>15</td>
-        </tr>
-    </table>`
-    
-
     questionNumber++;
+
+    //Question Info************************
+    document.getElementById("examBoardText").innerHTML = "OCR";
+    document.getElementById("tierText").innerHTML = "Foundation";
+    document.getElementById("paperText").innerHTML = "2";
+    document.getElementById("monthText").innerHTML = "November";
+    document.getElementById("yearText").innerHTML = "2019";
+    document.getElementById("questionInfoText").innerHTML = 15;
+    document.getElementById("calculatorText").innerHTML = "No";
+    document.querySelector(".tableinfo").style.display = "inline-table";
+
 
     document.getElementById("questionText").innerHTML =
     `${name1} is planning a presentation evening. <br>
