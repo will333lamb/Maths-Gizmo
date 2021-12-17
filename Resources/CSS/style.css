@@ -147,6 +147,18 @@ select:hover{
     display: none;
 }
 
+.algebraTopics{
+    display: none;
+}
+
+.ratioTopics{
+    display: none;
+}
+
+.probabilityTopics{
+    display: none;
+}
+
 .question-info-box{
     padding: 1% 10% 1% 1em;
     border-top: #fff 1px solid;

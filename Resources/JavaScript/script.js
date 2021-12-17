@@ -140,12 +140,39 @@ function getSelectedTopicArea(){
     globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
     if (globalTopicAreaSelection === 1){
         document.querySelector(".numberTopics").style.display = "block";
+        document.querySelector(".algebraTopics").style.display = "none";
+        document.querySelector(".ratioTopics").style.display = "none";
         document.querySelector(".geometryMeasuresTopics").style.display = "none";
+        document.querySelector(".probabilityTopics").style.display = "none";
+    }
+    else if (globalTopicAreaSelection === 2){
+        document.querySelector(".numberTopics").style.display = "none";
+        document.querySelector(".algebraTopics").style.display = "block";
+        document.querySelector(".ratioTopics").style.display = "none";
+        document.querySelector(".geometryMeasuresTopics").style.display = "none";
+        document.querySelector(".probabilityTopics").style.display = "none";
+    }
+    else if (globalTopicAreaSelection === 3){
+        document.querySelector(".numberTopics").style.display = "none";
+        document.querySelector(".algebraTopics").style.display = "none";
+        document.querySelector(".ratioTopics").style.display = "block";
+        document.querySelector(".geometryMeasuresTopics").style.display = "none";
+        document.querySelector(".probabilityTopics").style.display = "none";
     }
     else if (globalTopicAreaSelection === 4){
-        document.querySelector(".geometryMeasuresTopics").style.display = "block";
         document.querySelector(".numberTopics").style.display = "none";
-    };
+        document.querySelector(".algebraTopics").style.display = "none";
+        document.querySelector(".ratioTopics").style.display = "none";
+        document.querySelector(".geometryMeasuresTopics").style.display = "block";
+        document.querySelector(".probabilityTopics").style.display = "none";
+    }
+    else if (globalTopicAreaSelection === 5){
+        document.querySelector(".numberTopics").style.display = "none";
+        document.querySelector(".algebraTopics").style.display = "none";
+        document.querySelector(".ratioTopics").style.display = "none";
+        document.querySelector(".geometryMeasuresTopics").style.display = "none";
+        document.querySelector(".probabilityTopics").style.display = "block";
+    }
 };
 
 let globalSelectedTopic = 1;
