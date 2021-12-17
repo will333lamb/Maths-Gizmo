@@ -1,7 +1,5 @@
 /* UNIVERSAL STYLES */
 
-/* Navigation left side */
-
 *{
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
@@ -9,6 +7,78 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Nav top*/
+
+nav {
+    width: 100%;
+    height: 70px;
+    background-color: #009870;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    z-index: 10;
+    border-bottom: #fff 1px solid;
+}
+
+nav ul {
+    float: right;
+    padding: 0 100px 0 0;
+}
+
+nav ul li {
+    float: left;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 1rem;
+    padding: 25px 15px;
+    display: block;    
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute; 
+    background-color: #009870;
+    border-radius: 0 0 10px 10px;
+    padding: 0;   
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    width: 200px;  
+    border-radius: 0 0 10px 10px;
+}
+
+nav ul li ul li a {
+    padding: 12px 15px;
+}
+
+nav ul li ul li a:hover {
+    background-color: #009885;
+    border-radius: 0 0 10px 10px;  
+}
+
+nav h1 a{
+    color: #fff;
+}
+
+#logoHomeTitle{
+    color:#fff;
+    float: left;
+    text-transform: uppercase;
+    padding: 25px 14px;
+
+}
+
+
+
+/* Nav Sidebar */
 
 select{
     font-size: 1rem;
@@ -31,8 +101,9 @@ select:hover{
 }
 
 .wrapper{
-    display: flex;
+    display: block;
     height: 100%;
+    margin-top: 50px;
 }
 
 .wrapper .sidebar{
@@ -125,7 +196,7 @@ select:hover{
   line-height: 1.5;
   outline: none;
   overflow: hidden;
-  padding: 13px 20px;
+  padding: 8px 8px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -227,7 +298,7 @@ select:hover{
   line-height: 1.5;
   outline: none;
   overflow: hidden;
-  padding: 13px 20px;
+  padding: 8px 8px;
   position: relative;
   text-align: center;
   text-decoration: none;

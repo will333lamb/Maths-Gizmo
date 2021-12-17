@@ -17,66 +17,27 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <div class="sidebar">
-        <h1><a href="index.html"><i class='bx bxs-home'></i> Maths Gizmo</a></h1>
-        <h2><a href="GCSEDisplay.html">Display GCSE questions</a></h2>
-        <h2>GCSE</h2>
-        <h3>Question Search</h3>
-        <div class="dropDownMenus">
-          <label>Topic area:</label>
-          <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
-            <option selected value="0">Please select</option>
-            <option value="1">Number</option>
-            <option value="2">Algebra</option>
-            <option value="3">Ratio & Proportion</option>
-            <option value="4">Geometry & Measures</option>
-            <option value="5">Probability & Statistics</option>
-          </select>
-        </div>
-        <div class="dropDownMenus">
-          <label>Topic:</label>
-          <select id="topicSelect" onchange="getSelectedTopic()">
-            <option selected value="0">Please select</option>
-            <option value="1" class="geometryMeasuresTopics">Speed, distance, time</option>
-            <option value="2" class="numberTopics">Estimation</option>
-          </select>
-        </div>
-        <div class="question-info-box">
-          <h3>Question Information</h3><br>
-          <p>This question was inspired by:</p><br>
-          <table class="tableinfo">
-            <tr>
-                <th>Exam Board - </th>
-                <td id="examBoardText"></td>
-            </tr>
-            <tr>
-                <th>Tier - </th>
-                <td id="tierText"></td>
-            </tr>
-            <tr>
-                <th>Paper - </th>
-                <td id="paperText"></td>
-            </tr>
-            <tr>
-                <th>Month - </th>
-                <td id="monthText"></td>
-            </tr>
-            <tr>
-                <th>Year - </th>
-                <td id="yearText"></td>
-            </tr>
-            <tr>
-                <th>Question - </th>
-                <td id="questionInfoText"></td>
-            </tr>
-            <tr>
-              <th>Calculator? - </th>
-              <td id="calculatorText"></td>
-            </tr>
-        </table>
-        </div>
-      </div>
+    <nav>
+      <h1 id="logoHomeTitle"><a href="index.html"><i class='bx bxs-home'></i> Maths Gizmo</a></h1>
+      <ul>
+        <li><a href="#">GCSE</a>
+          <ul>
+            <li><a href="GCSEDisplay.html">Display questions</a></li>
+            <li><a href="#">Print a worksheet</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Functional Skills</a>
+          <ul>
+            <li><a href="#">Display questions</a></li>
+            <li><a href="#">Create practice test</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div><br> <br>
+    <h1>Welcome to Maths Gizmo</h1><br>
+    <h3>Need to think of something to put here.</h3>
     </div>
     
   </body>

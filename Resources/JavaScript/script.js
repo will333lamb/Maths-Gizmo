@@ -410,6 +410,7 @@ const Qid0002 = () => {
         padding: 0 1%;
         border-right: 1px solid black;
         width: fit-content;
+        text-align: left;
     }
     .tableHeadings{
         text-align: center;
@@ -518,15 +519,4 @@ function generatePDF(){
 }
 
 
-/*
-let fullscreenButton = document.getElementById("fullscreenButton");
-
-fullscreenButton.onclick = function(){
-    document.querySelector('.question-box').css({
-        width: '100%'
-        
-
-    }) 
-}
-*/
     
