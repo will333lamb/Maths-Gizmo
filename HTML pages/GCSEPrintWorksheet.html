@@ -34,11 +34,64 @@
         </li>
       </ul>
     </nav>
-
-    <div><br> <br>
-    <h1>Welcome to Maths Gizmo</h1><br>
-    <h3>Need to think of something to put here.</h3>
+  <br>
+    <div class="wrapper">
+      <div class="sidebar">
+        <h2>Create a worksheet</h2>
+        <h3>Question Select</h3>
+        <div class="dropDownMenus">
+          <label>Topic area:</label>
+          <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
+            <option selected value="0">Please select</option>
+            <option value="1">Number</option>
+            <option value="2">Algebra</option>
+            <option value="3">Ratio & Proportion</option>
+            <option value="4">Geometry & Measures</option>
+            <option value="5">Probability & Statistics</option>
+          </select>
+        </div>
+        <div class="dropDownMenus">
+          <label>Topic:</label>
+          <select id="topicSelect" onchange="getSelectedTopic()">
+            <option selected value="0">Please select</option>
+            <option value="1" class="geometryMeasuresTopics">Speed, distance, time</option>
+            <option value="2" class="numberTopics">Estimation</option>
+            <option value="3" class="algebraTopics">Solving quadratics via factorisation</option>
+            <option value="4" class="ratioTopics">Dividing into a given ratio</option>
+            <option value="5" class="probabilityTopics">Probability trees</option>
+          </select>
+        </div>
+        <div class="numberOfQuestionsInput">
+          <h3>Number of questions:</h3><br>
+          <div class="labelsAndInputsContainer">
+            <div class="rows">
+              <label for="points">Bronze:</label>
+              <input type="number" step="1" min="0"><br>
+            </div>
+            <div class="rows">
+              <label for="points">Silver:</label>
+              <input type="number" step="1" min="0"><br>
+            </div>
+            <div class="rows">
+              <label for="points">Gold:</label>
+              <input type="number" step="1" min="0"><br>
+            </div>
+          </div>
+        </div>
+        <div class="dropDownMenus">
+          <label>Include worked solutions file:</label>
+          <select id="topicSelect" onchange="getSelectedTopic()">
+            <option selected value="0">Please select</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>         
+        </div>
+      </div>
     </div>
-    
+    <div class="previewPanelContainer">
+      hello
+    </div>
+
+
+
   </body>
 </html>

@@ -146,6 +146,11 @@ select:hover{
     padding: 1em 0;
 }
 
+.dropDownMenus p{
+    padding: 0.5em 1em;
+    color: #fff;
+}
+
 .geometryMeasuresTopics{
     display: none;
 }
@@ -338,4 +343,43 @@ select:hover{
   box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
 }
 
+/* Printing worksheet styling***************************************
+********************************************************************/
 
+.numberOfQuestionsInput{
+    display: block;
+    color: #fff;
+    padding: 1em;
+    border-bottom: #fff 1px solid;
+    border-top: #fff 1px solid;
+}
+
+.numberOfQuestionsInput label{
+    float: left;
+}
+
+.numberOfQuestionsInput input{
+    float: right;
+    width: 5em;
+    color: #fff;
+    background-color: #009870;
+    border: #fff 1px solid;
+}
+
+.labelsAndInputsContainer{
+    display: block;
+    padding: 5px;
+}
+.rows{
+    padding: 0.2em;
+}
+
+.previewPanelContainer{
+    width: calc(100% - 315px);
+    height: 100%;
+    margin-left: 315px;
+    position: relative;
+    color: black;
+    float: right;
+    background-color: lawngreen;
+}
