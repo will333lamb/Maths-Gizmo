@@ -246,15 +246,83 @@ const Qid0001 = () => {
 
     questionNumber ++;
 
+    function reassignValues(){
+        name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
+
+        name1Distance = (Math.ceil(Math.random()*19)) + 25 + '0';
+        name1Time = Math.ceil(Math.random()*9 + 1);
+
+        name1Speed = Math.round((name1Distance / name1Time)*10)/10;
+
+        name2 = nameArray[Math.floor(Math.random()*nameArray.length)];
+
+    if (name1 === name2) {
+    name2 = "Mathias";
+    }
+
+        speed2ArrayDifference = [(Math.ceil(Math.random()*20)),(Math.ceil(Math.random()*-20))-1];
+
+        name2Speed = name1Speed + (speed2ArrayDifference[Math.floor(Math.random()*2)]);
+
+        name2Time = Math.ceil(Math.random()*9 + 1);
+        minsArray = [15, 30, 45];
+        name2TimeMins = minsArray[Math.floor(Math.random()*3)];
+
+        minsArray2 = [3, 6, 9, 12, 18, 21, 24, 27, 33, 36, 39, 42, 48, 51, 54, 57];
+        name2TimeDecimal = name2Time + (name2TimeMins/60);
+
+        name2TimeMins2 = minsArray2[Math.floor(Math.random()*16)];
+
+        name2TimeDecimal2 = name2Time + (name2TimeMins2/60);
+
+        name2Distance = Math.round(name2Speed * name2TimeDecimal);
+        name2SpeedSol = Math.round((name2Distance / name2TimeDecimal)*100)/100;
+
+        name2Distance2 = Math.round(name2Speed * name2TimeDecimal2);
+        name2SpeedSol2 = Math.round((name2Distance2 / name2TimeDecimal2)*100)/100;
+
+        speedArrayBronze = [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+        BronzeName1Time = Math.ceil(Math.random()*14+2);
+        name1DistanceBronze = (BronzeName1Time*speedArrayBronze[Math.floor(Math.random()*speedArrayBronze.length)]);
+        name1SpeedBronze = name1DistanceBronze/BronzeName1Time;
+
+        arrayBronzehelper = [(Math.ceil(Math.random()*5*5)),(Math.ceil(Math.random()*-5*5))-1];
+        name2SpeedBronze = name1SpeedBronze + arrayBronzehelper[Math.floor(Math.random()*2)];
+        array1orminus1 = [1,-1,2,-2];
+        name2TimeBronze = BronzeName1Time + array1orminus1[Math.floor(Math.random()*4)];
+        name2DistanceBronze = name2SpeedBronze * name2TimeBronze;
+
+        fastestName;
+    if (name1Speed >= name2SpeedSol){
+    fastestName = name1;
+    } else {
+    fastestName = name2;
+    };
+
+        fastestNameBronze;
+    if (name1SpeedBronze >= name2SpeedBronze){
+        fastestNameBronze = name1;
+    } else {
+        fastestNameBronze = name2;
+    };
+
+    //questionNumber ++;
+    }
+
     //Difficulty Silver
+
+    function runQuestion(){
     if (globalDifficultySelection === 2){
-    document.getElementById("questionText").innerHTML = 
+    document.getElementById("questionText").innerHTML += 
     `
     Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`
+    Show how you decide.<br><br>`+`<div class="workingSpace"></div>`
+
+    reassignValues();
+    
 
     document.getElementById("solutionText").innerHTML = 
     `
@@ -296,6 +364,11 @@ const Qid0001 = () => {
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
     Hence, ${fastestNameBronze} is the fastest.`
     }
+    }
+    for (var i = 0; i < 10; i++) {
+    runQuestion();
+    runQuestion();
+}
 };
 
 const Qid0002 = () => {
@@ -500,7 +573,7 @@ let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
     if(globalTopicAreaSelection === 4 && globalSelectedTopic === 1){
-    Qid0001();
+        Qid0001();       
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
     Qid0002();
 };

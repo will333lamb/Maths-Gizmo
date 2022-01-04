@@ -382,12 +382,21 @@ select:hover{
     padding: 50px;
 }
 
+.previewPanelContainer h2{
+    color: black;
+}
+
 .previewBox{
     border: 1px solid black;
     padding: 50px;
-    height: 1000px;
+    height: 100%;
 }
 
 .buttonsRow{
     text-align: center;
+}
+
+.workingSpace{
+    height: 300px;
+    width: 100%;
 }
