@@ -375,11 +375,19 @@ select:hover{
 }
 
 .previewPanelContainer{
-    width: calc(100% - 315px);
+    width: calc(100%-315px);
     height: 100%;
     margin-left: 315px;
     position: relative;
-    color: black;
-    float: right;
-    background-color: lawngreen;
+    padding: 50px;
+}
+
+.previewBox{
+    border: 1px solid black;
+    padding: 50px;
+    height: 1000px;
+}
+
+.buttonsRow{
+    text-align: center;
 }

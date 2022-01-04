@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="../Resources/JavaScript/script.js" defer></script>
+    <script src="../Resources/JavaScript/GCSEPrintScript.js" defer></script>
     <script src="../Resources/JavaScript/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
@@ -34,7 +34,7 @@
         </li>
       </ul>
     </nav>
-  <br>
+    <br>
     <div class="wrapper">
       <div class="sidebar">
         <h2>Create a worksheet</h2>
@@ -66,15 +66,15 @@
           <div class="labelsAndInputsContainer">
             <div class="rows">
               <label for="points">Bronze:</label>
-              <input type="number" step="1" min="0"><br>
+              <input id="bronzeNumber" type="number" step="1" min="0"><br>
             </div>
             <div class="rows">
               <label for="points">Silver:</label>
-              <input type="number" step="1" min="0"><br>
+              <input id="silverNumber" type="number" step="1" min="0"><br>
             </div>
             <div class="rows">
               <label for="points">Gold:</label>
-              <input type="number" step="1" min="0"><br>
+              <input id="goldNumber" type="number" step="1" min="0"><br>
             </div>
           </div>
         </div>
@@ -83,12 +83,18 @@
           <select id="topicSelect" onchange="getSelectedTopic()">
             <option selected value="0">Please select</option>
             <option value="1">Yes</option>
-            <option value="2">No</option>         
+            <option value="2">No</option>   
+          </select>      
+        </div>
+        <div class="buttonsRow">
+          <button id="generateQButton" class="button">Create preview</button>
         </div>
       </div>
     </div>
     <div class="previewPanelContainer">
-      hello
+      <div class="previewBox">
+        <p id="questionText"></p>
+      </div> 
     </div>
 
 
