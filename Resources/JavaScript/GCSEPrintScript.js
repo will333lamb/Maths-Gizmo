@@ -312,24 +312,29 @@ const Qid0001 = () => {
     //Difficulty Silver
 
     function runQuestion(){
+    
     if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML += 
-    `
+    `<style>
+    .workingSpace{
+    height: 300px;
+    width: 100%;
+    }
+    </style>
+
     Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.<br><br>`+`<div class="workingSpace"></div>`
+    Show how you decide.`+`<div class="workingSpace"></div>`
 
-    reassignValues();
-    
-
-    document.getElementById("solutionText").innerHTML = 
+    document.getElementById("solutionText").innerHTML += 
     `
+    Q${questionNumber}.<br>
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins} minutes can be written as ${name2TimeDecimal}. <br>
     ${name2Distance} ÷ ${name2TimeDecimal} = ${name2SpeedSol}. Therefore, ${name2}'s speed is ${name2SpeedSol} km/h <br>
-    Hence, ${fastestName} is the fastest.`
+    Hence, ${fastestName} is the fastest.<br><br>`
     } 
 
     //Difficulty Gold
@@ -365,10 +370,10 @@ const Qid0001 = () => {
     Hence, ${fastestNameBronze} is the fastest.`
     }
     }
-    for (var i = 0; i < 10; i++) {
+
+    reassignValues();
     runQuestion();
-    runQuestion();
-}
+
 };
 
 const Qid0002 = () => {
@@ -573,7 +578,9 @@ let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
     if(globalTopicAreaSelection === 4 && globalSelectedTopic === 1){
-        Qid0001();       
+        for (let i = 0; i < 10; i++){
+        Qid0001(i);
+        }      
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
     Qid0002();
 };

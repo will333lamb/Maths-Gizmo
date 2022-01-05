@@ -386,17 +386,25 @@ select:hover{
     color: black;
 }
 
-.previewBox{
-    border: 1px solid black;
+.previewBoxQ{
+    border: 1px solid #009870;
     padding: 50px;
     height: 100%;
+    
 }
 
 .buttonsRow{
     text-align: center;
 }
 
-.workingSpace{
-    height: 300px;
-    width: 100%;
+.previewBoxSolution{
+    border: 1px solid red;
+    padding: 50px;
+    height: 100%;
+    
+
+}
+
+.solutionsContainer{
+    display: block
 }

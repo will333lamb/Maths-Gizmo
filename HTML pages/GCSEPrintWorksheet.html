@@ -80,11 +80,7 @@
         </div>
         <div class="dropDownMenus">
           <label>Include worked solutions file:</label>
-          <select id="topicSelect" onchange="getSelectedTopic()">
-            <option selected value="0">Please select</option>
-            <option value="1">Yes</option>
-            <option value="2">No</option>   
-          </select>      
+          <input id="solutionsCheckbox" type="checkbox">     
         </div>
         <div class="buttonsRow">
           <button id="generateQButton" class="button">Create preview</button>
@@ -92,10 +88,18 @@
       </div>
     </div>
     <div class="previewPanelContainer">
-      <h2>Preview</h2>
-      <div class="previewBox">
+      <h2>Preview Questions</h2>
+      <div class="previewBoxQ">
+        <h2 id="bronzeTitle">Bronze Questions</h2><br>
         <p id="questionText"></p>
-      </div> 
+      </div><br>
+      <div class="solutionsContainer">
+        <h2>Preview Solutions</h2>
+        <div class="previewBoxSolution">
+          <p id="solutionText"></p>
+        </div> 
+      </div>
+      
     </div>
 
 
