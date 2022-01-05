@@ -270,7 +270,7 @@ select:hover{
     display: none;
     padding: 1% 10% 1% 1%;
     border:#009870 1px solid;
-    height: 100%;
+    height: fit-content;
     width: 99%;
     margin: 1% 1%;
     border-radius: 30px;
@@ -282,7 +282,7 @@ select:hover{
     padding: 1% 10% 1% 1%;
     border: #009870 1px solid;
     width: 99%;
-    height: 100%;
+    height: fit-content;
     margin: 1% 1%;
     border-radius: 30px;
     background-color: #fff;
@@ -383,7 +383,7 @@ select:hover{
 }
 
 .previewPanelContainer h2{
-    color: black;
+    color: #009870;
 }
 
 .previewBoxQ{

@@ -134,7 +134,9 @@ let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
-let globalTopicAreaSelection = 1;
+/************************************
+ Other functions
+ ****************************************/
 
 function getSelectedTopicArea(){
     globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
@@ -174,8 +176,6 @@ function getSelectedTopicArea(){
         document.querySelector(".probabilityTopics").style.display = "block";
     }
 };
-
-let globalSelectedTopic = 1;
 
 function getSelectedTopic(){globalSelectedTopic = parseInt(document.getElementById("topicSelect").value)}
 
@@ -504,7 +504,7 @@ const Qid0002 = () => {
 }
 
 /**********************************************
- * Buttons *
+ * Button functions *
  *******************************************/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -515,7 +515,6 @@ generateQButton.onclick = function(){
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
     Qid0002();
 };
-
 };
 
 let showSolutionButton = document.getElementById("showSolutionButton");
@@ -559,6 +558,7 @@ function makeFullscreen(){
         document.querySelector(".wrapper").style.marginTop = "0";
         document.querySelector(".buttons-container").style.justifyContent = "space-between";
         document.getElementById("fullscreenButton").innerHTML = "Exit fullscreen";
+        document.querySelector(".questionSolutionContainer").style.height = "1000px";
         //document.querySelector(".question-container").style.transition = "all 0.1s";
         //transition: width 2s, height 4s;
     }
@@ -574,6 +574,7 @@ function makeFullscreen(){
         document.querySelector(".wrapper").style.marginTop = "50px";
         document.querySelector(".buttons-container").style.justifyContent = "flex-start";
         document.getElementById("fullscreenButton").innerHTML = "Fullscreen";
+        document.querySelector(".questionSolutionContainer").style.height = "100%";
     }
 }
 

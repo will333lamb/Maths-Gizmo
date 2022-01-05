@@ -66,15 +66,15 @@
           <div class="labelsAndInputsContainer">
             <div class="rows">
               <label for="points">Bronze:</label>
-              <input id="bronzeNumber" type="number" step="1" min="0"><br>
+              <input id="bronzeNumber" type="number" step="1" min="0" max="100" selected value="1" onchange="getBronzeNumber()"><br>
             </div>
             <div class="rows">
               <label for="points">Silver:</label>
-              <input id="silverNumber" type="number" step="1" min="0"><br>
+              <input id="silverNumber" type="number" step="1" min="0" max="100" selected value="1" onchange="getSilverNumber()"><br>
             </div>
             <div class="rows">
               <label for="points">Gold:</label>
-              <input id="goldNumber" type="number" step="1" min="0"><br>
+              <input id="goldNumber" type="number" step="1" min="0" max="100" selected value="1" onchange="getGoldNumber()"><br>
             </div>
           </div>
         </div>
@@ -90,7 +90,6 @@
     <div class="previewPanelContainer">
       <h2>Preview Questions</h2>
       <div class="previewBoxQ">
-        <h2 id="bronzeTitle">Bronze Questions</h2><br>
         <p id="questionText"></p>
       </div><br>
       <div class="solutionsContainer">

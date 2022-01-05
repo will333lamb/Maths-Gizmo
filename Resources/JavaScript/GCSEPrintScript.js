@@ -134,7 +134,9 @@ let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
-let globalTopicAreaSelection = 1;
+/************************************
+ Other functions
+ ****************************************/
 
 function getSelectedTopicArea(){
     globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
@@ -174,12 +176,26 @@ function getSelectedTopicArea(){
         document.querySelector(".probabilityTopics").style.display = "block";
     }
 };
-
-let globalSelectedTopic = 1;
-
 function getSelectedTopic(){globalSelectedTopic = parseInt(document.getElementById("topicSelect").value)}
-
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
+
+
+//Functions to get number of Bronze, Silver, Gold Q's for worksheet
+function getBronzeNumber(){ bronzeNumber = parseInt(document.getElementById("bronzeNumber").value)};
+function getSilverNumber(){ silverNumber = parseInt(document.getElementById("silverNumber").value)};
+function getGoldNumber(){ goldNumber = parseInt(document.getElementById("goldNumber").value)};
+
+function worksheetDifficultyHeadings(){
+    if (globalDifficultySelection === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<h2>Bronze Questions</h2>`
+    }
+    else if (globalDifficultySelection === 2 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<h2>Silver Questions</h2>`
+    }
+    else if (globalDifficultySelection === 3 && goldNumber>0){
+        document.getElementById("questionText").innerHTML += `<h2>Gold Questions</h2>`
+    }
+}
 
 /************************************
  Question functions
@@ -319,6 +335,7 @@ const Qid0001 = () => {
     .workingSpace{
     height: 300px;
     width: 100%;
+    border-bottom: 5px dotted #009870;
     }
     </style>
 
@@ -326,7 +343,7 @@ const Qid0001 = () => {
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`+`<div class="workingSpace"></div>`
+    Show how you decide.`+`<div class="workingSpace"></div><br>`
 
     document.getElementById("solutionText").innerHTML += 
     `
@@ -339,35 +356,51 @@ const Qid0001 = () => {
 
     //Difficulty Gold
     else if (globalDifficultySelection === 3){
-    document.getElementById("questionText").innerHTML = 
-    `
+    document.getElementById("questionText").innerHTML += 
+    `<style>
+    .workingSpace{
+    height: 300px;
+    width: 100%;
+    border-bottom: 5px dotted #009870;
+    }
+    </style>
+    Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance2}km in ${name2Time} hours ${name2TimeMins2} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`
+    Show how you decide.`+`<div class="workingSpace"></div><br>`
 
-    document.getElementById("solutionText").innerHTML = 
+    document.getElementById("solutionText").innerHTML += 
     `
+    Q${questionNumber}.<br>
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins2} minutes can be written as ${name2TimeDecimal2}. <br>
     ${name2Distance2} ÷ ${name2TimeDecimal2} = ${name2SpeedSol2}. Therefore, ${name2}'s speed is ${name2SpeedSol2} km/h <br>
-    Hence, ${fastestName} is the fastest.`
+    Hence, ${fastestName} is the fastest.<br><br>`
     }
 
     //Difficulty Bronze
     else if (globalDifficultySelection === 1){
-    document.getElementById("questionText").innerHTML = 
-    `
+    document.getElementById("questionText").innerHTML += 
+    `<style>
+    .workingSpace{
+    height: 300px;
+    width: 100%;
+    border-bottom: 5px dotted #009870;
+    }
+    </style>
+    Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1DistanceBronze}km in ${BronzeName1Time} hours. <br>
     ${name2} drives a distance of ${name2DistanceBronze}km in ${name2TimeBronze} hours. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`
+    Show how you decide.`+`<div class="workingSpace"></div><br>`
 
-    document.getElementById("solutionText").innerHTML = 
+    document.getElementById("solutionText").innerHTML += 
     `
+    Q${questionNumber}.<br>
     ${name1DistanceBronze} ÷ ${BronzeName1Time} = ${name1SpeedBronze}. Therefore, ${name1}'s speed is ${name1SpeedBronze} km/h <br>
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
-    Hence, ${fastestNameBronze} is the fastest.`
+    Hence, ${fastestNameBronze} is the fastest.<br><br>`
     }
     }
 
@@ -571,22 +604,33 @@ const Qid0002 = () => {
 }
 
 /**********************************************
- * Buttons *
+ * Button Functions *
  *******************************************/
 
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
     if(globalTopicAreaSelection === 4 && globalSelectedTopic === 1){
-        for (let i = 0; i < 10; i++){
-        Qid0001(i);
-        }      
+        getBronzeNumber();
+        globalDifficultySelection = 1;
+        worksheetDifficultyHeadings();
+        for (let i = 0; i < bronzeNumber; i++){
+            Qid0001(i)}
+        getSilverNumber(); 
+        globalDifficultySelection = 2;
+        worksheetDifficultyHeadings();
+        for (let i = 0; i < silverNumber; i++){
+            Qid0001(i)}
+        getGoldNumber();
+        globalDifficultySelection = 3;
+        worksheetDifficultyHeadings();
+        for (let i = 0; i < goldNumber; i++){
+            Qid0001(i)}
+
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
     Qid0002();
+}; this.onclick=null; //THIS MAKES THE BUTTON ONLY WORK ONCE.
 };
-
-};
-
 
 function generatePDF(){
     const element = document.querySelector(".questionSolutionContainer");
@@ -601,38 +645,6 @@ function generatePDF(){
     .from(element)
     .set(options)
     .save()
-}
-
-function makeFullscreen(){
-
-    if (document.getElementById("fullscreenButton").innerHTML === "Fullscreen"){
-        document.querySelector(".wrapper").style.display = "none";
-        document.querySelector(".question-container").style.width = "100%";
-        document.querySelector(".question-container").style.marginLeft = "0";
-        document.querySelector(".buttons-container").style.display = "inline-flex";
-        document.querySelector(".buttons-container").style.padding = "2px 10%";
-        document.querySelector(".buttons-container").style.width = "75%";
-        document.querySelector(".difficultyContainer").style.width = "25%";
-        document.querySelector("nav").style.display = "none";
-        document.querySelector(".wrapper").style.marginTop = "0";
-        document.querySelector(".buttons-container").style.justifyContent = "space-between";
-        document.getElementById("fullscreenButton").innerHTML = "Exit fullscreen";
-        //document.querySelector(".question-container").style.transition = "all 0.1s";
-        //transition: width 2s, height 4s;
-    }
-    else {
-        document.querySelector(".wrapper").style.display = "block";
-        document.querySelector(".question-container").style.width = "calc(100% - 315px)";
-        document.querySelector(".question-container").style.marginLeft = "315px";
-        document.querySelector(".buttons-container").style.display = "block";
-        document.querySelector(".buttons-container").style.padding = "1%";
-        document.querySelector(".buttons-container").style.width = "100%";
-        document.querySelector(".difficultyContainer").style.width = "100%";
-        document.querySelector("nav").style.display = "block";
-        document.querySelector(".wrapper").style.marginTop = "50px";
-        document.querySelector(".buttons-container").style.justifyContent = "flex-start";
-        document.getElementById("fullscreenButton").innerHTML = "Fullscreen";
-    }
 }
 
     
