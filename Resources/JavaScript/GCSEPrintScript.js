@@ -188,12 +188,15 @@ function getGoldNumber(){ goldNumber = parseInt(document.getElementById("goldNum
 function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<h2>Bronze Questions</h2>`
+        document.getElementById("solutionText").innerHTML += `<h2>Bronze Questions</h2>`
     }
     else if (globalDifficultySelection === 2 && silverNumber>0){
         document.getElementById("questionText").innerHTML += `<h2>Silver Questions</h2>`
+        document.getElementById("solutionText").innerHTML += `<h2>Silver Questions</h2>`
     }
     else if (globalDifficultySelection === 3 && goldNumber>0){
         document.getElementById("questionText").innerHTML += `<h2>Gold Questions</h2>`
+        document.getElementById("solutionText").innerHTML += `<h2>Gold Questions</h2>`
     }
 }
 
