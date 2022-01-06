@@ -636,12 +636,12 @@ generateQButton.onclick = function(){
 };
 
 function generatePDF(){
-    const element = document.querySelector(".questionSolutionContainer");
+    const element = document.querySelector(".previewBoxQ");
     const options = {
-        margin:       0.1,
+        margin:       0,
         filename:     'myfile.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
+        image:        { type: 'jpeg', quality: 0.99 },
+        html2canvas:  { scale: 10 },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
     html2pdf()
@@ -649,5 +649,3 @@ function generatePDF(){
     .set(options)
     .save()
 }
-
-    
