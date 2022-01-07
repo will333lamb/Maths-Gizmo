@@ -380,6 +380,8 @@ select:hover{
     margin-left: 315px;
     position: relative;
     padding: 50px;
+    line-height: 2;
+    
 }
 
 .previewPanelContainer h2{
@@ -387,11 +389,21 @@ select:hover{
     text-align: center;
 }
 
-.previewBoxQ{
+#BSGHeadings{
+    color: #009870;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.previewBoxQContainer{
     border: 1px solid #009870;
-    padding: 50px;
+}
+
+.previewBoxQ{
+    padding: 30px;
     height: 100%;
-    
+    width: 100%;
+    margin: 0 auto;
 }
 
 .buttonsRow{
@@ -399,13 +411,14 @@ select:hover{
 }
 
 .previewBoxSolution{
-    border: 1px solid red;
-    padding: 50px;
+    padding: 30px;
     height: 100%;
-    
-
+    width: 100%;
+    margin: 0 auto;
 }
 
 .solutionsContainer{
-    display: block
+    display: block;
+    border: 1px solid #009870;
+    
 }

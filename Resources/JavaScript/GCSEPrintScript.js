@@ -187,16 +187,16 @@ function getGoldNumber(){ goldNumber = parseInt(document.getElementById("goldNum
 
 function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
-        document.getElementById("questionText").innerHTML += `<h2>Bronze Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<h2>Bronze Questions</h2>`
+        document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Bronze Questions</h2>`
+        document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Bronze Solutions</h2>`
     }
     else if (globalDifficultySelection === 2 && silverNumber>0){
-        document.getElementById("questionText").innerHTML += `<h2>Silver Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<h2>Silver Questions</h2>`
+        document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Silver Questions</h2>`
+        document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Silver Solutions</h2>`
     }
     else if (globalDifficultySelection === 3 && goldNumber>0){
-        document.getElementById("questionText").innerHTML += `<h2>Gold Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<h2>Gold Questions</h2>`
+        document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
+        document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
 }
 
@@ -336,9 +336,13 @@ const Qid0001 = () => {
     document.getElementById("questionText").innerHTML += 
     `<style>
     .workingSpace{
-    height: 300px;
-    width: 100%;
-    border-bottom: 5px dotted #009870;
+        height: 300px;
+        width: 100%;
+        border-bottom: 5px dotted #009870;
+    }
+
+    .borderBottomSolution{
+        border-bottom: 5px dotted #009870;
     }
     </style>
 
@@ -354,7 +358,7 @@ const Qid0001 = () => {
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins} minutes can be written as ${name2TimeDecimal}. <br>
     ${name2Distance} ÷ ${name2TimeDecimal} = ${name2SpeedSol}. Therefore, ${name2}'s speed is ${name2SpeedSol} km/h <br>
-    Hence, ${fastestName} is the fastest.<br><br>`
+    Hence, ${fastestName} is the fastest.<br><br><div class="borderBottomSolution"></div>`
     } 
 
     //Difficulty Gold
@@ -365,6 +369,10 @@ const Qid0001 = () => {
     height: 300px;
     width: 100%;
     border-bottom: 5px dotted #009870;
+    }
+
+    .borderBottomSolution{
+        border-bottom: 5px dotted #009870;
     }
     </style>
     Q${questionNumber}.<br>
@@ -379,7 +387,7 @@ const Qid0001 = () => {
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins2} minutes can be written as ${name2TimeDecimal2}. <br>
     ${name2Distance2} ÷ ${name2TimeDecimal2} = ${name2SpeedSol2}. Therefore, ${name2}'s speed is ${name2SpeedSol2} km/h <br>
-    Hence, ${fastestName} is the fastest.<br><br>`
+    Hence, ${fastestName} is the fastest.<br><br><div class="borderBottomSolution"></div>`
     }
 
     //Difficulty Bronze
@@ -390,6 +398,10 @@ const Qid0001 = () => {
     height: 300px;
     width: 100%;
     border-bottom: 5px dotted #009870;
+    }
+
+    .borderBottomSolution{
+        border-bottom: 5px dotted #009870;
     }
     </style>
     Q${questionNumber}.<br>
@@ -403,7 +415,7 @@ const Qid0001 = () => {
     Q${questionNumber}.<br>
     ${name1DistanceBronze} ÷ ${BronzeName1Time} = ${name1SpeedBronze}. Therefore, ${name1}'s speed is ${name1SpeedBronze} km/h <br>
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
-    Hence, ${fastestNameBronze} is the fastest.<br><br>`
+    Hence, ${fastestNameBronze} is the fastest.<br><br><div class="borderBottomSolution"></div>`
     }
     }
 
@@ -503,19 +515,10 @@ const Qid0002 = () => {
 
     questionNumber++;
 
-    //Question Info************************
-    document.getElementById("examBoardText").innerHTML = "OCR";
-    document.getElementById("tierText").innerHTML = "Foundation";
-    document.getElementById("paperText").innerHTML = "2";
-    document.getElementById("monthText").innerHTML = "November";
-    document.getElementById("yearText").innerHTML = "2019";
-    document.getElementById("questionInfoText").innerHTML = 15;
-    document.getElementById("calculatorText").innerHTML = "No";
-    document.querySelector(".tableinfo").style.display = "inline-table";
-
-
-    document.getElementById("questionText").innerHTML =
-    `${name1} is planning a presentation evening. <br>
+    function runQuestion(){
+    document.getElementById("questionText").innerHTML +=
+    `Q${questionNumber}.<br>
+    ${name1} is planning a presentation evening. <br>
     ${name1} writes down ${hisOrHer} costs and income. <br>
     <style>
     .questionSolutionContainer{
@@ -557,6 +560,16 @@ const Qid0002 = () => {
     .note{
         color: black;
     }
+
+    .workingSpace{
+        height: 300px;
+        width: 100%;
+        border-bottom: 5px dotted #009870;
+    }
+
+    .borderBottomSolution{
+        border-bottom: 5px dotted #009870;
+    }
     </style>
     <table>
         <tr>
@@ -588,12 +601,11 @@ const Qid0002 = () => {
     </table> <br>
     ${name1} thinks ${heOrShe} will make a profit. <br>
     Use estimation to decide if ${name1} is correct. <br>
-    Show all of your working.`
+    Show all of your working.`+`<div class="workingSpace"></div><br>`
 
-
-    
-    document.getElementById("solutionText").innerHTML = 
-    `<span class="underline">Costs:</span> <br>
+    document.getElementById("solutionText").innerHTML += 
+    `Q${questionNumber}.<br>
+    <span class="underline">Costs:</span> <br>
     Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
     Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig2} and ${numMeals} meals at £${mealsCostSigFig2} means ${numMeals} &#215 £${mealsCostSigFig2} = <span class="underline">£${totalMealsCost}</span> <br>
     Prize costs: Rounding £${prizesCost} gives £${prizesCostsSigFig2} and ${numPrizes} prizes at £${prizesCostsSigFig2} means ${numPrizes} &#215 £${prizesCostsSigFig2} = <span class="underline">£${totalPrizesCost}</span> <br>
@@ -601,9 +613,102 @@ const Qid0002 = () => {
     <span class="underline">Income:</span> <br>
     Guests income: ${numGuests} guests each paying £${guestsCost} means ${numGuests} &#215 £${guestsCost} = <span class="underline">£${guestTotalIncome}</span> <br>
     Sponsorship: Rounding £${Sponsorship} gives <span class="underline">£${sponsorshipSigFig}.</span> <br>
-    Therefore the total income is £${guestTotalIncome} + £${sponsorshipSigFig} = <span class="totalCostIncome">£${totalIncome}</span> <br>
-    ${conclusionStatement}` 
+    Therefore the total income is £${guestTotalIncome} + £${sponsorshipSigFig} = <span class="totalCostIncome">£${totalIncome}</span> <br><br>
+    ${conclusionStatement}<br><br><div class="borderBottomSolution"></div>` 
+    }
+    
+    function reassignValues(){
+        nameFemale = namesObject.femaleNames.name[Math.floor(Math.random()*femaleNameArray.length)];
+        nameMale = namesObject.maleNames.name[Math.floor(Math.random()*maleNameArray.length)];
+        name1Array = [nameFemale,nameMale];
+        name1 = name1Array[Math.floor(Math.random()*name1Array.length)];
+        heOrShe
+        if (name1 === nameMale){
+            heOrShe = "he";
+        } else {
+            heOrShe = "she"
+        };
+        hisOrHer
+        if (name1 === nameMale){
+            hisOrHer = "his";
+        } else {
+            hisOrHer = "her"
+        };
+        costsArrayHelper = [10, Math.floor(Math.random()*8)+2];
+        costsArrayHelper2 = [10, Math.floor(Math.random()*8)+2];
+        costsArrayHelper3 = [10, Math.floor(Math.random()*8)+5];
+        arrayOdd = [3,5,7,9];
+        arrayEven = [4,6,8];
+        staffNum = costsArrayHelper[Math.floor(Math.random()*costsArrayHelper.length)];
+        staffHoursNum = costsArrayHelper2[Math.floor(Math.random()*costsArrayHelper2.length)];
+        staffPay = costsArrayHelper3[Math.floor(Math.random()*costsArrayHelper3.length)];
+        if (staffNum === 10){
+            staffHoursNum = arrayOdd[Math.floor(Math.random()*arrayOdd.length)];
+            staffPay = arrayEven[Math.floor(Math.random()*arrayEven.length)];
+        } else if (staffHoursNum === 10){
+            staffNum = arrayOdd[Math.floor(Math.random()*arrayOdd.length)];
+            staffPay = arrayEven[Math.floor(Math.random()*arrayEven.length)];
+        } else if (staffPay === 10){
+            staffNum = arrayOdd[Math.floor(Math.random()*arrayOdd.length)];
+            staffHoursNum = arrayEven[Math.floor(Math.random()*arrayEven.length)];
+        } else if (staffNum != 10 && staffHoursNum != 10 && staffPay != 10){
+            staffPay = 10;
+        }
+        if(globalDifficultySelection === 1){
+            staffNum = 10;
+            staffHoursNum = 10;
+            staffPay = Math.ceil(Math.random()*8)+1;
+        }
+        numMeals = Math.ceil(Math.random()*9) + '0';
+        mealsCostPounds = Math.ceil(Math.random()*8)+1;
+        mealsCost = mealsCostPounds + .95;
+        if (globalDifficultySelection === 3){
+            mealsCostPence = ((Math.ceil(Math.random()*80)/10 + Math.ceil(Math.random()*90)/100)+1).toFixed(2);
+            mealsCost = mealsCostPence
+        };
+        numPrizes = Math.ceil(Math.random()*8)+1;
+        prizesCostPounds = Math.ceil(Math.random()*7)+2;
+        prizesCost = 10*(prizesCostPounds) + 9.99;
+        if (globalDifficultySelection === 3){
+            prizesCostGold = (prizesCostPounds)+((Math.ceil(Math.random()*80)/10 + Math.ceil(Math.random()*90)/100)+1).toFixed(2);
+            prizesCost = prizesCostGold;
+        }
+        numGuests = Math.ceil((Math.random()*9)+1)*10; 
+        guestsCost = Math.ceil(Math.random()*7)+2;
+        Sponsorship = 1000; 
+        if(globalDifficultySelection === 3){
+            SponsorshipGoldArray = [Math.ceil(Math.random()*500),Math.ceil(Math.random()*-500)];
+            Sponsorship = 1000 + SponsorshipGoldArray[Math.floor(Math.random()*SponsorshipGoldArray.length)];
+        }
+        if(globalDifficultySelection === 1){
+            guestsCostArray = [5,2,10];
+            guestsCost = guestsCostArray[Math.floor(Math.random()*guestsCostArray.length)];
+        }
+        
+        staffTotalCost = staffNum*staffHoursNum*staffPay;
+        mealsCostSigFig = parseFloat(mealsCost);
+        mealsCostSigFig2 = parseFloat(mealsCostSigFig.toPrecision(1));
+        totalMealsCost = mealsCostSigFig2*numMeals;
+        prizesCostsSigFig = parseFloat(prizesCost);
+        prizesCostsSigFig2 = parseFloat(prizesCostsSigFig.toPrecision(1));
+        totalPrizesCost = prizesCostsSigFig2*numPrizes;
+        totalCosts = staffTotalCost+totalMealsCost+totalPrizesCost;
+        guestTotalIncome = numGuests*guestsCost;
+        sponsorshipSigFig = parseFloat(Sponsorship.toPrecision(1));
+        totalIncome = sponsorshipSigFig+guestTotalIncome;
+    
+        profit = totalIncome-totalCosts;
+        conclusionStatement
+        if(profit>0){
+            conclusionStatement = 'Since the total income is more than the total costs, then ' + name1 + ' is correct.';
+        } else if (profit<=0){
+            conclusionStatement = 'Since the total income is less than the total costs, then ' + name1 + ' is incorrect.';
+        }
+    
+    }
 
+    reassignValues();
+    runQuestion();
 }
 
 /**********************************************
@@ -631,17 +736,32 @@ generateQButton.onclick = function(){
             Qid0001(i)}
 
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
-    Qid0002();
+        getBronzeNumber();
+        globalDifficultySelection = 1;
+        worksheetDifficultyHeadings();
+        for (let i = 0; i < bronzeNumber; i++){
+            Qid0002(i)}
+        getSilverNumber(); 
+        globalDifficultySelection = 2;
+        worksheetDifficultyHeadings();
+        for (let i = 0; i < silverNumber; i++){
+            Qid0002(i)}
+        getGoldNumber();
+        globalDifficultySelection = 3;
+        worksheetDifficultyHeadings();
+        for (let i = 0; i < goldNumber; i++){
+            Qid0002(i)}
 }; this.onclick=null; //THIS MAKES THE BUTTON ONLY WORK ONCE.
 };
 
 function generatePDF(){
+    window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxQ");
     const options = {
         margin:       0,
         filename:     'myfile.pdf',
         image:        { type: 'jpeg', quality: 0.99 },
-        html2canvas:  { scale: 10 },
+        html2canvas:  { scale: 2 },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
     html2pdf()
