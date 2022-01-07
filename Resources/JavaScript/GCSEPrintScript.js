@@ -198,6 +198,7 @@ function worksheetDifficultyHeadings(){
         document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
         document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
+    questionNumber = 0;
 }
 
 /************************************
@@ -517,7 +518,7 @@ const Qid0002 = () => {
 
     function runQuestion(){
     document.getElementById("questionText").innerHTML +=
-    `Q${questionNumber}.<br>
+    `<span class="questionNumber">Q${questionNumber}.</span><br>
     ${name1} is planning a presentation evening. <br>
     ${name1} writes down ${hisOrHer} costs and income. <br>
     <style>
@@ -526,8 +527,18 @@ const Qid0002 = () => {
         line-height: 2;
         width: 100%;
     }
+
+    #questionText{
+        line-height: 2;
+    }
+
+    .questionNumber{
+        color: #009870;
+        font-weight: bolder;
+    }
+
     table {
-        border: 1px solid black;
+        border: 1px solid #009870;
         border-collapse: collapse;
         font-size: 1em;
         width: 100%;
@@ -536,18 +547,18 @@ const Qid0002 = () => {
     }
     td {
         padding: 0 1%;
-        border-right: 1px solid black;
+        border-right: 1px solid #009870;
         width: fit-content;
     }
     th {
         padding: 0 1%;
-        border-right: 1px solid black;
+        border-right: 1px solid #009870;
         width: fit-content;
         text-align: left;
     }
     .tableHeadings{
         text-align: center;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #009870;
         width: fit-content;
     }
     .underline{
@@ -562,9 +573,9 @@ const Qid0002 = () => {
     }
 
     .workingSpace{
-        height: 300px;
+        height: 450px;
         width: 100%;
-        border-bottom: 5px dotted #009870;
+        
     }
 
     .borderBottomSolution{
@@ -601,10 +612,10 @@ const Qid0002 = () => {
     </table> <br>
     ${name1} thinks ${heOrShe} will make a profit. <br>
     Use estimation to decide if ${name1} is correct. <br>
-    Show all of your working.`+`<div class="workingSpace"></div><br>`
+    Show all of your working.`+`<div class="workingSpace"></div><br><div class="html2pdf__page-break"></div>`
 
     document.getElementById("solutionText").innerHTML += 
-    `Q${questionNumber}.<br>
+    `<span class="questionNumber">Q${questionNumber}.</span><br>
     <span class="underline">Costs:</span> <br>
     Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
     Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig2} and ${numMeals} meals at £${mealsCostSigFig2} means ${numMeals} &#215 £${mealsCostSigFig2} = <span class="underline">£${totalMealsCost}</span> <br>
@@ -704,6 +715,7 @@ const Qid0002 = () => {
         } else if (profit<=0){
             conclusionStatement = 'Since the total income is less than the total costs, then ' + name1 + ' is incorrect.';
         }
+        
     
     }
 
@@ -758,11 +770,11 @@ function generatePDF(){
     window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxQ");
     const options = {
-        margin:       0,
+        margin:     [0.2,0],
         filename:     'myfile.pdf',
         image:        { type: 'jpeg', quality: 0.99 },
         html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
       };
     html2pdf()
     .from(element)
