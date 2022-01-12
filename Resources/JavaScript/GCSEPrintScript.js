@@ -766,6 +766,7 @@ generateQButton.onclick = function(){
 }; this.onclick=null; //THIS MAKES THE BUTTON ONLY WORK ONCE.
 };
 
+//Using HTML2PDF
 function generatePDF(){
     window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxQ");
@@ -780,4 +781,13 @@ function generatePDF(){
     .from(element)
     .set(options)
     .save()
+}
+
+//Testing jsPDF
+function genPDF(){
+    var doc = new jsPDF();
+    doc.text(20,20, document.querySelector(".previewBoxQ"));
+    doc.addPage();
+    doc.text(20,20,'test page 2');
+    doc.save('Test.pdf');
 }

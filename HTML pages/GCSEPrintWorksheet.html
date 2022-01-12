@@ -14,6 +14,10 @@
     <script src="../Resources/JavaScript/GCSEPrintScript.js" defer></script>
     <script src="../Resources/JavaScript/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js" integrity="sha512-UcDEnmFoMh0dYHu0wGsf5SKB7z7i5j3GuXHCnb3i4s44hfctoLihr896bxM0zL7jGkcHQXXrJsFIL62ehtd6yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js" integrity="sha512-5yTVoG0jFRsDhgYEoKrZCj5Bazxqa0VnETLN7k0SazQcARBsbgrSb6um+YpzWKNKV2kjb8bhna4fDfOk3YPr4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script type="text/javascript" src="../Resources/JavaScript/jspdf.min.js"></script>
   </head>
 
   <body>
@@ -84,7 +88,7 @@
         </div>
         <div class="buttonsRow">
           <button id="generateQButton" class="button">Create preview</button>
-          <button id="downloadFile" onclick="generatePDF()" class="button">Download</button>
+          <button id="downloadFile" onclick="genPDF()" class="button">Download</button>
         </div>
       </div>
     </div>
@@ -92,7 +96,7 @@
       <h2>Preview Worksheet</h2>
       <div class="previewBoxQContainer">
         <div class="previewBoxQ">
-          <img src="../Resources/Images/MathsGizmoLogoWhiteBackgroundBottomRight.png">
+          <img src="../Resources/Images/MathsGizmoLogoWhiteBackgroundBottomRight.png" width="300" alt="Maths Gizmo Logo">
           <p id="questionText"></p>
         </div><br>
       </div><br>
