@@ -773,7 +773,7 @@ function generatePDF(){
     const options = {
         margin:     [0.2,0],
         filename:     'myfile.pdf',
-        image:        { type: 'jpeg', quality: 0.99 },
+        image:        { type: 'png', quality: 0.99 },
         html2canvas:  { scale: 2 },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
       };
