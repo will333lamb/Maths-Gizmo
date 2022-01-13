@@ -786,7 +786,7 @@ function generatePDF(){
 //Testing jsPDF
 function genPDF(){
     var doc = new jsPDF();
-    doc.text(20,20, document.querySelector(".previewBoxQ"));
+    doc.text(20,20, 'Test');
     doc.addPage();
     doc.text(20,20,'test page 2');
     doc.save('Test.pdf');
