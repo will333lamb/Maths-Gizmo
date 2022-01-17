@@ -184,19 +184,24 @@ function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(docum
 function getBronzeNumber(){ bronzeNumber = parseInt(document.getElementById("bronzeNumber").value)};
 function getSilverNumber(){ silverNumber = parseInt(document.getElementById("silverNumber").value)};
 function getGoldNumber(){ goldNumber = parseInt(document.getElementById("goldNumber").value)};
+function getTotalNumberQs(){
+    totalNumberQs = bronzeNumber+silverNumber+goldNumber;
+    console.log(totalNumberQs)
+};
 
 function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
-        document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Bronze Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Bronze Solutions</h2>`
+        document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+        //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Bronze Questions</h2>`
+        //document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Bronze Solutions</h2>`
     }
     else if (globalDifficultySelection === 2 && silverNumber>0){
-        document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Silver Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Silver Solutions</h2>`
+        //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Silver Questions</h2>`
+        //document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Silver Solutions</h2>`
     }
     else if (globalDifficultySelection === 3 && goldNumber>0){
-        document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Gold Solutions</h2>`
+        //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
+        //getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
     questionNumber = 0;
 }
@@ -514,11 +519,20 @@ const Qid0002 = () => {
         conclusionStatement = 'Since the total income is less than the total costs, then ' + name1 + ' is incorrect.';
     }
 
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
     questionNumber++;
 
     function runQuestion(){
     document.getElementById("questionText").innerHTML +=
-    `<span class="questionNumber">Q${questionNumber}.</span><br>
+    `
+    <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1} is planning a presentation evening. <br>
     ${name1} writes down ${hisOrHer} costs and income. <br>
     <style>
@@ -612,7 +626,8 @@ const Qid0002 = () => {
     </table> <br>
     ${name1} thinks ${heOrShe} will make a profit. <br>
     Use estimation to decide if ${name1} is correct. <br>
-    Show all of your working.`+`<div class="workingSpace"></div><br><div class="html2pdf__page-break"></div>`
+    Show all of your working.`+ `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>` + `<div class="answerLine"><p id="marksGiven">(6 marks)</p></div>` 
+    + `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` 
 
     document.getElementById("solutionText").innerHTML += 
     `<span class="questionNumber">Q${questionNumber}.</span><br>
@@ -771,10 +786,10 @@ function generatePDF(){
     window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxQ");
     const options = {
-        margin:     [0.2,0],
+        margin:     0.1,
         filename:     'myfile.pdf',
-        image:        { type: 'png', quality: 0.99 },
-        html2canvas:  { scale: 2 },
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
       };
     html2pdf()
@@ -791,3 +806,4 @@ function genPDF(){
     doc.text(20,20,'test page 2');
     doc.save('Test.pdf');
 }
+

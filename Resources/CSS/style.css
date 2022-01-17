@@ -422,3 +422,17 @@ select:hover{
     border: 1px solid #009870;
     
 }
+
+.answerLine{
+    width: 400px;
+    height: 1px;
+    border-bottom: 5px dotted #009870;
+    float: right;
+    color: #009870;
+    text-align: right;
+    
+}
+
+#marksGiven{
+    padding: 10px;
+}
