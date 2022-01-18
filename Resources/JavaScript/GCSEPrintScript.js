@@ -193,15 +193,15 @@ function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
         //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Bronze Questions</h2>`
-        //document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Bronze Solutions</h2>`
+        document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Bronze Solutions</h2>`
     }
     else if (globalDifficultySelection === 2 && silverNumber>0){
         //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Silver Questions</h2>`
-        //document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Silver Solutions</h2>`
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br>` + `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Silver Solutions</h2>`
     }
     else if (globalDifficultySelection === 3 && goldNumber>0){
         //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
-        //getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Gold Solutions</h2>`
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br>` + `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
     questionNumber = 0;
 }
@@ -626,11 +626,11 @@ const Qid0002 = () => {
     </table> <br>
     ${name1} thinks ${heOrShe} will make a profit. <br>
     Use estimation to decide if ${name1} is correct. <br>
-    Show all of your working.`+ `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>` + `<div class="answerLine"><p id="marksGiven">(6 marks)</p></div>` 
+    Show all of your working.`+ `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>` + `<div class="answerLine"><p id="marksGiven">(6 marks)</p></div>` 
     + `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` 
 
     document.getElementById("solutionText").innerHTML += 
-    `<span class="questionNumber">Q${questionNumber}.</span><br>
+    `<span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
     <span class="underline">Costs:</span> <br>
     Staff costs:   ${staffNum} staff &#215 ${staffHoursNum} hours &#215 £${staffPay} means ${staffNum} &#215 ${staffHoursNum} &#215 £${staffPay} = <span class="underline">£${staffTotalCost}</span><br>
     Food costs: Rounding £${mealsCost} gives £${mealsCostSigFig2} and ${numMeals} meals at £${mealsCostSigFig2} means ${numMeals} &#215 £${mealsCostSigFig2} = <span class="underline">£${totalMealsCost}</span> <br>
@@ -640,8 +640,32 @@ const Qid0002 = () => {
     Guests income: ${numGuests} guests each paying £${guestsCost} means ${numGuests} &#215 £${guestsCost} = <span class="underline">£${guestTotalIncome}</span> <br>
     Sponsorship: Rounding £${Sponsorship} gives <span class="underline">£${sponsorshipSigFig}.</span> <br>
     Therefore the total income is £${guestTotalIncome} + £${sponsorshipSigFig} = <span class="totalCostIncome">£${totalIncome}</span> <br><br>
-    ${conclusionStatement}<br><br><div class="borderBottomSolution"></div>` 
+    ${conclusionStatement}<br><br><div class="borderBottomSolution"></div><br>` 
     }
+
+    if (questionNumber === 4){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 7){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 10){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 13){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 16){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 19){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 22){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 25){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 28){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 34){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } 
     
     function reassignValues(){
         nameFemale = namesObject.femaleNames.name[Math.floor(Math.random()*femaleNameArray.length)];
@@ -786,8 +810,23 @@ function generatePDF(){
     window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxQ");
     const options = {
-        margin:     0.1,
-        filename:     'myfile.pdf',
+        margin:     [0,0.1],
+        filename:     'Worksheet.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+      };
+    html2pdf()
+    .from(element)
+    .set(options)
+    .save()
+}
+
+function generateSolutions(){
+    const element = document.querySelector(".previewBoxSolution");
+    const options = {
+        margin:     [0,0.1],
+        filename:     'Solutions.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
