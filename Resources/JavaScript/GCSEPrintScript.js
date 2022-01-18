@@ -130,9 +130,14 @@ let namesObject = {
     }
 };
 
+/************************************
+ Global Variables
+ ****************************************/
+
 let questionNumber = 0
 
 let globalDifficultySelection = 2;
+
 
 /************************************
  Other functions
@@ -181,13 +186,16 @@ function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(docum
 
 
 //Functions to get number of Bronze, Silver, Gold Q's for worksheet
-function getBronzeNumber(){ bronzeNumber = parseInt(document.getElementById("bronzeNumber").value)};
-function getSilverNumber(){ silverNumber = parseInt(document.getElementById("silverNumber").value)};
-function getGoldNumber(){ goldNumber = parseInt(document.getElementById("goldNumber").value)};
-function getTotalNumberQs(){
-    totalNumberQs = bronzeNumber+silverNumber+goldNumber;
-    console.log(totalNumberQs)
+function getBronzeNumber(){
+    bronzeNumber = parseInt(document.getElementById("bronzeNumber").value);
 };
+function getSilverNumber(){
+    silverNumber = parseInt(document.getElementById("silverNumber").value)
+};
+function getGoldNumber(){
+    goldNumber = parseInt(document.getElementById("goldNumber").value)
+};
+
 
 function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
