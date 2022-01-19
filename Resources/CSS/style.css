@@ -436,3 +436,14 @@ select:hover{
 #marksGiven{
     padding: 10px;
 }
+
+#banSign{
+    color: red;
+    opacity: 0.5;
+}
+
+#checkSign{
+    color: green;
+    opacity: 1;
+    float: right;
+}
