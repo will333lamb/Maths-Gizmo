@@ -279,6 +279,17 @@ const Qid0001 = () => {
 
     questionNumber ++;
 
+    //Question Info ***********************
+
+    document.getElementById("examBoardText").innerHTML = "OCR";
+    document.getElementById("tierText").innerHTML = "Foundation";
+    document.getElementById("paperText").innerHTML = "1";
+    document.getElementById("monthText").innerHTML = "November";
+    document.getElementById("yearText").innerHTML = "2019";
+    document.getElementById("questionInfoText").innerHTML = 14;
+    document.getElementById("calculatorText").innerHTML = "Yes";
+    document.querySelector(".tableinfo").style.display = "inline-table";
+
     function reassignValues(){
         name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
@@ -360,6 +371,8 @@ const Qid0001 = () => {
     }
     </style>
 
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i><br>
     Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
@@ -389,6 +402,8 @@ const Qid0001 = () => {
         border-bottom: 5px dotted #009870;
     }
     </style>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i><br>
     Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance2}km in ${name2Time} hours ${name2TimeMins2} minutes. <br>
@@ -418,6 +433,8 @@ const Qid0001 = () => {
         border-bottom: 5px dotted #009870;
     }
     </style>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i><br>
     Q${questionNumber}.<br>
     ${name1} drives a distance of ${name1DistanceBronze}km in ${BronzeName1Time} hours. <br>
     ${name2} drives a distance of ${name2DistanceBronze}km in ${name2TimeBronze} hours. <br>
@@ -537,9 +554,22 @@ const Qid0002 = () => {
     };
     questionNumber++;
 
+    //Question Info************************
+    document.getElementById("examBoardText").innerHTML = "OCR";
+    document.getElementById("tierText").innerHTML = "Foundation";
+    document.getElementById("paperText").innerHTML = "2";
+    document.getElementById("monthText").innerHTML = "November";
+    document.getElementById("yearText").innerHTML = "2019";
+    document.getElementById("questionInfoText").innerHTML = 15;
+    document.getElementById("calculatorText").innerHTML = "No";
+    document.querySelector(".tableinfo").style.display = "inline-table";
+
     function runQuestion(){
     document.getElementById("questionText").innerHTML +=
-    `
+    `<span class="fa-stack fa-2x" style="font-size: 1rem;">
+    <i class="fas fa-calculator fa-stack-1x"></i>
+    <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+    </span>
     <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1} is planning a presentation evening. <br>
     ${name1} writes down ${hisOrHer} costs and income. <br>
