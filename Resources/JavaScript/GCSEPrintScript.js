@@ -279,6 +279,15 @@ const Qid0001 = () => {
 
     questionNumber ++;
 
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+
     //Question Info ***********************
 
     document.getElementById("examBoardText").innerHTML = "OCR";
@@ -288,6 +297,7 @@ const Qid0001 = () => {
     document.getElementById("yearText").innerHTML = "2019";
     document.getElementById("questionInfoText").innerHTML = 14;
     document.getElementById("calculatorText").innerHTML = "Yes";
+    document.getElementById("marksAvailableText").innerHTML = 4;
     document.querySelector(".tableinfo").style.display = "inline-table";
 
     function reassignValues(){
@@ -353,27 +363,21 @@ const Qid0001 = () => {
     //questionNumber ++;
     }
 
-    //Difficulty Silver
 
     function runQuestion(){
     
+    //Difficulty Silver    
     if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML += 
     `<style>
-    .workingSpace{
-        height: 300px;
-        width: 100%;
-        border-bottom: 5px dotted #009870;
-    }
-
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }
     </style>
 
     <i class="fas fa-calculator"></i>
-    <i id="checkSign" class="fas fa-check"></i><br>
-    Q${questionNumber}.<br>
+    <i id="checkSign" class="fas fa-check"></i>
+    <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
@@ -562,7 +566,9 @@ const Qid0002 = () => {
     document.getElementById("yearText").innerHTML = "2019";
     document.getElementById("questionInfoText").innerHTML = 15;
     document.getElementById("calculatorText").innerHTML = "No";
+    document.getElementById("marksAvailableText").innerHTML = 6;
     document.querySelector(".tableinfo").style.display = "inline-table";
+
 
     function runQuestion(){
     document.getElementById("questionText").innerHTML +=
@@ -623,13 +629,6 @@ const Qid0002 = () => {
     .note{
         color: black;
     }
-
-    .workingSpace{
-        height: 450px;
-        width: 100%;
-        
-    }
-
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }

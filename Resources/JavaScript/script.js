@@ -256,6 +256,7 @@ const Qid0001 = () => {
     document.getElementById("yearText").innerHTML = "2019";
     document.getElementById("questionInfoText").innerHTML = 14;
     document.getElementById("calculatorText").innerHTML = "Yes";
+    document.getElementById("marksAvailableText").innerHTML = 4;
     document.querySelector(".tableinfo").style.display = "inline-table";
 
     //Difficulty Silver
@@ -411,6 +412,7 @@ const Qid0002 = () => {
     document.getElementById("yearText").innerHTML = "2019";
     document.getElementById("questionInfoText").innerHTML = 15;
     document.getElementById("calculatorText").innerHTML = "No";
+    document.getElementById("marksAvailableText").innerHTML = 6;
     document.querySelector(".tableinfo").style.display = "inline-table";
 
 
