@@ -381,11 +381,13 @@ const Qid0001 = () => {
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`+`<div class="workingSpace"></div><br>`
+    Show how you decide.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`+`<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
 
     document.getElementById("solutionText").innerHTML += 
     `
-    Q${questionNumber}.<br>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i>
+    <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins} minutes can be written as ${name2TimeDecimal}. <br>
     ${name2Distance} ÷ ${name2TimeDecimal} = ${name2SpeedSol}. Therefore, ${name2}'s speed is ${name2SpeedSol} km/h <br>
@@ -396,27 +398,24 @@ const Qid0001 = () => {
     else if (globalDifficultySelection === 3){
     document.getElementById("questionText").innerHTML += 
     `<style>
-    .workingSpace{
-    height: 300px;
-    width: 100%;
-    border-bottom: 5px dotted #009870;
-    }
-
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }
     </style>
+
     <i class="fas fa-calculator"></i>
-    <i id="checkSign" class="fas fa-check"></i><br>
-    Q${questionNumber}.<br>
+    <i id="checkSign" class="fas fa-check"></i>
+    <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance2}km in ${name2Time} hours ${name2TimeMins2} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`+`<div class="workingSpace"></div><br>`
+    Show how you decide.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`+ `<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
 
     document.getElementById("solutionText").innerHTML += 
     `
-    Q${questionNumber}.<br>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i>
+    <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins2} minutes can be written as ${name2TimeDecimal2}. <br>
     ${name2Distance2} ÷ ${name2TimeDecimal2} = ${name2SpeedSol2}. Therefore, ${name2}'s speed is ${name2SpeedSol2} km/h <br>
@@ -427,31 +426,31 @@ const Qid0001 = () => {
     else if (globalDifficultySelection === 1){
     document.getElementById("questionText").innerHTML += 
     `<style>
-    .workingSpace{
-    height: 300px;
-    width: 100%;
-    border-bottom: 5px dotted #009870;
-    }
-
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }
     </style>
     <i class="fas fa-calculator"></i>
-    <i id="checkSign" class="fas fa-check"></i><br>
-    Q${questionNumber}.<br>
+    <i id="checkSign" class="fas fa-check"></i>
+    <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1} drives a distance of ${name1DistanceBronze}km in ${BronzeName1Time} hours. <br>
     ${name2} drives a distance of ${name2DistanceBronze}km in ${name2TimeBronze} hours. <br>
     Who has the highest average speed? <br>
-    Show how you decide.`+`<div class="workingSpace"></div><br>`
+    Show how you decide.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`+`<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
 
     document.getElementById("solutionText").innerHTML += 
     `
-    Q${questionNumber}.<br>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i>
+    <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1DistanceBronze} ÷ ${BronzeName1Time} = ${name1SpeedBronze}. Therefore, ${name1}'s speed is ${name1SpeedBronze} km/h <br>
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
     Hence, ${fastestNameBronze} is the fastest.<br><br><div class="borderBottomSolution"></div>`
     }
+    }
+
+    if (questionNumber === 3){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     }
 
     reassignValues();
