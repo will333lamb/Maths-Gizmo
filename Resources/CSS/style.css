@@ -12,7 +12,7 @@
 
 nav {
     width: 100%;
-    height: 70px;
+    height: 75px;
     background-color: #009870;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -69,12 +69,8 @@ nav h1 a{
     color: #fff;
 }
 
-#logoHomeTitle{
-    color:#fff;
-    float: left;
-    text-transform: uppercase;
-    padding: 25px 14px;
-
+#logoTopLeft{
+    width: 400px;
 }
 
 
@@ -244,7 +240,7 @@ select:hover{
 .buttonsAndPrintingContainer {
     width: 100%;
     display: inline-flex;
-    outline: #009870 1px solid;
+    
     line-height: 2em;
 
 }
