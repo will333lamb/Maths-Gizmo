@@ -564,6 +564,7 @@ function makeFullscreen(){
         document.querySelector(".buttons-container").style.width = "75%";
         document.querySelector(".difficultyContainer").style.width = "25%";
         document.querySelector("nav").style.display = "none";
+        document.querySelector("body").style.backgroundColor = "#58e5ba";
         document.querySelector(".wrapper").style.marginTop = "0";
         document.querySelector(".buttons-container").style.justifyContent = "space-between";
         document.getElementById("fullscreenButton").innerHTML = "Exit fullscreen";
@@ -584,6 +585,7 @@ function makeFullscreen(){
         document.querySelector(".buttons-container").style.justifyContent = "flex-start";
         document.getElementById("fullscreenButton").innerHTML = "Fullscreen";
         document.querySelector(".questionSolutionContainer").style.height = "100%";
+        document.querySelector("body").style.backgroundColor = "#fff";
     }
 }
 

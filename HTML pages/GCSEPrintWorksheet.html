@@ -29,7 +29,7 @@
         <li><a href="#">GCSE</a>
           <ul>
             <li><a href="GCSEDisplay.html">Display questions</a></li>
-            <li><a href="#">Print a worksheet</a></li>
+            <li><a href="#">Create a worksheet</a></li>
           </ul>
         </li>
         <li><a href="#">Functional Skills</a>
@@ -88,6 +88,7 @@
           <button id="generateQButton" class="button">Create preview</button>
           <button id="downloadFile" onclick="generatePDF()" class="button">Download Worksheet</button><br>
           <button id="downloadSolutions" onclick="generateSolutions()" class="button">Download Solutions</button>
+          <button id="downloadBothFiles" onclick="downloadBothFiles()" class="button">Download both files</button>
         </div>
         <div class="question-info-box">
           <h3>Question Information</h3><br>
@@ -130,13 +131,13 @@
       </div>
     </div>
     <div class="previewPanelContainer">
-      <h2>Preview Worksheet</h2>
+      <h2 class="previewHeadings">Preview Worksheet</h2>
       <div class="previewBoxQContainer">
         <div class="previewBoxQ">
           <p id="questionText"></p>
         </div><br>
       </div><br>
-      <h2>Preview Solutions</h2>
+      <h2 class="previewHeadingsSolutions">Preview Solutions</h2>
       <div class="solutionsContainer">
         <div class="previewBoxSolution">
           <p id="solutionText"></p>

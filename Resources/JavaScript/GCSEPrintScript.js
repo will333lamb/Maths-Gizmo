@@ -901,6 +901,11 @@ const Qid0002 = () => {
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
+    document.querySelector(".previewHeadings").style.display = "block";
+    document.querySelector(".previewBoxQContainer").style.display = "block";
+    document.querySelector(".solutionsContainer").style.display = "block";
+    document.querySelector(".previewHeadingsSolutions").style.display = "block";
+    
     if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
         getBronzeNumber();
         globalDifficultySelection = 1;
@@ -955,6 +960,7 @@ function generatePDF(){
 }
 
 function generateSolutions(){
+    window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxSolution");
     const options = {
         margin:     [0,0.1],
@@ -969,12 +975,8 @@ function generateSolutions(){
     .save()
 }
 
-//Testing jsPDF
-function genPDF(){
-    var doc = new jsPDF();
-    doc.text(20,20, 'Test');
-    doc.addPage();
-    doc.text(20,20,'test page 2');
-    doc.save('Test.pdf');
+function downloadBothFiles(){
+    generatePDF();
+    generateSolutions();
 }
 

@@ -127,7 +127,7 @@ select:hover{
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 30px;
-    border-bottom: #fff 1px solid;
+    
 }
 
 .wrapper .sidebar h3{
@@ -251,6 +251,7 @@ select:hover{
     text-align: center;
     display: block;
     padding: 1%;
+    background-color: #58e5ba;
 }
 
 .difficultyContainer {
@@ -289,6 +290,8 @@ select:hover{
     width: 100%;
     font-size: 1.5rem;
     line-height: 3rem;
+    min-height: 850px;
+    background-color: #58e5ba;
 }
 
 .button{
@@ -376,11 +379,13 @@ select:hover{
     position: relative;
     padding: 50px;
     line-height: 2;
+    min-height: 1000px;
+    background-color: #58e5ba;
     
 }
 
 .previewPanelContainer h2{
-    color: #009870;
+    color: #1a3d1f;
     text-align: center;
 }
 
@@ -392,6 +397,8 @@ select:hover{
 
 .previewBoxQContainer{
     border: 1px solid #009870;
+    background-color: #fff;
+    display: none;
 }
 
 .previewBoxQ{
@@ -410,12 +417,13 @@ select:hover{
     height: 100%;
     width: 100%;
     margin: 0 auto;
+    background-color: #fff;
 }
 
 .solutionsContainer{
     display: block;
     border: 1px solid #009870;
-    
+    display: none;
 }
 
 .answerLine{
@@ -445,5 +453,13 @@ select:hover{
 .questionNumber{
     color: #009870;
     font-weight: bolder;
+}
+
+.previewHeadings{
+    display: none;
+}
+
+.previewHeadingsSolutions{
+    display: none;
 }
 
