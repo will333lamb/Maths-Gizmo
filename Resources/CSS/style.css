@@ -235,6 +235,7 @@ select:hover{
     margin-left: 315px;
     text-align: left;
     position:relative;
+    border-left: 2px solid #fff;
 }
 
 .buttonsAndPrintingContainer {
@@ -381,6 +382,7 @@ select:hover{
     line-height: 2;
     min-height: 1000px;
     background-color: #58e5ba;
+    border-left: 2px solid #fff;
     
 }
 
