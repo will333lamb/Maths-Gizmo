@@ -181,7 +181,7 @@ function getSelectedTopicArea(){
         document.querySelector(".probabilityTopics").style.display = "block";
     }
 };
-function getSelectedTopic(){globalSelectedTopic = parseInt(document.getElementById("topicSelect").value)}
+function getSelectedTopic(){globalSelectedTopic = document.getElementById("topicSelect").value}
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
 
@@ -201,15 +201,15 @@ function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
         //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Bronze Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Bronze Solutions</h2>`
+        document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     }
     else if (globalDifficultySelection === 2 && silverNumber>0){
         //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Silver Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br>` + `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Silver Solutions</h2>`
+        //document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Silver Solutions</h2>`
     }
     else if (globalDifficultySelection === 3 && goldNumber>0){
         //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
-        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br>` + `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Gold Solutions</h2>`
+        //document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
     questionNumber = 0;
 }
@@ -373,6 +373,9 @@ const Qid0001 = () => {
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }
+    #questionText{
+        line-height: 2;
+    }
     </style>
 
     <i class="fas fa-calculator"></i>
@@ -381,7 +384,7 @@ const Qid0001 = () => {
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance}km in ${name2Time} hours ${name2TimeMins} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`+`<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
+    Show how you decide.<br><br><br><br><br><br><br><br><br><br>`+`<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
 
     document.getElementById("solutionText").innerHTML += 
     `
@@ -391,7 +394,7 @@ const Qid0001 = () => {
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins} minutes can be written as ${name2TimeDecimal}. <br>
     ${name2Distance} ÷ ${name2TimeDecimal} = ${name2SpeedSol}. Therefore, ${name2}'s speed is ${name2SpeedSol} km/h <br>
-    Hence, ${fastestName} is the fastest.<br><br><div class="borderBottomSolution"></div>`
+    Hence, ${fastestName} is the fastest.<br><br><div class="borderBottomSolution"></div><br>`
     } 
 
     //Difficulty Gold
@@ -401,6 +404,9 @@ const Qid0001 = () => {
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }
+    #questionText{
+        line-height: 2;
+    }
     </style>
 
     <i class="fas fa-calculator"></i>
@@ -409,7 +415,7 @@ const Qid0001 = () => {
     ${name1} drives a distance of ${name1Distance}km in ${name1Time} hours. <br>
     ${name2} drives a distance of ${name2Distance2}km in ${name2Time} hours ${name2TimeMins2} minutes. <br>
     Who has the highest average speed? <br>
-    Show how you decide.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`+ `<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
+    Show how you decide.<br><br><br><br><br><br><br><br><br><br>`+ `<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
 
     document.getElementById("solutionText").innerHTML += 
     `
@@ -419,7 +425,7 @@ const Qid0001 = () => {
     ${name1Distance} ÷ ${name1Time} = ${name1Speed}. Therefore, ${name1}'s speed is ${name1Speed} km/h <br>
     ${name2Time} hours ${name2TimeMins2} minutes can be written as ${name2TimeDecimal2}. <br>
     ${name2Distance2} ÷ ${name2TimeDecimal2} = ${name2SpeedSol2}. Therefore, ${name2}'s speed is ${name2SpeedSol2} km/h <br>
-    Hence, ${fastestName} is the fastest.<br><br><div class="borderBottomSolution"></div>`
+    Hence, ${fastestName} is the fastest.<br><br><div class="borderBottomSolution"></div><br>`
     }
 
     //Difficulty Bronze
@@ -429,6 +435,9 @@ const Qid0001 = () => {
     .borderBottomSolution{
         border-bottom: 5px dotted #009870;
     }
+    #questionText{
+        line-height: 2;
+    }
     </style>
     <i class="fas fa-calculator"></i>
     <i id="checkSign" class="fas fa-check"></i>
@@ -436,7 +445,7 @@ const Qid0001 = () => {
     ${name1} drives a distance of ${name1DistanceBronze}km in ${BronzeName1Time} hours. <br>
     ${name2} drives a distance of ${name2DistanceBronze}km in ${name2TimeBronze} hours. <br>
     Who has the highest average speed? <br>
-    Show how you decide.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>`+`<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
+    Show how you decide.<br><br><br><br><br><br><br><br><br><br>`+`<div class="answerLine"><p id="marksGiven">(4 marks)</p></div>`
 
     document.getElementById("solutionText").innerHTML += 
     `
@@ -445,12 +454,97 @@ const Qid0001 = () => {
     <span class="questionNumber"> ${questionDifficulty} Q${questionNumber}.</span><br>
     ${name1DistanceBronze} ÷ ${BronzeName1Time} = ${name1SpeedBronze}. Therefore, ${name1}'s speed is ${name1SpeedBronze} km/h <br>
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
-    Hence, ${fastestNameBronze} is the fastest.<br><br><div class="borderBottomSolution"></div>`
+    Hence, ${fastestNameBronze} is the fastest.<br><br><div class="borderBottomSolution"></div><br>`
     }
     }
 
+    //Page Breaks
     if (questionNumber === 3){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 5){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 7){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 9){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 11){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 13){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 15){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 17){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 19){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 21){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 23){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 25){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 27){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 29){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 31){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 33){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 35){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 37){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 39){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 41){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 43){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 45){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 47){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 49){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 51){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 53){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 55){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 57){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 59){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 61){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    };
+
+    if (questionNumber === 8){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 15){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    } else if (questionNumber === 22){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    } else if (questionNumber === 30){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    } else if (questionNumber === 38){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    } else if (questionNumber === 46){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    } else if (questionNumber === 54){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    } else if (questionNumber === 62){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     }
 
     reassignValues();
@@ -681,6 +775,10 @@ const Qid0002 = () => {
 
     if (questionNumber === 4){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if(questionNumber === 7){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if(questionNumber === 10){
@@ -699,9 +797,7 @@ const Qid0002 = () => {
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if(questionNumber === 31){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if(questionNumber === 34){
-        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } 
+    }
     
     function reassignValues(){
         nameFemale = namesObject.femaleNames.name[Math.floor(Math.random()*femaleNameArray.length)];
@@ -805,7 +901,7 @@ const Qid0002 = () => {
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection === 4 && globalSelectedTopic === 1){
+    if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
         getBronzeNumber();
         globalDifficultySelection = 1;
         worksheetDifficultyHeadings();
@@ -822,7 +918,7 @@ generateQButton.onclick = function(){
         for (let i = 0; i < goldNumber; i++){
             Qid0001(i)}
 
-} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
+} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
         getBronzeNumber();
         globalDifficultySelection = 1;
         worksheetDifficultyHeadings();

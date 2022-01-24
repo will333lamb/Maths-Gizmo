@@ -177,7 +177,7 @@ function getSelectedTopicArea(){
     }
 };
 
-function getSelectedTopic(){globalSelectedTopic = parseInt(document.getElementById("topicSelect").value)}
+function getSelectedTopic(){globalSelectedTopic = document.getElementById("topicSelect").value}
 
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
@@ -519,9 +519,9 @@ const Qid0002 = () => {
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection === 4 && globalSelectedTopic === 1){
+    if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
     Qid0001();
-} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === 2){
+} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
     Qid0002();
 };
 };
