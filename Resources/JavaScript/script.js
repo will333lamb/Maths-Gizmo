@@ -564,11 +564,13 @@ function makeFullscreen(){
         document.querySelector(".buttons-container").style.width = "75%";
         document.querySelector(".difficultyContainer").style.width = "25%";
         document.querySelector("nav").style.display = "none";
-        document.querySelector("body").style.backgroundColor = "#58e5ba";
+        document.querySelector("body").style.backgroundColor = "#ddfaf1";
         document.querySelector(".wrapper").style.marginTop = "0";
         document.querySelector(".buttons-container").style.justifyContent = "space-between";
         document.getElementById("fullscreenButton").innerHTML = "Exit fullscreen";
         document.querySelector(".questionSolutionContainer").style.height = "1000px";
+        document.querySelector(".questionSolutionContainer").style.backgroundColor = "#ddfaf1";
+        document.querySelector(".buttonsAndPrintingContainer").style.backgroundColor = "#ddfaf1";
         //document.querySelector(".question-container").style.transition = "all 0.1s";
         //transition: width 2s, height 4s;
     }

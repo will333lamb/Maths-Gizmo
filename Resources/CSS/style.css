@@ -236,12 +236,13 @@ select:hover{
     text-align: left;
     position:relative;
     border-left: 2px solid #fff;
+    
 }
 
 .buttonsAndPrintingContainer {
     width: 100%;
     display: inline-flex;
-    
+    background-color: rgba(88, 229, 186, 0.2);
     line-height: 2em;
 
 }
@@ -252,7 +253,7 @@ select:hover{
     text-align: center;
     display: block;
     padding: 1%;
-    background-color: #58e5ba;
+   
 }
 
 .difficultyContainer {
@@ -292,7 +293,7 @@ select:hover{
     font-size: 1.5rem;
     line-height: 3rem;
     min-height: 850px;
-    background-color: #58e5ba;
+    background-color: rgba(88, 229, 186, 0.2);
 }
 
 .button{
@@ -380,8 +381,8 @@ select:hover{
     position: relative;
     padding: 50px;
     line-height: 2;
-    min-height: 1000px;
-    background-color: #58e5ba;
+    min-height: 900px;
+    background-color: rgba(88, 229, 186, 0.2);
     border-left: 2px solid #fff;
     
 }
