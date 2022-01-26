@@ -404,6 +404,24 @@ select:hover{
     display: none;
 }
 
+#instructionsParagraph{
+    border: 1px solid #009870;
+    background-color: #fff;
+    padding: 30px;
+    text-align: left;
+    color: #1a3d1f;
+}
+
+.instructionsHeadings{
+    text-decoration: underline;
+    font-weight: bolder;
+    color:#009870;
+}
+
+#instructionsHeadingsTop{
+    text-align: center;
+}
+
 .previewBoxQ{
     padding: 30px;
     height: 100%;

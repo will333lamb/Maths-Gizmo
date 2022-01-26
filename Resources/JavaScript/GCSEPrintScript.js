@@ -905,6 +905,7 @@ generateQButton.onclick = function(){
     document.querySelector(".previewBoxQContainer").style.display = "block";
     document.querySelector(".solutionsContainer").style.display = "block";
     document.querySelector(".previewHeadingsSolutions").style.display = "block";
+    document.getElementById("instructionsParagraph").style.display = "none";
     
     if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
         getBronzeNumber();
