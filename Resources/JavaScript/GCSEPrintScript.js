@@ -206,7 +206,28 @@ function worksheetDifficultyHeadings(){
         //document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
     questionNumber = 0;
-}
+};
+
+//Function to auto sum total questions
+$(document).ready(function(e){
+    $("input").change(function(){
+        var sum=0;
+        $("input[name=forSum]").each(function(){
+            sum = sum + parseInt($(this).val());
+        })
+        $("input[name=totalQuestions]").val(sum);
+        let sumTotalQuestions = parseInt(document.getElementById("totalQuestions").value);
+    if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation" && sumTotalQuestions>30){
+        alert("Sorry, the maximum amount of questions for this topic is 30. " +
+        "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime" && sumTotalQuestions>60){
+        alert("Sorry, the maximum amount of questions for this topic is 60. " +
+        "Your worksheet may not load properly if you exceed this.");
+    }
+});
+});
+
+
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 const Qid0001 = () => {
@@ -898,8 +919,13 @@ generateQButton.onclick = function(){
         document.querySelector(".previewHeadingsSolutions").style.display = "block";
         document.getElementById("instructionsParagraph").style.display = "none";
     }
-    
-if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
+if(document.getElementById("topicAreaSelect").value<1){
+    window.alert("Please ensure you have selected a topic area");
+} else if(document.getElementById("topicSelect").value<1){
+    window.alert("Please ensure you have selected a topic");
+} else if(document.getElementById("generateQButton").innerHTML==="Reset"){
+    window.location.reload(); 
+} else if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
@@ -916,6 +942,7 @@ if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"
     worksheetDifficultyHeadings();
     for (let i = 0; i < goldNumber; i++){
         Qid0001(i)}
+    document.getElementById("generateQButton").innerHTML="Reset";
 
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
     loseInstructions();
@@ -934,16 +961,10 @@ if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"
     worksheetDifficultyHeadings();
     for (let i = 0; i < goldNumber; i++){
         Qid0002(i)}
-}
-document.getElementById("generateQButton").innerHTML="Reset";
-this.onclick=null; //THIS MAKES THE BUTTON ONLY WORK ONCE.
-if(document.getElementById("generateQButton").innerHTML="Reset"){
-    generateQButton.onclick = function(){
-        window.location.reload();
-    }
-    
+    document.getElementById("generateQButton").innerHTML="Reset";
+} 
 };
-};
+
 
 //Download Options/////////////////////////////////////////////////////////////////////////////////////////////////////
 function generatePDF(){

@@ -72,15 +72,19 @@
           <div class="labelsAndInputsContainer">
             <div class="rows">
               <label for="points">Bronze:</label>
-              <input id="bronzeNumber" type="number" step="1" min="0" max="100" selected value="" onchange="getBronzeNumber()"><br>
+              <input id="bronzeNumber" type="number" name="forSum" step="1" min="0" max="100" selected value="0" onchange="getBronzeNumber()"><br>
             </div>
             <div class="rows">
               <label for="points">Silver:</label>
-              <input id="silverNumber" type="number" step="1" min="0" max="100" selected value="" onchange="getSilverNumber()"><br>
+              <input id="silverNumber" type="number" name="forSum" step="1" min="0" max="100" selected value="0" onchange="getSilverNumber()"><br>
             </div>
             <div class="rows">
               <label for="points">Gold:</label>
-              <input id="goldNumber" type="number" step="1" min="0" max="100" selected value="" onchange="getGoldNumber()"><br>
+              <input id="goldNumber" type="number" name="forSum" step="1" min="0" max="100" selected value="0" onchange="getGoldNumber()"><br>
+            </div>
+            <div class="rows">
+              <label for="sum">Total:</label>
+              <input id="totalQuestions" name="totalQuestions">
             </div>
           </div>
         </div>
