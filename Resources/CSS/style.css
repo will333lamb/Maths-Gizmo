@@ -1,3 +1,5 @@
+@media only screen and (min-width: 800px) {
+
 /* UNIVERSAL STYLES */
 
 *{
@@ -480,3 +482,13 @@ select:hover{
     display: none;
 }
 
+/* index.html styling***************************************
+********************************************************************/
+
+.mainBody{
+    background-color: rgba(88, 229, 186, 0.2);
+    height: 100%;
+    min-height: 1000px;
+}
+
+}

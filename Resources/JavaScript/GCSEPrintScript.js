@@ -227,8 +227,6 @@ $(document).ready(function(e){
 });
 });
 
-
-
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 const Qid0001 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
