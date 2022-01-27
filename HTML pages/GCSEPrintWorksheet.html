@@ -85,7 +85,7 @@
           </div>
         </div>
         <div class="buttonsRow">
-          <button id="generateQButton" class="button">Create preview</button>
+          <button id="generateQButton" class="button">Create preview</button><br>
           <button id="downloadFile" onclick="generatePDF()" class="button">Download Worksheet</button><br>
           <button id="downloadSolutions" onclick="generateSolutions()" class="button">Download Solutions</button>
           <button id="downloadBothFiles" onclick="downloadBothFiles()" class="button">Download both files</button>
@@ -133,10 +133,12 @@
     <div class="previewPanelContainer">
       <h2 class="previewHeadings">Preview Worksheet</h2>
       <p id="instructionsParagraph">
-        <span id="instructionsHeadingsTop" class="instructionsHeadings">Instructions to create and download a worksheet</span><br><br>
+        <span class="instructionsHeadings">Instructions to create and download a worksheet</span><br><br>
         <span class="instructionsHeadings">1)</span> Please navigate to your desired topic area and topic using the dropdowns on the left.<br>
-        <span class="instructionsHeadings">2)</span> Please enter the amount of questions you want on your worksheet for each bronze, silver and gold difficulty<br>
-        (Please note - There is a maximum amount of total questions and this is different for each question. You will be alerted if you exceed the maximum amount for the question selected.) 
+        <span class="instructionsHeadings">2)</span> Please enter the amount of questions you want on your worksheet for each bronze, silver and gold difficulty.
+        <span style="font-style: italic;">(Please note - There is a maximum amount of total questions and this is different for each question. You will be alerted if you exceed the maximum amount for the question selected.)</span><br>
+        <span class="instructionsHeadings">3)</span> Click create preview to generate your worksheet. Solutions will be generated below.<br>
+        <span class="instructionsHeadings">4)</span> Use the download options to either download just the worksheet, solutions or both files.<br>
       </p>
       <div class="previewBoxQContainer">
         <div class="previewBoxQ">

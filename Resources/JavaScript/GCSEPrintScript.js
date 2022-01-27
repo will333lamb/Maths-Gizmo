@@ -130,18 +130,14 @@ let namesObject = {
     }
 };
 
-/************************************
- Global Variables
- ****************************************/
+//Global Variables/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
 
-/************************************
- Other functions
- ****************************************/
+//Other Functions /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function getSelectedTopicArea(){
     globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
@@ -181,11 +177,10 @@ function getSelectedTopicArea(){
         document.querySelector(".probabilityTopics").style.display = "block";
     }
 };
-function getSelectedTopic(){globalSelectedTopic = document.getElementById("topicSelect").value}
-function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
+function getSelectedTopic(){
+    globalSelectedTopic = document.getElementById("topicSelect").value
+};
 
-
-//Functions to get number of Bronze, Silver, Gold Q's for worksheet
 function getBronzeNumber(){
     bronzeNumber = parseInt(document.getElementById("bronzeNumber").value);
 };
@@ -195,7 +190,6 @@ function getSilverNumber(){
 function getGoldNumber(){
     goldNumber = parseInt(document.getElementById("goldNumber").value)
 };
-
 
 function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
@@ -214,9 +208,7 @@ function worksheetDifficultyHeadings(){
     questionNumber = 0;
 }
 
-/************************************
- Question functions
- ****************************************/
+//Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 const Qid0001 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
@@ -894,56 +886,66 @@ const Qid0002 = () => {
     runQuestion();
 }
 
-/**********************************************
- * Button Functions *
- *******************************************/
+//Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    document.querySelector(".previewHeadings").style.display = "block";
-    document.querySelector(".previewBoxQContainer").style.display = "block";
-    document.querySelector(".solutionsContainer").style.display = "block";
-    document.querySelector(".previewHeadingsSolutions").style.display = "block";
-    document.getElementById("instructionsParagraph").style.display = "none";
+    function loseInstructions(){
+        document.querySelector(".previewHeadings").style.display = "block";
+        document.querySelector(".previewBoxQContainer").style.display = "block";
+        document.querySelector(".solutionsContainer").style.display = "block";
+        document.querySelector(".previewHeadingsSolutions").style.display = "block";
+        document.getElementById("instructionsParagraph").style.display = "none";
+    }
     
-    if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
-        getBronzeNumber();
-        globalDifficultySelection = 1;
-        worksheetDifficultyHeadings();
-        for (let i = 0; i < bronzeNumber; i++){
-            Qid0001(i)}
-        getSilverNumber(); 
-        globalDifficultySelection = 2;
-        worksheetDifficultyHeadings();
-        for (let i = 0; i < silverNumber; i++){
-            Qid0001(i)}
-        getGoldNumber();
-        globalDifficultySelection = 3;
-        worksheetDifficultyHeadings();
-        for (let i = 0; i < goldNumber; i++){
-            Qid0001(i)}
+if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
+    loseInstructions();
+    getBronzeNumber();
+    globalDifficultySelection = 1;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < bronzeNumber; i++){
+        Qid0001(i)}
+    getSilverNumber(); 
+    globalDifficultySelection = 2;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < silverNumber; i++){
+        Qid0001(i)}
+    getGoldNumber();
+    globalDifficultySelection = 3;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < goldNumber; i++){
+        Qid0001(i)}
 
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
-        getBronzeNumber();
-        globalDifficultySelection = 1;
-        worksheetDifficultyHeadings();
-        for (let i = 0; i < bronzeNumber; i++){
-            Qid0002(i)}
-        getSilverNumber(); 
-        globalDifficultySelection = 2;
-        worksheetDifficultyHeadings();
-        for (let i = 0; i < silverNumber; i++){
-            Qid0002(i)}
-        getGoldNumber();
-        globalDifficultySelection = 3;
-        worksheetDifficultyHeadings();
-        for (let i = 0; i < goldNumber; i++){
-            Qid0002(i)}
-}; this.onclick=null; //THIS MAKES THE BUTTON ONLY WORK ONCE.
+    loseInstructions();
+    getBronzeNumber();
+    globalDifficultySelection = 1;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < bronzeNumber; i++){
+        Qid0002(i)}
+    getSilverNumber(); 
+    globalDifficultySelection = 2;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < silverNumber; i++){
+        Qid0002(i)}
+    getGoldNumber();
+    globalDifficultySelection = 3;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < goldNumber; i++){
+        Qid0002(i)}
+}
+document.getElementById("generateQButton").innerHTML="Reset";
+this.onclick=null; //THIS MAKES THE BUTTON ONLY WORK ONCE.
+if(document.getElementById("generateQButton").innerHTML="Reset"){
+    generateQButton.onclick = function(){
+        window.location.reload();
+    }
+    
+};
 };
 
-//Using HTML2PDF
+//Download Options/////////////////////////////////////////////////////////////////////////////////////////////////////
 function generatePDF(){
     window.scrollTo(0,0);
     const element = document.querySelector(".previewBoxQ");
