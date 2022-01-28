@@ -181,9 +181,8 @@ function getSelectedTopic(){globalSelectedTopic = document.getElementById("topic
 
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
-/************************************
- Question functions
- ****************************************/
+//Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const Qid0001 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
@@ -510,6 +509,101 @@ const Qid0002 = () => {
     Therefore the total income is £${guestTotalIncome} + £${sponsorshipSigFig} = <span class="totalCostIncome">£${totalIncome}</span> <br>
     ${conclusionStatement}` 
 
+};
+
+function QidSolveQuadraticFactorising001(){
+
+    let signArray = ["+","-"];
+    let signOne
+    if(globalDifficultySelection === 1){
+        signOne = signArray[0];
+    } else if(globalDifficultySelection === 2){
+        signOne = signArray[Math.floor(Math.random()*signArray.length)];
+    } else if(globalDifficultySelection === 3){
+        signOne = signArray[Math.floor(Math.random()*signArray.length)];
+    };
+    let signTwo
+    if(globalDifficultySelection === 1){
+        signTwo = signArray[0];
+    } else if(globalDifficultySelection === 2){
+        signTwo = signArray[0];
+    } else if(globalDifficultySelection === 3){
+        signTwo = signArray[1];
+    };
+    let cValueHelp1 = (Math.ceil(Math.random()*12));
+    let cValueHelp2 = (Math.ceil(Math.random()*12));
+    let helperArray = [13,14,15]
+    if(globalDifficultySelection === 3 && cValueHelp1 === cValueHelp2){
+        cValueHelp2 = helperArray[Math.floor(Math.random()*helperArray.length)]
+    }
+    let cValue = cValueHelp1*cValueHelp2;
+    let bValueHelp1
+    if(signOne === "+" && signTwo ==="+"){
+        bValueHelp1 = cValueHelp1+cValueHelp2
+    } else if(signOne === "-" && signTwo === "+"){
+        bValueHelp1 = cValueHelp1+cValueHelp2
+    } else if(signOne === "+" && signTwo === "-"){
+        bValueHelp1 = cValueHelp1-cValueHelp2
+    } else if(signOne === "-" && signTwo === "-"){
+        bValueHelp1 = cValueHelp2-cValueHelp1
+    }
+    let bValue = Math.abs(bValueHelp1);
+
+    let solSignOne
+    let solSignTwo
+    if(signOne === "+" && signTwo === "+"){
+        solSignOne ="+";
+        solSignTwo ="+";
+    } else if(signOne === "-" && signTwo === "+"){
+        solSignOne ="-";
+        solSignTwo ="-";
+    } else if(signOne === "+" && signTwo === "-" && (cValueHelp1-cValueHelp2)>0){
+        solSignOne ="+";
+        solSignTwo ="-";
+    } else if(signOne === "+" && signTwo === "-" && (cValueHelp1-cValueHelp2)<0){
+        solSignOne ="-";
+        solSignTwo ="+";
+    } else if(signOne === "-" && signTwo === "-" && (cValueHelp2-cValueHelp1)>0){
+        solSignOne ="+";
+        solSignTwo ="-";
+    } else if(signOne === "-" && signTwo === "-" && (cValueHelp2-cValueHelp1)<0){
+        solSignOne ="-";
+        solSignTwo ="+";
+    }
+
+    
+
+    
+
+// Question Text
+    document.getElementById("questionText").innerHTML =
+    `
+    <style>
+    .centeredQuadratic{
+        width: 100%;
+        padding: 50%;
+        font-family: 'sans-serif';
+    }
+    .superscripts{
+        font-size: 0.75em;
+    }
+
+    </style>
+    
+    <span class="fa-stack fa-2x" style="font-size: 1rem;">
+    <i class="fas fa-calculator fa-stack-1x"></i>
+    <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+    </span><br>
+    Solve by factorising.<br>
+    <span class="centeredQuadratic"> &#119909<sup class="superscripts">2</sup> ${signOne} ${bValue}&#119909 ${signTwo} ${cValue} = 0 <br>
+    </span>`
+
+// Solution Text
+    document.getElementById("solutionText").innerHTML =
+    `
+    Factorising gives (&#119909 ${solSignOne} ${cValueHelp1})(&#119909 ${solSignTwo} ${cValueHelp2})
+    `
+
 }
 
 /**********************************************
@@ -523,7 +617,9 @@ generateQButton.onclick = function(){
     Qid0001();
 } else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
     Qid0002();
-};
+} else if(globalTopicAreaSelection === 2 && globalSelectedTopic === "solveQuadraticByFactorising"){
+    QidSolveQuadraticFactorising001();
+} 
 };
 
 let showSolutionButton = document.getElementById("showSolutionButton");
