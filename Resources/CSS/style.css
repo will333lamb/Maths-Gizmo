@@ -1,5 +1,4 @@
 @media only screen and (min-width: 800px) {
-
 /* UNIVERSAL STYLES */
 
 *{
@@ -491,4 +490,73 @@ select:hover{
     min-height: 1000px;
 }
 
+}/*////////////////////////////////////////////////////////////////////////////////End of Desktop media query/////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 800px) {
+
+#logoTopLeft{
+    width: 100%;
 }
+
+
+}/*////////////////////////////////////////////////////////////////////////////////End of Tablet media query/////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+@media only screen and (max-width: 480px) {
+
+#logoTopLeft{
+    width: 100%;
+}
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Nav top */
+
+nav ul{
+    width: 100%;
+    text-align: center;
+    background-color: #009870;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+
+
+}/*////////////////////////////////////////////////////////////////////////////////End of Mobile media query/////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
