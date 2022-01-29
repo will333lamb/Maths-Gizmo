@@ -548,6 +548,9 @@ function QidSolveQuadraticFactorising001(){
         bValueHelp1 = cValueHelp2-cValueHelp1
     }
     let bValue = Math.abs(bValueHelp1);
+    if(bValue === 1){
+        bValue=""
+    }
 
     let solSignOne
     let solSignTwo
@@ -570,10 +573,6 @@ function QidSolveQuadraticFactorising001(){
         solSignOne ="-";
         solSignTwo ="+";
     }
-
-    
-
-    
 
 // Question Text
     document.getElementById("questionText").innerHTML =
@@ -601,7 +600,11 @@ function QidSolveQuadraticFactorising001(){
 // Solution Text
     document.getElementById("solutionText").innerHTML =
     `
-    Factorising gives (&#119909 ${solSignOne} ${cValueHelp1})(&#119909 ${solSignTwo} ${cValueHelp2})
+    To factorise, I need to think of two numbers that multiply together to give ${signTwo}${cValue} and sum together to give ${signOne}${bValue}.<br>
+    ${solSignOne}${cValueHelp1} &#215 ${solSignTwo}${cValueHelp2} = ${cValue}<br>
+    ${solSignOne}${cValueHelp1} + ${solSignTwo}${cValueHelp2} = ${bValue} <br>
+    Thus, the two numbers that satisfy these conditions are ${solSignOne}${cValueHelp1} and ${solSignTwo}${cValueHelp2}.<br>
+    Therefore, factorising gives (&#119909 ${solSignOne} ${cValueHelp1})(&#119909 ${solSignTwo} ${cValueHelp2})
     `
 
 }
