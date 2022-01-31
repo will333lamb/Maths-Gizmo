@@ -548,8 +548,10 @@ function QidSolveQuadraticFactorising001(){
         bValueHelp1 = cValueHelp2-cValueHelp1
     }
     let bValue = Math.abs(bValueHelp1);
+    let bValueSol = bValue
     if(bValue === 1){
         bValue=""
+        bValueSol = 1
     }
 
     let solSignOne
@@ -574,13 +576,41 @@ function QidSolveQuadraticFactorising001(){
         solSignTwo ="+";
     }
 
+    let solSignFinal1
+    let solSignFinal2
+    if (solSignOne ==="+"){
+        solSignFinal1 ="";
+    } else {
+        solSignFinal1 ="-";
+    };
+
+    if(solSignTwo === "+"){
+        solSignFinal2 ="";
+    } else {
+        solSignFinal2 ="-"
+    };
+
+    let solSignFinalFinal1
+    let solSignFinalFinal2
+    if (solSignOne === "+"){
+        solSignFinalFinal1 ="-";
+    } else{
+        solSignFinalFinal1 ="";
+    };
+
+    if(solSignTwo ==="+"){
+        solSignFinalFinal2 ="-";
+    } else{
+        solSignFinalFinal2 ="";
+    };
+
 // Question Text
     document.getElementById("questionText").innerHTML =
     `
     <style>
     .centeredQuadratic{
         width: 100%;
-        padding: 50%;
+        padding: 40%;
         font-family: 'sans-serif';
     }
     .superscripts{
@@ -600,11 +630,13 @@ function QidSolveQuadraticFactorising001(){
 // Solution Text
     document.getElementById("solutionText").innerHTML =
     `
-    To factorise, I need to think of two numbers that multiply together to give ${signTwo}${cValue} and sum together to give ${signOne}${bValue}.<br>
-    ${solSignOne}${cValueHelp1} &#215 ${solSignTwo}${cValueHelp2} = ${cValue}<br>
-    ${solSignOne}${cValueHelp1} + ${solSignTwo}${cValueHelp2} = ${bValue} <br>
-    Thus, the two numbers that satisfy these conditions are ${solSignOne}${cValueHelp1} and ${solSignTwo}${cValueHelp2}.<br>
-    Therefore, factorising gives (&#119909 ${solSignOne} ${cValueHelp1})(&#119909 ${solSignTwo} ${cValueHelp2})
+    To factorise, I need to think of two numbers that multiply together to give ${signTwo}${cValue} and sum together to give ${signOne}${bValueSol}.<br>
+    ${solSignFinal1}${cValueHelp1} &#215 ${solSignFinal2}${cValueHelp2} = ${signTwo}${cValue}<br>
+    ${solSignFinal1}${cValueHelp1} + ${solSignFinal2}${cValueHelp2} = ${signOne}${bValueSol} <br>
+    Thus, the two numbers that satisfy these conditions are ${solSignFinal1}${cValueHelp1} and ${solSignFinal2}${cValueHelp2}.<br>
+    Therefore, factorising gives:<br> (&#119909 ${solSignOne} ${cValueHelp1})(&#119909 ${solSignTwo} ${cValueHelp2}) = 0 <br>
+    Therefore &#119909 = ${solSignFinalFinal1}${cValueHelp1} or  &#119909 = ${solSignFinalFinal2}${cValueHelp2}.
+
     `
 
 }

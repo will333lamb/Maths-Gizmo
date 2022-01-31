@@ -476,6 +476,10 @@ select:hover{
     font-weight: bolder;
 }
 
+.borderBottomSolution{
+    border-bottom: 5px dotted #009870;
+}
+
 .previewHeadings{
     display: none;
 }
