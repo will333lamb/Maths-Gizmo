@@ -231,6 +231,8 @@ $(document).ready(function(e){
 });
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Speed distance time - comparing speeds
 const Qid0001 = () => {
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
@@ -566,6 +568,7 @@ const Qid0001 = () => {
 
 };
 
+// Estimation
 const Qid0002 = () => {
 
     let nameFemale = namesObject.femaleNames.name[Math.floor(Math.random()*femaleNameArray.length)];
@@ -912,6 +915,7 @@ const Qid0002 = () => {
     runQuestion();
 };
 
+// Solving quadratics via factorisation
 function QidSolveQuadraticFactorising001(){
 
     let signArray = ["+","-"];
