@@ -491,6 +491,15 @@ select:hover{
     display: none;
 }
 
+#worksheetTitle{
+    text-transform: uppercase;
+    color:#009870;
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+
 /* index.html styling***************************************
 ********************************************************************/
 
