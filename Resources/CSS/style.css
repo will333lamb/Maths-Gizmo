@@ -459,7 +459,10 @@ select:hover{
 
 #marksGiven{
     padding: 10px;
-    
+    float: right;
+    color: #009870;
+    text-align: right;
+    font-style: italic;
 }
 
 #banSign{
