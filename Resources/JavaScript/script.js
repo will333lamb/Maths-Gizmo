@@ -181,6 +181,9 @@ function getSelectedTopic(){globalSelectedTopic = document.getElementById("topic
 
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
+function GCSELi(){
+    document.querySelector(".GCSENav").style.display = "block";
+}
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
