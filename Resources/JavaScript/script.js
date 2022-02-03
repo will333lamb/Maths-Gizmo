@@ -181,6 +181,7 @@ function getSelectedTopic(){globalSelectedTopic = document.getElementById("topic
 
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
+
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Qid0001 = () => {
