@@ -766,12 +766,12 @@ nav ul a {
 .GCSEBoxesContainer{
     display: block;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem auto;
     
 }
 
 .GCSEBoxes{
-    max-width: 500px;
+    max-width: 780px;
     background-color: rgba(88, 229, 186, 0.3);
     padding: 1rem;
     border: 1px solid #009870;
