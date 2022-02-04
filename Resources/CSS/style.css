@@ -742,9 +742,6 @@ nav ul a {
     display: none;
 }
 
-.GCSECheckbox{
-    display: none;
-}
 
 .closeIcon{
     display: none;
@@ -758,6 +755,10 @@ nav ul a {
     display: none;
 }
 
+.downChev{
+    display: block;
+}
+
 #navCheckbox:checked ~ label.navToggle .closeIcon{
     display: block;
 }
@@ -768,18 +769,6 @@ nav ul a {
 
 #navCheckbox:checked ~ ul{
     display:block;
-}
-
-#GCSECheckbox:checked ~ ul{
-    display: block;
-}
-
-#GCSECheckbox:checked ~ label.GCSEnavToggle .downChev{
-    display: none;
-}
-
-#GCSECheckbox:checked ~ label.GCSEnavToggle .upChev{
-    display: block;
 }
 
 

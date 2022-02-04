@@ -134,9 +134,8 @@ let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
-/************************************
- Other functions
- ****************************************/
+/***Other functions*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
 
 function getSelectedTopicArea(){
     globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
@@ -181,9 +180,6 @@ function getSelectedTopic(){globalSelectedTopic = document.getElementById("topic
 
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
-function GCSELi(){
-    document.querySelector(".GCSENav").style.display = "block";
-}
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
