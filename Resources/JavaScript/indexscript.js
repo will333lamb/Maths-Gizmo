@@ -1,6 +1,10 @@
 
 
-function listGCSE(){
+const mediaQuery800px = window.matchMedia("(max-width: 800px)");
+
+
+if(mediaQuery800px.matches){
+    document.getElementById("GCSELi").onclick = () =>{
     if (document.getElementById("changeGCSEhtml").innerHTML === "GCSE"){
         document.querySelector(".GCSENav").style.display = "block";
         document.querySelector(".downChev").style.display = "none";
@@ -13,9 +17,11 @@ function listGCSE(){
         document.querySelector(".upChev").style.display = "none";
         document.getElementById("changeGCSEhtml").innerHTML = "GCSE"
     }
+    }
 }
 
-function listFS(){
+if(mediaQuery800px.matches){
+document.getElementById("FSLi").onclick = () =>{
     if (document.getElementById("changeFShtml").innerHTML === "Functional Skills"){
         document.querySelector(".FSNav").style.display = "block";
         document.querySelector(".FSdownChev").style.display = "none";
@@ -29,4 +35,4 @@ function listFS(){
         document.getElementById("changeFShtml").innerHTML = "Functional Skills";
     }
 }
-
+}

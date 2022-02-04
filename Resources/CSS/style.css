@@ -408,8 +408,10 @@ select:hover{
 
 .GCSEBoxesContainer{
     display: inline-flex;
-    align-items: center;
-    padding: 2rem;
+    padding: 2rem auto;
+    width: 100%;
+    margin: 0 auto;
+    
     
 }
 
