@@ -695,6 +695,7 @@ footer a{
 
 /* Nav top */
 
+
 .navToggle{
     position: absolute;
     cursor: pointer;
@@ -703,6 +704,14 @@ footer a{
 }
 
 .GCSEnavToggle{
+    position: absolute;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    margin: 0;
+    transform: translateY(-10%);
+}
+
+.FSnavToggle{
     position: absolute;
     cursor: pointer;
     margin-left: 0.5rem;
@@ -742,6 +751,10 @@ nav ul a {
     display: none;
 }
 
+.FSNav{
+    display: none;
+}
+
 
 .closeIcon{
     display: none;
@@ -756,6 +769,14 @@ nav ul a {
 }
 
 .downChev{
+    display: block;
+}
+
+.FSupChev{
+    display: none;
+}
+
+.FSdownChev{
     display: block;
 }
 

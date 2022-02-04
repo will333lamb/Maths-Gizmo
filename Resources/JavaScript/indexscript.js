@@ -1,6 +1,4 @@
-let GCSELi = document.getElementById("GCSELi");
 
-GCSELi.addEventListener("click", listGCSE);
 
 function listGCSE(){
     if (document.getElementById("changeGCSEhtml").innerHTML === "GCSE"){
@@ -15,5 +13,20 @@ function listGCSE(){
         document.querySelector(".upChev").style.display = "none";
         document.getElementById("changeGCSEhtml").innerHTML = "GCSE"
     }
-    
 }
+
+function listFS(){
+    if (document.getElementById("changeFShtml").innerHTML === "Functional Skills"){
+        document.querySelector(".FSNav").style.display = "block";
+        document.querySelector(".FSdownChev").style.display = "none";
+        document.querySelector(".FSupChev").style.display = "block";
+        document.getElementById("changeFShtml").innerHTML = "Functional Skills ";
+        
+    } else if(document.getElementById("changeFShtml").innerHTML === "Functional Skills "){
+        document.querySelector(".FSNav").style.display = "none";
+        document.querySelector(".FSdownChev").style.display = "block";
+        document.querySelector(".FSupChev").style.display = "none";
+        document.getElementById("changeFShtml").innerHTML = "Functional Skills";
+    }
+}
+
