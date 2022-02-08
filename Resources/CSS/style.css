@@ -440,11 +440,6 @@ select:hover{
 
 
 
-
-
-
-
-
 /* Printing worksheet styling***************************************
 ********************************************************************/
 
@@ -633,13 +628,16 @@ select:hover{
 
 .mainBody{
     min-height: 100vh;
+}
+
+body{
     background-color: rgba(88, 229, 186, 0.2);
 }
 
 /*footer*/
 footer{
     font-size: 0.6rem;
-    background-color: rgba(88, 229, 186, 0.2);
+    background-color: rgba(88, 229, 186, 0.1);
     border-top: 1px solid #009870;
     width: 100%;
     text-align: right;
@@ -794,9 +792,176 @@ nav ul a {
     text-align: center;
 }
 
+/* Display Screen Questions Page Mobile*/
+
+.question-info-box{
+    display: none;
+}
+
+.wrapper{
+    text-align: center;
+    padding: 1rem;
+}
+
+.sidebar h2{
+    padding: 0.7rem 0;
+    display: none;
+}
+
+.sidebar h3{
+    padding: 0 0 0.7rem 0;
+    display: none;
+}
+
+.question-container{
+    min-height: 100vh;
+}
+
+.buttonsAndPrintingContainer{
+    text-align: center;
+}
+
+.question-box {
+    padding: 1rem ;
+    border: #009870 1px solid;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    line-height: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.solution-box{
+    padding: 1rem ;
+    border: #009870 1px solid;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    color: red;
+    display: none;
+}
+
+#fullscreenButton{
+    display: none;
+}
+
+.dropDownMenus{
+    padding: 0.5rem;
+    color: #1a3d1f;
+    margin: 0.1rem;
+}
+
+.buttons-container{
+    margin: 1rem;
+}
+
+.difficultyContainer{
+    margin: 1rem;
+}
+
+.button{
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #009870;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Montserrat ,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 8px 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+.button:hover {
+    background-color: #009885;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+}
+  
+.button-:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+}
+  
+.button:hover {
+    box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
 
 
+select{
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.2rem;
+    background-color: #009870;
+    color: #fff;
+    border-radius: 1rem;
+}   
 
+select option{
+    font-weight: 600;
+}
+
+select:hover{
+    background-color: #009885;
+}
+
+#difficultyDropDown{
+    backface-visibility: hidden;
+    background-color: #009870;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Montserrat ,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 8px 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.sidebar label{
+    margin: 11rem;
+}
+
+  
 }/*////////////////////////////////////////////////////////////////////////////////End of Mobile media query/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
