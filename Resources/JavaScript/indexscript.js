@@ -12,7 +12,6 @@ function resize(){
     } else if(window.innerWidth<=800 && document.querySelector(".downChev").style.display === "none"){
         document.querySelector(".downChev").style.display = "block";
         document.querySelector(".upChev").style.display = "none";
-    } else if(window.innerWidth<=800 && document.querySelector(".FSdownChev").style.display === "none"){
         document.querySelector(".FSdownChev").style.display = "block";
         document.querySelector(".FSupChev").style.display = "none";
     }
