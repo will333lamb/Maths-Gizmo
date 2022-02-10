@@ -143,9 +143,10 @@ select:hover{
     background-color: #009885;
 }
 
-.dropDownMenus label{
+.label{
     color: #fff;
     padding: 5em 1em;
+    text-align: center;
     
 }
 
@@ -436,6 +437,11 @@ select:hover{
 .GCSEBoxes h2{
     text-align: center;
 }
+
+
+
+
+
 
 
 
@@ -850,10 +856,16 @@ nav ul a {
     padding: 0.5rem;
     color: #1a3d1f;
     margin: 0.1rem;
+    display: block;
+    
 }
 
 .buttons-container{
     margin: 1rem;
+}
+
+.buttons-container button{
+    margin: 0.6rem;
 }
 
 .difficultyContainer{
@@ -916,6 +928,8 @@ select{
     background-color: #009870;
     color: #fff;
     border-radius: 1rem;
+    border-style: none;
+    max-width: 80%;
 }   
 
 select option{
@@ -957,10 +971,6 @@ select:hover{
     width: fit-content;
 }
 
-.sidebar label{
-    margin: 11rem;
-}
-
 #banSign{
     color: red;
     opacity: 0.5;
@@ -970,7 +980,28 @@ select:hover{
     color: green;
 }
 
-  
+
+.geometryMeasuresTopics{
+    display: none;
+}
+
+.numberTopics{
+    display: none;
+}
+
+.algebraTopics{
+    display: none;
+}
+
+.ratioTopics{
+    display: none;
+}
+
+.probabilityTopics{
+    display: none;
+}
+
+
 }/*////////////////////////////////////////////////////////////////////////////////End of Mobile media query/////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
