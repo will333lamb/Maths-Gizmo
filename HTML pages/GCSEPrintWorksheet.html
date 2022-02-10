@@ -60,7 +60,7 @@
         <h2>Create a worksheet</h2>
         <h3>Question Select</h3>
         <div class="dropDownMenus">
-          <label>Topic area:</label>
+          <p class="label">Topic area:</p>
           <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
             <option selected value="0">Please select</option>
             <option value="1">Number</option>
@@ -71,7 +71,7 @@
           </select>
         </div>
         <div class="dropDownMenus">
-          <label>Topic:</label>
+          <p class="label">Topic:</p>
           <select id="topicSelect" onchange="getSelectedTopic()">
             <option selected value="0">Please select</option>
             <option value="speedDistanceTime" class="geometryMeasuresTopics">Speed, distance, time</option>
@@ -102,11 +102,13 @@
             </div>
           </div>
         </div>
-        <div class="buttonsRow">
-          <button id="generateQButton" class="button">Create preview</button><br>
-          <button id="downloadFile" onclick="generatePDF()" class="button">Download Worksheet</button><br>
-          <button id="downloadSolutions" onclick="generateSolutions()" class="button">Download Solutions</button>
-          <button id="downloadBothFiles" onclick="downloadBothFiles()" class="button">Download both files</button>
+        <div class=centerButtonsRow>
+          <div class="buttonsRow">
+            <button id="generateQButton" class="button">Create preview</button><br>
+            <button id="downloadFile" onclick="generatePDF()" class="button">Download Worksheet</button><br>
+            <button id="downloadSolutions" onclick="generateSolutions()" class="button">Download Solutions</button><br>
+            <button id="downloadBothFiles" onclick="downloadBothFiles()" class="button">Download both files</button>
+          </div>
         </div>
         <div class="question-info-box">
           <h3>Question Information</h3><br>

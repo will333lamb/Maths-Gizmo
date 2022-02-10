@@ -477,6 +477,11 @@ select:hover{
     padding: 0.2em;
 }
 
+.rows input{
+    text-align: center;
+}
+
+
 .previewPanelContainer{
     width: calc(100%-315px);
     height: 100%;
@@ -999,6 +1004,163 @@ select:hover{
 
 .probabilityTopics{
     display: none;
+}
+
+
+
+/* GCSE Print worksheet Page Mobile*/
+
+.numberOfQuestionsInput{
+    padding-bottom: 1rem;
+}
+
+.rows{
+    padding: 0.5rem;
+}
+
+.rows input{
+    background-color: #009870;
+    border-style: none;
+    border-radius: 1rem;
+    text-align: center;
+    color: #fff;
+}
+
+.buttonsRow{
+    display: flexbox;
+    flex-wrap: wrap;
+}
+
+.buttonsRow button{
+    margin: 0.25rem;
+    font-size: 0.9rem;
+}
+
+#totalQuestions{
+    max-width: 3rem;
+}
+
+.previewPanelContainer h2{
+    color: #1a3d1f;
+    text-align: center;
+}
+
+#BSGHeadings{
+    color: #009870;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.previewBoxQContainer{
+    border: 1px solid #009870;
+    background-color: #fff;
+    display: none;
+    margin: 1rem;
+}
+
+.instructionsParagraph{
+    border: 1px solid #009870;
+    background-color: #fff;
+    padding: 30px;
+    margin: 1rem;
+    color: #1a3d1f;
+}
+
+#instructionsHeadingsTop{
+    text-align: center;
+}
+
+.instructionsHeadings{
+    text-decoration: underline;
+    font-weight: bolder;
+    color:#009870;
+}
+
+.previewBoxQ{
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.previewBoxSolution{
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.solutionsContainer{
+    display: block;
+    border: 1px solid #009870;
+    display: none;
+    margin: 1rem;
+}
+
+#worksheetTitle{
+    text-transform: uppercase;
+    color:#009870;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#BSGHeadings{
+    color: #009870;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.questionNumber{
+    color: #009870;
+    font-weight: bolder;
+}
+
+.borderBottomSolution{
+    border-bottom: 5px dotted #009870;
+}
+
+.previewHeadings{
+    display: none;
+}
+
+.previewHeadingsSolutions{
+    display: none;
+}
+
+.questionNumber{
+    color: #009870;
+    font-weight: bolder;
+}
+
+.borderBottomSolution{
+    border-bottom: 5px dotted #009870;
+}
+
+.previewHeadings{
+    display: none;
+}
+
+.previewHeadingsSolutions{
+    display: none;
+}
+
+.answerLine{
+    width: 400px;
+    height: 1px;
+    border-bottom: 5px dotted #009870;
+    float: right;
+    color: #009870;
+    text-align: right;
+    
+}
+
+#marksGiven{
+    padding: 10px;
+    float: right;
+    color: #009870;
+    text-align: right;
+    font-style: italic;
 }
 
 
