@@ -306,18 +306,6 @@ const Qid0001 = () => {
         questionDifficulty = "Gold";
     };
 
-    //Question Info ***********************
-
-    document.getElementById("examBoardText").innerHTML = "OCR";
-    document.getElementById("tierText").innerHTML = "Foundation";
-    document.getElementById("paperText").innerHTML = "1";
-    document.getElementById("monthText").innerHTML = "November";
-    document.getElementById("yearText").innerHTML = "2019";
-    document.getElementById("questionInfoText").innerHTML = 14;
-    document.getElementById("calculatorText").innerHTML = "Yes";
-    document.getElementById("marksAvailableText").innerHTML = 4;
-    document.querySelector(".tableinfo").style.display = "inline-table";
-
     function reassignValues(){
         name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
@@ -669,17 +657,6 @@ const Qid0002 = () => {
         questionDifficulty = "Gold";
     };
     questionNumber++;
-
-    //Question Info************************
-    document.getElementById("examBoardText").innerHTML = "OCR";
-    document.getElementById("tierText").innerHTML = "Foundation";
-    document.getElementById("paperText").innerHTML = "2";
-    document.getElementById("monthText").innerHTML = "November";
-    document.getElementById("yearText").innerHTML = "2019";
-    document.getElementById("questionInfoText").innerHTML = 15;
-    document.getElementById("calculatorText").innerHTML = "No";
-    document.getElementById("marksAvailableText").innerHTML = 6;
-    document.querySelector(".tableinfo").style.display = "inline-table";
 
 
     function runQuestion(){
@@ -1377,9 +1354,10 @@ function generatePDF(){
     const options = {
         margin:     [0,0.1],
         filename:     'Worksheet.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
+        image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+        scale: 10,
       };
     html2pdf()
     .from(element)

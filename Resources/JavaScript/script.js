@@ -245,19 +245,6 @@ const Qid0001 = () => {
 
     questionNumber ++;
 
-
-    //Question Info ***********************
-
-    document.getElementById("examBoardText").innerHTML = "OCR";
-    document.getElementById("tierText").innerHTML = "Foundation";
-    document.getElementById("paperText").innerHTML = "1";
-    document.getElementById("monthText").innerHTML = "November";
-    document.getElementById("yearText").innerHTML = "2019";
-    document.getElementById("questionInfoText").innerHTML = 14;
-    document.getElementById("calculatorText").innerHTML = "Yes";
-    document.getElementById("marksAvailableText").innerHTML = 4;
-    document.querySelector(".tableinfo").style.display = "inline-table";
-
     //Difficulty Silver
     if (globalDifficultySelection === 2){
     document.getElementById("questionText").innerHTML = 
@@ -402,18 +389,6 @@ const Qid0002 = () => {
     }
 
     questionNumber++;
-
-    //Question Info************************
-    document.getElementById("examBoardText").innerHTML = "OCR";
-    document.getElementById("tierText").innerHTML = "Foundation";
-    document.getElementById("paperText").innerHTML = "2";
-    document.getElementById("monthText").innerHTML = "November";
-    document.getElementById("yearText").innerHTML = "2019";
-    document.getElementById("questionInfoText").innerHTML = 15;
-    document.getElementById("calculatorText").innerHTML = "No";
-    document.getElementById("marksAvailableText").innerHTML = 6;
-    document.querySelector(".tableinfo").style.display = "inline-table";
-
 
     document.getElementById("questionText").innerHTML =
     `<span class="fa-stack fa-2x" style="font-size: 1rem;">
