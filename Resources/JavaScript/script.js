@@ -616,6 +616,20 @@ function QidSolveQuadraticFactorising001(){
 
 }
 
+function QidSimultaneousEquationsNoContext(){
+
+
+// Question Text
+    document.getElementById("questionText").innerHTML = 
+    `<span class="fa-stack fa-2x" style="font-size: 1rem;">
+    <i class="fas fa-calculator fa-stack-1x"></i>
+    <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+    </span><br>
+    Solve the simultaneous equations.<br><br>
+    equations here
+    `
+}
+
 /**********************************************
  * Button functions *
  *******************************************/
@@ -629,7 +643,9 @@ generateQButton.onclick = function(){
     Qid0002();
 } else if(globalTopicAreaSelection === 2 && globalSelectedTopic === "solveQuadraticByFactorising"){
     QidSolveQuadraticFactorising001();
-} 
+} else if(globalTopicAreaSelection === 2 && globalSelectedTopic ==="simultaneousEquationsNoContext"){
+    QidSimultaneousEquationsNoContext();
+}
 };
 
 let showSolutionButton = document.getElementById("showSolutionButton");
