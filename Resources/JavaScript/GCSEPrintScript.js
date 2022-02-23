@@ -142,7 +142,7 @@ let globalTopicAreaSelection;
 //Other Functions /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function getSelectedTopicArea(){
-    globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
+    globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
     if (globalTopicAreaSelection === 1){
         document.querySelector(".numberTopics").style.display = "block";
         document.querySelector(".algebraTopics").style.display = "none";
@@ -219,13 +219,13 @@ $(document).ready(function(e){
         })
         $("input[name=totalQuestions]").val(sum);
         let sumTotalQuestions = parseInt(document.getElementById("totalQuestions").value);
-    if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation" && sumTotalQuestions>30){
+    if(globalTopicAreaSelection ==="estimation" && sumTotalQuestions>30){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
         "Your worksheet may not load properly if you exceed this.");
-    } else if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime" && sumTotalQuestions>60){
+    } else if(globalTopicAreaSelection ==="speedDistanceTime" && sumTotalQuestions>60){
         alert("Sorry, the maximum amount of questions for this topic is 60. " +
         "Your worksheet may not load properly if you exceed this.");
-    } else if(globalTopicAreaSelection === 2 && globalSelectedTopic === "solveQuadraticByFactorising" && sumTotalQuestions>90){
+    } else if(globalTopicAreaSelection ==="solveQuadraticByFactorising" && sumTotalQuestions>90){
         alert("Sorry, the maximum amount of questions for this topic is 90. " +
         "Your worksheet may not load properly if you exceed this.");
     }
@@ -1280,13 +1280,9 @@ generateQButton.onclick = function(){
         document.querySelector(".previewHeadingsSolutions").style.display = "block";
         document.getElementById("instructionsParagraph").style.display = "none";
     }
-if(document.getElementById("topicAreaSelect").value<1){
-    window.alert("Please ensure you have selected a topic area");
-} else if(document.getElementById("topicSelect").value<1){
-    window.alert("Please ensure you have selected a topic");
-} else if(document.getElementById("generateQButton").innerHTML==="Reset"){
+if(document.getElementById("generateQButton").innerHTML==="Reset"){
     window.location.reload(); 
-} else if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
+} else if(globalTopicAreaSelection ==="speedDistanceTime"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
@@ -1306,7 +1302,7 @@ if(document.getElementById("topicAreaSelect").value<1){
         Qid0001(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
 
-} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
+} else if(globalTopicAreaSelection ==="estimation"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
@@ -1325,7 +1321,7 @@ if(document.getElementById("topicAreaSelect").value<1){
     for (let i = 0; i < goldNumber; i++){
         Qid0002(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection === 2 && globalSelectedTopic === "solveQuadraticByFactorising"){
+} else if(globalTopicAreaSelection ==="solveQuadraticByFactorising"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;

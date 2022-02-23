@@ -138,7 +138,7 @@ let globalDifficultySelection = 2;
  
 
 function getSelectedTopicArea(){
-    globalTopicAreaSelection = parseInt(document.getElementById("topicAreaSelect").value);
+    globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
     if (globalTopicAreaSelection === 1){
         document.querySelector(".numberTopics").style.display = "block";
         document.querySelector(".algebraTopics").style.display = "none";
@@ -637,13 +637,13 @@ function QidSimultaneousEquationsNoContext(){
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection === 4 && globalSelectedTopic === "speedDistanceTime"){
+    if(globalTopicAreaSelection ==="speedDistanceTime"){
     Qid0001();
-} else if(globalTopicAreaSelection === 1 && globalSelectedTopic === "estimation"){
+} else if(globalTopicAreaSelection ==="estimation"){
     Qid0002();
-} else if(globalTopicAreaSelection === 2 && globalSelectedTopic === "solveQuadraticByFactorising"){
+} else if(globalTopicAreaSelection ==="solveQuadraticByFactorising"){
     QidSolveQuadraticFactorising001();
-} else if(globalTopicAreaSelection === 2 && globalSelectedTopic ==="simultaneousEquationsNoContext"){
+} else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
     QidSimultaneousEquationsNoContext();
 }
 };

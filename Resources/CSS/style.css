@@ -189,60 +189,18 @@ select:hover{
     padding: 1em 0;
 }
 
+.dropDownMenus select{
+    overflow: scroll;
+}
+
 .dropDownMenus p{
     padding: 0.5em 1em;
     color: #fff;
 }
 
-.geometryMeasuresTopics{
-    display: none;
+#topicAreaSelect{
+    overflow: scroll;
 }
-
-.numberTopics{
-    display: none;
-}
-
-.algebraTopics{
-    display: none;
-}
-
-.ratioTopics{
-    display: none;
-}
-
-.probabilityTopics{
-    display: none;
-}
-
-.question-info-box{
-    padding: 1% 10% 1% 1em;
-    border-top: #fff 1px solid;
-    border-bottom: #fff 1px solid;
-    color: #fff;
-    height: fit-content;
-    text-align: left;
-    min-width: 100%;
-}
-
-.tableinfo{
-    border: none;
-    border-collapse: none;
-    display: none;
-    table-layout: fixed;
-    width: 100%;
-    font-size: 1em;
-    white-space: pre-line;
-    line-height: 1.5;
-}
-.tableinfo th{
-    border: none;
-    text-align: right;
-}
-.tableinfo td{
-    border: none;
-    text-align: left;
-}
-
 
 /* Body section */
 

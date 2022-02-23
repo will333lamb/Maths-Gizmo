@@ -57,26 +57,18 @@
         <h2>GCSE DISPLAY</h2>
         <h3>Question Search</h3>
         <div class="dropDownMenus">
-          <p class="label">Topic area:</p>
           <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
             <option selected value="0">Please select</option>
-            <option value="1">Number</option>
-            <option value="2">Algebra</option>
-            <option value="3">Ratio & Proportion</option>
-            <option value="4">Geometry & Measures</option>
-            <option value="5">Probability & Statistics</option>
-          </select>
-        </div>
-        <div class="dropDownMenus">
-          <p class="label">Topic:</p>
-          <select id="topicSelect" onchange="getSelectedTopic()">
-            <option selected value="0">Please select</option>
-            <option value="speedDistanceTime" class="geometryMeasuresTopics">Speed, distance, time</option>
-            <option value="estimation" class="numberTopics">Estimation</option>
-            <option value="solveQuadraticByFactorising" class="algebraTopics">Quadratics: Solve by factorising</option>
-            <option value="simultaneousEquationsNoContext" class="algebraTopics">Simultaneous Equations: No context</option>
-            <option value="4" class="ratioTopics"></option>
-            <option value="5" class="probabilityTopics"></option>
+            <optgroup label="Number">
+              <option value="estimation">Estimation</option>
+            </optgroup>
+            <optgroup label="Algebra">
+              <option value="solveQuadraticByFactorising">Quadratics: Solve by factorising</option>
+              <option value="simultaneousEquationsNoContext">Simultaneous Equations: No context</option>
+            </optgroup>
+            <optgroup label="Geometry and Measures">
+              <option value="speedDistanceTime">Speed, distance, time</option>
+            </optgroup>
           </select>
         </div>
       </div>
