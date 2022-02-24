@@ -618,6 +618,49 @@ function QidSolveQuadraticFactorising001(){
 
 function QidSimultaneousEquationsNoContext(){
 
+    let randomNumArray = [Math.ceil((Math.random()*9)+1),Math.ceil((Math.random()*9)+1),Math.ceil((Math.random()*9)+1)];
+    let xCoefficentEqn1 = randomNumArray[0];
+
+    let yCoefficentEqn1 
+    if(globalDifficultySelection === 2){
+        yCoefficentEqn1 = xCoefficentEqn1+1;
+    }
+    let xValue
+    if(globalDifficultySelection === 2){
+        xValue = randomNumArray[Math.floor(Math.random()*randomNumArray.length)];
+    } else if(globalDifficultySelection === 3){
+        xValue = Math.ceil((Math.random()*9)+1)*-1
+    }
+
+    let yValue
+    if(globalDifficultySelection === 2){
+        for(yValue = randomNumArray[Math.floor(Math.random()*randomNumArray.length)] ; yValue === xValue;){
+            yValue = randomNumArray[Math.floor(Math.random()*randomNumArray.length)];
+        };
+    } else if(globalDifficultySelection === 3){
+        for(yValue = Math.ceil((Math.random()*9)+1)*-1; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*9)+1)*-1;
+        };
+    }
+    // This loop makes sure x and y values aren't equal for future ref!!!. No idea why it isn't yValue != xValue as stopping condition as I had thought. 
+
+    let eqn1Num = xCoefficentEqn1*xValue + yCoefficentEqn1*yValue
+
+    let xCoefficentEqn2
+    if(globalDifficultySelection === 2){
+        for(xCoefficentEqn2 = randomNumArray[0] ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    };
+
+    let yCoefficentEqn2
+    if(globalDifficultySelection === 2){
+        for(yCoefficentEqn2 = randomNumArray[0]; yCoefficentEqn2 === yCoefficentEqn1;){
+            yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    };
+
+    eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
 
 // Question Text
     document.getElementById("questionText").innerHTML = 
@@ -626,7 +669,10 @@ function QidSimultaneousEquationsNoContext(){
     <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
     </span><br>
     Solve the simultaneous equations.<br><br>
-    equations here
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br>
+    x value is ${xValue} and y value is ${yValue}
     `
 }
 
