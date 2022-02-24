@@ -135,19 +135,8 @@ select{
     border-bottom: #fff 1px solid
 }   
 
-select option{
-    font-weight: 600;
-}
-
 select:hover{
     background-color: #009885;
-}
-
-.label{
-    color: #fff;
-    padding: 5em 1em;
-    text-align: center;
-    
 }
 
 .wrapper{
@@ -941,27 +930,6 @@ select:hover{
 
 #checkSign{
     color: green;
-}
-
-
-.geometryMeasuresTopics{
-    display: none;
-}
-
-.numberTopics{
-    display: none;
-}
-
-.algebraTopics{
-    display: none;
-}
-
-.ratioTopics{
-    display: none;
-}
-
-.probabilityTopics{
-    display: none;
 }
 
 
