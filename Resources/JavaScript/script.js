@@ -618,62 +618,116 @@ function QidSolveQuadraticFactorising001(){
 
 function QidSimultaneousEquationsNoContext(){
 
-    let randomNumArray = [Math.ceil((Math.random()*9)+1),Math.ceil((Math.random()*9)+1),Math.ceil((Math.random()*9)+1)];
-    let xCoefficentEqn1 = randomNumArray[0];
+    
+    let xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
 
-    let yCoefficentEqn1 
-    if(globalDifficultySelection === 2){
-        yCoefficentEqn1 = xCoefficentEqn1+1;
-    }
+    let yCoefficentEqn1
+    for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
+        yCoefficentEqn1 = Math.ceil(Math.random()*9)+1;
+    };
+    
     let xValue
     if(globalDifficultySelection === 2){
-        xValue = randomNumArray[Math.floor(Math.random()*randomNumArray.length)];
+        xValue = Math.ceil((Math.random()*9)+1);
     } else if(globalDifficultySelection === 3){
-        xValue = Math.ceil((Math.random()*9)+1)*-1
+        xValue = Math.ceil((Math.random()*12)+1)*-1
+    } else if(globalDifficultySelection === 1){
+        xValue = Math.ceil((Math.random()*9)+1);
     }
 
     let yValue
+    // This loop makes sure x and y values aren't equal for future ref!!!. Note it is yval = xval, not yval != xval as stopping condition has to evaluate as false to stop.
     if(globalDifficultySelection === 2){
-        for(yValue = randomNumArray[Math.floor(Math.random()*randomNumArray.length)] ; yValue === xValue;){
-            yValue = randomNumArray[Math.floor(Math.random()*randomNumArray.length)];
+        for(yValue = Math.ceil((Math.random()*9)+1) ; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*9)+1);
         };
     } else if(globalDifficultySelection === 3){
-        for(yValue = Math.ceil((Math.random()*9)+1)*-1; yValue === xValue;){
-            yValue = Math.ceil((Math.random()*9)+1)*-1;
+        for(yValue = Math.ceil((Math.random()*12)+1)*-1; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*12)+1)*-1;
         };
+    } else if(globalDifficultySelection === 1){
+        yValue = Math.ceil((Math.random()*9)+1);
     }
-    // This loop makes sure x and y values aren't equal for future ref!!!. No idea why it isn't yValue != xValue as stopping condition as I had thought. 
+     
 
     let eqn1Num = xCoefficentEqn1*xValue + yCoefficentEqn1*yValue
 
     let xCoefficentEqn2
     if(globalDifficultySelection === 2){
-        for(xCoefficentEqn2 = randomNumArray[0] ; xCoefficentEqn2 === xCoefficentEqn1;){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
             xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
         };
-    };
+    } else if(globalDifficultySelection === 3){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 1){
+        xCoefficentEqn2 = xCoefficentEqn1;
+    }
 
     let yCoefficentEqn2
-    if(globalDifficultySelection === 2){
-        for(yCoefficentEqn2 = randomNumArray[0]; yCoefficentEqn2 === yCoefficentEqn1;){
-            yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
-        };
+    for(yCoefficentEqn2 = Math.ceil(Math.random()*9)+1; yCoefficentEqn2 === yCoefficentEqn1;){
+        yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
     };
 
     eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
 
+    function lcm_two_numbers(x, y) {
+        if ((typeof x !== 'number') || (typeof y !== 'number')) 
+         return false;
+       return (!x || !y) ? 0 : Math.abs((x * y) / gcd_two_numbers(x, y));
+     }
+     
+     function gcd_two_numbers(x, y) {
+       x = Math.abs(x);
+       y = Math.abs(y);
+       while(y) {
+         var t = y;
+         y = x % y;
+         x = t;
+       }
+       return x;
+     }
+
+     let lcmX =lcm_two_numbers(xCoefficentEqn1,xCoefficentEqn2);
+     let lcmY =lcm_two_numbers(yCoefficentEqn1,yCoefficentEqn2);
+     
+
+
 // Question Text
     document.getElementById("questionText").innerHTML = 
-    `<span class="fa-stack fa-2x" style="font-size: 1rem;">
-    <i class="fas fa-calculator fa-stack-1x"></i>
-    <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
-    </span><br>
-    Solve the simultaneous equations.<br><br>
+    `
+    <style>
+    .centeredEquation{
+        width: 100%;
+        text-align: center;
+        font-family: 'sans-serif';
+    }
+    </style>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i><br>
+    Solve the simultaneous equations.<br><br><div class="centeredEquation">
     ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
     ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
-    <br>
-    x value is ${xValue} and y value is ${yValue}
+    <br></div>
+    
     `
+
+// Solution Text
+
+    if(globalDifficultySelection === 2){
+        if(lcmX <= lcmY){
+            document.getElementById("solutionText").innerHTML = 
+            ` The lowest common multiple for our &#119909-coefficients is ${lcmX}<br>    
+            `
+        } else if(lcmX>lcmY){
+            document.getElementById("solutionText").innerHTML =
+            `The lowest common multiple for our &#119910-coefficients is ${lcmY}<br>`
+        }
+        
+    }
+    
+
 }
 
 /**********************************************
