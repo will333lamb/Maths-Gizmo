@@ -228,6 +228,9 @@ $(document).ready(function(e){
     } else if(globalTopicAreaSelection ==="solveQuadraticByFactorising" && sumTotalQuestions>90){
         alert("Sorry, the maximum amount of questions for this topic is 90. " +
         "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext" && sumTotalQuestions>60){
+        alert("Sorry, the maximum amount of questions for this topic is 60. " +
+        "Your worksheet may not load properly if you exceed this.");
     }
 });
 });
@@ -1268,6 +1271,651 @@ if (questionNumber === 5){
 
 }
 
+//Simultaneous Equations No context
+function QidSimultaneousEquationsNoContext(){
+
+    
+    let xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
+
+    let yCoefficentEqn1
+    for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
+        yCoefficentEqn1 = Math.ceil(Math.random()*9)+1;
+    };
+    
+    let xValue
+    if(globalDifficultySelection === 2){
+        xValue = Math.ceil((Math.random()*9)+1);
+    } else if(globalDifficultySelection === 3){
+        xValue = Math.ceil((Math.random()*12)+1)*-1
+    } else if(globalDifficultySelection === 1){
+        xValue = Math.ceil((Math.random()*9)+1);
+    }
+
+    let yValue
+    // This loop makes sure x and y values aren't equal for future ref!!!. Note it is yval = xval, not yval != xval as stopping condition has to evaluate as false to stop.
+    if(globalDifficultySelection === 2){
+        for(yValue = Math.ceil((Math.random()*9)+1) ; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*9)+1);
+        };
+    } else if(globalDifficultySelection === 3){
+        for(yValue = Math.ceil((Math.random()*12)+1)*-1; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*12)+1)*-1;
+        };
+    } else if(globalDifficultySelection === 1){
+        yValue = Math.ceil((Math.random()*9)+1);
+    }
+     
+
+    let eqn1Num = xCoefficentEqn1*xValue + yCoefficentEqn1*yValue
+
+    let xCoefficentEqn2
+    if(globalDifficultySelection === 2){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 3){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 1){
+        xCoefficentEqn2 = xCoefficentEqn1;
+    }
+
+    let yCoefficentEqn2
+    for(yCoefficentEqn2 = Math.ceil(Math.random()*9)+1; yCoefficentEqn2 === yCoefficentEqn1;){
+        yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+    };
+
+    let eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
+
+    function lcm_two_numbers(x, y) {
+        if ((typeof x !== 'number') || (typeof y !== 'number')) 
+         return false;
+       return (!x || !y) ? 0 : Math.abs((x * y) / gcd_two_numbers(x, y));
+     }
+     
+     function gcd_two_numbers(x, y) {
+       x = Math.abs(x);
+       y = Math.abs(y);
+       while(y) {
+         var t = y;
+         y = x % y;
+         x = t;
+       }
+       return x;
+     }
+
+     let lcmX =lcm_two_numbers(xCoefficentEqn1,xCoefficentEqn2);
+     let lcmY =lcm_two_numbers(yCoefficentEqn1,yCoefficentEqn2);
+     
+    let eqn1MultiplierX = lcmX/xCoefficentEqn1
+    let eqn2MultiplierX = lcmX/xCoefficentEqn2
+    let eqn1YCoefficientMult = yCoefficentEqn1*eqn1MultiplierX
+    let eqn1NumMult = eqn1Num*eqn1MultiplierX
+    let eqn2YCoefficientMult = yCoefficentEqn2*eqn2MultiplierX
+    let eqn2NumMult = eqn2Num*eqn2MultiplierX
+
+    let subtractedEqnYCoefficient = eqn1YCoefficientMult - eqn2YCoefficientMult
+    let subtractedEqnNum = eqn1NumMult - eqn2NumMult
+
+    let substitutedYVal = yCoefficentEqn1*yValue
+
+    let eqn1MultiplierY = lcmY/yCoefficentEqn1
+    let eqn2MultiplierY = lcmY/yCoefficentEqn2
+    let eqn1XCoefficientMult = xCoefficentEqn1*eqn1MultiplierY
+    let eqn2XCoefficientMult = xCoefficentEqn2*eqn2MultiplierY
+    let eqn1NumMultY = eqn1Num*eqn1MultiplierY
+    let eqn2NumMultY = eqn2Num*eqn2MultiplierY
+
+    let subtractedEqnXCoefficient = eqn1XCoefficientMult - eqn2XCoefficientMult
+    let subtractedEqnNumY = eqn1NumMultY - eqn2NumMultY
+
+    let substitutedXVal = xCoefficentEqn1*xValue
+
+    let bronzeSubtractedYval = yCoefficentEqn1 - yCoefficentEqn2
+    let bronzeSubtractedNum = eqn1Num - eqn2Num
+
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+    questionNumber++;
+
+    function runQuestion(){
+        // Question Text
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .centeredEquation{
+        width: 100%;
+        text-align: center;
+        font-family: 'sans-serif';
+    }
+    .answerLines{
+        float: right;
+    }
+    </style>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i> <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="answerLines">
+    &#119909 = ____________<br><br>
+    &#119910 = ____________<br>
+    <p id="marksGiven">(4 marks)</p>
+    </div><br><br><br><br>
+
+    
+    `
+
+// Solution Text
+
+    if(globalDifficultySelection === 2){
+        if(lcmX <= lcmY){
+            document.getElementById("solutionText").innerHTML += 
+            `<style>
+        #solutionText{
+            line-height: 1.5;
+        }
+        </style>`+`<i class="fas fa-calculator"></i>
+            <i id="checkSign" class="fas fa-check"></i><span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+            Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div><br> 
+            The lowest common multiple of the &#119909-coefficients is ${lcmX}<br>
+            Multiplying the top equation by ${eqn1MultiplierX} and the bottom equation by ${eqn2MultiplierX}, we get:<br>
+            <div class="centeredEquation">
+            ${lcmX}&#119909 + ${eqn1YCoefficientMult}&#119910 = ${eqn1NumMult}<br>
+            ${lcmX}&#119909 + ${eqn2YCoefficientMult}&#119910 = ${eqn2NumMult}
+            </div>`
+            if(eqn1YCoefficientMult>eqn2YCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient}&#119910 = ${subtractedEqnNum}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML +=
+                `We can now subtract the top equation from the bottom equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient*-1}&#119910 = ${subtractedEqnNum*-1}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            }
+        } else if(lcmX>lcmY){
+            document.getElementById("solutionText").innerHTML +=
+            `<i class="fas fa-calculator"></i>
+            <i id="checkSign" class="fas fa-check"></i><span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+            Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div> 
+            The lowest common multiple of the &#119910-coefficients is ${lcmY}<br>
+            Multiplying the top equation by ${eqn1MultiplierY} and the bottom equation by ${eqn2MultiplierY}, we get:<br>
+            <div class="centeredEquation">
+            ${eqn1XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn1NumMultY}<br>
+            ${eqn2XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn2NumMultY}
+            </div>`
+            if(eqn1XCoefficientMult>eqn2XCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient}&#119909 = ${subtractedEqnNumY}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the top equation from the bottom equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient*-1}&#119909 = ${subtractedEqnNumY*-1}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            }
+        }
+        
+    } else if(globalDifficultySelection === 3){
+        if(lcmX <= lcmY){
+            document.getElementById("solutionText").innerHTML += 
+            `<i class="fas fa-calculator"></i>
+            <i id="checkSign" class="fas fa-check"></i><span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+            Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div>  
+            The lowest common multiple of the &#119909-coefficients is ${lcmX}<br>
+            Multiplying the top equation by ${eqn1MultiplierX} and the bottom equation by ${eqn2MultiplierX}, we get:<br>
+            <div class="centeredEquation">
+            ${lcmX}&#119909 + ${eqn1YCoefficientMult}&#119910 = ${eqn1NumMult}<br>
+            ${lcmX}&#119909 + ${eqn2YCoefficientMult}&#119910 = ${eqn2NumMult}
+            </div>`
+            if(eqn1YCoefficientMult>eqn2YCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient}&#119910 = ${subtractedEqnNum}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 - ${substitutedYVal*-1} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML +=
+                `We can now subtract the top equation from the bottom equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient*-1}&#119910 = ${subtractedEqnNum*-1}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 - ${substitutedYVal*-1} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            }
+        } else if(lcmX>lcmY){
+            document.getElementById("solutionText").innerHTML +=
+            `<i class="fas fa-calculator"></i>
+            <i id="checkSign" class="fas fa-check"></i><span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+            Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div> 
+            The lowest common multiple of the &#119910-coefficients is ${lcmY}<br>
+            Multiplying the top equation by ${eqn1MultiplierY} and the bottom equation by ${eqn2MultiplierY}, we get:<br>
+            <div class="centeredEquation">
+            ${eqn1XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn1NumMultY}<br>
+            ${eqn2XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn2NumMultY}
+            </div>`
+            if(eqn1XCoefficientMult>eqn2XCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient}&#119909 = ${subtractedEqnNumY}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the top equation from the bottom equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient*-1}&#119909 = ${subtractedEqnNumY*-1}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                <br>
+    <div class="borderBottomSolution"></div><br>
+                </div>
+                `
+            }
+        }
+    } else if(globalDifficultySelection === 1){
+        if(yCoefficentEqn1>yCoefficentEqn2){
+            document.getElementById("solutionText").innerHTML += 
+            `<i class="fas fa-calculator"></i>
+            <i id="checkSign" class="fas fa-check"></i><span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+            Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div> 
+            By subtracting the bottom equation from the top equation and solving for &#119910, we have:
+            <div class="centeredEquation">
+            ${bronzeSubtractedYval}&#119910 = ${bronzeSubtractedNum}<br>
+            &#119910 = ${yValue}
+            </div>
+            Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
+            &#119909 = ${xValue}
+            <br>
+    <div class="borderBottomSolution"></div><br>
+            </div>`
+        } else{
+            document.getElementById("solutionText").innerHTML += 
+            `<i class="fas fa-calculator"></i>
+            <i id="checkSign" class="fas fa-check"></i><span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+            Solve the simultaneous equations.<br><br><div class="centeredEquation">
+    ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+    ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+    <br></div> 
+            By subtracting the top equation from the bottom equation and solving for &#119910, we have:
+            <div class="centeredEquation">
+            ${bronzeSubtractedYval*-1}&#119910 = ${bronzeSubtractedNum*-1}<br>
+            &#119910 = ${yValue}
+            </div>
+            Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
+            &#119909 = ${xValue}
+            <br>
+    <div class="borderBottomSolution"></div><br>
+            </div>`
+        }
+    }
+        
+    }
+
+    //Page Breaks
+    if (questionNumber === 3){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 5){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 7){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 9){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 11){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 13){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 15){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 17){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 19){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 21){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 23){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 25){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 27){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 29){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 31){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 33){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 35){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 37){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 39){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 41){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 43){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 45){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 47){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 49){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 51){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 53){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 55){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 57){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 59){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 61){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    };
+    if (questionNumber === 3){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 5){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 7){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 9){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 11){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 13){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 15){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 17){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 19){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 21){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 23){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 25){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 27){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 29){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 33){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 35){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 37){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 39){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 41){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 43){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 45){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 47){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 49){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 51){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 53){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 55){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 57){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 59){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 61){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 63){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 65){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    }
+
+    function reassignValues(){
+        xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
+
+        yCoefficentEqn1
+    for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
+        yCoefficentEqn1 = Math.ceil(Math.random()*9)+1;
+    };
+    
+        xValue
+    if(globalDifficultySelection === 2){
+        xValue = Math.ceil((Math.random()*9)+1);
+    } else if(globalDifficultySelection === 3){
+        xValue = Math.ceil((Math.random()*12)+1)*-1
+    } else if(globalDifficultySelection === 1){
+        xValue = Math.ceil((Math.random()*9)+1);
+    }
+
+        yValue
+    // This loop makes sure x and y values aren't equal for future ref!!!. Note it is yval = xval, not yval != xval as stopping condition has to evaluate as false to stop.
+    if(globalDifficultySelection === 2){
+        for(yValue = Math.ceil((Math.random()*9)+1) ; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*9)+1);
+        };
+    } else if(globalDifficultySelection === 3){
+        for(yValue = Math.ceil((Math.random()*12)+1)*-1; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*12)+1)*-1;
+        };
+    } else if(globalDifficultySelection === 1){
+        yValue = Math.ceil((Math.random()*9)+1);
+    }
+     
+
+        eqn1Num = xCoefficentEqn1*xValue + yCoefficentEqn1*yValue
+
+        xCoefficentEqn2
+    if(globalDifficultySelection === 2){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 3){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 1){
+        xCoefficentEqn2 = xCoefficentEqn1;
+    }
+
+        yCoefficentEqn2
+    for(yCoefficentEqn2 = Math.ceil(Math.random()*9)+1; yCoefficentEqn2 === yCoefficentEqn1;){
+        yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+    };
+
+        eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
+
+    function lcm_two_numbers(x, y) {
+        if ((typeof x !== 'number') || (typeof y !== 'number')) 
+         return false;
+       return (!x || !y) ? 0 : Math.abs((x * y) / gcd_two_numbers(x, y));
+     }
+     
+     function gcd_two_numbers(x, y) {
+       x = Math.abs(x);
+       y = Math.abs(y);
+       while(y) {
+         var t = y;
+         y = x % y;
+         x = t;
+       }
+       return x;
+     }
+
+        lcmX =lcm_two_numbers(xCoefficentEqn1,xCoefficentEqn2);
+        lcmY =lcm_two_numbers(yCoefficentEqn1,yCoefficentEqn2);
+     
+        eqn1MultiplierX = lcmX/xCoefficentEqn1
+        eqn2MultiplierX = lcmX/xCoefficentEqn2
+        eqn1YCoefficientMult = yCoefficentEqn1*eqn1MultiplierX
+        eqn1NumMult = eqn1Num*eqn1MultiplierX
+        eqn2YCoefficientMult = yCoefficentEqn2*eqn2MultiplierX
+        eqn2NumMult = eqn2Num*eqn2MultiplierX
+
+        subtractedEqnYCoefficient = eqn1YCoefficientMult - eqn2YCoefficientMult
+        subtractedEqnNum = eqn1NumMult - eqn2NumMult
+
+        substitutedYVal = yCoefficentEqn1*yValue
+
+        eqn1MultiplierY = lcmY/yCoefficentEqn1
+        eqn2MultiplierY = lcmY/yCoefficentEqn2
+        eqn1XCoefficientMult = xCoefficentEqn1*eqn1MultiplierY
+        eqn2XCoefficientMult = xCoefficentEqn2*eqn2MultiplierY
+        eqn1NumMultY = eqn1Num*eqn1MultiplierY
+        eqn2NumMultY = eqn2Num*eqn2MultiplierY
+
+        subtractedEqnXCoefficient = eqn1XCoefficientMult - eqn2XCoefficientMult
+        subtractedEqnNumY = eqn1NumMultY - eqn2NumMultY
+
+        substitutedXVal = xCoefficentEqn1*xValue
+
+        bronzeSubtractedYval = yCoefficentEqn1 - yCoefficentEqn2
+        bronzeSubtractedNum = eqn1Num - eqn2Num
+
+    }
+    
+
+    reassignValues();
+    runQuestion();
+
+}
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -1339,6 +1987,25 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     worksheetDifficultyHeadings();
     for (let i = 0; i < goldNumber; i++){
         QidSolveQuadraticFactorising001(i)}
+    document.getElementById("generateQButton").innerHTML="Reset";
+} else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
+    loseInstructions();
+    getBronzeNumber();
+    globalDifficultySelection = 1;
+    worksheetDifficultyHeadings();
+    document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations no Context</h3><br>`
+    for (let i = 0; i < bronzeNumber; i++){
+        QidSimultaneousEquationsNoContext(i)}
+    getSilverNumber(); 
+    globalDifficultySelection = 2;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < silverNumber; i++){
+        QidSimultaneousEquationsNoContext(i)}
+    getGoldNumber();
+    globalDifficultySelection = 3;
+    worksheetDifficultyHeadings();
+    for (let i = 0; i < goldNumber; i++){
+        QidSimultaneousEquationsNoContext(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
 }
 };
