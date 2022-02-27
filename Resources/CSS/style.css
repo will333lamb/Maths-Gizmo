@@ -262,7 +262,7 @@ select:hover{
 .solution-box {
     color: red;
     display: none;
-    padding: 1% 10% 1% 1%;
+    padding: 1% 2% 1% 2%;
     border:#009870 1px solid;
     height: fit-content;
     width: 99%;
@@ -273,7 +273,7 @@ select:hover{
 }
 
 .question-box {
-    padding: 1% 10% 1% 1%;
+    padding: 1% 2% 1% 2%;
     border: #009870 1px solid;
     width: 99%;
     height: fit-content;

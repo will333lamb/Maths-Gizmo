@@ -139,41 +139,6 @@ let globalDifficultySelection = 2;
 
 function getSelectedTopicArea(){
     globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
-    if (globalTopicAreaSelection === 1){
-        document.querySelector(".numberTopics").style.display = "block";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 2){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "block";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 3){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "block";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 4){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "block";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 5){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "block";
-    }
 };
 
 function getSelectedTopic(){globalSelectedTopic = document.getElementById("topicSelect").value}
@@ -670,7 +635,7 @@ function QidSimultaneousEquationsNoContext(){
         yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
     };
 
-    eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
+    let eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
 
     function lcm_two_numbers(x, y) {
         if ((typeof x !== 'number') || (typeof y !== 'number')) 
@@ -692,7 +657,32 @@ function QidSimultaneousEquationsNoContext(){
      let lcmX =lcm_two_numbers(xCoefficentEqn1,xCoefficentEqn2);
      let lcmY =lcm_two_numbers(yCoefficentEqn1,yCoefficentEqn2);
      
+    let eqn1MultiplierX = lcmX/xCoefficentEqn1
+    let eqn2MultiplierX = lcmX/xCoefficentEqn2
+    let eqn1YCoefficientMult = yCoefficentEqn1*eqn1MultiplierX
+    let eqn1NumMult = eqn1Num*eqn1MultiplierX
+    let eqn2YCoefficientMult = yCoefficentEqn2*eqn2MultiplierX
+    let eqn2NumMult = eqn2Num*eqn2MultiplierX
 
+    let subtractedEqnYCoefficient = eqn1YCoefficientMult - eqn2YCoefficientMult
+    let subtractedEqnNum = eqn1NumMult - eqn2NumMult
+
+    let substitutedYVal = yCoefficentEqn1*yValue
+
+    let eqn1MultiplierY = lcmY/yCoefficentEqn1
+    let eqn2MultiplierY = lcmY/yCoefficentEqn2
+    let eqn1XCoefficientMult = xCoefficentEqn1*eqn1MultiplierY
+    let eqn2XCoefficientMult = xCoefficentEqn2*eqn2MultiplierY
+    let eqn1NumMultY = eqn1Num*eqn1MultiplierY
+    let eqn2NumMultY = eqn2Num*eqn2MultiplierY
+
+    let subtractedEqnXCoefficient = eqn1XCoefficientMult - eqn2XCoefficientMult
+    let subtractedEqnNumY = eqn1NumMultY - eqn2NumMultY
+
+    let substitutedXVal = xCoefficentEqn1*xValue
+
+    let bronzeSubtractedYval = yCoefficentEqn1 - yCoefficentEqn2
+    let bronzeSubtractedNum = eqn1Num - eqn2Num
 
 // Question Text
     document.getElementById("questionText").innerHTML = 
@@ -718,13 +708,196 @@ function QidSimultaneousEquationsNoContext(){
     if(globalDifficultySelection === 2){
         if(lcmX <= lcmY){
             document.getElementById("solutionText").innerHTML = 
-            ` The lowest common multiple for our &#119909-coefficients is ${lcmX}<br>    
-            `
+            ` 
+            The lowest common multiple of the &#119909-coefficients is ${lcmX}<br>
+            Multiplying the top equation by ${eqn1MultiplierX} and the bottom equation by ${eqn2MultiplierX}, we get:<br>
+            <div class="centeredEquation">
+            ${lcmX}&#119909 + ${eqn1YCoefficientMult}&#119910 = ${eqn1NumMult}<br>
+            ${lcmX}&#119909 + ${eqn2YCoefficientMult}&#119910 = ${eqn2NumMult}
+            </div>`
+            if(eqn1YCoefficientMult>eqn2YCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient}&#119910 = ${subtractedEqnNum}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML +=
+                `We can now subtract the top equation from the bottom equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient*-1}&#119910 = ${subtractedEqnNum*-1}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                `
+            }
         } else if(lcmX>lcmY){
             document.getElementById("solutionText").innerHTML =
-            `The lowest common multiple for our &#119910-coefficients is ${lcmY}<br>`
+            `The lowest common multiple of the &#119910-coefficients is ${lcmY}<br>
+            Multiplying the top equation by ${eqn1MultiplierY} and the bottom equation by ${eqn2MultiplierY}, we get:<br>
+            <div class="centeredEquation">
+            ${eqn1XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn1NumMultY}<br>
+            ${eqn2XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn2NumMultY}
+            </div>`
+            if(eqn1XCoefficientMult>eqn2XCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient}&#119909 = ${subtractedEqnNumY}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the top equation from the bottom equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient*-1}&#119909 = ${subtractedEqnNumY*-1}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                `
+            }
         }
         
+    } else if(globalDifficultySelection === 3){
+        if(lcmX <= lcmY){
+            document.getElementById("solutionText").innerHTML = 
+            ` 
+            The lowest common multiple of the &#119909-coefficients is ${lcmX}<br>
+            Multiplying the top equation by ${eqn1MultiplierX} and the bottom equation by ${eqn2MultiplierX}, we get:<br>
+            <div class="centeredEquation">
+            ${lcmX}&#119909 + ${eqn1YCoefficientMult}&#119910 = ${eqn1NumMult}<br>
+            ${lcmX}&#119909 + ${eqn2YCoefficientMult}&#119910 = ${eqn2NumMult}
+            </div>`
+            if(eqn1YCoefficientMult>eqn2YCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient}&#119910 = ${subtractedEqnNum}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 - ${substitutedYVal*-1} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML +=
+                `We can now subtract the top equation from the bottom equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient*-1}&#119910 = ${subtractedEqnNum*-1}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 - ${substitutedYVal*-1} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                `
+            }
+        } else if(lcmX>lcmY){
+            document.getElementById("solutionText").innerHTML =
+            `The lowest common multiple of the &#119910-coefficients is ${lcmY}<br>
+            Multiplying the top equation by ${eqn1MultiplierY} and the bottom equation by ${eqn2MultiplierY}, we get:<br>
+            <div class="centeredEquation">
+            ${eqn1XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn1NumMultY}<br>
+            ${eqn2XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn2NumMultY}
+            </div>`
+            if(eqn1XCoefficientMult>eqn2XCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient}&#119909 = ${subtractedEqnNumY}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the top equation from the bottom equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient*-1}&#119909 = ${subtractedEqnNumY*-1}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                `
+            }
+        }
+    } else if(globalDifficultySelection === 1){
+        if(yCoefficentEqn1>yCoefficentEqn2){
+            document.getElementById("solutionText").innerHTML = 
+            `By subtracting the bottom equation from the top equation and solving for &#119910, we have:
+            <div class="centeredEquation">
+            ${bronzeSubtractedYval}&#119910 = ${bronzeSubtractedNum}<br>
+            &#119910 = ${yValue}
+            </div>
+            Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
+            &#119909 = ${xValue}
+            </div>`
+        } else{
+            document.getElementById("solutionText").innerHTML = 
+            `By subtracting the top equation from the bottom equation and solving for &#119910, we have:
+            <div class="centeredEquation">
+            ${bronzeSubtractedYval*-1}&#119910 = ${bronzeSubtractedNum*-1}<br>
+            &#119910 = ${yValue}
+            </div>
+            Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
+            &#119909 = ${xValue}
+            </div>`
+        }
     }
     
 
