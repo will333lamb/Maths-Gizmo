@@ -903,6 +903,383 @@ function QidSimultaneousEquationsNoContext(){
 
 }
 
+function QidSimultaneousEquationsContext(){
+
+    let name1 =  maleNameArray[Math.floor(Math.random()*maleNameArray.length)];
+    let name2 = femaleNameArray[Math.floor(Math.random()*femaleNameArray.length)];
+
+    let xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
+    if(globalDifficultySelection===3){
+        xCoefficentEqn1 = Math.ceil((Math.random()*9)+10);
+    }
+
+    let yCoefficentEqn1
+    for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
+        yCoefficentEqn1 = Math.ceil(Math.random()*9)+1;
+    };
+    
+    let xValue
+    if(globalDifficultySelection === 2){
+        xValue = Math.ceil((Math.random()*9)+1);
+    } else if(globalDifficultySelection === 3){
+        xValue = Math.ceil((Math.random()*12)+10)
+    } else if(globalDifficultySelection === 1){
+        xValue = Math.ceil((Math.random()*9)+1);
+    }
+
+    let yValue
+    // This loop makes sure x and y values aren't equal for future ref!!!. Note it is yval = xval, not yval != xval as stopping condition has to evaluate as false to stop.
+    if(globalDifficultySelection === 2){
+        for(yValue = Math.ceil((Math.random()*9)+1) ; yValue === xValue;){
+            yValue = Math.ceil((Math.random()*9)+1);
+        };
+    } else if(globalDifficultySelection === 3){
+        for(yValue = Math.ceil((Math.random()*12)+10); yValue === xValue;){
+            yValue = Math.ceil((Math.random()*12)+1)*-1;
+        };
+    } else if(globalDifficultySelection === 1){
+        yValue = Math.ceil((Math.random()*9)+1);
+    }
+     
+
+    let eqn1Num = xCoefficentEqn1*xValue + yCoefficentEqn1*yValue
+
+    let xCoefficentEqn2
+    if(globalDifficultySelection === 2){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 3){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+10) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        };
+    } else if(globalDifficultySelection === 1){
+        xCoefficentEqn2 = xCoefficentEqn1;
+    }
+
+    let yCoefficentEqn2
+    for(yCoefficentEqn2 = Math.ceil(Math.random()*9)+1; yCoefficentEqn2 === yCoefficentEqn1;){
+        yCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+    };
+
+    let eqn2Num = xCoefficentEqn2*xValue + yCoefficentEqn2*yValue;
+
+    function lcm_two_numbers(x, y) {
+        if ((typeof x !== 'number') || (typeof y !== 'number')) 
+         return false;
+       return (!x || !y) ? 0 : Math.abs((x * y) / gcd_two_numbers(x, y));
+     }
+     
+     function gcd_two_numbers(x, y) {
+       x = Math.abs(x);
+       y = Math.abs(y);
+       while(y) {
+         var t = y;
+         y = x % y;
+         x = t;
+       }
+       return x;
+     }
+
+     let lcmX =lcm_two_numbers(xCoefficentEqn1,xCoefficentEqn2);
+     let lcmY =lcm_two_numbers(yCoefficentEqn1,yCoefficentEqn2);
+     
+    let eqn1MultiplierX = lcmX/xCoefficentEqn1
+    let eqn2MultiplierX = lcmX/xCoefficentEqn2
+    let eqn1YCoefficientMult = yCoefficentEqn1*eqn1MultiplierX
+    let eqn1NumMult = eqn1Num*eqn1MultiplierX
+    let eqn2YCoefficientMult = yCoefficentEqn2*eqn2MultiplierX
+    let eqn2NumMult = eqn2Num*eqn2MultiplierX
+
+    let subtractedEqnYCoefficient = eqn1YCoefficientMult - eqn2YCoefficientMult
+    let subtractedEqnNum = eqn1NumMult - eqn2NumMult
+
+    let substitutedYVal = yCoefficentEqn1*yValue
+
+    let eqn1MultiplierY = lcmY/yCoefficentEqn1
+    let eqn2MultiplierY = lcmY/yCoefficentEqn2
+    let eqn1XCoefficientMult = xCoefficentEqn1*eqn1MultiplierY
+    let eqn2XCoefficientMult = xCoefficentEqn2*eqn2MultiplierY
+    let eqn1NumMultY = eqn1Num*eqn1MultiplierY
+    let eqn2NumMultY = eqn2Num*eqn2MultiplierY
+
+    let subtractedEqnXCoefficient = eqn1XCoefficientMult - eqn2XCoefficientMult
+    let subtractedEqnNumY = eqn1NumMultY - eqn2NumMultY
+
+    let substitutedXVal = xCoefficentEqn1*xValue
+
+    let bronzeSubtractedYval = yCoefficentEqn1 - yCoefficentEqn2
+    let bronzeSubtractedNum = eqn1Num - eqn2Num
+
+// Question Text
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .centeredEquation{
+        width: 100%;
+        text-align: center;
+        font-family: 'sans-serif';
+    }
+    #questionText{
+        line-height: 2rem;
+    }
+    </style>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i><br>
+    
+    ${name1} and ${name2} buy some clothes.<br>
+    <br>
+    ${name1} buys ${xCoefficentEqn1} shirts and ${yCoefficentEqn1} jumpers. He pays £${eqn1Num}.<br>
+    ${name2} buys ${xCoefficentEqn2} shirts and ${yCoefficentEqn2} jumpers. She pays £${eqn2Num}.<br><br>
+    Assume that each shirt has the same cost and that each jumper has the same cost.<br>
+    <br>
+    Work out the cost of one shirt and the cost of one jumper.<br>
+    `
+
+// Solution Text
+
+    if(globalDifficultySelection === 2){
+        if(lcmX <= lcmY){
+            document.getElementById("solutionText").innerHTML = 
+            `We can express this question as the following simultaneous equation.<br>
+            Let the cost of a shirt = &#119909 and the cost of a jumper = &#119910.
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+            ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+            <br></div> 
+            The lowest common multiple of the &#119909-coefficients is ${lcmX}<br>
+            Multiplying the top equation by ${eqn1MultiplierX} and the bottom equation by ${eqn2MultiplierX}, we get:<br>
+            <div class="centeredEquation">
+            ${lcmX}&#119909 + ${eqn1YCoefficientMult}&#119910 = ${eqn1NumMult}<br>
+            ${lcmX}&#119909 + ${eqn2YCoefficientMult}&#119910 = ${eqn2NumMult}
+            </div>`
+            if(eqn1YCoefficientMult>eqn2YCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient}&#119910 = ${subtractedEqnNum}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML +=
+                `We can now subtract the top equation from the bottom equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient*-1}&#119910 = ${subtractedEqnNum*-1}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            }
+        } else if(lcmX>lcmY){
+            document.getElementById("solutionText").innerHTML =
+            `We can express this question as the following simultaneous equation.<br>
+            Let the cost of a shirt = &#119909 and the cost of a jumper = &#119910.
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+            ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+            <br></div>
+            The lowest common multiple of the &#119910-coefficients is ${lcmY}<br>
+            Multiplying the top equation by ${eqn1MultiplierY} and the bottom equation by ${eqn2MultiplierY}, we get:<br>
+            <div class="centeredEquation">
+            ${eqn1XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn1NumMultY}<br>
+            ${eqn2XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn2NumMultY}
+            </div>`
+            if(eqn1XCoefficientMult>eqn2XCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient}&#119909 = ${subtractedEqnNumY}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the top equation from the bottom equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient*-1}&#119909 = ${subtractedEqnNumY*-1}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            }
+        }
+        
+    } else if(globalDifficultySelection === 3){
+        if(lcmX <= lcmY){
+            document.getElementById("solutionText").innerHTML = 
+            `We can express this question as the following simultaneous equation.<br>
+            Let the cost of a shirt = &#119909 and the cost of a jumper = &#119910.
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+            ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+            <br></div> 
+            The lowest common multiple of the &#119909-coefficients is ${lcmX}<br>
+            Multiplying the top equation by ${eqn1MultiplierX} and the bottom equation by ${eqn2MultiplierX}, we get:<br>
+            <div class="centeredEquation">
+            ${lcmX}&#119909 + ${eqn1YCoefficientMult}&#119910 = ${eqn1NumMult}<br>
+            ${lcmX}&#119909 + ${eqn2YCoefficientMult}&#119910 = ${eqn2NumMult}
+            </div>`
+            if(eqn1YCoefficientMult>eqn2YCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient}&#119910 = ${subtractedEqnNum}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML +=
+                `We can now subtract the top equation from the bottom equation and solve for &#119910, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnYCoefficient*-1}&#119910 = ${subtractedEqnNum*-1}<br>
+                &#119910 = ${yValue}
+                </div>
+                Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+                ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
+                &#119909 = ${xValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            }
+        } else if(lcmX>lcmY){
+            document.getElementById("solutionText").innerHTML =
+            `We can express this question as the following simultaneous equation.<br>
+            Let the cost of a shirt = &#119909 and the cost of a jumper = &#119910.
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+            ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+            <br></div>
+            The lowest common multiple of the &#119910-coefficients is ${lcmY}<br>
+            Multiplying the top equation by ${eqn1MultiplierY} and the bottom equation by ${eqn2MultiplierY}, we get:<br>
+            <div class="centeredEquation">
+            ${eqn1XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn1NumMultY}<br>
+            ${eqn2XCoefficientMult}&#119909 + ${lcmY}&#119910 = ${eqn2NumMultY}
+            </div>`
+            if(eqn1XCoefficientMult>eqn2XCoefficientMult){
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the bottom equation from the top equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient}&#119909 = ${subtractedEqnNumY}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            } else {
+                document.getElementById("solutionText").innerHTML += 
+                `We can now subract the top equation from the bottom equation and solve for &#119909, giving:
+                <div class="centeredEquation">
+                ${subtractedEqnXCoefficient*-1}&#119909 = ${subtractedEqnNumY*-1}<br>
+                &#119909 = ${xValue}
+                </div>
+                Substituting our &#119909-value into our original top equation and solving for &#119910, we have:
+                <div class="centeredEquation">
+                ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${substitutedXVal} + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+                ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
+                &#119910 = ${yValue}
+                </div>
+                Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
+                `
+            }
+        }
+    } else if(globalDifficultySelection === 1){
+        if(yCoefficentEqn1>yCoefficentEqn2){
+            document.getElementById("solutionText").innerHTML = 
+            `We can express this question as the following simultaneous equation.<br>
+            Let the cost of a shirt = &#119909 and the cost of a jumper = &#119910.
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+            ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+            <br></div>
+            By subtracting the bottom equation from the top equation and solving for &#119910, we have:
+            <div class="centeredEquation">
+            ${bronzeSubtractedYval}&#119910 = ${bronzeSubtractedNum}<br>
+            &#119910 = ${yValue}
+            </div>
+            Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
+            &#119909 = ${xValue}
+            </div>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.`
+        } else{
+            document.getElementById("solutionText").innerHTML = 
+            `We can express this question as the following simultaneous equation.<br>
+            Let the cost of a shirt = &#119909 and the cost of a jumper = &#119910.
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num} <br>
+            ${xCoefficentEqn2}&#119909 + ${yCoefficentEqn2}&#119910 = ${eqn2Num}
+            <br></div>
+            By subtracting the top equation from the bottom equation and solving for &#119910, we have:
+            <div class="centeredEquation">
+            ${bronzeSubtractedYval*-1}&#119910 = ${bronzeSubtractedNum*-1}<br>
+            &#119910 = ${yValue}
+            </div>
+            Substituting our &#119910-value into our original top equation and solving for &#119909, we have:
+            <div class="centeredEquation">
+            ${xCoefficentEqn1}&#119909 + ${yCoefficentEqn1}&#119910 = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 + ${substitutedYVal} = ${eqn1Num}<br>
+            ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
+            &#119909 = ${xValue}
+            </div>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.`
+        }
+    }
+    
+
+}
+
 /**********************************************
  * Button functions *
  *******************************************/
@@ -918,6 +1295,8 @@ generateQButton.onclick = function(){
     QidSolveQuadraticFactorising001();
 } else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
     QidSimultaneousEquationsNoContext();
+} else if(globalTopicAreaSelection ==="simultaneousEquationsContext"){
+    QidSimultaneousEquationsContext();
 }
 };
 

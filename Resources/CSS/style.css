@@ -191,6 +191,11 @@ select:hover{
     overflow: scroll;
 }
 
+#downloadFile, #downloadSolutions, #downloadBothFiles{
+    display: none;
+    margin: 0 22%;
+}
+
 /* Body section */
 
 #difficultyDropDown{
@@ -1087,6 +1092,11 @@ select:hover{
     color: #009870;
     text-align: right;
     font-style: italic;
+}
+
+#downloadFile, #downloadSolutions, #downloadBothFiles{
+    display: none;
+    margin: 0 auto;
 }
 
 
