@@ -1147,10 +1147,12 @@ function QidSolveQuadraticFactorising001(){
   //Page Breaks
   if (questionNumber === 4){
     document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
-} else if (questionDifficulty === "Silver" && questionNumber === 1){
+} else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
     document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
-} else if (questionDifficulty === "Gold" && questionNumber === 1){
+} else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
     document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+} else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+    document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
 } else if (questionNumber === 7){
     document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
 } else if (questionNumber === 10){
@@ -1213,9 +1215,11 @@ function QidSolveQuadraticFactorising001(){
 
 if (questionNumber === 5){
     document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-} else if (questionDifficulty === "Silver" && questionNumber === 1){
+} else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
     document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-} else if (questionDifficulty === "Gold" && questionNumber === 1){
+} else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+    document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+} else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
     document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
 } else if(questionNumber === 9){
     document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
@@ -1677,9 +1681,11 @@ function QidSimultaneousEquationsNoContext(){
     //Page Breaks
     if (questionNumber === 3){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
-        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if (questionNumber === 5){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
@@ -1742,9 +1748,11 @@ function QidSimultaneousEquationsNoContext(){
     };
     if (questionNumber === 3){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+    }else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if(questionNumber === 5){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
@@ -1926,9 +1934,6 @@ function QidSimultaneousEquationsContext(){
     let name2 = femaleNameArray[Math.floor(Math.random()*femaleNameArray.length)];
 
     let xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
-    if(globalDifficultySelection===3){
-        xCoefficentEqn1 = Math.ceil((Math.random()*9)+10);
-    }
 
     let yCoefficentEqn1
     for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
@@ -1939,7 +1944,7 @@ function QidSimultaneousEquationsContext(){
     if(globalDifficultySelection === 2){
         xValue = Math.ceil((Math.random()*9)+1);
     } else if(globalDifficultySelection === 3){
-        xValue = Math.ceil((Math.random()*12)+10)
+        xValue = Math.ceil((Math.random()*12)+6)
     } else if(globalDifficultySelection === 1){
         xValue = Math.ceil((Math.random()*9)+1);
     }
@@ -1951,8 +1956,8 @@ function QidSimultaneousEquationsContext(){
             yValue = Math.ceil((Math.random()*9)+1);
         };
     } else if(globalDifficultySelection === 3){
-        for(yValue = Math.ceil((Math.random()*12)+10); yValue === xValue;){
-            yValue = Math.ceil((Math.random()*12)+1)*-1;
+        for(yValue = Math.ceil((Math.random()*12)+6); yValue === xValue;){
+            yValue = Math.ceil((Math.random()*12)+6);
         };
     } else if(globalDifficultySelection === 1){
         yValue = Math.ceil((Math.random()*9)+1);
@@ -1967,8 +1972,8 @@ function QidSimultaneousEquationsContext(){
             xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
         };
     } else if(globalDifficultySelection === 3){
-        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+10) ; xCoefficentEqn2 === xCoefficentEqn1;){
-            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*12)+6) ; xCoefficentEqn2 === xCoefficentEqn1;){
+            xCoefficentEqn2 = Math.ceil(Math.random()*12)+6;
         };
     } else if(globalDifficultySelection === 1){
         xCoefficentEqn2 = xCoefficentEqn1;
@@ -2361,12 +2366,10 @@ if(globalDifficultySelection === 2){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
     } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0 && silverNumber>0){
-        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
-        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
     } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if (questionNumber === 3){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
     } else if (questionNumber === 4){
@@ -2428,9 +2431,11 @@ if(globalDifficultySelection === 2){
     };
     if (questionNumber === 3){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if(questionNumber === 5){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
@@ -2500,9 +2505,7 @@ if(globalDifficultySelection === 2){
         name1 =  maleNameArray[Math.floor(Math.random()*maleNameArray.length)];
         name2 = femaleNameArray[Math.floor(Math.random()*femaleNameArray.length)];
         xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
-        if(globalDifficultySelection===3){
-            xCoefficentEqn1 = Math.ceil((Math.random()*9)+10);
-        }
+        
 
         yCoefficentEqn1
     for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
@@ -2513,7 +2516,7 @@ if(globalDifficultySelection === 2){
     if(globalDifficultySelection === 2){
         xValue = Math.ceil((Math.random()*9)+1);
     } else if(globalDifficultySelection === 3){
-        xValue = Math.ceil((Math.random()*12)+10)
+        xValue = Math.ceil((Math.random()*12)+6)
     } else if(globalDifficultySelection === 1){
         xValue = Math.ceil((Math.random()*9)+1);
     }
@@ -2525,8 +2528,8 @@ if(globalDifficultySelection === 2){
             yValue = Math.ceil((Math.random()*9)+1);
         };
     } else if(globalDifficultySelection === 3){
-        for(yValue = Math.ceil((Math.random()*12)+10); yValue === xValue;){
-            yValue = Math.ceil((Math.random()*12)+1)*-1;
+        for(yValue = Math.ceil((Math.random()*15)+6); yValue === xValue;){
+            yValue = Math.ceil((Math.random()*15)+6);
         };
     } else if(globalDifficultySelection === 1){
         yValue = Math.ceil((Math.random()*9)+1);
@@ -2541,7 +2544,7 @@ if(globalDifficultySelection === 2){
             xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
         };
     } else if(globalDifficultySelection === 3){
-        for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+10) ; xCoefficentEqn2 === xCoefficentEqn1;){
+        for(xCoefficentEqn2 = Math.ceil((Math.random()*15)+1) ; xCoefficentEqn2 === xCoefficentEqn1;){
             xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
         };
     } else if(globalDifficultySelection === 1){
@@ -2670,18 +2673,19 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
-    worksheetDifficultyHeadings();
+    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Solving a quadratic equation by factorising</h3><br>`
     for (let i = 0; i < bronzeNumber; i++){
         QidSolveQuadraticFactorising001(i)}
     getSilverNumber(); 
     globalDifficultySelection = 2;
-    worksheetDifficultyHeadings();
+    questionNumber = 0
     for (let i = 0; i < silverNumber; i++){
         QidSolveQuadraticFactorising001(i)}
     getGoldNumber();
     globalDifficultySelection = 3;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         QidSolveQuadraticFactorising001(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
@@ -2689,18 +2693,19 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
-    worksheetDifficultyHeadings();
+    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations no Context</h3><br>`
     for (let i = 0; i < bronzeNumber; i++){
         QidSimultaneousEquationsNoContext(i)}
     getSilverNumber(); 
     globalDifficultySelection = 2;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < silverNumber; i++){
         QidSimultaneousEquationsNoContext(i)}
     getGoldNumber();
     globalDifficultySelection = 3;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         QidSimultaneousEquationsNoContext(i)}
     document.getElementById("generateQButton").innerHTML="Reset";

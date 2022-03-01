@@ -909,9 +909,7 @@ function QidSimultaneousEquationsContext(){
     let name2 = femaleNameArray[Math.floor(Math.random()*femaleNameArray.length)];
 
     let xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
-    if(globalDifficultySelection===3){
-        xCoefficentEqn1 = Math.ceil((Math.random()*9)+10);
-    }
+    
 
     let yCoefficentEqn1
     for(yCoefficentEqn1 = Math.ceil(Math.random()*9)+1 ; yCoefficentEqn1 === xCoefficentEqn1;){
@@ -935,7 +933,7 @@ function QidSimultaneousEquationsContext(){
         };
     } else if(globalDifficultySelection === 3){
         for(yValue = Math.ceil((Math.random()*12)+10); yValue === xValue;){
-            yValue = Math.ceil((Math.random()*12)+1)*-1;
+            yValue = Math.ceil((Math.random()*12)+10);
         };
     } else if(globalDifficultySelection === 1){
         yValue = Math.ceil((Math.random()*9)+1);
@@ -951,7 +949,7 @@ function QidSimultaneousEquationsContext(){
         };
     } else if(globalDifficultySelection === 3){
         for(xCoefficentEqn2 = Math.ceil((Math.random()*9)+10) ; xCoefficentEqn2 === xCoefficentEqn1;){
-            xCoefficentEqn2 = Math.ceil(Math.random()*9)+1;
+            xCoefficentEqn2 = Math.ceil(Math.random()*9)+10;
         };
     } else if(globalDifficultySelection === 1){
         xCoefficentEqn2 = xCoefficentEqn1;
