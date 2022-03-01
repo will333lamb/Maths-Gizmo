@@ -193,23 +193,6 @@ function getGoldNumber(){
     goldNumber = parseInt(document.getElementById("goldNumber").value)
 };
 
-/*function worksheetDifficultyHeadings(){
-    if (globalDifficultySelection === 1 && bronzeNumber>0){
-        document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-        document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    }
-    else if (globalDifficultySelection === 2 && silverNumber>0){
-        //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Silver Questions</h2>`
-        //document.getElementById("solutionText").innerHTML += `<h2 id="BSGHeadings">Silver Solutions</h2>`
-        
-    }
-    else if (globalDifficultySelection === 3 && goldNumber>0){
-        //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Gold Questions</h2>`
-        //document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Gold Solutions</h2>`
-    }
-    questionNumber = 0;
-};*/
-
 //Function to auto sum total questions
 $(document).ready(function(e){
     $("input").change(function(){
@@ -474,9 +457,11 @@ const Qid0001 = () => {
     //Page Breaks
     if (questionNumber === 3){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
-        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if (questionNumber === 5){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
@@ -540,9 +525,11 @@ const Qid0001 = () => {
 
     if (questionNumber === 8){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if (questionNumber === 15){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
@@ -782,9 +769,11 @@ const Qid0002 = () => {
 
     if (questionNumber === 4){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     } else if(questionNumber === 7){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
@@ -2634,18 +2623,19 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
-    worksheetDifficultyHeadings();
+    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     document.getElementById("questionText").innerHTML += `<h3 id="worksheetTitle">Comparing speeds using speed, distance time</h3>`
     for (let i = 0; i < bronzeNumber; i++){
         Qid0001(i)}
     getSilverNumber(); 
     globalDifficultySelection = 2;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < silverNumber; i++){
         Qid0001(i)}
     getGoldNumber();
     globalDifficultySelection = 3;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         Qid0001(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
@@ -2654,18 +2644,19 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
-    worksheetDifficultyHeadings();
+    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     document.getElementById("questionText").innerHTML += `<h3 id="worksheetTitle">Estimation</h3>`
     for (let i = 0; i < bronzeNumber; i++){
         Qid0002(i)}
     getSilverNumber(); 
     globalDifficultySelection = 2;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < silverNumber; i++){
         Qid0002(i)}
     getGoldNumber();
     globalDifficultySelection = 3;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         Qid0002(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
