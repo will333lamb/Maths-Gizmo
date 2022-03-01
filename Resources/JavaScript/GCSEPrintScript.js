@@ -193,10 +193,9 @@ function getGoldNumber(){
     goldNumber = parseInt(document.getElementById("goldNumber").value)
 };
 
-function worksheetDifficultyHeadings(){
+/*function worksheetDifficultyHeadings(){
     if (globalDifficultySelection === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-        //document.getElementById("questionText").innerHTML += `<h2 id="BSGHeadings">Bronze Questions</h2>`
         document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     }
     else if (globalDifficultySelection === 2 && silverNumber>0){
@@ -209,7 +208,7 @@ function worksheetDifficultyHeadings(){
         //document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>` + `<h2 id="BSGHeadings">Gold Solutions</h2>`
     }
     questionNumber = 0;
-};
+};*/
 
 //Function to auto sum total questions
 $(document).ready(function(e){
@@ -1920,6 +1919,7 @@ function QidSimultaneousEquationsNoContext(){
 
 }
 
+//Simultaneous Equations with context
 function QidSimultaneousEquationsContext(){
 
     let name1 =  maleNameArray[Math.floor(Math.random()*maleNameArray.length)];
@@ -2073,6 +2073,12 @@ function QidSimultaneousEquationsContext(){
 // Solution Text
 
 if(globalDifficultySelection === 2){
+    document.getElementById("solutionText").innerHTML += `
+    <style>
+    #solutionText{
+        line-height: 1.5rem;
+    }
+    </style>`
     if(lcmX <= lcmY){
         document.getElementById("solutionText").innerHTML += 
         `
@@ -2105,7 +2111,7 @@ if(globalDifficultySelection === 2){
             &#119909 = ${xValue}
             </div>
             Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
-            <br>
+            <br><br>
     <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2123,7 +2129,7 @@ if(globalDifficultySelection === 2){
             ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
             &#119909 = ${xValue}
             </div>
-            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
             <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2158,7 +2164,7 @@ if(globalDifficultySelection === 2){
             ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
             &#119910 = ${yValue}
             </div>
-            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
             <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2176,7 +2182,7 @@ if(globalDifficultySelection === 2){
             ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
             &#119910 = ${yValue}
             </div>
-            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
             <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2216,7 +2222,7 @@ if(globalDifficultySelection === 2){
             &#119909 = ${xValue}
             </div>
             Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.
-            <br>
+            <br><br>
     <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2234,7 +2240,7 @@ if(globalDifficultySelection === 2){
             ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal} <br>
             &#119909 = ${xValue}
             </div>
-            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
             <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2269,7 +2275,7 @@ if(globalDifficultySelection === 2){
             ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
             &#119910 = ${yValue}
             </div>
-            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
             <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2287,7 +2293,7 @@ if(globalDifficultySelection === 2){
             ${yCoefficentEqn1}&#119910 = ${eqn1Num - substitutedXVal} <br>
             &#119910 = ${yValue}
             </div>
-            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+            Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
             <div class="borderBottomSolution"></div><br>
             </div>
             `
@@ -2316,7 +2322,7 @@ if(globalDifficultySelection === 2){
         ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
         &#119909 = ${xValue}
         </div>
-        Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+        Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
         <div class="borderBottomSolution"></div><br>
             </div>`
     } else{
@@ -2341,7 +2347,7 @@ if(globalDifficultySelection === 2){
         ${xCoefficentEqn1}&#119909 = ${eqn1Num - substitutedYVal}<br>
         &#119909 = ${xValue}
         </div>
-        Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br>
+        Therefore, the cost of one shirt is £${xValue} and the cost of one jumper is £${yValue}.<br><br>
         <div class="borderBottomSolution"></div><br>
             </div>`
     }
@@ -2353,9 +2359,13 @@ if(globalDifficultySelection === 2){
 
     if (questionNumber === 2){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
-    } else if (questionDifficulty === "Silver" && questionNumber === 1){
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
-    } else if (questionDifficulty === "Gold" && questionNumber === 1){
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
     } else if (questionNumber === 3){
         document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
@@ -2698,18 +2708,19 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     loseInstructions();
     getBronzeNumber();
     globalDifficultySelection = 1;
-    worksheetDifficultyHeadings();
+    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
     document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations with Context</h3><br>`
     for (let i = 0; i < bronzeNumber; i++){
         QidSimultaneousEquationsContext(i)}
     getSilverNumber(); 
     globalDifficultySelection = 2;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < silverNumber; i++){
         QidSimultaneousEquationsContext(i)}
     getGoldNumber();
     globalDifficultySelection = 3;
-    worksheetDifficultyHeadings();
+    questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         QidSimultaneousEquationsContext(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
