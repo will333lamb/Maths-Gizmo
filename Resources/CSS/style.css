@@ -1010,6 +1010,7 @@ select:hover{
     background-color: #fff;
     display: none;
     margin: 1rem;
+    min-width: 385px;
 }
 
 .instructionsParagraph{
