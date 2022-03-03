@@ -6,74 +6,90 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <title>Maths Gizmo</title>
-    <link rel="stylesheet" href="Resources/CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="../Resources/CSS/style.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="Resources/JavaScript/indexscript.js" defer></script>
-    <script src="Resources/JavaScript/jquery-3.6.0.min.js"></script>
+    <script src="../Resources/JavaScript/script.js" defer></script>
+    <script src="../Resources/JavaScript/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/9bda619445.js" crossorigin="anonymous"></script>
+    <script src="../Resources/JavaScript/indexscript.js" defer></script>
   </head>
 
   <body>
+  <div>
     <nav>
-      <a href="index.html"><img id="logoTopLeft" src="Resources/Images/Logo Ai file copy attempt.svg" alt="Maths Gizmo Logo"></a>
+      <a href="../index.html"><img id="logoTopLeft" src="../Resources/Images/Logo Ai file copy attempt.svg" alt="Maths Gizmo Logo"></a>
       <input type="checkbox" id="navCheckbox" class="navCheckbox">
       <label for="navCheckbox" class="navToggle">
         <img src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png" class="menuIcon" />
         <img src="https://img.icons8.com/material-outlined/24/000000/delete-sign.png" class="closeIcon" />
       </label>
       <ul>
-        <li id="GCSELi"><a href="#" id="changeGCSEhtml">GCSE</a>
+        <li id="GCSELi" onclick="listGCSE()"><a href="#" id="changeGCSEhtml">GCSE</a>
           <label class="GCSEnavToggle">
             <img src="https://img.icons8.com/external-ayo-icons-royyan-wijaya/24/000000/external-chevron-arrow-line-ayo-icons-royyan-wijaya-3.png" class="downChev"/>
             <img src="https://img.icons8.com/external-ayo-icons-royyan-wijaya/24/000000/external-chevron-arrow-line-ayo-icons-royyan-wijaya-2.png" class="upChev"/>
           </label>
           <ul class="GCSENav">
-            <li><a href="HTML pages/GCSEDisplay.html">Display questions</a></li>
-            <li><a href="HTML pages/GCSEPrintWorksheet.html">Create a worksheet</a></li>
+            <li><a href="GCSEDisplay.html">Display questions</a></li>
+            <li><a href="GCSEPrintWorksheet.html">Create a worksheet</a></li>
           </ul>
         </li>
-        <li id="FSLi"><a href="#" id="changeFShtml">Functional Skills</a>
+        <li id="FSLi" onclick="listFS()"><a href="#" id="changeFShtml">Functional Skills</a>
           <label class=FSnavToggle>
             <img src="https://img.icons8.com/external-ayo-icons-royyan-wijaya/24/000000/external-chevron-arrow-line-ayo-icons-royyan-wijaya-3.png" class="FSdownChev"/>
             <img src="https://img.icons8.com/external-ayo-icons-royyan-wijaya/24/000000/external-chevron-arrow-line-ayo-icons-royyan-wijaya-2.png" class="FSupChev"/>
           </label>
           <ul class="FSNav">
-            <li><a href="HTML pages/FSDisplay.html">Display questions</a></li>
-            <li><a href="HTML pages/FSPrintTest.html">Create practice test</a></li>
+            <li><a href="FSDisplay.html">Display questions</a></li>
+            <li><a href="FSPrintTest.html">Create practice test</a></li>
           </ul>
         </li>
       </ul>
     </nav>
-
-    <div class="mainBody"><br> <br><br><br>
-      <div class="centeredTitlePart">
-        <h1>Welcome to Maths Gizmo</h1><br>
-        <h3>A maths resource website for students and teachers</h3><br>
-        <h3>Here are some of the things you can do on Maths Gizmo:</h3>
-      </div>
-      <div class="GCSEBoxesContainer">
-        <div class="centeredBoxes">
-          <a href="HTML pages/GCSEDisplay.html"><div class="GCSEBoxes">
-            <h2>GCSE: Display Questions</h2>
-            <h3>Display questions onto a smartboard or projector</h3><br>
-            <img src="Resources/Images/Display Q screenshot.png">
-          </div></a>
-          <a href="HTML pages/GCSEPrintWorksheet.html"><div class="GCSEBoxes">
-            <h2>GCSE: Create a worksheet</h2>
-            <h3>Create and download a worksheet with three levels of difficulty</h3><br>
-            <img src="Resources/Images/create worksheet screenshot.png">
-          </div></a>
+  </div>
+  <br>
+    <div class="wrapper">
+      <div class="sidebar">
+        <h2>FUNCTIONAL SKILLS DISPLAY</h2>
+        <h3>Question Search</h3>
+        <div class="dropDownMenus">
+          <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
+            <option selected value="0">Please select</option>
+            <optgroup label="Entry level 3">
+              <option value="sequencesNextNumberInteger">Sequences: next number (integers)</option>
+            </optgroup>
+            <optgroup label="Level 1">
+              
+            </optgroup>
+          </select>
         </div>
       </div>
     </div>
-    
+    <div class="question-container">
+        <div class="buttonsAndPrintingContainer">
+          <div class="buttons-container">
+            <button id="generateQButton" class="button">Generate new question</button>
+            <button id="showSolutionButton" class="button">Show Solution</button>
+            <button id="fullscreenButton" class="button" onclick="makeFullscreen()">Fullscreen</button>
+            <div class="difficultyContainer">
+            </div>
+          </div>
+        </div>
+        <div class="questionSolutionContainer">
+          <div class="question-box">
+            <p id="questionText">Please use the options to navigate to a question</p>
+          </div>
+          <div class="solution-box">
+            <p id="solutionText"></p>
+          </div>
+        </div>
+      </div>
   </body>
-
-  <footer>
+<footer>
     <a href="https://icons8.com/icon/30UIOfuJpZnZ/menu">Menu icon by Icons8</a>
-  </footer>
+</footer>
 </html>

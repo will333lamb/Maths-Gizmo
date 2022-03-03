@@ -141,44 +141,29 @@ let globalTopicAreaSelection;
 
 //Other Functions /////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function getSelectedTopicArea(){
-    globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
-    if (globalTopicAreaSelection === 1){
-        document.querySelector(".numberTopics").style.display = "block";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 2){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "block";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 3){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "block";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 4){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "block";
-        document.querySelector(".probabilityTopics").style.display = "none";
-    }
-    else if (globalTopicAreaSelection === 5){
-        document.querySelector(".numberTopics").style.display = "none";
-        document.querySelector(".algebraTopics").style.display = "none";
-        document.querySelector(".ratioTopics").style.display = "none";
-        document.querySelector(".geometryMeasuresTopics").style.display = "none";
-        document.querySelector(".probabilityTopics").style.display = "block";
+let worksheetTitle=""
+let solutionsTitle=""
+function getWorksheetTitle(){
+    
+    if(globalTopicAreaSelection==="speedDistanceTime"){
+        worksheetTitle="Speed Distance Time Worksheet from Maths Gizmo";
+        solutionsTitle="Speed Distance Time Solutions from Maths Gizmo";
+    } else if(globalTopicAreaSelection==="estimation"){
+        worksheetTitle="Estimation Worksheet from Maths Gizmo"
+    } else if(globalTopicAreaSelection==="solveQuadraticByFactorising"){
+        worksheetTitle="Solve quadratics via factorising Worksheet from Maths Gizmo"
+    } else if(globalTopicAreaSelection==="simultaneousEquationsNoContext"){
+        worksheetTitle="Simultaneous Equations No Context Worksheet from Maths Gizmo"
+    } else if(globalTopicAreaSelection==="simultaneousEquationsContext"){
+        worksheetTitle="Simultaneous Equations With Context Worksheet from Maths Gizmo"
     }
 };
+
+function getSelectedTopicArea(){
+    globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
+    getWorksheetTitle();
+};
+
 function getSelectedTopic(){
     globalSelectedTopic = document.getElementById("topicSelect").value
 };
@@ -192,6 +177,9 @@ function getSilverNumber(){
 function getGoldNumber(){
     goldNumber = parseInt(document.getElementById("goldNumber").value)
 };
+
+
+
 
 //Function to auto sum total questions
 $(document).ready(function(e){
@@ -1020,7 +1008,7 @@ function QidSolveQuadraticFactorising001(){
     </span>
     <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span> Solve by factorising.<br>
     <span class="centeredQuadratic"> &#119909<sup class="superscripts">2</sup> ${signOne} ${bValue}&#119909 ${signTwo} ${cValue} = 0 <br>
-    </span><br><br><br><br><br><br><br><br><br>
+    </span><br><br><br><br><br><br><br><br>
     <span class="answerLines">&#119909 = _____________ or &#119909 = _____________     </span><br><br>`+ `<p id="marksGiven">(3 marks)</p><br><br>`
 
 // Solution Text
@@ -2730,7 +2718,7 @@ function generatePDF(){
     const element = document.querySelector(".previewBoxQ");
     const options = {
         margin:     [0,0.1],
-        filename:     'Worksheet.pdf',
+        filename:     worksheetTitle,
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
@@ -2747,7 +2735,7 @@ function generateSolutions(){
     const element = document.querySelector(".previewBoxSolution");
     const options = {
         margin:     [0,0.1],
-        filename:     'Solutions.pdf',
+        filename:     solutionsTitle,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
