@@ -366,8 +366,15 @@ select:hover{
     padding: 2rem auto;
     width: 100%;
     margin: 0 auto;
-    
-    
+}
+
+.centeredBoxes{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 15%;
 }
 
 .GCSEBoxes{
