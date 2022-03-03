@@ -1010,7 +1010,7 @@ select:hover{
     background-color: #fff;
     display: none;
     margin: 1rem;
-    min-width: 385px;
+    min-width: 500px;
 }
 
 .instructionsParagraph{
@@ -1051,6 +1051,7 @@ select:hover{
     border: 1px solid #009870;
     display: none;
     margin: 1rem;
+    min-width: 500px;
 }
 
 #worksheetTitle{
