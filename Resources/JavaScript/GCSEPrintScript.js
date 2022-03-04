@@ -150,12 +150,16 @@ function getWorksheetTitle(){
         solutionsTitle="Speed Distance Time Solutions from Maths Gizmo";
     } else if(globalTopicAreaSelection==="estimation"){
         worksheetTitle="Estimation Worksheet from Maths Gizmo"
+        solutionsTitle="Estimation Solutions from Maths Gizmo"
     } else if(globalTopicAreaSelection==="solveQuadraticByFactorising"){
         worksheetTitle="Solve quadratics via factorising Worksheet from Maths Gizmo"
+        solutionsTitle="Solve quadratics via factorising Solutions from Maths Gizmo"
     } else if(globalTopicAreaSelection==="simultaneousEquationsNoContext"){
         worksheetTitle="Simultaneous Equations No Context Worksheet from Maths Gizmo"
+        solutionsTitle="Simultaneous Equations No Context Solutions from Maths Gizmo"
     } else if(globalTopicAreaSelection==="simultaneousEquationsContext"){
         worksheetTitle="Simultaneous Equations With Context Worksheet from Maths Gizmo"
+        solutionsTitle="Simultaneous Equations With Context Solutions from Maths Gizmo"
     }
 };
 
@@ -886,7 +890,7 @@ function QidSolveQuadraticFactorising001(){
     if(globalDifficultySelection === 1){
         signOne = signArray[0];
     } else if(globalDifficultySelection === 2){
-        signOne = signArray[Math.floor(Math.random()*signArray.length)];
+        signOne = "-";
     } else if(globalDifficultySelection === 3){
         signOne = signArray[Math.floor(Math.random()*signArray.length)];
     };
@@ -1033,7 +1037,7 @@ function QidSolveQuadraticFactorising001(){
     if(globalDifficultySelection === 1){
         signOne = signArray[0];
     } else if(globalDifficultySelection === 2){
-        signOne = signArray[Math.floor(Math.random()*signArray.length)];
+        signOne = "-";
     } else if(globalDifficultySelection === 3){
         signOne = signArray[Math.floor(Math.random()*signArray.length)];
     };

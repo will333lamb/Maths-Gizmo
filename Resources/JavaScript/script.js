@@ -458,7 +458,7 @@ function QidSolveQuadraticFactorising001(){
     if(globalDifficultySelection === 1){
         signOne = signArray[0];
     } else if(globalDifficultySelection === 2){
-        signOne = signArray[Math.floor(Math.random()*signArray.length)];
+        signOne = "-"
     } else if(globalDifficultySelection === 3){
         signOne = signArray[Math.floor(Math.random()*signArray.length)];
     };
