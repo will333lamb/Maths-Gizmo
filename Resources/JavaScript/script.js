@@ -1278,9 +1278,7 @@ function QidSimultaneousEquationsContext(){
 
 }
 
-/**********************************************
- * Button functions *
- *******************************************/
+/********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
 
