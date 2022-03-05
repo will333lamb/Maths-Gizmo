@@ -282,6 +282,185 @@ function subtraction3DigitBy3Digit(){
 
 }
 
+function tellTheTimeOnAnalogueClock(){
+
+    let eveningMorningArray=["Evening","Morning"];
+    let eveningMorning=eveningMorningArray[Math.floor(Math.random()*eveningMorningArray.length)];
+    let solutionAmPm
+    if(eveningMorning==="Evening"){
+        solutionAmPm="pm"
+    } else if(eveningMorning==="Morning"){
+        solutionAmPm="am"
+    }
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .clock{
+        width: 200px;
+        height: 200px;
+        background-color: rgba(88, 229, 186, 0.3);
+        line-height: 1;
+        border-radius: 50%;
+        border: 3px solid black;
+        margin: 0 auto;
+        position: relative;
+        font-size: 1.2rem;
+    }
+    
+    .clock .number{
+        --rotation: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transform: rotate(var(--rotation));
+    }
+    
+    .clock .number1{--rotation: 30deg;}
+    .clock .number2{--rotation: 60deg;}
+    .clock .number3{--rotation: 90deg;}
+    .clock .number4{--rotation: 120deg;}
+    .clock .number5{--rotation: 150deg;}
+    .clock .number6{--rotation: 180deg;}
+    .clock .number7{--rotation: 210deg;}
+    .clock .number8{--rotation: 240deg;}
+    .clock .number9{--rotation: 270deg;}
+    .clock .number10{--rotation: 300deg;}
+    .clock .number11{--rotation: 330deg;}
+    
+    .clock .hand{
+        --rotation: 0;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        z-index: 10;
+        transform-origin: bottom;
+        transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border: 2px solid #1a3d1f;
+    }
+    
+    .clock::after{
+        content: '';
+        position: absolute;
+        background-color: #1a3d1f;
+        z-index: 11;
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+    }
+    
+    .clock .hand.minute{
+        width: 7px;
+        height: 40%;
+        background-color: rgba(88, 229, 186, 0.7);
+        --rotation: 0;
+    }
+    
+    .clock .hand.hour{
+        width: 10px;
+        height: 28%;
+        background-color: rgba(88, 229, 186, 0.85);
+        --rotation: 270;
+    }
+
+    .centeredQuestion{
+        text-align: center;
+    }
+    </style>
+    What time does the clock show?<br><br>
+    <div class="clock">
+            <div class="hand hour" data-hour-hand></div>
+            <div class="hand minute" data-minute-hand></div>
+            <div class="number number1"><div style="transform: rotate(-30deg);">1</div></div>
+            <div class="number number2"><div style="transform: rotate(-60deg);">2</div></div>
+            <div class="number number3"><div style="transform: rotate(-90deg);">3</div></div>
+            <div class="number number4"><div style="transform: rotate(-120deg);">4</div></div>
+            <div class="number number5"><div style="transform: rotate(-150deg);">5</div></div>
+            <div class="number number6"><div style="transform: rotate(-180deg);">6</div></div>
+            <div class="number number7"><div style="transform: rotate(-210deg);">7</div></div>
+            <div class="number number8"><div style="transform: rotate(-240deg);">8</div></div>
+            <div class="number number9"><div style="transform: rotate(-270deg);">9</div></div>
+            <div class="number number10"><div style="transform: rotate(-300deg);">10</div></div>
+            <div class="number number11"><div style="transform: rotate(-330deg);">11</div></div>
+            <div class="number number12">12</div>
+    </div>
+    <div class="centeredQuestion">${eveningMorning}</div>`
+
+    let hourHand = document.querySelector('[data-hour-hand]');
+    let minuteHand = document.querySelector('[data-minute-hand]');
+    let rotationOptionsArray = [0,30,60,90,120,150,180,210,240,270,300,330]
+    let chosenHourHandRotation = rotationOptionsArray[Math.floor(Math.random()*rotationOptionsArray.length)];
+    let chosenMinuteHandRotation = rotationOptionsArray[Math.floor(Math.random()*rotationOptionsArray.length)];
+
+    hourHand.style.setProperty('--rotation', chosenHourHandRotation);
+    minuteHand.style.setProperty('--rotation', chosenMinuteHandRotation);
+
+    let solutionHour
+    if(chosenHourHandRotation===0){
+        solutionHour=12
+    } else if(chosenHourHandRotation===30){
+        solutionHour=1
+    } else if(chosenHourHandRotation===60){
+        solutionHour=2
+    } else if(chosenHourHandRotation===90){
+        solutionHour=3
+    } else if(chosenHourHandRotation===120){
+        solutionHour=4
+    } else if(chosenHourHandRotation===150){
+        solutionHour=5
+    } else if(chosenHourHandRotation===180){
+        solutionHour=6
+    } else if(chosenHourHandRotation===210){
+        solutionHour=7
+    } else if(chosenHourHandRotation===240){
+        solutionHour=8
+    } else if(chosenHourHandRotation===270){
+        solutionHour=9
+    } else if(chosenHourHandRotation===300){
+        solutionHour=10
+    } else if(chosenHourHandRotation===330){
+        solutionHour=11
+    };
+
+    let solutionMinute
+    if(chosenMinuteHandRotation===0){
+        solutionMinute="00"
+    } else if(chosenMinuteHandRotation===30){
+        solutionMinute="05"
+    } else if(chosenMinuteHandRotation===60){
+        solutionMinute=10
+    } else if(chosenMinuteHandRotation===90){
+        solutionMinute=15
+    } else if(chosenMinuteHandRotation===120){
+        solutionMinute=20
+    } else if(chosenMinuteHandRotation===150){
+        solutionMinute=25
+    } else if(chosenMinuteHandRotation===180){
+        solutionMinute=30
+    } else if(chosenMinuteHandRotation===210){
+        solutionMinute=35
+    } else if(chosenMinuteHandRotation===240){
+        solutionMinute=40
+    } else if(chosenMinuteHandRotation===270){
+        solutionMinute=45
+    } else if(chosenMinuteHandRotation===300){
+        solutionMinute=50
+    } else if(chosenMinuteHandRotation===330){
+        solutionMinute=55
+    };
+
+    document.getElementById("solutionText").innerHTML =
+    `${solutionHour}:${solutionMinute} ${solutionAmPm}`
+
+    
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -297,6 +476,8 @@ generateQButton.onclick = function(){
         highestNumberWithDecimals();
     } else if(globalTopicAreaSelection==="subtraction3DigitBy3Digit"){
         subtraction3DigitBy3Digit();
+    } else if(globalTopicAreaSelection==="tellTheTimeOnAnalogueClock"){
+        tellTheTimeOnAnalogueClock();
     }
 };
 
