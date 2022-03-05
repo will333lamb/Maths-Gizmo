@@ -146,10 +146,6 @@ function sequencesNextNumberInteger(){
         text-align: center;
     }
     </style>
-    <span class="fa-stack fa-2x" style="font-size: 1rem;">
-    <i class="fas fa-calculator fa-stack-1x"></i>
-    <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
-    </span><br>
     What is the next number in this sequence?<br>
     <div class="centeredQuestion">
     ${num1}<span class="spaceBetweenSequences">....</span>${num2}<span class="spaceBetweenSequences">....</span>${num3}<span class="spaceBetweenSequences">....</span>
@@ -161,8 +157,130 @@ function sequencesNextNumberInteger(){
     `The term to term rule is +${progression}, and the next term is ${num5Solution}`
 }
 
+function roundToPowerOfTen(){
+    let num1 = Math.ceil(Math.random()*9);
+    let num2 = Math.ceil(Math.random()*9);
+    let num3 = Math.ceil(Math.random()*9);
+    let numToBeRounded = `${num1}${num2}${num3}`; //How to concat three numbers.
+    let numToBeRoundedAsInt = parseInt(numToBeRounded);
+    let powerOfTenArray = [10, 10, 10, 10, 10, 10, 100, 100, 100, 100, 100, 100, 1000];
+    let powerOfTenChosen = powerOfTenArray[Math.floor(Math.random()*powerOfTenArray.length)];
+    let roundedNumSolution = (Math.round(numToBeRoundedAsInt / powerOfTenChosen)*powerOfTenChosen)
+
+    document.getElementById("questionText").innerHTML =
+    `
+    
+    What is ${numToBeRounded} rounded to the nearest ${powerOfTenChosen}? <br>
+
+    `
+
+    document.getElementById("solutionText").innerHTML =
+    `${roundedNumSolution}`
+    
+}
+
+function writeNumberInFigures(){
+    let numArray = ["one","two","three","four","five","six","seven","eight","nine"];
+    let num1 = numArray[Math.floor(Math.random()*numArray.length)];
+    let num2 = numArray[Math.floor(Math.random()*numArray.length)];
+    let num1Sol
+    if(num1==="one"){num1Sol=1}else if(num1==="two"){num1Sol=2}else if(num1==="three"){num1Sol=3}else if(num1==="four"){num1Sol=4}
+    else if(num1==="five"){num1Sol=5}else if(num1==="six"){num1Sol=6}else if(num1==="seven"){num1Sol=7}else if(num1==="eight")
+    {num1Sol=8}else if(num1==="nine"){num1Sol=9};
+    let num2Sol
+    if(num2==="one"){num2Sol=1}else if(num2==="two"){num2Sol=2}else if(num2==="three"){num2Sol=3}else if(num2==="four"){num2Sol=4}
+    else if(num2==="five"){num2Sol=5}else if(num2==="six"){num2Sol=6}else if(num2==="seven"){num2Sol=7}else if(num2==="eight")
+    {num2Sol=8}else if(num2==="nine"){num2Sol=9};
+
+    let concatedSolution = `${num1Sol}${0}${num2Sol}`
 
 
+    document.getElementById("questionText").innerHTML = 
+    `Write <span style="font-weight:bold;">${num1} hundred and ${num2}</span> in figures.`
+
+    document.getElementById("solutionText").innerHTML = 
+    `${concatedSolution}`
+}
+
+function highestNumberWithDecimals(){
+    let firstDigit = Math.ceil(Math.random()*9); //number between 1-9
+    let secondDigit = Math.floor(Math.random()*10); //number between 0-9
+    let thirdDigit = Math.floor(Math.random()*10);
+
+    let firstDecimal09 = Math.floor(Math.random()*10);
+    let firstDecimal19 = Math.ceil(Math.random()*9);
+    let secondDecimal09
+    for(secondDecimal09 = Math.floor(Math.random()*10); secondDecimal09===firstDecimal09;){
+        secondDecimal09 = Math.floor(Math.random()*10);
+    }
+    let secondDecimal19 = Math.ceil(Math.random()*9);
+    let thirdDecimal59 = Math.ceil(Math.random()*6)+3;
+    let fourthDecimal09
+    for(fourthDecimal09 = Math.floor(Math.random()*10); fourthDecimal09===secondDecimal09;){
+        fourthDecimal09 = Math.floor(Math.random()*10);
+    }
+    let fourthDecimal19 = Math.ceil(Math.random()*9);
+
+    let num1 = `${firstDigit}${secondDigit}${thirdDigit}.${firstDecimal09}${firstDecimal19}`
+    let num2 = `${firstDigit}${secondDigit}${thirdDigit}.${secondDecimal09}${secondDecimal19}`
+    let num3 = `${firstDigit}${secondDigit}${thirdDigit}.${thirdDecimal59}`
+    let num4 = `${firstDigit}${secondDigit}${thirdDigit}.${fourthDecimal09}${fourthDecimal19}`
+
+    let num1AsNumber = parseFloat(num1);
+    let num2AsNumber = parseFloat(num2);
+    let num3AsNumber = parseFloat(num3);
+    let num4AsNumber = parseFloat(num4);
+
+    let largestNumberSolution = Math.max(num1AsNumber,num2AsNumber,num3AsNumber,num4AsNumber);
+
+
+
+
+    //Math.round((num + Number.EPSILON) * 100) / 100
+
+
+    document.getElementById("questionText").innerHTML =
+    `<style>
+    .spaceBetweenSequences{
+        color: #fff
+    }
+    .centeredQuestion{
+        text-align: center;
+    }
+    </style>
+    Which of these is the <span style="font-weight:bold;">highest</span> number?<br>
+    <div class="centeredQuestion">${num1}<span class="spaceBetweenSequences">......</span>${num2}<span class="spaceBetweenSequences">......</span>
+    ${num3}<span class="spaceBetweenSequences">......</span>${num4}
+    </div>
+    `
+
+    document.getElementById("solutionText").innerHTML = 
+    `${largestNumberSolution}`
+}
+
+function subtraction3DigitBy3Digit(){
+    let Num1firstDigit = Math.ceil(Math.random()*3); //number between 1-3
+    let Num1secondDigit = Math.floor(Math.random()*10); //number between 0-9
+    let Num1thirdDigit = Math.ceil(Math.random()*9); //Max number for number to be subtracted is 399, min is 301
+    let num1 = `${Num1firstDigit}${Num1secondDigit}${Num1thirdDigit}`
+
+    let Num2firstDigit = Math.ceil(Math.random()*6)+3; //number between 4-9
+    let Num2secondDigit = Math.floor(Math.random()*10); //number between 0-9
+    let Num2thirdDigit = Math.floor(Math.random()*10); //Max num2 = 999, min is 400
+    let num2 = `${Num2firstDigit}${Num2secondDigit}${Num2thirdDigit}`
+
+    let num1AsNumber = parseFloat(num1);
+    let num2AsNumber = parseFloat(num2);
+
+    let subtractedSolution = num2AsNumber-num1AsNumber;
+
+    document.getElementById("questionText").innerHTML = 
+    `Subtract ${num1} from ${num2}`
+
+    document.getElementById("solutionText").innerHTML = 
+    `${subtractedSolution}`
+
+}
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -171,7 +289,15 @@ let generateQButton = document.getElementById("generateQButton");
 generateQButton.onclick = function(){
     if(globalTopicAreaSelection ==="sequencesNextNumberInteger"){
         sequencesNextNumberInteger();
-}
+    } else if(globalTopicAreaSelection==="roundToPowerOfTen"){
+        roundToPowerOfTen();
+    } else if(globalTopicAreaSelection==="writeNumberInFigures"){
+        writeNumberInFigures();
+    } else if(globalTopicAreaSelection==="highestNumberWithDecimals"){
+        highestNumberWithDecimals();
+    } else if(globalTopicAreaSelection==="subtraction3DigitBy3Digit"){
+        subtraction3DigitBy3Digit();
+    }
 };
 
 let showSolutionButton = document.getElementById("showSolutionButton");

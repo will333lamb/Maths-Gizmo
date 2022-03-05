@@ -370,11 +370,9 @@ select:hover{
 
 .centeredBoxes{
     width: 100%;
-    text-align: center;
-    align-items: center;
     display: flex;
-    margin: 0 auto;
-    padding: 0 15%;
+    justify-content: space-evenly;
+    padding: 0 5%;
 }
 
 .GCSEBoxes{
