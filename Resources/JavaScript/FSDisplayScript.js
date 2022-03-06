@@ -346,7 +346,7 @@ function tellTheTimeOnAnalogueClock(){
         content: '';
         position: absolute;
         background-color: #1a3d1f;
-        z-index: 11;
+        z-index: 12;
         width: 20px;
         height: 20px;
         top: 50%;
@@ -358,13 +358,14 @@ function tellTheTimeOnAnalogueClock(){
     .clock .hand.minute{
         width: 7px;
         height: 40%;
+        z-index: 11;
         background-color: rgba(88, 229, 186, 0.7);
         --rotation: 0;
     }
     
     .clock .hand.hour{
         width: 10px;
-        height: 28%;
+        height: 25%;
         background-color: rgba(88, 229, 186, 0.85);
         --rotation: 270;
     }
@@ -395,10 +396,41 @@ function tellTheTimeOnAnalogueClock(){
     let hourHand = document.querySelector('[data-hour-hand]');
     let minuteHand = document.querySelector('[data-minute-hand]');
     let rotationOptionsArray = [0,30,60,90,120,150,180,210,240,270,300,330]
-    let chosenHourHandRotation = rotationOptionsArray[Math.floor(Math.random()*rotationOptionsArray.length)];
+    
     let chosenMinuteHandRotation = rotationOptionsArray[Math.floor(Math.random()*rotationOptionsArray.length)];
 
-    hourHand.style.setProperty('--rotation', chosenHourHandRotation);
+    let chosenHourHandRotation = rotationOptionsArray[Math.floor(Math.random()*rotationOptionsArray.length)];
+
+    let additionalHourMovement
+    if(chosenMinuteHandRotation===0){
+        additionalHourMovement=0
+    } else if(chosenMinuteHandRotation===30){
+        additionalHourMovement =2.5;
+    } else if(chosenMinuteHandRotation===60){
+        additionalHourMovement=5;
+    } else if(chosenMinuteHandRotation===90){
+        additionalHourMovement=7.5;
+    } else if(chosenMinuteHandRotation===120){
+        additionalHourMovement=10;
+    } else if(chosenMinuteHandRotation===150){
+        additionalHourMovement=12.5;
+    } else if(chosenMinuteHandRotation===180){
+        additionalHourMovement=15;
+    } else if(chosenMinuteHandRotation===210){
+        additionalHourMovement=17.5;
+    } else if(chosenMinuteHandRotation===240){
+        additionalHourMovement=20;
+    } else if(chosenMinuteHandRotation===270){
+        additionalHourMovement=22.5;
+    } else if(chosenMinuteHandRotation===300){
+        additionalHourMovement=25;
+    } else if(chosenMinuteHandRotation===330){
+        additionalHourMovement=27.5
+    };
+
+    let chosenHourHandRotationPlusAdditional = chosenHourHandRotation+additionalHourMovement
+
+    hourHand.style.setProperty('--rotation', chosenHourHandRotationPlusAdditional);
     minuteHand.style.setProperty('--rotation', chosenMinuteHandRotation);
 
     let solutionHour
@@ -461,6 +493,102 @@ function tellTheTimeOnAnalogueClock(){
     
 }
 
+function identifyCorrectMeasuringTool(){
+    let Qa = "to measure 100g sugar"; //scales
+    let Qb = "to measure a persons waist"; //tape Measure
+    let Qc = "to measure the length of a chocolate bar"; //ruler
+    let Qd = "to measure the time taken for an athlete to run 100m"; //stopwatch
+    let Qe = "to measure 250ml of water"; //measuring jug
+    let Qf = "to measure 40g butter"; //scales
+    let Qg = "to measure the width of a door"; //tape measure
+    let Qh = "to measure the length of your finger"; //ruler
+    let Qi = "to measure the time taken for a swimmer to swim 5 lengths"; //stopwatch
+    let Qj = "to measure 700ml of milk"; //measuring jug
+    let Qk = "to measure 5ml of medicine" // teaspoon
+    let Ql = "to measure 3ml of vanilla essence" //teaspoon
+    let Qm = "to measure the temperature of water in an aquarium" //thermometer
+    let Qn = "to measure the temperature in a room" //thermometer
+    let questionArray =[Qa,Qb,Qc,Qd,Qe,Qf,Qg,Qh,Qi,Qj,Qk,Ql,Qm,Qn]
+
+    let chosenQuestion = questionArray[Math.floor(Math.random()*questionArray.length)];
+
+    let a1="Scales"
+    let a2="Tape Measure"
+    let a3="Ruler"
+    let a4="Stopwatch"
+    let a5="Measuring Jug"
+    let a6="Teaspoon"
+    let a7="Thermometer"
+
+    let option1
+    let option2
+    let option3
+    let option4
+
+    let solution
+    if(chosenQuestion===Qa || chosenQuestion===Qf){
+        solution=a1; //scales
+        option1 = solution;
+        option2 = a2;
+        option3 = a3;
+        option4 = a4;
+    }else if(chosenQuestion===Qb || chosenQuestion===Qg){
+        solution=a2; //tape measure
+        option1 = a5;
+        option2 = solution;
+        option3 = a6;
+        option4 = a7;
+    }else if(chosenQuestion===Qc || chosenQuestion===Qh){
+        solution=a3;//ruler
+        option1 = a1;
+        option2 = a2;
+        option3 = solution;
+        option4 = a4;
+    }else if(chosenQuestion===Qd || chosenQuestion===Qi){
+        solution=a4;//stopwatch
+        option1 = a7;
+        option2 = a5;
+        option3 = a6;
+        option4 = solution;
+    }else if(chosenQuestion===Qe || chosenQuestion===Qj){
+        solution=a5;//measuring jug
+        option1 = solution;
+        option2 = a7;
+        option3 = a1;
+        option4 = a2;
+    }else if(chosenQuestion===Qk || chosenQuestion===Ql){
+        solution=a6;//teaspoon
+        option1 = a3;
+        option2 = solution;
+        option3 = a4;
+        option4 = a5;
+    }else if(chosenQuestion===Qm || chosenQuestion===Qn){
+        solution=a7;//thermometer
+        option1 = a6;
+        option2 = a2;
+        option3 = solution;
+        option4 = a1;
+    }
+
+   
+    
+
+    
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    Which one of these measuring instruments is best ${chosenQuestion}?<br><br>
+    <div class="centeredQuestion">
+    ${option1}<span class="spaceBetween">.....</span>${option2}<span class="spaceBetween">.....</span>
+    ${option3}<span class="spaceBetween">.....</span>${option4}
+    </div>
+    `
+
+    document.getElementById("solutionText").innerHTML =
+    `${solution}`
+
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -478,6 +606,8 @@ generateQButton.onclick = function(){
         subtraction3DigitBy3Digit();
     } else if(globalTopicAreaSelection==="tellTheTimeOnAnalogueClock"){
         tellTheTimeOnAnalogueClock();
+    } else if(globalTopicAreaSelection==="identifyCorrectMeasuringTool"){
+        identifyCorrectMeasuringTool();
     }
 };
 
