@@ -302,7 +302,7 @@ function tellTheTimeOnAnalogueClock(){
         background-color: rgba(88, 229, 186, 0.3);
         line-height: 1;
         border-radius: 50%;
-        border: 3px solid black;
+        border: 3px solid #1a3d1f;
         margin: 0 auto;
         position: relative;
         font-size: 1.2rem;
@@ -589,6 +589,180 @@ function identifyCorrectMeasuringTool(){
 
 }
 
+function fastestTime(){
+    let randomizerArray =["FriendAOverHour","FriendABelowHour"];
+    let chooseForFriendA = randomizerArray[Math.floor(Math.random()*randomizerArray.length)];
+    let randomizerArrayC =["FriendCOverHour","FriendCBelowHour"];
+    let chooseForFriendC = randomizerArrayC[Math.floor(Math.random()*randomizerArray.length)];
+
+    let friendANum1 = Math.floor(Math.random()*10);
+    let friendCNum1;
+    for(friendCNum1 = Math.ceil(Math.random()*9); friendCNum1===friendANum1;){
+        friendCNum1 = Math.ceil(Math.random()*9)
+    }
+
+
+    let friendATime
+    let friendASolTime
+    if(chooseForFriendA==="FriendAOverHour"){
+        friendATime = `1 hour 1${friendANum1} minutes`
+        friendASolTime = parseFloat(1 + `${1}${friendANum1}`)
+    } else if(chooseForFriendA==="FriendABelowHour"){
+        friendATime = `5${friendANum1} minutes`
+        friendASolTime = parseFloat(`${5}${friendANum1}`)
+    };
+
+    let friendBTime
+    let friendBSolTime
+    if(chooseForFriendA==="FriendAOverHour"){
+        friendBTime = `5${friendANum1} minutes`
+        friendBSolTime = parseFloat(`${5}${friendANum1}`)
+    } else if(chooseForFriendA==="FriendABelowHour"){
+        friendBTime = `1 hour 1${friendANum1} minutes`
+        friendBSolTime = parseFloat(1+`${1}${friendANum1}`)
+    }
+
+    let friendCTime
+    let friendCSolTime
+    if(chooseForFriendC==="FriendCOverHour"){
+        friendCTime = `1 hour ${friendCNum1} minutes`
+        friendCSolTime = parseFloat(1+`${0}${friendCNum1}`)
+    } else if(chooseForFriendC==="FriendCBelowHour"){
+        friendCTime = `5${friendCNum1} minutes`
+        friendCSolTime = parseFloat(`${5}${friendCNum1}`)
+    };
+
+    let friendDTime
+    let friendDSolTime
+    if(chooseForFriendC==="FriendCOverHour"){
+        friendDTime = `5${friendCNum1} minutes`
+        friendDSolTime = parseFloat(`${5}${friendCNum1}`)
+    } else if(chooseForFriendC==="FriendCBelowHour"){
+        friendDTime = `1 hour ${friendCNum1} minutes`
+        friendDSolTime = parseFloat(1+`${0}${friendCNum1}`)
+    }
+
+    let solutionFastestFriendNum = Math.min(friendASolTime,friendBSolTime,friendCSolTime,friendDSolTime)
+    let solutionFastestFriend
+    if(solutionFastestFriendNum===friendASolTime){
+        solutionFastestFriend = "Friend A"
+    } else if(solutionFastestFriendNum===friendBSolTime){
+        solutionFastestFriend = "Friend B"
+    } else if(solutionFastestFriendNum===friendCSolTime){
+        solutionFastestFriend = "Friend C"
+    } else if(solutionFastestFriendNum===friendDSolTime){
+        solutionFastestFriend = "Friend D"
+    }
+
+    document.getElementById("questionText").innerHTML = 
+    `At a charity Fun Race event, four friends finished the race in the following times.<br><br>
+    Friend A: ${friendATime}<br>
+    Friend B: ${friendBTime}<br>
+    Friend C: ${friendCTime}<br>
+    Friend D: ${friendDTime}<br><br>
+    Who had the fastest time?
+    `
+    document.getElementById("solutionText").innerHTML = 
+    `${solutionFastestFriend} is the fastest at ${solutionFastestFriendNum} minutes`
+}
+
+function completeFrequencyTable(){
+
+    let eventsArray=["Fun Fair","Marathon","Quiz","Street Party","Talent Show"];
+
+    let FirstTableArray=[eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]
+    ,eventsArray[Math.floor(Math.random()*eventsArray.length)],eventsArray[Math.floor(Math.random()*eventsArray.length)]]
+    
+    let funFairCount = FirstTableArray.filter(x => x === "Fun Fair").length
+    let marathonCount = FirstTableArray.filter(x => x === "Marathon").length
+    let quizCount = FirstTableArray.filter(x => x === "Quiz").length
+    let streetPartyCount = FirstTableArray.filter(x => x === "Street Party").length
+    let talentShowCount = FirstTableArray.filter(x => x === "Talent Show").length
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    table{
+        width: 100%;
+        font-size: 1rem;
+    }
+    td {
+        outline: 1px solid black;
+        text-align: center;
+        width: 20%;
+    }
+    th{
+        outline: 1px solid black;
+        text-align: center;
+    }
+    </style>
+    An organiser keeps a record of the different types of community events that took place over the summer.<br>
+    She started to put this information into a frequency table to report it at a meeting.<br>
+    <table>
+    <tr>
+    <td>${FirstTableArray[0]}</td><td>${FirstTableArray[1]}</td>
+    <td>${FirstTableArray[2]}</td><td>${FirstTableArray[3]}</td>
+    <td>${FirstTableArray[4]}</td>
+    </tr>
+    <tr>
+    <td>${FirstTableArray[5]}</td><td>${FirstTableArray[6]}</td>
+    <td>${FirstTableArray[7]}</td><td>${FirstTableArray[8]}</td>
+    <td>${FirstTableArray[9]}</td>
+    </tr>
+    <tr>
+    <td>${FirstTableArray[10]}</td><td>${FirstTableArray[11]}</td>
+    <td>${FirstTableArray[12]}</td><td>${FirstTableArray[13]}</td>
+    <td>${FirstTableArray[14]}</td>
+    </tr>
+    <tr>
+    <td>${FirstTableArray[15]}</td><td>${FirstTableArray[16]}</td>
+    <td>${FirstTableArray[17]}</td><td>${FirstTableArray[18]}</td>
+    <td>${FirstTableArray[19]}</td>
+    </tr>
+    <tr>
+    <td>${FirstTableArray[20]}</td><td>${FirstTableArray[21]}</td>
+    <td>${FirstTableArray[22]}</td><td>${FirstTableArray[23]}</td>
+    <td>${FirstTableArray[24]}</td>
+    </tr>
+    </table>
+    <br>
+    <table>
+    <tr>
+    <th>Community Event</th>
+    <th>Frequency</th>
+    </tr>
+    <tr>
+    <td>Fun Fair</td><td>${funFairCount}</td>
+    </tr>
+    <tr>
+    <td>Marathon</td><td>${marathonCount}</td>
+    </tr>
+    <tr>
+    <td>Street Party</td><td>${streetPartyCount}</td>
+    </tr>
+    <tr>
+    <td>Quiz</td><td></td>
+    </tr>
+    <tr>
+    <td>Talent Show</td><td></td>
+    </tr>
+    </table>
+    <br>
+    Complete the frequency table`
+
+    document.getElementById("solutionText").innerHTML = 
+    `Quiz = ${quizCount} and Talent Show = ${talentShowCount}`
+}
+
+
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -608,6 +782,10 @@ generateQButton.onclick = function(){
         tellTheTimeOnAnalogueClock();
     } else if(globalTopicAreaSelection==="identifyCorrectMeasuringTool"){
         identifyCorrectMeasuringTool();
+    } else if(globalTopicAreaSelection==="fastestTime"){
+        fastestTime();
+    } else if(globalTopicAreaSelection==="completeFrequencyTable"){
+        completeFrequencyTable();
     }
 };
 

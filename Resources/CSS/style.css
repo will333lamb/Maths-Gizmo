@@ -344,6 +344,11 @@ select:hover{
   box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
 }
 
+#difficultyLabel{
+    color:#009870;
+    font-weight: bold;
+}
+
 /* Index Styling/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
@@ -963,6 +968,11 @@ select:hover{
     color: green;
 }
 
+#difficultyLabel{
+    color:#009870;
+    font-weight: bold;
+}
+
 
 
 /* GCSE Print worksheet Page Mobile*/
@@ -1125,6 +1135,17 @@ select:hover{
 #downloadFile, #downloadSolutions, #downloadBothFiles{
     display: none;
     margin: 0 auto;
+}
+
+/*FS DISPLAY//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.centeredQuestion{
+    text-align: center;
+}
+
+.spaceBetween{
+    color: #fff
 }
 
 
