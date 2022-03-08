@@ -2594,6 +2594,7 @@ if(globalDifficultySelection === 2){
 
 }
 
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");

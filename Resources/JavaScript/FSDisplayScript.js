@@ -354,6 +354,8 @@ function tellTheTimeOnAnalogueClock(){
         transform: translate(-50%, -50%);
         border-radius: 50%;
     }
+
+    
     
     .clock .hand.minute{
         width: 7px;
@@ -761,6 +763,132 @@ function completeFrequencyTable(){
     `Quiz = ${quizCount} and Talent Show = ${talentShowCount}`
 }
 
+function interpretBarChart(){
+
+    let dataSpringFair = Math.floor(Math.random()*1000);
+    let dataCricketMatch = Math.floor(Math.random()*1000);
+    let dataStreetParty = Math.floor(Math.random()*1000);
+    let dataSummerBall = Math.floor(Math.random()*1000);
+
+    let mostPopularEventNum = Math.max(dataSpringFair,dataCricketMatch,dataStreetParty,dataSummerBall);
+    let mostPopularEvent
+    let secondMostPopularEventNum
+    let secondMostPopularEvent
+    if(mostPopularEventNum===dataSpringFair){
+        mostPopularEvent="Spring Fair"
+        secondMostPopularEventNum = Math.max(dataCricketMatch,dataStreetParty,dataSummerBall);
+        if(secondMostPopularEventNum===dataCricketMatch){
+            secondMostPopularEvent="Cricket Match"
+        } else if(secondMostPopularEventNum===dataStreetParty){
+            secondMostPopularEvent="Street Party"
+        } else if(secondMostPopularEventNum===dataSummerBall){
+            secondMostPopularEvent="Summer Ball"
+        }
+    } else if(mostPopularEventNum===dataCricketMatch){
+        mostPopularEvent="Cricket Match"
+        secondMostPopularEventNum = Math.max(dataSpringFair,dataStreetParty,dataSummerBall);
+        if(secondMostPopularEventNum===dataSpringFair){
+            secondMostPopularEvent="Spring Fair"
+        } else if(secondMostPopularEventNum===dataStreetParty){
+            secondMostPopularEvent="Street Party"
+        } else if(secondMostPopularEventNum===dataSummerBall){
+            secondMostPopularEvent="Summer Ball"
+        }
+    } else if(mostPopularEventNum===dataStreetParty){
+        mostPopularEvent="Street Party"
+        secondMostPopularEventNum = Math.max(dataSpringFair,dataCricketMatch,dataSummerBall);
+        if(secondMostPopularEventNum===dataCricketMatch){
+            secondMostPopularEvent="Cricket Match"
+        } else if(secondMostPopularEventNum===dataSpringFair){
+            secondMostPopularEvent="Spring Fair"
+        } else if(secondMostPopularEventNum===dataSummerBall){
+            secondMostPopularEvent="Summer Ball"
+        }
+    } else if(mostPopularEventNum===dataSummerBall){
+        mostPopularEvent="Summer Ball"
+        secondMostPopularEventNum = Math.max(dataSpringFair,dataCricketMatch,dataStreetParty);
+        if(secondMostPopularEventNum===dataCricketMatch){
+            secondMostPopularEvent="Cricket Match"
+        } else if(secondMostPopularEventNum===dataStreetParty){
+            secondMostPopularEvent="Street Party"
+        } else if(secondMostPopularEventNum===dataSpringFair){
+            secondMostPopularEvent="Spring Fair"
+        }
+    }
+
+    document.getElementById("questionText").innerHTML = 
+    `<style>
+
+    @media only screen and (min-width: 800px) {
+    .barChartContainer{
+        width: 30%;
+        margin: 0 auto;
+    }
+    
+    .barChartContainerChild{
+        width: 100%;
+        min-width: 315px;
+    }
+    }
+
+    @media only screen and (max-width: 800px) {
+        .barChartContainer{
+            width: 85%;
+            margin: 0 auto;
+        }
+        
+        .barChartContainerChild{
+            width: 100%;
+            
+        }
+    }
+    </style>
+    
+    This chart shows the numbers of people attending different community events last year.<br>
+    <div class="barChartContainer">
+        <div class="barChartContainerChild">
+            <canvas id="FSBarChart" width="10" height="10"></canvas>
+        </div>
+    </div><br>
+    Which two events had the highest number of people attending?`
+
+    document.getElementById("solutionText").innerHTML = 
+    `${mostPopularEvent} and ${secondMostPopularEvent}`
+
+    const ctx = document.getElementById('FSBarChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Spring Fair', 'Cricket Match', 'Street Party', 'Summer Ball'],
+        datasets: [{
+            label: 'Community Events',
+            data: [dataSpringFair,dataCricketMatch,dataStreetParty,dataSummerBall],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.75)',
+                'rgba(54, 162, 235, 0.75)',
+                'rgba(255, 206, 86, 0.75)',
+                'rgba(75, 192, 192, 0.75)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+}
+
+
 
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -786,6 +914,8 @@ generateQButton.onclick = function(){
         fastestTime();
     } else if(globalTopicAreaSelection==="completeFrequencyTable"){
         completeFrequencyTable();
+    } else if(globalTopicAreaSelection==="interpretBarChart"){
+        interpretBarChart();
     }
 };
 
