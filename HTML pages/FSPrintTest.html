@@ -11,11 +11,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="../Resources/JavaScript/script.js" defer></script>
+    <script src="../Resources/JavaScript/FSPrintTest.js" defer></script>
     <script src="../Resources/JavaScript/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/9bda619445.js" crossorigin="anonymous"></script>
     <script src="../Resources/JavaScript/indexscript.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
   </head>
 
   <body>
@@ -51,5 +52,60 @@
       </ul>
     </nav>
   </div>
-  </body>
-   
+  <br>
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>Functional Skills create a practice test</h2>
+      <h3>Select level</h3>
+      <div class="dropDownMenus">
+        <select id="topicAreaSelect" onchange="getSelectedTopicArea()">
+          <option selected value="0">Please select</option>
+          <optgroup label="Entry level 3">
+            <option value="communityEvents">Community Events</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class=centerButtonsRow>
+        <div class="buttonsRow">
+          <button id="generateQButton" class="button">Create preview</button><br>
+          <button id="downloadFile" onclick="generatePDF()" class="button">Download Worksheet</button><br>
+          <button id="downloadSolutions" onclick="generateSolutions()" class="button">Download Solutions</button><br>
+          <button id="downloadBothFiles" onclick="downloadBothFiles()" class="button">Download both files</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="previewPanelContainer">
+    <h2 class="previewHeadings">Preview Worksheet</h2>
+    <p id="instructionsParagraph" class="instructionsParagraph">
+      <span id="instructionsHeadingsTop" class="instructionsHeadings">Instructions to create and download a practice test</span><br><br>
+      <span class="instructionsHeadings">1)</span> Please navigate to your desired level using the dropdown on the left.<br>
+      <span class="instructionsHeadings">2)</span> Click create preview to generate your practice test. Solutions will be generated below.<br>
+      <span class="instructionsHeadings">4)</span> Use the download options to either download just the worksheet, solutions or both files.<br>
+    </p>
+    <div class="previewBoxQContainer">
+      <div class="previewBoxQ">
+        <p id="questionText"></p>
+      </div><br>
+    </div><br>
+    <h2 class="previewHeadingsSolutions">Preview Solutions</h2>
+    <div class="solutionsContainer">
+      <div class="previewBoxSolution">
+        <p id="solutionText"></p>
+      </div> 
+    </div>
+    
+  </div>
+
+
+
+</body>
+
+<footer>
+  <a href="https://icons8.com/icon/30UIOfuJpZnZ/menu">Menu icon by Icons8</a>
+</footer>
+</html>
+
+
+
+  
