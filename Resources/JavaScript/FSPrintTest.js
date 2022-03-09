@@ -165,7 +165,7 @@ function frontPageNonCalc(){
     <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br>
     Community Events<br><br>
     <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div>
-    Non Calculator</span><br>
+    Non-Calculator</span><br>
     <span class="fa-stack fa-2x" style="font-size: 7.5rem;">
     <i class="fas fa-calculator fa-stack-1x"></i>
     <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
@@ -179,6 +179,7 @@ function frontPageNonCalc(){
     Date: .................................................<br>
 
     </div>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
     `
 }
 
@@ -195,7 +196,7 @@ function sequencesNextNumberInteger(){
     let num4 = num3 + progression
     let num5Solution = num4 + progression 
 
-    document.getElementById("questionText").innerHTML =
+    document.getElementById("questionText").innerHTML +=
     `
     <style>
     .spaceBetweenSequences{
@@ -205,15 +206,20 @@ function sequencesNextNumberInteger(){
         text-align: center;
     }
     </style>
-    What is the next number in this sequence?<br>
+    <span class="questionNumber">Q1.</span>
+    What is the next number in this sequence?<br><br><br><br>
     <div class="centeredQuestion">
     ${num1}<span class="spaceBetweenSequences">....</span>${num2}<span class="spaceBetweenSequences">....</span>${num3}<span class="spaceBetweenSequences">....</span>
     ${num4}<span class="spaceBetweenSequences">....</span>..........<br>
     </div>
+    <p id="marksGiven">(1 mark)</p>
     `
 
-    document.getElementById("solutionText").innerHTML =
-    `The term to term rule is +${progression}, and the next term is ${num5Solution}`
+    document.getElementById("solutionText").innerHTML +=
+    `<span class="questionNumber">Q1.</span>
+    The term to term rule is +${progression}, and the next term is ${num5Solution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 }
 
 function roundToPowerOfTen(){
@@ -226,15 +232,19 @@ function roundToPowerOfTen(){
     let powerOfTenChosen = powerOfTenArray[Math.floor(Math.random()*powerOfTenArray.length)];
     let roundedNumSolution = (Math.round(numToBeRoundedAsInt / powerOfTenChosen)*powerOfTenChosen)
 
-    document.getElementById("questionText").innerHTML =
+    document.getElementById("questionText").innerHTML +=
+    `<br><br>
+    <span class="questionNumber">Q2.</span>
+    What is <span style="font-weight: bold;">${numToBeRounded}</span> rounded to the nearest ${powerOfTenChosen}? <br><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p>
     `
-    
-    What is ${numToBeRounded} rounded to the nearest ${powerOfTenChosen}? <br>
 
-    `
-
-    document.getElementById("solutionText").innerHTML =
-    `${roundedNumSolution}`
+    document.getElementById("solutionText").innerHTML +=
+    `<br>
+    <span class="questionNumber">Q2.</span> ${roundedNumSolution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
     
 }
 
@@ -254,11 +264,17 @@ function writeNumberInFigures(){
     let concatedSolution = `${num1Sol}${0}${num2Sol}`
 
 
-    document.getElementById("questionText").innerHTML = 
-    `Write <span style="font-weight:bold;">${num1} hundred and ${num2}</span> in figures.`
+    document.getElementById("questionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q3.</span>
+    Write <span style="font-weight:bold;">${num1} hundred and ${num2}</span> in figures. <br><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p>`
 
-    document.getElementById("solutionText").innerHTML = 
-    `${concatedSolution}`
+    document.getElementById("solutionText").innerHTML += 
+    `<br>
+    <span class="questionNumber">Q3.</span> ${concatedSolution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 }
 
 function highestNumberWithDecimals(){
@@ -968,6 +984,10 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
 } else if(globalTopicAreaSelection ==="communityEvents"){
     loseInstructions();
     frontPageNonCalc();
+    sequencesNextNumberInteger();
+    roundToPowerOfTen();
+    writeNumberInFigures();
+
     document.getElementById("generateQButton").innerHTML="Reset";
 } 
 };
@@ -996,7 +1016,7 @@ function generateSolutions(){
     const element = document.querySelector(".previewBoxSolution");
     const options = {
         margin:     [0,0.1],
-        filename:     solutionsTitle,
+        filename:     "tempSolutionTitle",
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
