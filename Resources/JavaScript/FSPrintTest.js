@@ -152,21 +152,29 @@ function frontPageNonCalc(){
     `<style>
     .frontPage{
         text-align: center;
-        font-size: 2rem;
+        font-size: 1.5rem;
         line-height: 3.5rem;
+    }
+
+    .centeredLogo{
+        margin: 0 auto;
+        width: 300px;
     }
     </style>
     <div class="frontPage">
-    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br><br>
-    Non Calculator</span><br><br>
-    Community Events<br>
-    <span style="font-weight: bold;">Time allowed - 25 minutes</span><br>
-    Marks: 10 <br>
+    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br>
+    Community Events<br><br>
+    <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div>
+    Non Calculator</span><br>
     <span class="fa-stack fa-2x" style="font-size: 7.5rem;">
     <i class="fas fa-calculator fa-stack-1x"></i>
     <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
-    </span>
-    <br><br>
+    </span><br><br> 
+    
+    <span style="font-weight: bold;">Time allowed - 25 minutes</span><br>
+    Marks: 10 <br>
+    
+    <br>
     Name: .................................................<br><br>
     Date: .................................................<br>
 
