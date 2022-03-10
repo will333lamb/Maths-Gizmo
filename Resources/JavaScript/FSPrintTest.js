@@ -1008,6 +1008,14 @@ function interpretBarChart(){
         width: 100%;
         min-width: 315px;
     }
+    .barChartImageContainer{
+        margin: 0 20%;
+    }
+
+    .barChartImageContainerChild{
+        width: 100%;
+    }
+
     }
 
     @media only screen and (max-width: 800px) {
@@ -1028,9 +1036,14 @@ function interpretBarChart(){
         <div class="barChartContainerChild">
             <canvas id="FSBarChart" width="10" height="10"></canvas>
         </div>
-    </div><br>
+    </div>
+    <div class="barChartImageContainer">
+        <div class="barChartImageContainerChild">
+            <img id="barChartImg" src="">
+        </div>
+    </div><br><div>
     Which <span style="font-weight: bold;">two</span> events had the <span style="font-weight: bold;">highest</span> number of people attending?
-    <br><br><br><br>
+    <br><br><br><br></div>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . .<span class="spaceBetween">.........................</span>. . . . . . . . . . . . . . . . . </div>
     <p id="marksGiven">(1 mark)</p><br><br>
     `
@@ -1071,15 +1084,13 @@ function interpretBarChart(){
         },
         animation: {
             duration: 0
-            
-            
         }
     }
 });
-
-console.log(myChart.toBase64Image());
+document.getElementById('barChartImg').src = myChart.toBase64Image();
+document.querySelector(".barChartContainer").style.display = "none";
+document.querySelector(".barChartContainerChild").style.display = "none";
 }
-
 
 
 
