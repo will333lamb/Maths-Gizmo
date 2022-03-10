@@ -146,25 +146,26 @@ function getSelectedTopicArea(){
 };
 
 function frontPageNonCalc(){
-
-
-    document.getElementById("questionText").innerHTML = 
+    document.getElementById("questionText").innerHTML += 
     `<style>
     .frontPage{
         text-align: center;
         font-size: 1.5rem;
         line-height: 3.5rem;
+        color: #009870;
     }
 
     .centeredLogo{
         margin: 0 auto;
         width: 300px;
+        height: 100px;
+
     }
     </style>
     <div class="frontPage">
     <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br>
     Community Events<br><br>
-    <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div>
+    <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div><br>
     Non-Calculator</span><br>
     <span class="fa-stack fa-2x" style="font-size: 7.5rem;">
     <i class="fas fa-calculator fa-stack-1x"></i>
@@ -180,6 +181,74 @@ function frontPageNonCalc(){
 
     </div>
     <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    `
+
+    document.getElementById("solutionText").innerHTML +=
+    `<style>
+    .frontPage{
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 3.5rem;
+        color: #009870;
+    }
+    </style>
+    <div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    <div class="frontPage">
+    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper Solutions<br>
+    Community Events<br><br>
+    </div>
+    `
+}
+
+function frontPageCalc(){
+    document.getElementById("questionText").innerHTML += 
+    `<style>
+    .frontPage{
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 3.5rem;
+        color: #009870;
+    }
+
+    .centeredLogo{
+        margin: 0 auto;
+        width: 300px;
+        height: 100px;
+
+    }
+    </style>
+    <div class="frontPage">
+    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br>
+    Community Events<br><br>
+    <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div><br>
+    Calculator</span><br>
+    <span style="font-size: 7.5rem;"><i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i></span>
+    <br><br> 
+    
+    <span style="font-weight: bold;">Time allowed - 65 minutes</span><br>
+    Marks: 30 <br>
+    
+    <br>
+    Name: .................................................<br><br>
+    Date: .................................................<br>
+
+    </div>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    `
+
+    document.getElementById("solutionText").innerHTML +=
+    `<style>
+    .frontPage{
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 3.5rem;
+        color: #009870;
+    }
+    </style><br><br>
+    <div class="frontPage">
+    <span style="font-weight: bold;">Calculator Part</span>
+    </div>
     `
 }
 
@@ -207,7 +276,7 @@ function sequencesNextNumberInteger(){
     }
     </style>
     <span class="questionNumber">Q1.</span>
-    What is the next number in this sequence?<br><br><br><br>
+    What is the next number in this sequence?<br><br><br><br><br>
     <div class="centeredQuestion">
     ${num1}<span class="spaceBetweenSequences">....</span>${num2}<span class="spaceBetweenSequences">....</span>${num3}<span class="spaceBetweenSequences">....</span>
     ${num4}<span class="spaceBetweenSequences">....</span>..........<br>
@@ -216,7 +285,7 @@ function sequencesNextNumberInteger(){
     `
 
     document.getElementById("solutionText").innerHTML +=
-    `<span class="questionNumber">Q1.</span>
+    `<br><span class="questionNumber">Q1.</span>
     The term to term rule is +${progression}, and the next term is ${num5Solution}
     <p id="marksGiven">(1 mark)</p><br><br>
     <div class="borderBottomSolution"></div>`
@@ -233,7 +302,7 @@ function roundToPowerOfTen(){
     let roundedNumSolution = (Math.round(numToBeRoundedAsInt / powerOfTenChosen)*powerOfTenChosen)
 
     document.getElementById("questionText").innerHTML +=
-    `<br><br>
+    `<br><br><br>
     <span class="questionNumber">Q2.</span>
     What is <span style="font-weight: bold;">${numToBeRounded}</span> rounded to the nearest ${powerOfTenChosen}? <br><br><br><br>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
@@ -241,7 +310,7 @@ function roundToPowerOfTen(){
     `
 
     document.getElementById("solutionText").innerHTML +=
-    `<br>
+    `<br><br>
     <span class="questionNumber">Q2.</span> ${roundedNumSolution}
     <p id="marksGiven">(1 mark)</p><br><br>
     <div class="borderBottomSolution"></div>`
@@ -265,13 +334,13 @@ function writeNumberInFigures(){
 
 
     document.getElementById("questionText").innerHTML += 
-    `<br><br><span class="questionNumber">Q3.</span>
+    `<br><br><br><span class="questionNumber">Q3.</span>
     Write <span style="font-weight:bold;">${num1} hundred and ${num2}</span> in figures. <br><br><br><br>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
     <p id="marksGiven">(1 mark)</p>`
 
     document.getElementById("solutionText").innerHTML += 
-    `<br>
+    `<br><br>
     <span class="questionNumber">Q3.</span> ${concatedSolution}
     <p id="marksGiven">(1 mark)</p><br><br>
     <div class="borderBottomSolution"></div>`
@@ -314,7 +383,7 @@ function highestNumberWithDecimals(){
     //Math.round((num + Number.EPSILON) * 100) / 100
 
 
-    document.getElementById("questionText").innerHTML =
+    document.getElementById("questionText").innerHTML +=
     `<style>
     .spaceBetweenSequences{
         color: #fff
@@ -323,14 +392,19 @@ function highestNumberWithDecimals(){
         text-align: center;
     }
     </style>
-    Which of these is the <span style="font-weight:bold;">highest</span> number?<br>
+    <br><br><br><span class="questionNumber">Q4.</span>
+    Which of these is the <span style="font-weight:bold;">highest</span> number?<br><br><br>
     <div class="centeredQuestion">${num1}<span class="spaceBetweenSequences">......</span>${num2}<span class="spaceBetweenSequences">......</span>
-    ${num3}<span class="spaceBetweenSequences">......</span>${num4}
+    ${num3}<span class="spaceBetweenSequences">......</span>${num4}<br><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
     </div>
     `
 
-    document.getElementById("solutionText").innerHTML = 
-    `${largestNumberSolution}`
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q4.</span> ${largestNumberSolution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 }
 
 function subtraction3DigitBy3Digit(){
@@ -349,11 +423,18 @@ function subtraction3DigitBy3Digit(){
 
     let subtractedSolution = num2AsNumber-num1AsNumber;
 
-    document.getElementById("questionText").innerHTML = 
-    `Subtract ${num1} from ${num2}`
-
-    document.getElementById("solutionText").innerHTML = 
-    `${subtractedSolution}`
+    document.getElementById("questionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q5.</span>
+    Subtract <span style="font-weight: bold;">${num1}</span> from <span style="font-weight: bold;">${num2}</span>
+    <br><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
+    
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q5.</span> ${subtractedSolution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 
 }
 
@@ -368,7 +449,7 @@ function tellTheTimeOnAnalogueClock(){
         solutionAmPm="am"
     }
 
-    document.getElementById("questionText").innerHTML = 
+    document.getElementById("questionText").innerHTML += 
     `
     <style>
     .clock{
@@ -451,6 +532,7 @@ function tellTheTimeOnAnalogueClock(){
         text-align: center;
     }
     </style>
+    <span class="questionNumber">Q6.</span>
     What time does the clock show?<br><br>
     <div class="clock">
             <div class="hand hour" data-hour-hand></div>
@@ -467,8 +549,11 @@ function tellTheTimeOnAnalogueClock(){
             <div class="number number10"><div style="transform: rotate(-300deg);">10</div></div>
             <div class="number number11"><div style="transform: rotate(-330deg);">11</div></div>
             <div class="number number12">12</div>
-    </div>
-    <div class="centeredQuestion">${eveningMorning}</div>`
+    </div><br>
+    <div class="centeredQuestion">${eveningMorning}</div>
+    <br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p><br><br>`
 
     let hourHand = document.querySelector('[data-hour-hand]');
     let minuteHand = document.querySelector('[data-minute-hand]');
@@ -564,8 +649,11 @@ function tellTheTimeOnAnalogueClock(){
         solutionMinute=55
     };
 
-    document.getElementById("solutionText").innerHTML =
-    `${solutionHour}:${solutionMinute} ${solutionAmPm}`
+    document.getElementById("solutionText").innerHTML +=
+    `<br><br><span class="questionNumber">Q6.</span> ${solutionHour}:${solutionMinute} ${solutionAmPm}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
 
     
 }
@@ -652,17 +740,21 @@ function identifyCorrectMeasuringTool(){
 
     
 
-    document.getElementById("questionText").innerHTML = 
+    document.getElementById("questionText").innerHTML += 
     `
-    Which one of these measuring instruments is best ${chosenQuestion}?<br><br>
+    <br><br><span class="questionNumber">Q7.</span> Which one of these measuring instruments is <span style="font-weight: bold;">best</span> ${chosenQuestion}?<br>
+    <span style="font-weight: bold;">Circle one</span><br><br>
     <div class="centeredQuestion">
-    ${option1}<span class="spaceBetween">.....</span>${option2}<span class="spaceBetween">.....</span>
-    ${option3}<span class="spaceBetween">.....</span>${option4}
+    ${option1}<span class="spaceBetween">.......</span>${option2}<span class="spaceBetween">.......</span>
+    ${option3}<span class="spaceBetween">.......</span>${option4}
     </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
     `
 
-    document.getElementById("solutionText").innerHTML =
-    `${solution}`
+    document.getElementById("solutionText").innerHTML +=
+    `<br><br><span class="questionNumber">Q7.</span> ${solution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 
 }
 
@@ -731,16 +823,23 @@ function fastestTime(){
         solutionFastestFriend = "Friend D"
     }
 
-    document.getElementById("questionText").innerHTML = 
-    `At a charity Fun Race event, four friends finished the race in the following times.<br><br>
-    Friend A: ${friendATime}<br>
-    Friend B: ${friendBTime}<br>
-    Friend C: ${friendCTime}<br>
-    Friend D: ${friendDTime}<br><br>
+    document.getElementById("questionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q8.</span> At a charity Fun Race event, four friends finished the race in the following times.<br><br>
+    Friend A:<span class="spaceBetween">.......</span> ${friendATime}<br>
+    Friend B:<span class="spaceBetween">.......</span> ${friendBTime}<br>
+    Friend C:<span class="spaceBetween">.......</span> ${friendCTime}<br>
+    Friend D:<span class="spaceBetween">.......</span> ${friendDTime}<br><br>
     Who had the fastest time?
+    <br><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
     `
-    document.getElementById("solutionText").innerHTML = 
-    `${solutionFastestFriend} is the fastest at ${solutionFastestFriendNum} minutes`
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q8.</span> ${solutionFastestFriend} is the fastest at ${solutionFastestFriendNum} minutes
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
 }
 
 function completeFrequencyTable(){
@@ -763,25 +862,27 @@ function completeFrequencyTable(){
     let streetPartyCount = FirstTableArray.filter(x => x === "Street Party").length
     let talentShowCount = FirstTableArray.filter(x => x === "Talent Show").length
 
-    document.getElementById("questionText").innerHTML = 
+    document.getElementById("questionText").innerHTML += 
     `
     <style>
     table{
         width: 100%;
         font-size: 1rem;
+        border-collapse: collapse;
     }
     td {
-        outline: 1px solid black;
+        border: 1px solid #009870;
         text-align: center;
         width: 20%;
     }
     th{
-        outline: 1px solid black;
+        border: 1px solid #009870;
         text-align: center;
+        background-color: rgba(88, 229, 186, 0.3);
     }
     </style>
-    An organiser keeps a record of the different types of community events that took place over the summer.<br>
-    She started to put this information into a frequency table to report it at a meeting.<br>
+    <span class="questionNumber">Q9.</span> An organiser keeps a record of the different types of community events that took place over the summer.<br><br>
+    She started to put this information into a frequency table to report it at a meeting.<br><br>
     <table>
     <tr>
     <td>${FirstTableArray[0]}</td><td>${FirstTableArray[1]}</td>
@@ -832,10 +933,13 @@ function completeFrequencyTable(){
     </tr>
     </table>
     <br>
-    Complete the frequency table`
+    Complete the frequency table
+    <p id="marksGiven">(1 mark)</p><br><br>`
 
-    document.getElementById("solutionText").innerHTML = 
-    `Quiz = ${quizCount} and Talent Show = ${talentShowCount}`
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q9.</span> Quiz = ${quizCount} and Talent Show = ${talentShowCount}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 }
 
 function interpretBarChart(){
@@ -891,13 +995,13 @@ function interpretBarChart(){
         }
     }
 
-    document.getElementById("questionText").innerHTML = 
+    document.getElementById("questionText").innerHTML += 
     `<style>
 
     @media only screen and (min-width: 800px) {
     .barChartContainer{
         width: 30%;
-        margin: 0 auto;
+        margin: 0 20%;
     }
     
     .barChartContainerChild{
@@ -919,16 +1023,22 @@ function interpretBarChart(){
     }
     </style>
     
-    This chart shows the numbers of people attending different community events last year.<br>
+    <span class="questionNumber">Q10.</span> This chart shows the numbers of people attending different community events last year.<br>
     <div class="barChartContainer">
         <div class="barChartContainerChild">
             <canvas id="FSBarChart" width="10" height="10"></canvas>
         </div>
     </div><br>
-    Which two events had the highest number of people attending?`
+    Which <span style="font-weight: bold;">two</span> events had the <span style="font-weight: bold;">highest</span> number of people attending?
+    <br><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .<span class="spaceBetween">.........................</span>. . . . . . . . . . . . . . . . . </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
 
-    document.getElementById("solutionText").innerHTML = 
-    `${mostPopularEvent} and ${secondMostPopularEvent}`
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q10.</span> ${mostPopularEvent} and ${secondMostPopularEvent}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
 
     const ctx = document.getElementById('FSBarChart').getContext('2d');
     const myChart = new Chart(ctx, {
@@ -939,16 +1049,16 @@ function interpretBarChart(){
             label: 'Community Events',
             data: [dataSpringFair,dataCricketMatch,dataStreetParty,dataSummerBall],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.75)',
-                'rgba(54, 162, 235, 0.75)',
-                'rgba(255, 206, 86, 0.75)',
-                'rgba(75, 192, 192, 0.75)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
             ],
             borderWidth: 1
         }]
@@ -958,10 +1068,19 @@ function interpretBarChart(){
             y: {
                 beginAtZero: true
             }
+        },
+        animation: {
+            duration: 0
+            
+            
         }
     }
 });
+
+console.log(myChart.toBase64Image());
 }
+
+
 
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -987,6 +1106,16 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     sequencesNextNumberInteger();
     roundToPowerOfTen();
     writeNumberInFigures();
+    highestNumberWithDecimals();
+    subtraction3DigitBy3Digit();
+    tellTheTimeOnAnalogueClock();
+    identifyCorrectMeasuringTool();
+    fastestTime();
+    completeFrequencyTable();
+    interpretBarChart();
+    document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br>`
+    frontPageCalc();
+
 
     document.getElementById("generateQButton").innerHTML="Reset";
 } 
