@@ -1031,13 +1031,19 @@ function interpretBarChart(){
 
     @media only screen and (max-width: 800px) {
         .barChartContainer{
-            width: 85%;
-            margin: 0 auto;
+            width: 45%;
         }
         
         .barChartContainerChild{
             width: 100%;
             
+        }
+        .barChartImageContainer{
+            margin: 0 20%;
+        }
+    
+        .barChartImageContainerChild{
+            width: 100%;
         }
     }
     </style>

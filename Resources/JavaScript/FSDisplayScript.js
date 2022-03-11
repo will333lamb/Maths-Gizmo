@@ -864,16 +864,16 @@ function interpretBarChart(){
             label: 'Community Events',
             data: [dataSpringFair,dataCricketMatch,dataStreetParty,dataSummerBall],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.75)',
-                'rgba(54, 162, 235, 0.75)',
-                'rgba(255, 206, 86, 0.75)',
-                'rgba(75, 192, 192, 0.75)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
             ],
             borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
             ],
             borderWidth: 1
         }]
@@ -883,7 +883,8 @@ function interpretBarChart(){
             y: {
                 beginAtZero: true
             }
-        }
+        },
+        duration: 0
     }
 });
 }
