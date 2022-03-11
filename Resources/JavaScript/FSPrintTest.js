@@ -743,12 +743,11 @@ function identifyCorrectMeasuringTool(){
     document.getElementById("questionText").innerHTML += 
     `
     <br><br><span class="questionNumber">Q7.</span> Which one of these measuring instruments is <span style="font-weight: bold;">best</span> ${chosenQuestion}?<br>
-    <span style="font-weight: bold;">Circle one</span><br><br>
-    <div class="centeredQuestion">
-    ${option1}<span class="spaceBetween">.......</span>${option2}<span class="spaceBetween">.......</span>
-    ${option3}<span class="spaceBetween">.......</span>${option4}
-    </div>
+    <span style="font-weight: bold;">Circle one</span><br><br><br><br>
+    ${option1}<br><br><br><br>${option2}<br><br><br><br>
+    ${option3}<br><br><br><br>${option4}
     <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
     `
 
     document.getElementById("solutionText").innerHTML +=
@@ -833,7 +832,7 @@ function fastestTime(){
     <br><br><br><br>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </div>
     <p id="marksGiven">(1 mark)</p><br><br>
-    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    
     `
     document.getElementById("solutionText").innerHTML += 
     `<br><br><span class="questionNumber">Q8.</span> ${solutionFastestFriend} is the fastest at ${solutionFastestFriendNum} minutes
@@ -866,9 +865,18 @@ function completeFrequencyTable(){
     `
     <style>
     table{
-        width: 100%;
         font-size: 1rem;
         border-collapse: collapse;
+    }
+    #firstTable{
+        width: 100%;
+    }
+    #secondTable{
+        width: 60%;
+    }
+    .secondTableContainer{
+        margin-left: 30%;
+        margin-right: 10%
     }
     td {
         border: 1px solid #009870;
@@ -883,7 +891,7 @@ function completeFrequencyTable(){
     </style>
     <span class="questionNumber">Q9.</span> An organiser keeps a record of the different types of community events that took place over the summer.<br><br>
     She started to put this information into a frequency table to report it at a meeting.<br><br>
-    <table>
+    <table id="firstTable">
     <tr>
     <td>${FirstTableArray[0]}</td><td>${FirstTableArray[1]}</td>
     <td>${FirstTableArray[2]}</td><td>${FirstTableArray[3]}</td>
@@ -911,7 +919,8 @@ function completeFrequencyTable(){
     </tr>
     </table>
     <br>
-    <table>
+    <div class="secondTableContainer">
+    <table id="secondTable">
     <tr>
     <th>Community Event</th>
     <th>Frequency</th>
@@ -932,9 +941,11 @@ function completeFrequencyTable(){
     <td>Talent Show</td><td></td>
     </tr>
     </table>
+    </div>
     <br>
     Complete the frequency table
-    <p id="marksGiven">(1 mark)</p><br><br>`
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
 
     document.getElementById("solutionText").innerHTML += 
     `<br><br><span class="questionNumber">Q9.</span> Quiz = ${quizCount} and Talent Show = ${talentShowCount}
@@ -1045,7 +1056,11 @@ function interpretBarChart(){
     Which <span style="font-weight: bold;">two</span> events had the <span style="font-weight: bold;">highest</span> number of people attending?
     <br><br><br><br></div>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . .<span class="spaceBetween">.........................</span>. . . . . . . . . . . . . . . . . </div>
-    <p id="marksGiven">(1 mark)</p><br><br>
+    <p id="marksGiven">(1 mark)</p><br><br><br><br>
+    <p id="marksGiven" style="font-weight: bold; font-style: normal;">Total marks: 10</p><br><br><br><br><br>
+    <div class="frontPage">
+    End of Non-calculator paper
+    </div>
     `
 
     document.getElementById("solutionText").innerHTML += 
