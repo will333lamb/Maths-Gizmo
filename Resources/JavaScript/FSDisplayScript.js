@@ -889,6 +889,159 @@ function interpretBarChart(){
 });
 }
 
+function fractionShadedOfShape(){
+
+    let row3YayOrNayArray = [0,1];
+    let oneToFiveArray = [1,2,3,4];
+    let zeroToFiveArray = [0,1,2,3,4,5];
+    function row3YayOrNay(){
+    YayOrNay = row3YayOrNayArray[Math.floor(Math.random()*row3YayOrNayArray.length)];
+    YayOrNay2 = row3YayOrNayArray[Math.floor(Math.random()*row3YayOrNayArray.length)];
+    
+    
+    row1ShadedNum = oneToFiveArray[Math.floor(Math.random()*oneToFiveArray.length)];
+    if(row1ShadedNum===1){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row1ShadedNum===2){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row1ShadedNum===3){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row1ShadedNum===4){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    }
+
+    row2ShadedNum = zeroToFiveArray[Math.floor(Math.random()*zeroToFiveArray.length)];
+    if(row2ShadedNum===1){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===2){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===3){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===4){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===5){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data5").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    }
+
+    row3ShadedNum = zeroToFiveArray[Math.floor(Math.random()*zeroToFiveArray.length)];
+    if(row3ShadedNum===1){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===2){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===3){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===4){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===5){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data5").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    }
+
+    if(YayOrNay===0){
+        document.getElementById("row3").style.display = "none"
+        row3ShadedNum=0
+    }
+    if(YayOrNay2===0){
+        document.getElementById("row2").style.display = "none"
+        row2ShadedNum=0
+    }
+
+
+    let denominatorSolution
+    if(YayOrNay===0 && YayOrNay2===0){
+        denominatorSolution=5
+    } else if(YayOrNay2===0 && YayOrNay===1){
+        denominatorSolution=10
+    } else if(YayOrNay2===1 && YayOrNay===0){
+        denominatorSolution=10
+    } else if(YayOrNay2===1 && YayOrNay===1){
+        denominatorSolution=15
+    }
+
+    let numeratorSolution = row1ShadedNum+row2ShadedNum+row3ShadedNum
+    
+    document.getElementById("solutionText").innerHTML =
+    ` ${numeratorSolution} &frasl; ${denominatorSolution}<br><br>
+    
+    `
+
+    }
+
+    
+
+    document.getElementById("questionText").innerHTML = 
+    `<style>
+    table{
+        border: 1px solid #009870;
+        border-collapse: collapse;
+        font-size: 1em;
+        width: 80%;
+        white-space: pre-line;
+        line-height: 1.5;
+    }
+    td{
+        border: 1px solid #009870;
+    }
+    
+    </style>
+    What fraction of this shape is shaded?<br><br>
+    <div class="centeredTable">
+    <table>
+        <tr id="row1">
+            <td id="row1data1"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data2"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data3"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data4"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data5"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+        </tr>
+        <tr id="row2">
+            <td id="row2data1"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data2"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data3"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data4"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data5"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+        </tr>
+        <tr id="row3">
+            <td id="row3data1"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data2"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data3"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data4"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data5"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+        </tr>
+    </table>
+    </div>`
+
+    
+    row3YayOrNay();
+
+    
+}
+
 
 
 
@@ -917,6 +1070,8 @@ generateQButton.onclick = function(){
         completeFrequencyTable();
     } else if(globalTopicAreaSelection==="interpretBarChart"){
         interpretBarChart();
+    } else if(globalTopicAreaSelection==="fractionShadedOfShape"){
+        fractionShadedOfShape();
     }
 };
 
