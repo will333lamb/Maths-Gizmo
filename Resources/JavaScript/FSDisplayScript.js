@@ -1042,6 +1042,44 @@ function fractionShadedOfShape(){
     
 }
 
+function sequencesNextNumberDecimal(){
+    let num1 = Math.floor((Math.random()*20)+10) /10
+    let num1String = `${num1.toFixed(1)}`
+    let progression
+    for(progression = Math.floor((Math.random()*20)+5)/10; progression === num1;){
+        progression = Math.floor((Math.random()*20)+5)/10;
+    }
+    let num2 = num1 + progression
+    let num2String = `${num2.toFixed(1)}`
+    let num3 = num2 + progression
+    let num3String = `${num3.toFixed(1)}`
+    let num4 = num3 + progression
+    let num4String = `${num4.toFixed(1)}`
+    let num5Solution = num4 + progression
+    let num5SolutionString = `${num5Solution.toFixed(1)}`
+
+    document.getElementById("questionText").innerHTML =
+    `
+    <style>
+    .spaceBetweenSequences{
+        color: #fff
+    }
+    .centeredQuestion{
+        text-align: center;
+    }
+    </style>
+    What is the next number in this sequence?<br>
+    <div class="centeredQuestion">
+    ${num1String}<span class="spaceBetweenSequences">....</span>${num2String}<span class="spaceBetweenSequences">....</span>${num3String}<span class="spaceBetweenSequences">....</span>
+    ${num4String}<span class="spaceBetweenSequences">....</span>..........<br>
+    </div>
+    `
+
+    document.getElementById("solutionText").innerHTML =
+    `The term to term rule is +${progression}, and the next term is ${num5SolutionString}`
+}
+
+
 
 
 
@@ -1072,6 +1110,8 @@ generateQButton.onclick = function(){
         interpretBarChart();
     } else if(globalTopicAreaSelection==="fractionShadedOfShape"){
         fractionShadedOfShape();
+    } else if(globalTopicAreaSelection==="sequencesNextNumberDecimal"){
+        sequencesNextNumberDecimal();
     }
 };
 
