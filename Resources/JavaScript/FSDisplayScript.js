@@ -1102,6 +1102,78 @@ function roundingMoney(){
     `£${solutionRounded}`
 }
 
+function bestValueTables(){
+
+    let smallCostPenceArray = [25, 50, 75]
+    let smallTableCost = `${Math.ceil(Math.random()*5)+1}.${smallCostPenceArray[Math.floor(Math.random()*smallCostPenceArray.length)]}`
+    let smallTableCostAsNum = parseFloat(smallTableCost);
+    let lengthToBeCoveredArray = [4,6,8,10,12,14,16,18,20]
+    let lengthToBeCovered = lengthToBeCoveredArray[Math.floor(Math.random()*lengthToBeCoveredArray.length)];
+    let totalCostSmallTable = smallTableCostAsNum*lengthToBeCovered
+    let largeTableLength20Array=[4,5]
+    let largeTableLength12Array=[3,4]
+    if(lengthToBeCovered===4 || lengthToBeCovered===6 || lengthToBeCovered===14 || lengthToBeCovered===18){
+        largeTableLength = 2;
+    } else if(lengthToBeCovered===8 || lengthToBeCovered===16){
+        largeTableLength = 4;
+    } else if(lengthToBeCovered===10){
+        largeTableLength = 5;
+    } else if(lengthToBeCovered===12){
+        largeTableLength = largeTableLength12Array[Math.floor(Math.random()*largeTableLength12Array.length)]
+    } else if(lengthToBeCovered===20){
+        largeTableLength = largeTableLength20Array[Math.floor(Math.random()*largeTableLength20Array.length)]
+    }
+    let largeTableCostHelperArray = [0.25, -0.25, 0.5, -0.5, 0.75, -0.75]
+    let largeTableCostHelper = largeTableCostHelperArray[Math.floor(Math.random()*largeTableCostHelperArray.length)]
+    let largeTablecost = smallTableCostAsNum*largeTableLength+largeTableCostHelper
+    let solutionBestValue
+    if(largeTableCostHelper>0){
+        solutionBestValue = "small table"
+    } else{
+        solutionBestValue = "large table"
+    }
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .tableCostsContainer{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .tableInfoBox{
+        border: 1px solid black;
+        width: 25%;
+        text-align: center;
+        overflow: overlay;
+    }
+    </style>
+    A youth club plans to hold a Charity Sale.<br>
+    People hire tables to sell things from. <br>
+    The youth club has these different size tables.<br>
+    <div class="tableCostsContainer">
+        <div class="tableInfoBox">
+        Small table<br>
+        £${smallTableCost}<br>
+        1m
+        </div>
+        <div class="tableInfoBox">
+        Large table<br>
+        £${largeTablecost.toFixed(2)}<br>
+        ${largeTableLength}m
+        </div>
+    </div>
+    <br>
+    A man wants to hire tables to cover a length of ${lengthToBeCovered} metres.<br>
+    Which tables would be cheapest for him to hire?`
+
+    document.getElementById("solutionText").innerHTML = 
+    `Small tables: £${smallTableCost}&times;${lengthToBeCovered} = £${totalCostSmallTable.toFixed(2)}<br>
+    Large tables: £${largeTablecost.toFixed(2)}&times;${lengthToBeCovered / largeTableLength} = £${(largeTablecost*lengthToBeCovered/largeTableLength).toFixed(2)}
+    <br> Therefore the cheapest tables for him to hire are the ${solutionBestValue}s`
+}
+
 
 
 
@@ -1137,6 +1209,8 @@ generateQButton.onclick = function(){
         sequencesNextNumberDecimal();
     } else if(globalTopicAreaSelection==="roundingMoney"){
         roundingMoney();
+    } else if(globalTopicAreaSelection==="bestValueTables"){
+        bestValueTables();
     }
 };
 
