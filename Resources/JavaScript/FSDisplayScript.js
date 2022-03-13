@@ -1049,6 +1049,9 @@ function sequencesNextNumberDecimal(){
     for(progression = Math.floor((Math.random()*20)+5)/10; progression === num1;){
         progression = Math.floor((Math.random()*20)+5)/10;
     }
+    if(progression===2 || progression===1){
+        progression = progression+0.1
+    }
     let num2 = num1 + progression
     let num2String = `${num2.toFixed(1)}`
     let num3 = num2 + progression
@@ -1077,6 +1080,26 @@ function sequencesNextNumberDecimal(){
 
     document.getElementById("solutionText").innerHTML =
     `The term to term rule is +${progression}, and the next term is ${num5SolutionString}`
+}
+
+function roundingMoney(){
+    let num1 = `${(Math.ceil((Math.random()*900)+100)/10).toFixed(1)}${Math.ceil(Math.random()*9)}`
+    let num1AsNumber = parseFloat(num1);
+    let roundingToArray = ["pound", "10p"];
+    let roundTo = roundingToArray[Math.floor(Math.random()*roundingToArray.length)];
+
+    let solutionRounded
+    if(roundTo==="pound"){
+        solutionRounded = num1AsNumber.toFixed(0)
+    } else{
+        solutionRounded = `${num1AsNumber.toFixed(1)}0`
+    }
+
+    document.getElementById("questionText").innerHTML = 
+    `What is £${num1} rounded to the nearest ${roundTo}`
+
+    document.getElementById("solutionText").innerHTML = 
+    `£${solutionRounded}`
 }
 
 
@@ -1112,6 +1135,8 @@ generateQButton.onclick = function(){
         fractionShadedOfShape();
     } else if(globalTopicAreaSelection==="sequencesNextNumberDecimal"){
         sequencesNextNumberDecimal();
+    } else if(globalTopicAreaSelection==="roundingMoney"){
+        roundingMoney();
     }
 };
 
