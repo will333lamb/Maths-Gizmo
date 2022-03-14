@@ -1026,6 +1026,11 @@ function interpretBarChart(){
     .barChartImageContainerChild{
         width: 100%;
     }
+
+    #barChartImg{
+        width: 60%;
+        height: auto;
+    }
     
 
     }
