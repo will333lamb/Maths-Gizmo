@@ -1207,7 +1207,6 @@ function fourOpsWordedQuestion(){
 
     toDataURL(chosenImageCups, function(dataURL) {
         // do something with dataURL
-        console.log(dataURL);
         document.querySelector(".cups").style.backgroundImage =  `url('${dataURL}')`;
         
         
