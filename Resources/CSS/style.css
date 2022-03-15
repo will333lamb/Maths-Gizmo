@@ -858,6 +858,10 @@ nav ul a {
     
 }
 
+#topicAreaSelect{
+    overflow: scroll;
+}
+
 .buttons-container{
     margin: 1rem;
 }

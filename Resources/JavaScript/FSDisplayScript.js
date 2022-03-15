@@ -1231,7 +1231,10 @@ function fourOpsWordedQuestion(){
     }
 
     let totalNumCups = cupsPerBox*howManyBoxes
-    console.log(totalNumCups)
+
+    let numCupsNeededArray = [150,160,170,180,190,200]
+    let chosenCupsNeeded = numCupsNeededArray[Math.floor(Math.random()*numCupsNeededArray.length)]
+    let solutionCupsNeeded = chosenCupsNeeded-totalNumCups
 
     document.getElementById("questionText").innerHTML = 
     `<style>
@@ -1249,10 +1252,19 @@ function fourOpsWordedQuestion(){
         background-size: contain;
     }
 
+    @media only screen and (max-width: 800px) {
+        .cups{
+            width: 70px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
     </style>
     A playgroup plans to hold a Coffee Morning to raise money.<br>
     The play leader needs to buy more cups, sugar and milk.<br>
-    She says we need x cups.<br> 
+    She says we need ${chosenCupsNeeded} cups.<br> 
     They have these cups.<br>
     <div class="cupsContainer">
         <div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div>
@@ -1260,7 +1272,13 @@ function fourOpsWordedQuestion(){
     <div class="cupsContainer">
         <div id="disapear1" class="cups"></div><div id="disapear2" class="cups"></div><div id="disapear3" class="cups"></div><div id="disapear4" class="cups"></div>
         <div id="disapear5" class="cups"></div><div id="disapear6" class="cups"></div>
-    </div>`
+    </div><br>
+    How many more cups do they need?`
+
+    document.getElementById("solutionText").innerHTML =
+    `There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
+    So there are ${totalNumCups} cups at the moment. ${chosenCupsNeeded} - ${totalNumCups} = ${solutionCupsNeeded}.<br>
+    So ${solutionCupsNeeded} cups are needed.`
 
     if(howManyBoxes===6){
         document.getElementById("disapear1").style.display = "none"
