@@ -1206,11 +1206,14 @@ function fourOpsWordedQuestion(){
     let chosenImageCups = imageCupsArray[Math.floor(Math.random()*imageCupsArray.length)];
 
     toDataURL(chosenImageCups, function(dataURL) {
-        // do something with dataURL
-        document.querySelector(".cups").style.backgroundImage =  `url('${dataURL}')`;
+        let cupBoxes = document.querySelectorAll(".cups");
+
+        cupBoxes.forEach((e) => {
+            e.style.backgroundImage =  `url('${dataURL}')`
+        }) // loop through for every element of .cups
+    })
+
         
-        
-    });
 
     document.getElementById("questionText").innerHTML = 
     `<style>
