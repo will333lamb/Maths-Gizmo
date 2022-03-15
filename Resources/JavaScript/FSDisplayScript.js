@@ -1213,7 +1213,25 @@ function fourOpsWordedQuestion(){
         }) // loop through for every element of .cups
     })
 
-        
+    let howManyBoxesArray = [6,7,8,9,10,11,12];
+    let howManyBoxes = howManyBoxesArray[Math.floor(Math.random()*howManyBoxesArray.length)];
+    let cupsPerBox
+    if(chosenImageCups===image4Cups){
+        cupsPerBox=4
+    } else if(chosenImageCups===image5Cups){
+        cupsPerBox=5
+    } else if(chosenImageCups===image6Cups){
+        cupsPerBox=6
+    } else if(chosenImageCups===image7Cups){
+        cupsPerBox=7
+    } else if(chosenImageCups===image8Cups){
+        cupsPerBox=8
+    } else if(chosenImageCups===image9Cups){
+        cupsPerBox=9
+    }
+
+    let totalNumCups = cupsPerBox*howManyBoxes
+    console.log(totalNumCups)
 
     document.getElementById("questionText").innerHTML = 
     `<style>
@@ -1227,10 +1245,10 @@ function fourOpsWordedQuestion(){
     .cups{
         width: 100px;
         height: 200px;
-        outline: 1px solid black;
         background-repeat: no-repeat;
         background-size: contain;
     }
+
     </style>
     A playgroup plans to hold a Coffee Morning to raise money.<br>
     The play leader needs to buy more cups, sugar and milk.<br>
@@ -1238,8 +1256,41 @@ function fourOpsWordedQuestion(){
     They have these cups.<br>
     <div class="cupsContainer">
         <div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div>
-        <div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div>
+    </div>
+    <div class="cupsContainer">
+        <div id="disapear1" class="cups"></div><div id="disapear2" class="cups"></div><div id="disapear3" class="cups"></div><div id="disapear4" class="cups"></div>
+        <div id="disapear5" class="cups"></div><div id="disapear6" class="cups"></div>
     </div>`
+
+    if(howManyBoxes===6){
+        document.getElementById("disapear1").style.display = "none"
+        document.getElementById("disapear2").style.display = "none"
+        document.getElementById("disapear3").style.display = "none"
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===7){
+        document.getElementById("disapear2").style.display = "none"
+        document.getElementById("disapear3").style.display = "none"
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===8){
+        document.getElementById("disapear3").style.display = "none"
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===9){
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===10){
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===11){
+        document.getElementById("disapear6").style.display = "none"
+    }
+
 }
 
 
