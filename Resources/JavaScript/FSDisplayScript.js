@@ -1214,6 +1214,13 @@ function fourOpsWordedQuestion(){
 
     document.getElementById("questionText").innerHTML = 
     `<style>
+    .cupsContainer{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
     .cups{
         width: 100px;
         height: 200px;
@@ -1226,8 +1233,9 @@ function fourOpsWordedQuestion(){
     The play leader needs to buy more cups, sugar and milk.<br>
     She says we need x cups.<br> 
     They have these cups.<br>
-    <div class="cups">
-    
+    <div class="cupsContainer">
+        <div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div>
+        <div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div>
     </div>`
 }
 
