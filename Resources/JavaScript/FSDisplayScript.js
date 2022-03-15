@@ -123,6 +123,26 @@ function getSelectedTopicArea(){
     globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
 };
 
+function toDataURL(src, callback) {
+    var image = new Image();
+    image.crossOrigin = 'Anonymous';
+ 
+    image.onload = function() {
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.height = this.naturalHeight;
+        canvas.width = this.naturalWidth;
+        context.drawImage(this, 0, 0);
+        var dataURL = canvas.toDataURL('image/jpeg');
+        callback(dataURL);
+    };
+
+    image.src = src;
+}
+
+
+
+        
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function sequencesNextNumberInteger(){
@@ -1174,6 +1194,43 @@ function bestValueTables(){
     <br> Therefore the cheapest tables for him to hire are the ${solutionBestValue}s`
 }
 
+function fourOpsWordedQuestion(){
+
+    let image4Cups = "../Resources/Images/FS Q's/green stacked cups original 4.png";
+    let image5Cups = "../Resources/Images/FS Q's/green stacked cups original 5.png";
+    let image6Cups = "../Resources/Images/FS Q's/green stacked cups original 6.png";
+    let image7Cups = "../Resources/Images/FS Q's/green stacked cups original 7.png";
+    let image8Cups = "../Resources/Images/FS Q's/green stacked cups original 8.png";
+    let image9Cups = "../Resources/Images/FS Q's/green stacked cups original 9.png";
+    let imageCupsArray = [image4Cups,image5Cups,image6Cups,image7Cups,image8Cups,image9Cups];
+    let chosenImageCups = imageCupsArray[Math.floor(Math.random()*imageCupsArray.length)];
+
+    toDataURL(chosenImageCups, function(dataURL) {
+        // do something with dataURL
+        console.log(dataURL);
+        document.querySelector(".cups").style.backgroundImage =  `url('${dataURL}')`;
+        
+        
+    });
+
+    document.getElementById("questionText").innerHTML = 
+    `<style>
+    .cups{
+        width: 100px;
+        height: 200px;
+        outline: 1px solid black;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    </style>
+    A playgroup plans to hold a Coffee Morning to raise money.<br>
+    The play leader needs to buy more cups, sugar and milk.<br>
+    She says we need x cups.<br> 
+    They have these cups.<br>
+    <div class="cups">
+    
+    </div>`
+}
 
 
 
@@ -1211,6 +1268,8 @@ generateQButton.onclick = function(){
         roundingMoney();
     } else if(globalTopicAreaSelection==="bestValueTables"){
         bestValueTables();
+    } else if(globalTopicAreaSelection==="fourOpsWordedQuestion"){
+        fourOpsWordedQuestion();
     }
 };
 
