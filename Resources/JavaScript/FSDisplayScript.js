@@ -1213,6 +1213,23 @@ function fourOpsWordedQuestion(){
         }) // loop through for every element of .cups
     })
 
+    toDataURL("../Resources/Images/FS Q's/Sugar.png", function(dataURL) {
+        document.querySelector(".sugar").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    toDataURL("../Resources/Images/FS Q's/Spoon of sugar.png", function(dataURL) {
+        document.querySelector(".sugarSpoon").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    let sugarAmountArray=[500, 750, 1];
+    let chosenSugarAmount = sugarAmountArray[Math.floor(Math.random()*sugarAmountArray.length)];
+    let gramOrKg
+    if(chosenSugarAmount===1){
+        gramOrKg = "kg"
+    } else{
+    gramOrKg = "g"
+    }
+
     let howManyBoxesArray = [6,7,8,9,10,11,12];
     let howManyBoxes = howManyBoxesArray[Math.floor(Math.random()*howManyBoxesArray.length)];
     let cupsPerBox
@@ -1247,7 +1264,37 @@ function fourOpsWordedQuestion(){
 
     .cups{
         width: 100px;
-        height: 200px;
+        height: 140px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .sugar{
+        width: 100px;
+        height: 140px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+    }
+
+    #amountOfSugar{
+        bottom: 0;
+        font-size: 0.5em;
+        position: absolute;
+        left: 25px;
+        font-weight: bold;
+    }
+
+    .sugarContainer{
+        display: flex;
+    }
+
+    .sugarSpoonContainer{
+        padding-left: 150px;
+    }
+
+    .sugarSpoon{
+        width: auto;
+        height: 100px;
         background-repeat: no-repeat;
         background-size: contain;
     }
@@ -1273,12 +1320,26 @@ function fourOpsWordedQuestion(){
         <div id="disapear1" class="cups"></div><div id="disapear2" class="cups"></div><div id="disapear3" class="cups"></div><div id="disapear4" class="cups"></div>
         <div id="disapear5" class="cups"></div><div id="disapear6" class="cups"></div>
     </div><br>
-    How many more cups do they need?`
+    a) How many more cups do they need?<br>
+    <br>
+    She needs to work out how many bags of sugar she needs for ${chosenCupsNeeded} cups.<br>
+    She allows <span style="font-weight:bold;"> one spoonful of sugar</span> for each cup.<br>
+    <div class="sugarContainer">
+        <div class="sugar">
+            <p id="amountOfSugar">${chosenSugarAmount}${gramOrKg}</p>
+        </div>
+        <div class="sugarSpoonContainer">
+            <div class="sugarSpoon"></div>
+            <p>One spoon of sugar weights x grams</p>
+        </div>
+    </div>
+    `
 
     document.getElementById("solutionText").innerHTML =
-    `There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
+    `a) There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
     So there are ${totalNumCups} cups at the moment. ${chosenCupsNeeded} - ${totalNumCups} = ${solutionCupsNeeded}.<br>
-    So ${solutionCupsNeeded} cups are needed.`
+    So ${solutionCupsNeeded} cups are needed.<br><br>
+    b)`
 
     if(howManyBoxes===6){
         document.getElementById("disapear1").style.display = "none"
