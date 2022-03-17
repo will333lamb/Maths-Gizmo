@@ -1221,13 +1221,23 @@ function fourOpsWordedQuestion(){
         document.querySelector(".sugarSpoon").style.backgroundImage = `url('${dataURL}')`
     })
 
+    toDataURL("../Resources/Images/FS Q's/Milk cartons.png", function(dataURL) {
+        document.querySelector(".milkCartons").style.backgroundImage = `url('${dataURL}')`
+    })
+
     let sugarAmountArray=[500, 750, 1];
     let chosenSugarAmount = sugarAmountArray[Math.floor(Math.random()*sugarAmountArray.length)];
     let gramOrKg
+    let chosenSugarAmountGrams
     if(chosenSugarAmount===1){
-        gramOrKg = "kg"
-    } else{
-    gramOrKg = "g"
+        gramOrKg = "kg";
+        chosenSugarAmountGrams = 1000;
+    } else if(chosenSugarAmount===500){
+        gramOrKg = "g";
+        chosenSugarAmountGrams = 500;
+    } else if(chosenSugarAmount===750){
+        gramOrKg = "g";
+        chosenSugarAmountGrams = 750;
     }
 
     let howManyBoxesArray = [6,7,8,9,10,11,12];
@@ -1253,6 +1263,37 @@ function fourOpsWordedQuestion(){
     let chosenCupsNeeded = numCupsNeededArray[Math.floor(Math.random()*numCupsNeededArray.length)]
     let solutionCupsNeeded = chosenCupsNeeded-totalNumCups
 
+    let sugarWeight = Math.floor(Math.random()*4)+4
+    let gramsSugarNeeded = sugarWeight*chosenCupsNeeded;
+    let numBagsNeeded
+    if(chosenSugarAmount===1){
+        numBagsNeeded = Math.ceil(gramsSugarNeeded / 1000)
+    } else if(chosenSugarAmount===500){
+        numBagsNeeded = Math.ceil(gramsSugarNeeded / 500)
+    } else if(chosenSugarAmount===750){
+        numBagsNeeded = Math.ceil(gramsSugarNeeded / 750)
+    };
+
+    let bagOrBags
+    if(numBagsNeeded===1){
+        bagOrBags = "bag";
+    } else {
+        bagOrBags = "bags"
+    }
+
+    let amountOfMilkArray = ["400ml", "450ml","600ml","700ml","900ml","850ml","1.2 litres", "1.5 litres"];
+    let amountOfMilkChosen = amountOfMilkArray[Math.floor(Math.random()*amountOfMilkArray.length)];
+    let bestMilk
+    if(amountOfMilkChosen==="400ml" || amountOfMilkChosen==="450ml"){
+        bestMilk = "A: 500ml carton";
+    } else if(amountOfMilkChosen==="600ml" || amountOfMilkChosen==="700ml"){
+        bestMilk = "C: 750ml carton";
+    } else if(amountOfMilkChosen==="900ml" || amountOfMilkChosen==="850ml"){
+        bestMilk = "D: 1 litre carton";
+    } else if(amountOfMilkChosen==="1.2 litres" || amountOfMilkChosen==="1.5 litres"){
+        bestMilk = "B: 2 litre carton";
+    }
+
     document.getElementById("questionText").innerHTML = 
     `<style>
     .cupsContainer{
@@ -1274,6 +1315,13 @@ function fourOpsWordedQuestion(){
         background-repeat: no-repeat;
         background-size: contain;
         position: absolute;
+    }
+
+    .milkCartons{
+        width: 600px;
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
 
     #amountOfSugar{
@@ -1306,6 +1354,13 @@ function fourOpsWordedQuestion(){
             background-repeat: no-repeat;
             background-size: contain;
         }
+
+        .milkCartons{
+            width: 250px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     }
 
     </style>
@@ -1330,16 +1385,26 @@ function fourOpsWordedQuestion(){
         </div>
         <div class="sugarSpoonContainer">
             <div class="sugarSpoon"></div>
-            <p>One spoon of sugar weights x grams</p>
+            <p>One spoon of sugar weighs ${sugarWeight} grams</p>
         </div>
     </div>
+    b) How many bags of sugar should the leader buy?<br><br>
+    The play leader works out she needs ${amountOfMilkChosen} of milk.<br>
+    <div class=milkCartons>
+    </div>
+    <br>
+    c) Which size milk should she buy? <span style="font-weight:bold;"> Tick one</span>
+
     `
 
     document.getElementById("solutionText").innerHTML =
     `a) There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
     So there are ${totalNumCups} cups at the moment. ${chosenCupsNeeded} - ${totalNumCups} = ${solutionCupsNeeded}.<br>
     So ${solutionCupsNeeded} cups are needed.<br><br>
-    b)`
+    b) ${sugarWeight} grams &times; ${chosenCupsNeeded} cups = ${gramsSugarNeeded} grams of sugar needed.<br>
+    ${gramsSugarNeeded}g &divide; ${chosenSugarAmountGrams}g = ${(gramsSugarNeeded / chosenSugarAmountGrams).toFixed(2)} Therefore they need to buy ${numBagsNeeded} ${bagOrBags}.
+    <br><br>
+    c) ${bestMilk}`
 
     if(howManyBoxes===6){
         document.getElementById("disapear1").style.display = "none"
