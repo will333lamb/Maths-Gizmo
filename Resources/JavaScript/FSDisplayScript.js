@@ -1318,7 +1318,7 @@ function fourOpsWordedQuestion(){
     }
 
     .milkCartons{
-        width: 600px;
+        min-width: 600px;
         height: 300px;
         background-repeat: no-repeat;
         background-size: contain;
@@ -1387,7 +1387,7 @@ function fourOpsWordedQuestion(){
             <div class="sugarSpoon"></div>
             <p>One spoon of sugar weighs ${sugarWeight} grams</p>
         </div>
-    </div>
+    </div><br>
     b) How many bags of sugar should the leader buy?<br><br>
     The play leader works out she needs ${amountOfMilkChosen} of milk.<br>
     <div class=milkCartons>
@@ -1437,6 +1437,67 @@ function fourOpsWordedQuestion(){
 
 }
 
+function scaleDrawings(){
+    let imageOption1 = "../Resources/Images/FS Q's/TablesChairsPlanQOption1.png"
+    let imageOption2 = "../Resources/Images/FS Q's/TablesChairsPlanQOption2.png"
+    let imageOption3 = "../Resources/Images/FS Q's/TablesChairsPlanQOption3.png"
+    let imageOption4 = "../Resources/Images/FS Q's/TablesChairsPlanQOption4.png"
+    let imageOption5 = "../Resources/Images/FS Q's/TablesChairsPlanQOption5.png"
+    let imageOption6 = "../Resources/Images/FS Q's/TablesChairsPlanQOption6.png"
+    let imageOption7 = "../Resources/Images/FS Q's/TablesChairsPlanQOption7.png"
+    let imageOption8 = "../Resources/Images/FS Q's/TablesChairsPlanQOption8.png"
+    let imageOptionsArray = [imageOption1,imageOption2,imageOption3,imageOption4,imageOption5,imageOption6,imageOption7,imageOption8];
+    let chosenImage = imageOptionsArray[Math.floor(Math.random()*imageOptionsArray.length)];
+
+    toDataURL(chosenImage, function(dataURL) {
+        document.getElementById("tablesChairsPlan").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    toDataURL("../Resources/Images/FS Q's/TablesChairsPlanQSolution.png", function(dataURL) {
+        document.getElementById("solutionPlan").style.backgroundImage = `url('${dataURL}')`
+    })
+
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    #tablesChairsPlan{
+        width: 500px;
+        height: 400px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin: 0 auto;
+    }
+    </style>
+    There will be Afternoon Tea at the community centre. <br>
+    The organiser needs to set up the room.<br>
+    He starts to draw a plan to show where he wants the tables and chairs to go. <br>
+    He needs <span style="font-weight: bold;">two more tables and eight chairs.</span><br>
+    They need to be the same size and the same distance apart as the others.<br>
+    <div class="centeredQuestion">
+    <span style="font-weight:bold;">Plan of the room</span>
+        <div id="tablesChairsPlan">
+        </div>
+    </div>
+    Complete the plan to show where the tables and chairs will go. 
+    `
+
+    document.getElementById("solutionText").innerHTML = 
+    `
+    <style>
+    #solutionPlan{
+        width: 500px;
+        height: 400px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin: 0 auto;
+    }
+    </style>
+    <div id="solutionPlan">
+    </div>
+    `
+}
+
 
 
 
@@ -1475,6 +1536,8 @@ generateQButton.onclick = function(){
         bestValueTables();
     } else if(globalTopicAreaSelection==="fourOpsWordedQuestion"){
         fourOpsWordedQuestion();
+    } else if(globalTopicAreaSelection==="scaleDrawings"){
+        scaleDrawings();
     }
 };
 
