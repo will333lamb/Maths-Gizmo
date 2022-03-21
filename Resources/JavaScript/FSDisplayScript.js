@@ -1558,6 +1558,122 @@ function compassDirections(){
     `${solutionCompassDirection}`
 }
 
+function linesOfSymmetry(){
+
+    // 0 Lines of Symmetry
+    let letterFImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/F.png"
+    let letterGImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/G.png"
+    let letterJImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/J.png"
+    let letterLImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/L.png"
+    let letterNImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/N.png"
+    let letterPImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/P.png"
+    let letterQImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/Q.png"
+    let letterRImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/R.png"
+    let letterSImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/S.png"
+    let letterZImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/Z.png"
+    let zeroLOSArray = [[letterFImage,"F"],[letterGImage,"G"],[letterJImage,"J"],[letterLImage,"L"],[letterNImage,"N"],[letterPImage,"P"],[letterQImage,"Q"],[letterRImage,"R"],[letterSImage,"S"],[letterZImage,"Z"]];
+    let chosenZeroArrayOptions = zeroLOSArray[Math.floor(Math.random()*zeroLOSArray.length)];
+    for(chosen4thZeroLOS=zeroLOSArray[Math.floor(Math.random()*zeroLOSArray.length)]; chosen4thZeroLOS===chosenZeroArrayOptions;){
+        chosen4thZeroLOS=zeroLOSArray[Math.floor(Math.random()*zeroLOSArray.length)];
+    }
+    
+    // 1 Line of Symmetry
+    let letterAImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/A.png"
+    let letterCImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/C.png"
+    let letterDImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/D.png"
+    let letterEImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/E.png"
+    let letterKImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/K.png"
+    let letterMImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/M.png"
+    let letterTImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/T.png"
+    let letterUImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/U.png"
+    let letterVImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/V.png"
+    let letterWImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/W.png"
+    let letterYImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/Y.png"
+    let oneLOSArray = [[letterAImage,"A"],[letterCImage,"C"],[letterDImage,"D"],[letterEImage,"E"],[letterKImage,"K"],[letterMImage,"M"],[letterTImage,"T"],[letterUImage,"U"],[letterVImage,"V"],[letterWImage,"W"],[letterYImage,"Y"]];
+    let choseOneArrayOptions = oneLOSArray[Math.floor(Math.random()*oneLOSArray.length)];
+    let chosen4thOneLOS
+    for(chosen4thOneLOS=oneLOSArray[Math.floor(Math.random()*oneLOSArray.length)]; chosen4thOneLOS===choseOneArrayOptions;){
+        chosen4thOneLOS=oneLOSArray[Math.floor(Math.random()*oneLOSArray.length)];
+    }
+    
+
+    // 2 Lines of Symmetry
+    let letterHImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/H.png"
+    let letterOImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/O.png"
+    let twoLOSArray = [[letterHImage,"H"],[letterOImage,"O"]];
+    let chosenTwoArrayOptions = twoLOSArray[Math.floor(Math.random()*twoLOSArray.length)];
+
+
+    let numberLinesOfSymmetryArray = ["no lines","one line","two lines"];
+    let chosenNumberLinesOfSymmetry = numberLinesOfSymmetryArray[Math.floor(Math.random()*numberLinesOfSymmetryArray.length)];
+
+    if(chosenNumberLinesOfSymmetry==="no lines"){
+        chosenZeroLOSImage = chosenZeroArrayOptions[0] 
+        chosenZeroLOSLetter = chosenZeroArrayOptions[1]
+        chosenOneLOSImage = choseOneArrayOptions[0]
+        chosenOneLOSLetter = choseOneArrayOptions[1]
+        chosenTwoLOSImage = chosenTwoArrayOptions[0]
+        chosenTwoLOSLetter = chosenTwoArrayOptions[1]
+        chosen4thLOSImage = chosen4thOneLOS[0]
+        chosen4thOneLOSLetter = chosen4thOneLOS[1]
+        solutionLetter = chosenZeroLOSLetter
+    } else if(chosenNumberLinesOfSymmetry==="one line"){
+        chosenZeroLOSImage = chosenZeroArrayOptions[0] 
+        chosenZeroLOSLetter = chosenZeroArrayOptions[1]
+        chosenOneLOSImage = choseOneArrayOptions[0]
+        chosenOneLOSLetter = choseOneArrayOptions[1]
+        chosenTwoLOSImage = chosenTwoArrayOptions[0]
+        chosenTwoLOSLetter = chosenTwoArrayOptions[1]
+        chosen4thLOSImage = chosen4thZeroLOS[0]
+        chosen4thOneLOSLetter = chosen4thZeroLOS[1]
+        solutionLetter = chosenOneLOSLetter
+    } else if(chosenNumberLinesOfSymmetry==="two lines"){
+        chosenZeroLOSImage = chosenZeroArrayOptions[0] 
+        chosenZeroLOSLetter = chosenZeroArrayOptions[1]
+        chosenOneLOSImage = choseOneArrayOptions[0]
+        chosenOneLOSLetter = choseOneArrayOptions[1]
+        chosenTwoLOSImage = chosenTwoArrayOptions[0]
+        chosenTwoLOSLetter = chosenTwoArrayOptions[1]
+        chosen4thLOSImage = chosen4thZeroLOS[0]
+        chosen4thOneLOSLetter = chosen4thZeroLOS[1]
+        solutionLetter = chosenTwoLOSLetter
+    }
+
+    toDataURL(chosenZeroLOSImage, function(dataURL) {
+        document.getElementById("letter1").src = dataURL
+    })
+    toDataURL(chosenOneLOSImage, function(dataURL) {
+        document.getElementById("letter2").src = dataURL
+    })
+    toDataURL(chosenTwoLOSImage, function(dataURL) {
+        document.getElementById("letter3").src = dataURL
+    })
+    toDataURL(chosen4thLOSImage, function(dataURL) {
+        document.getElementById("letter4").src = dataURL
+    })
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
+    <div class="lettersContainer">
+        <img id="letter1" class="letters" src="">
+        <img id="letter2" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+        <img id="letter4" class="letters" src="">
+    </div>
+    
+    `
+
+    document.getElementById("solutionText").innerHTML = 
+    `The letter ${solutionLetter} has ${chosenNumberLinesOfSymmetry} of symmetry`
+}
 
 
 
@@ -1600,6 +1716,8 @@ generateQButton.onclick = function(){
         scaleDrawings();
     } else if(globalTopicAreaSelection==="compassDirections"){
         compassDirections();
+    } else if(globalTopicAreaSelection==="linesOfSymmetry"){
+        linesOfSymmetry();
     }
 };
 
