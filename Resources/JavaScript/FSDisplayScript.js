@@ -1450,23 +1450,28 @@ function scaleDrawings(){
     let chosenImage = imageOptionsArray[Math.floor(Math.random()*imageOptionsArray.length)];
 
     toDataURL(chosenImage, function(dataURL) {
-        document.getElementById("tablesChairsPlan").style.backgroundImage = `url('${dataURL}')`
+        document.getElementById("tablesChairsPlanImage").src = dataURL
     })
 
     toDataURL("../Resources/Images/FS Q's/TablesChairsPlanQSolution.png", function(dataURL) {
-        document.getElementById("solutionPlan").style.backgroundImage = `url('${dataURL}')`
+        document.getElementById("solutionPlan").src = dataURL
     })
 
 
     document.getElementById("questionText").innerHTML = 
     `
     <style>
-    #tablesChairsPlan{
-        width: 500px;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin: 0 auto;
+    .tablesChairsPlanImage{
+        width: 50%;
+        height: 50%;
+    }
+
+
+    @media only screen and (max-width: 800px) {
+        .tablesChairsPlanImage{
+            width: 90%;
+            height: auto;
+        }
     }
     </style>
     There will be Afternoon Tea at the community centre. <br>
@@ -1475,26 +1480,15 @@ function scaleDrawings(){
     He needs <span style="font-weight: bold;">two more tables and eight chairs.</span><br>
     They need to be the same size and the same distance apart as the others.<br>
     <div class="centeredQuestion">
-    <span style="font-weight:bold;">Plan of the room</span>
-        <div id="tablesChairsPlan">
-        </div>
+    <span style="font-weight:bold;">Plan of the room</span><br>
+        <img id="tablesChairsPlanImage" class="tablesChairsPlanImage" src="" alt="image showing plan of room">
     </div>
     Complete the plan to show where the tables and chairs will go. 
     `
 
     document.getElementById("solutionText").innerHTML = 
     `
-    <style>
-    #solutionPlan{
-        width: 500px;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin: 0 auto;
-    }
-    </style>
-    <div id="solutionPlan">
-    </div>
+    <img id="solutionPlan" class="tablesChairsPlanImage" src="">
     `
 }
 
@@ -1510,7 +1504,7 @@ function compassDirections(){
     let chosenCompassImage = compassArray[Math.floor(Math.random()*compassArray.length)];
 
     toDataURL(chosenCompassImage, function(dataURL) {
-        document.getElementById("compassDirections").style.backgroundImage = `url('${dataURL}')`
+        document.getElementById("compassDirections").src = dataURL
     })
 
     let solutionCompassDirection
@@ -1534,22 +1528,29 @@ function compassDirections(){
     document.getElementById("questionText").innerHTML = 
     `
     <style>
-    #compassDirections{
-        width: 480px;
-        height: 400px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        margin: 0 auto;
+    .compassDirections{
+        width: 40%;
+        height: auto;
+        margin: 0 25%;
         border: 5px solid black;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .compassDirections{
+            width: 90%;
+            height: auto;
+            border: 5px solid black;
+            margin: 0;
+        }
     }
     </style>
     A scout group organises a Treasure Hunt.<br>
     People will follow directions to look for clues and then answer questions. <br>
     A group of friends decide to take part.<br>
     Here is the direction to Clue One.<br>
-    <div id="compassDirections">
-
-    </div><br>
+    <div class=centeredQuestion">
+    <img id="compassDirections" class="compassDirections" src="" alt="map showing direction to clue one">
+    </div>
     In which direction is Clue One?
     `
 
