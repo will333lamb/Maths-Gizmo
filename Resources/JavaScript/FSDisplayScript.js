@@ -1498,6 +1498,65 @@ function scaleDrawings(){
     `
 }
 
+function compassDirections(){
+    let compassNorthWest = "../Resources/Images/FS Q's/compassDirectionNorthWest.png"
+    let compassNorth = "../Resources/Images/FS Q's/compassDirectionsNorth.png"
+    let compassNorthEast = "../Resources/Images/FS Q's/compassDirectionsNorthEast.png"
+    let compassSouthEast = "../Resources/Images/FS Q's/compassDirectionsSouthEast.png"
+    let compassSouth = "../Resources/Images/FS Q's/compassDirectionsSouth.png"
+    let compassSouthWest = "../Resources/Images/FS Q's/compassDirectionsSouthWest.png"
+    let compassWest = "../Resources/Images/FS Q's/compassDirectionsWest.png"
+    let compassArray = [compassNorthWest,compassNorth,compassNorthEast,compassSouthEast,compassSouth,compassSouthWest,compassWest];
+    let chosenCompassImage = compassArray[Math.floor(Math.random()*compassArray.length)];
+
+    toDataURL(chosenCompassImage, function(dataURL) {
+        document.getElementById("compassDirections").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    let solutionCompassDirection
+    if(chosenCompassImage===compassNorthWest){
+        solutionCompassDirection="North West"
+    } else if(chosenCompassImage===compassNorth){
+        solutionCompassDirection="North"
+    } else if(chosenCompassImage===compassNorthEast){
+        solutionCompassDirection="North East"
+    } else if(chosenCompassImage===compassSouthEast){
+        solutionCompassDirection="South East"
+    } else if(chosenCompassImage===compassSouth){
+        solutionCompassDirection="South"
+    } else if(chosenCompassImage===compassSouthWest){
+        solutionCompassDirection="South West"
+    } else if(chosenCompassImage===compassWest){
+        solutionCompassDirection="West"
+    } 
+
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    #compassDirections{
+        width: 480px;
+        height: 400px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin: 0 auto;
+        border: 5px solid black;
+    }
+    </style>
+    A scout group organises a Treasure Hunt.<br>
+    People will follow directions to look for clues and then answer questions. <br>
+    A group of friends decide to take part.<br>
+    Here is the direction to Clue One.<br>
+    <div id="compassDirections">
+
+    </div><br>
+    In which direction is Clue One?
+    `
+
+    document.getElementById("solutionText").innerHTML = 
+    `${solutionCompassDirection}`
+}
+
 
 
 
@@ -1538,6 +1597,8 @@ generateQButton.onclick = function(){
         fourOpsWordedQuestion();
     } else if(globalTopicAreaSelection==="scaleDrawings"){
         scaleDrawings();
+    } else if(globalTopicAreaSelection==="compassDirections"){
+        compassDirections();
     }
 };
 
