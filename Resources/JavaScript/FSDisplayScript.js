@@ -1529,9 +1529,9 @@ function compassDirections(){
     `
     <style>
     .compassDirections{
-        width: 40%;
+        width: 65%;
         height: auto;
-        margin: 0 25%;
+        margin: 0 12.5%;
         border: 5px solid black;
     }
 
@@ -1738,6 +1738,42 @@ function linesOfSymmetry(){
     `The letter ${solutionLetter} has ${chosenNumberLinesOfSymmetry} of symmetry`
 }
 
+function wordedDivisionAndRoundingUp(){
+
+    let numPeopleArray = [100,200,300,400,500];
+    let chosenNumPeople = numPeopleArray[Math.floor(Math.random()*numPeopleArray.length)];
+    let twoOrThreeArray = [["two",2],["three",3]]
+    let chosenTwoOrThree = twoOrThreeArray[Math.floor(Math.random()*twoOrThreeArray.length)];
+    let numPacksArray = [6,12,18,24,30];
+    let chosenNumPacks
+    let numSausagesNeeded = chosenNumPeople*chosenTwoOrThree[1];
+    for(chosenNumPacks=numPacksArray[Math.floor(Math.random()*numPacksArray.length)];Number.isInteger(numSausagesNeeded/chosenNumPacks)===true;){
+        chosenNumPacks=numPacksArray[Math.floor(Math.random()*numPacksArray.length)];
+    }
+
+    let numPacksUnrounded = numSausagesNeeded / chosenNumPacks;
+    let numPacksRounded = Math.ceil(numPacksUnrounded);
+
+    document.getElementById("questionText").innerHTML = 
+    `A club plans to hold a Barbecue for ${chosenNumPeople} people.<br>
+    She allows <span style="font-weight:bold;">${chosenTwoOrThree[0]} sausages</span> for <span style="font-weight:bold;">each person.</span><br>
+    A club member needs to order the rolls <span style="font-weight:bold;">and</span> sausages.<br>
+    She needs to order <span style="font-weight:bold;">one long roll</span> for <span style="font-weight:bold;">each sausage.</span><br>
+    The rolls are sold in packs of ${chosenNumPacks}<br><br>
+    a) How many packs of rolls must she order?
+    <br><br>
+    She needs to order the sausages.<br>
+    <span style="font-weight:bold;">1 &frasl; denom</span> of the number of sausages need to be vegetarian.<br>
+    b) How many vegetarian sausages will she order?`
+
+    document.getElementById("solutionText").innerHTML = 
+    `a) ${chosenNumPeople} &times; ${chosenTwoOrThree[1]} = ${numSausagesNeeded} sausages needed. Therefore ${numSausagesNeeded} rolls are needed.<br>
+    ${numSausagesNeeded} &divide; ${chosenNumPacks} = ${numPacksUnrounded}<br>
+    Rounding up, she needs to order ${numPacksRounded} packs of rolls.<br><br>
+    b)
+    `
+}
+
 
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -1781,6 +1817,8 @@ generateQButton.onclick = function(){
         compassDirections();
     } else if(globalTopicAreaSelection==="linesOfSymmetry"){
         linesOfSymmetry();
+    } else if(globalTopicAreaSelection==="wordedDivisionAndRoundingUp"){
+        wordedDivisionAndRoundingUp();
     }
 };
 
