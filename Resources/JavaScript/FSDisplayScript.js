@@ -1600,7 +1600,8 @@ function linesOfSymmetry(){
     // 2 Lines of Symmetry
     let letterHImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/H.png"
     let letterOImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/O.png"
-    let twoLOSArray = [[letterHImage,"H"],[letterOImage,"O"]];
+    let letterXImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/X.png"
+    let twoLOSArray = [[letterHImage,"H"],[letterOImage,"O"],[letterXImage,"X"]];
     let chosenTwoArrayOptions = twoLOSArray[Math.floor(Math.random()*twoLOSArray.length)];
 
 
@@ -1652,6 +1653,10 @@ function linesOfSymmetry(){
         document.getElementById("letter4").src = dataURL
     })
 
+    let positionLettersArray = [1,2,3,4]
+    let chosenPosition = positionLettersArray[Math.floor(Math.random()*positionLettersArray.length)];
+
+    if(chosenPosition===1){
     document.getElementById("questionText").innerHTML = 
     `
     <style>
@@ -1670,6 +1675,64 @@ function linesOfSymmetry(){
     </div>
     
     `
+} else if(chosenPosition===2){
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
+    <div class="lettersContainer">
+        <img id="letter2" class="letters" src="">
+        <img id="letter1" class="letters" src="">
+        <img id="letter4" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+    </div>
+    
+    `
+} else if(chosenPosition===3){
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
+    <div class="lettersContainer">
+        <img id="letter4" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+        <img id="letter2" class="letters" src="">
+        <img id="letter1" class="letters" src="">
+    </div>
+    
+    `
+} else if(chosenPosition===4){
+    document.getElementById("questionText").innerHTML = 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
+    <div class="lettersContainer">
+        <img id="letter1" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+        <img id="letter4" class="letters" src="">
+        <img id="letter2" class="letters" src="">
+    </div>
+    
+    `
+}
 
     document.getElementById("solutionText").innerHTML = 
     `The letter ${solutionLetter} has ${chosenNumberLinesOfSymmetry} of symmetry`
