@@ -1754,6 +1754,14 @@ function wordedDivisionAndRoundingUp(){
     let numPacksUnrounded = numSausagesNeeded / chosenNumPacks;
     let numPacksRounded = Math.ceil(numPacksUnrounded);
 
+    let denominatorForVegSausagesArray = [10,5,8,6,4]
+    let denominatorForVegSausages
+    for(denominatorForVegSausages=denominatorForVegSausagesArray[Math.floor(Math.random()*denominatorForVegSausagesArray.length)];Number.isInteger(numSausagesNeeded/denominatorForVegSausages)===false;){
+        denominatorForVegSausages=denominatorForVegSausagesArray[Math.floor(Math.random()*denominatorForVegSausagesArray.length)]
+    }
+
+    
+
     document.getElementById("questionText").innerHTML = 
     `A club plans to hold a Barbecue for ${chosenNumPeople} people.<br>
     She allows <span style="font-weight:bold;">${chosenTwoOrThree[0]} sausages</span> for <span style="font-weight:bold;">each person.</span><br>
@@ -1763,17 +1771,41 @@ function wordedDivisionAndRoundingUp(){
     a) How many packs of rolls must she order?
     <br><br>
     She needs to order the sausages.<br>
-    <span style="font-weight:bold;">1 &frasl; denom</span> of the number of sausages need to be vegetarian.<br>
+    <span style="font-weight:bold;"> <sup>1</sup> &frasl;<sub>${denominatorForVegSausages}</sub></span> of the number of sausages need to be vegetarian.<br><br>
     b) How many vegetarian sausages will she order?`
 
     document.getElementById("solutionText").innerHTML = 
     `a) ${chosenNumPeople} &times; ${chosenTwoOrThree[1]} = ${numSausagesNeeded} sausages needed. Therefore ${numSausagesNeeded} rolls are needed.<br>
     ${numSausagesNeeded} &divide; ${chosenNumPacks} = ${numPacksUnrounded}<br>
     Rounding up, she needs to order ${numPacksRounded} packs of rolls.<br><br>
-    b)
+    b) <sup>1</sup> &frasl;<sub>${denominatorForVegSausages}</sub> &times; ${numSausagesNeeded} = ${numSausagesNeeded/denominatorForVegSausages} vegetarian sausages needed.<br>
     `
 }
 
+function readingScalesChildsHeight(){
+    
+    let childImage76cm = "../Resources/Images/FS Q's/Scales, height of child/76cm.png"
+    let childImage105cm = "../Resources/Images/FS Q's/Scales, height of child/105cm.png"
+    let childImage111cm = "../Resources/Images/FS Q's/Scales, height of child/111cm.png"
+    let childImage124cm = "../Resources/Images/FS Q's/Scales, height of child/124cm.png"
+    let childImage128cm = "../Resources/Images/FS Q's/Scales, height of child/128cm.png"
+    let childImage136cm = "../Resources/Images/FS Q's/Scales, height of child/136cm.png"
+
+    let childImagesArray = [[childImage76cm,[74,78]],[childImage105cm,[102,108]],[childImage111cm,[108,114]],[childImage124cm,[121,127]],[childImage128cm,[124,132]],[childImage136cm,[133,139]]];
+    let chosenChildImageArray = childImagesArray[Math.floor(Math.random()*childImagesArray.length)];
+    console.log(chosenChildImageArray[0])
+    
+
+
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    A family sees a poster for a Fun Fair.<br>
+    It says children have to be <span style="font-weight:bold;"> over xcm</span> tall to go on the rides.<br>
+    They need to check their child's height before they go to the Fun Fair.<br>
+
+    `
+}
 
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -1819,6 +1851,8 @@ generateQButton.onclick = function(){
         linesOfSymmetry();
     } else if(globalTopicAreaSelection==="wordedDivisionAndRoundingUp"){
         wordedDivisionAndRoundingUp();
+    } else if(globalTopicAreaSelection==="readingScalesChildsHeight"){
+        readingScalesChildsHeight();
     }
 };
 
