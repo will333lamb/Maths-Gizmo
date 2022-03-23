@@ -1828,6 +1828,47 @@ function readingScalesChildsHeight(){
     `
 }
 
+function multiplicationMoney(){
+
+    let ticketsSold = Math.floor(Math.random()*49)+50
+    let twentyFiveArray = [25,75]
+    let ticketCost = `${Math.floor(Math.random()*6)+2}.${twentyFiveArray[Math.floor(Math.random()*twentyFiveArray.length)]}`
+    let ticketCostAsNum = parseFloat(ticketCost);
+    let totalSales = (ticketCostAsNum*ticketsSold).toFixed(2);
+    let differenceArray = [50, -50, 30, -30, 40, -40, 60, -60];
+    let chosenDifference = differenceArray[Math.floor(Math.random()*differenceArray.length)];
+    let lastYearAmount = Math.ceil(parseFloat(totalSales) + chosenDifference)
+
+    let ticketsSoldToNearest10 = Math.round(ticketsSold / 10) * 10;
+    
+    let solutionStatement
+    if(chosenDifference<0){
+        solutionStatement = `the organiser is correct since £${totalSales} is more than £${lastYearAmount}`
+    } else{
+        solutionStatement = `the organiser is incorrect since £${totalSales} is less than £${lastYearAmount}`
+    }
+
+
+    document.getElementById("questionText").innerHTML = 
+    `
+    A dance school holds a Dance Display every year.<br>
+    <span style="font-weight:bold;">Last year</span> they made £${lastYearAmount} from the ticket sales.<br>
+    <span style="font-weight:bold;">This year</span> they sold ${ticketsSold} tickets at £${ticketCost} each.<br>
+    The organiser thinks they made <span style="font-weight:bold;">more money</span> this year than they did last year from the ticket sales. <br>
+    a) Is the organiser correct? <br>
+    <br>
+    b) Use an approximation to check your answer.
+    `
+
+    document.getElementById("solutionText").innerHTML = 
+    `
+    a) ${ticketsSold} &times; £${ticketCost} = £${totalSales} and therefore they made £${totalSales} this year.<br>
+    Last year they made £${lastYearAmount}.<br>
+    Therefore, ${solutionStatement}<br><br>
+    b) ${ticketsSoldToNearest10} &times; £${Math.round(ticketCostAsNum)} = £${ticketsSoldToNearest10*Math.round(ticketCostAsNum)}
+    `
+}
+
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -1874,6 +1915,8 @@ generateQButton.onclick = function(){
         wordedDivisionAndRoundingUp();
     } else if(globalTopicAreaSelection==="readingScalesChildsHeight"){
         readingScalesChildsHeight();
+    } else if(globalTopicAreaSelection==="multiplicationMoney"){
+        multiplicationMoney();
     }
 };
 
