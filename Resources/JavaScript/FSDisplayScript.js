@@ -1783,18 +1783,30 @@ function wordedDivisionAndRoundingUp(){
 }
 
 function readingScalesChildsHeight(){
-    
+
+    let childImage57cm = "../Resources/Images/FS Q's/Scales, height of child/57cm.png"
     let childImage76cm = "../Resources/Images/FS Q's/Scales, height of child/76cm.png"
     let childImage105cm = "../Resources/Images/FS Q's/Scales, height of child/105cm.png"
     let childImage111cm = "../Resources/Images/FS Q's/Scales, height of child/111cm.png"
     let childImage124cm = "../Resources/Images/FS Q's/Scales, height of child/124cm.png"
     let childImage128cm = "../Resources/Images/FS Q's/Scales, height of child/128cm.png"
     let childImage136cm = "../Resources/Images/FS Q's/Scales, height of child/136cm.png"
+    let childImage142cm = "../Resources/Images/FS Q's/Scales, height of child/142cm.png"
 
-    let childImagesArray = [[childImage76cm,[74,78]],[childImage105cm,[102,108]],[childImage111cm,[108,114]],[childImage124cm,[121,127]],[childImage128cm,[124,132]],[childImage136cm,[133,139]]];
+
+    let childImagesArray = [[childImage76cm,[74,78],76],[childImage105cm,[102,108],105],[childImage111cm,[108,114],111],[childImage124cm,[121,127],124],
+    [childImage128cm,[124,132],128],[childImage136cm,[133,139],136],[childImage57cm,[53,60],57],[childImage142cm,[138,146],142]];
     let chosenChildImageArray = childImagesArray[Math.floor(Math.random()*childImagesArray.length)];
     
     let maxHeightForRide = chosenChildImageArray[1][Math.floor(Math.random()*chosenChildImageArray[1].length)];
+    let childHeight = chosenChildImageArray[2];
+
+    let isChildBigEnough
+    if(childHeight>maxHeightForRide){
+        isChildBigEnough = `yes the child is tall enough to go on the rides since ${childHeight}cm is bigger than ${maxHeightForRide}cm`
+    } else{
+        isChildBigEnough = `no the child is not tall enough to go on the rides since ${childHeight}cm is smaller than ${maxHeightForRide}cm`
+    }
     
     toDataURL(chosenChildImageArray[0], function(dataURL) {
         document.getElementById("childImage").src = dataURL
@@ -1806,9 +1818,13 @@ function readingScalesChildsHeight(){
     A family sees a poster for a Fun Fair.<br>
     It says children have to be <span style="font-weight:bold;"> over ${maxHeightForRide}cm</span> tall to go on the rides.<br>
     They need to check their child's height before they go to the Fun Fair.<br>
-    <img id="childImage" src="" alt="picture showing height of child">
+    <img id="childImage" src="" alt="picture showing height of child"><br>
+    Can the child go on the rides?
+    `
 
-
+    document.getElementById("solutionText").innerHTML = 
+    `
+    The child's height is ${childHeight}cm. Therefore, ${isChildBigEnough}.
     `
 }
 
