@@ -1793,16 +1793,21 @@ function readingScalesChildsHeight(){
 
     let childImagesArray = [[childImage76cm,[74,78]],[childImage105cm,[102,108]],[childImage111cm,[108,114]],[childImage124cm,[121,127]],[childImage128cm,[124,132]],[childImage136cm,[133,139]]];
     let chosenChildImageArray = childImagesArray[Math.floor(Math.random()*childImagesArray.length)];
-    console.log(chosenChildImageArray[0])
     
-
+    let maxHeightForRide = chosenChildImageArray[1][Math.floor(Math.random()*chosenChildImageArray[1].length)];
+    
+    toDataURL(chosenChildImageArray[0], function(dataURL) {
+        document.getElementById("childImage").src = dataURL
+    })
 
 
     document.getElementById("questionText").innerHTML = 
     `
     A family sees a poster for a Fun Fair.<br>
-    It says children have to be <span style="font-weight:bold;"> over xcm</span> tall to go on the rides.<br>
+    It says children have to be <span style="font-weight:bold;"> over ${maxHeightForRide}cm</span> tall to go on the rides.<br>
     They need to check their child's height before they go to the Fun Fair.<br>
+    <img id="childImage" src="" alt="picture showing height of child">
+
 
     `
 }
