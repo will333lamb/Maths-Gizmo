@@ -1662,13 +1662,20 @@ function fourOpsWordedQuestion(){
     `
 
     document.getElementById("solutionText").innerHTML +=
-    `a) There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
+    `<br><br><span class="questionNumber">Q5.</span><br><br>
+    <span class="questionNumber">a)</span> There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
     So there are ${totalNumCups} cups at the moment. ${chosenCupsNeeded} - ${totalNumCups} = ${solutionCupsNeeded}.<br>
-    So ${solutionCupsNeeded} cups are needed.<br><br>
-    b) ${sugarWeight} grams &times; ${chosenCupsNeeded} cups = ${gramsSugarNeeded} grams of sugar needed.<br>
+    So ${solutionCupsNeeded} cups are needed.
+    <p id="marksGiven">(2 marks)</p>
+    <br><br><br>
+    <span class="questionNumber">b)</span> ${sugarWeight} grams &times; ${chosenCupsNeeded} cups = ${gramsSugarNeeded} grams of sugar needed.<br>
     ${gramsSugarNeeded}g &divide; ${chosenSugarAmountGrams}g = ${(gramsSugarNeeded / chosenSugarAmountGrams).toFixed(2)} Therefore they need to buy ${numBagsNeeded} ${bagOrBags}.
-    <br><br>
-    c) ${bestMilk}`
+    <p id="marksGiven">(3 marks)</p>
+    <br><br><br>
+    <span class="questionNumber">c)</span> ${bestMilk}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
 
     if(howManyBoxes===6){
         document.getElementById("disapear1").style.display = "none"
