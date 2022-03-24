@@ -145,6 +145,23 @@ function getSelectedTopicArea(){
     globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
 };
 
+function toDataURL(src, callback) {
+    var image = new Image();
+    image.crossOrigin = 'Anonymous';
+ 
+    image.onload = function() {
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.height = this.naturalHeight;
+        canvas.width = this.naturalWidth;
+        context.drawImage(this, 0, 0);
+        var dataURL = canvas.toDataURL('image/jpeg');
+        callback(dataURL);
+    };
+
+    image.src = src;
+};
+
 function frontPageNonCalc(){
     document.getElementById("questionText").innerHTML += 
     `<style>
@@ -1124,7 +1141,556 @@ document.querySelector(".barChartContainer").style.display = "none";
 document.querySelector(".barChartContainerChild").style.display = "none";
 }
 
+function fractionShadedOfShape(){
 
+    let row3YayOrNayArray = [0,1];
+    let oneToFiveArray = [1,2,3,4];
+    let zeroToFiveArray = [0,1,2,3,4,5];
+    function row3YayOrNay(){
+    YayOrNay = row3YayOrNayArray[Math.floor(Math.random()*row3YayOrNayArray.length)];
+    YayOrNay2 = row3YayOrNayArray[Math.floor(Math.random()*row3YayOrNayArray.length)];
+    
+    
+    row1ShadedNum = oneToFiveArray[Math.floor(Math.random()*oneToFiveArray.length)];
+    if(row1ShadedNum===1){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row1ShadedNum===2){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row1ShadedNum===3){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row1ShadedNum===4){
+        document.getElementById("row1data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row1data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    }
+
+    row2ShadedNum = zeroToFiveArray[Math.floor(Math.random()*zeroToFiveArray.length)];
+    if(row2ShadedNum===1){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===2){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===3){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===4){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row2ShadedNum===5){
+        document.getElementById("row2data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row2data5").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    }
+
+    row3ShadedNum = zeroToFiveArray[Math.floor(Math.random()*zeroToFiveArray.length)];
+    if(row3ShadedNum===1){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===2){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===3){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===4){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    } else if(row3ShadedNum===5){
+        document.getElementById("row3data1").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data2").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data3").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data4").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+        document.getElementById("row3data5").style.backgroundColor = "rgba(88, 229, 186, 0.5)"
+    }
+
+    if(YayOrNay===0){
+        document.getElementById("row3").style.display = "none"
+        row3ShadedNum=0
+    }
+    if(YayOrNay2===0){
+        document.getElementById("row2").style.display = "none"
+        row2ShadedNum=0
+    }
+
+
+    let denominatorSolution
+    if(YayOrNay===0 && YayOrNay2===0){
+        denominatorSolution=5
+    } else if(YayOrNay2===0 && YayOrNay===1){
+        denominatorSolution=10
+    } else if(YayOrNay2===1 && YayOrNay===0){
+        denominatorSolution=10
+    } else if(YayOrNay2===1 && YayOrNay===1){
+        denominatorSolution=15
+    }
+
+    let numeratorSolution = row1ShadedNum+row2ShadedNum+row3ShadedNum
+    
+    document.getElementById("solutionText").innerHTML +=
+    `<span class="questionNumber">Q1.</span> ${numeratorSolution} &frasl; ${denominatorSolution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+
+    }
+
+    
+
+    document.getElementById("questionText").innerHTML += 
+    `<style>
+    table{
+        border: 1px solid #009870;
+        border-collapse: collapse;
+        font-size: 1em;
+        width: 80%;
+        white-space: pre-line;
+        line-height: 1.5;
+    }
+    td{
+        border: 1px solid #009870;
+    }
+    
+    </style>
+    <span class="questionNumber">Q1.</span> What fraction of this shape is shaded?<br><br>
+    <div class="centeredTable">
+    <table>
+        <tr id="row1">
+            <td id="row1data1"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data2"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data3"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data4"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row1data5"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+        </tr>
+        <tr id="row2">
+            <td id="row2data1"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data2"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data3"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data4"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row2data5"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+        </tr>
+        <tr id="row3">
+            <td id="row3data1"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data2"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data3"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data4"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+            <td id="row3data5"><span class="spaceBetweenTable">&nbsp&nbsp&nbsp&nbsp&nbsp</span></td>
+        </tr>
+    </table>
+    </div><br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</div>
+    <p id="marksGiven">(1 mark)</p><br><br><br>`
+
+    
+    row3YayOrNay();
+
+    
+}
+
+function sequencesNextNumberDecimal(){
+    let num1 = Math.floor((Math.random()*20)+10) /10
+    let num1String = `${num1.toFixed(1)}`
+    let progression
+    for(progression = Math.floor((Math.random()*20)+5)/10; progression === num1;){
+        progression = Math.floor((Math.random()*20)+5)/10;
+    }
+    if(progression===2 || progression===1){
+        progression = progression+0.1
+    }
+    let num2 = num1 + progression
+    let num2String = `${num2.toFixed(1)}`
+    let num3 = num2 + progression
+    let num3String = `${num3.toFixed(1)}`
+    let num4 = num3 + progression
+    let num4String = `${num4.toFixed(1)}`
+    let num5Solution = num4 + progression
+    let num5SolutionString = `${num5Solution.toFixed(1)}`
+
+    document.getElementById("questionText").innerHTML +=
+    `
+    <style>
+    .spaceBetweenSequences{
+        color: #fff
+    }
+    .centeredQuestion{
+        text-align: center;
+    }
+    </style>
+    <span class="questionNumber">Q2.</span> What is the next number in this sequence?<br><br><br>
+    <div class="centeredQuestion">
+    ${num1String}<span class="spaceBetweenSequences">....</span>${num2String}<span class="spaceBetweenSequences">....</span>${num3String}<span class="spaceBetweenSequences">....</span>
+    ${num4String}<span class="spaceBetweenSequences">....</span>..........<br>
+    </div>
+    <p id="marksGiven">(1 mark)</p><br><br><br>
+    `
+
+    document.getElementById("solutionText").innerHTML +=
+    `<br><br><span class="questionNumber">Q2.</span> The term to term rule is +${progression}, and the next term is ${num5SolutionString}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function roundingMoney(){
+    let num1 = `${(Math.ceil((Math.random()*900)+100)/10).toFixed(1)}${Math.ceil(Math.random()*9)}`
+    let num1AsNumber = parseFloat(num1);
+    let roundingToArray = ["pound", "10p"];
+    let roundTo = roundingToArray[Math.floor(Math.random()*roundingToArray.length)];
+
+    let solutionRounded
+    if(roundTo==="pound"){
+        solutionRounded = num1AsNumber.toFixed(0)
+    } else{
+        solutionRounded = `${num1AsNumber.toFixed(1)}0`
+    }
+
+    document.getElementById("questionText").innerHTML += 
+    `
+    <span class="questionNumber">Q3.</span> What is £${num1} rounded to the nearest ${roundTo}
+    <br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</div>
+    <p id="marksGiven">(1 mark)</p><br><br><br>`
+
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q3.</span> £${solutionRounded}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function bestValueTables(){
+
+    let smallCostPenceArray = [25, 50, 75]
+    let smallTableCost = `${Math.ceil(Math.random()*5)+1}.${smallCostPenceArray[Math.floor(Math.random()*smallCostPenceArray.length)]}`
+    let smallTableCostAsNum = parseFloat(smallTableCost);
+    let lengthToBeCoveredArray = [4,6,8,10,12,14,16,18,20]
+    let lengthToBeCovered = lengthToBeCoveredArray[Math.floor(Math.random()*lengthToBeCoveredArray.length)];
+    let totalCostSmallTable = smallTableCostAsNum*lengthToBeCovered
+    let largeTableLength20Array=[4,5]
+    let largeTableLength12Array=[3,4]
+    if(lengthToBeCovered===4 || lengthToBeCovered===6 || lengthToBeCovered===14 || lengthToBeCovered===18){
+        largeTableLength = 2;
+    } else if(lengthToBeCovered===8 || lengthToBeCovered===16){
+        largeTableLength = 4;
+    } else if(lengthToBeCovered===10){
+        largeTableLength = 5;
+    } else if(lengthToBeCovered===12){
+        largeTableLength = largeTableLength12Array[Math.floor(Math.random()*largeTableLength12Array.length)]
+    } else if(lengthToBeCovered===20){
+        largeTableLength = largeTableLength20Array[Math.floor(Math.random()*largeTableLength20Array.length)]
+    }
+    let largeTableCostHelperArray = [0.25, -0.25, 0.5, -0.5, 0.75, -0.75]
+    let largeTableCostHelper = largeTableCostHelperArray[Math.floor(Math.random()*largeTableCostHelperArray.length)]
+    let largeTablecost = smallTableCostAsNum*largeTableLength+largeTableCostHelper
+    let solutionBestValue
+    if(largeTableCostHelper>0){
+        solutionBestValue = "small table"
+    } else{
+        solutionBestValue = "large table"
+    }
+
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .tableCostsContainer{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .tableInfoBox{
+        border: 1px solid black;
+        width: 25%;
+        text-align: center;
+        overflow: overlay;
+    }
+    </style>
+    <span class="questionNumber">Q4.</span> A youth club plans to hold a Charity Sale.<br>
+    People hire tables to sell things from. <br>
+    The youth club has these different size tables.<br><br>
+    <div class="tableCostsContainer">
+        <div class="tableInfoBox">
+        Small table<br>
+        £${smallTableCost}<br>
+        1m
+        </div>
+        <div class="tableInfoBox">
+        Large table<br>
+        £${largeTablecost.toFixed(2)}<br>
+        ${largeTableLength}m
+        </div>
+    </div>
+    <br>
+    A man wants to hire tables to cover a length of <span style="font-weight:bold;">${lengthToBeCovered} metres.</span><br>
+    Which tables would be <span style="font-weight:bold;">cheapest</span> for him to hire? <span style="font-weight:bold;">Give a reason for your answer. Use numbers to help you explain.</span>
+    <br><br><br><br><br><br><br><br><br><br>
+    <p id="marksGiven">(4 marks)</p>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
+
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q4.</span> Small tables: £${smallTableCost}&times;${lengthToBeCovered} = £${totalCostSmallTable.toFixed(2)}<br>
+    Large tables: £${largeTablecost.toFixed(2)}&times;${lengthToBeCovered / largeTableLength} = £${(largeTablecost*lengthToBeCovered/largeTableLength).toFixed(2)}
+    <br> Therefore the cheapest tables for him to hire are the ${solutionBestValue}s
+    <p id="marksGiven">(4 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function fourOpsWordedQuestion(){
+
+    let image4Cups = "../Resources/Images/FS Q's/green stacked cups original 4.png";
+    let image5Cups = "../Resources/Images/FS Q's/green stacked cups original 5.png";
+    let image6Cups = "../Resources/Images/FS Q's/green stacked cups original 6.png";
+    let image7Cups = "../Resources/Images/FS Q's/green stacked cups original 7.png";
+    let image8Cups = "../Resources/Images/FS Q's/green stacked cups original 8.png";
+    let image9Cups = "../Resources/Images/FS Q's/green stacked cups original 9.png";
+    let imageCupsArray = [image4Cups,image5Cups,image6Cups,image7Cups,image8Cups,image9Cups];
+    let chosenImageCups = imageCupsArray[Math.floor(Math.random()*imageCupsArray.length)];
+
+    toDataURL(chosenImageCups, function(dataURL) {
+        let cupBoxes = document.querySelectorAll(".cups");
+
+        cupBoxes.forEach((e) => {
+            e.style.backgroundImage =  `url('${dataURL}')`
+        }) // loop through for every element of .cups
+    })
+
+    toDataURL("../Resources/Images/FS Q's/Sugar.png", function(dataURL) {
+        document.querySelector(".sugar").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    toDataURL("../Resources/Images/FS Q's/Spoon of sugar.png", function(dataURL) {
+        document.querySelector(".sugarSpoon").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    toDataURL("../Resources/Images/FS Q's/Milk cartons.png", function(dataURL) {
+        document.querySelector(".milkCartons").style.backgroundImage = `url('${dataURL}')`
+    })
+
+    let sugarAmountArray=[500, 750, 1];
+    let chosenSugarAmount = sugarAmountArray[Math.floor(Math.random()*sugarAmountArray.length)];
+    let gramOrKg
+    let chosenSugarAmountGrams
+    if(chosenSugarAmount===1){
+        gramOrKg = "kg";
+        chosenSugarAmountGrams = 1000;
+    } else if(chosenSugarAmount===500){
+        gramOrKg = "g";
+        chosenSugarAmountGrams = 500;
+    } else if(chosenSugarAmount===750){
+        gramOrKg = "g";
+        chosenSugarAmountGrams = 750;
+    }
+
+    let howManyBoxesArray = [6,7,8,9,10,11,12];
+    let howManyBoxes = howManyBoxesArray[Math.floor(Math.random()*howManyBoxesArray.length)];
+    let cupsPerBox
+    if(chosenImageCups===image4Cups){
+        cupsPerBox=4
+    } else if(chosenImageCups===image5Cups){
+        cupsPerBox=5
+    } else if(chosenImageCups===image6Cups){
+        cupsPerBox=6
+    } else if(chosenImageCups===image7Cups){
+        cupsPerBox=7
+    } else if(chosenImageCups===image8Cups){
+        cupsPerBox=8
+    } else if(chosenImageCups===image9Cups){
+        cupsPerBox=9
+    }
+
+    let totalNumCups = cupsPerBox*howManyBoxes
+
+    let numCupsNeededArray = [150,160,170,180,190,200]
+    let chosenCupsNeeded = numCupsNeededArray[Math.floor(Math.random()*numCupsNeededArray.length)]
+    let solutionCupsNeeded = chosenCupsNeeded-totalNumCups
+
+    let sugarWeight = Math.floor(Math.random()*4)+4
+    let gramsSugarNeeded = sugarWeight*chosenCupsNeeded;
+    let numBagsNeeded
+    if(chosenSugarAmount===1){
+        numBagsNeeded = Math.ceil(gramsSugarNeeded / 1000)
+    } else if(chosenSugarAmount===500){
+        numBagsNeeded = Math.ceil(gramsSugarNeeded / 500)
+    } else if(chosenSugarAmount===750){
+        numBagsNeeded = Math.ceil(gramsSugarNeeded / 750)
+    };
+
+    let bagOrBags
+    if(numBagsNeeded===1){
+        bagOrBags = "bag";
+    } else {
+        bagOrBags = "bags"
+    }
+
+    let amountOfMilkArray = ["400ml", "450ml","600ml","700ml","900ml","850ml","1.2 litres", "1.5 litres"];
+    let amountOfMilkChosen = amountOfMilkArray[Math.floor(Math.random()*amountOfMilkArray.length)];
+    let bestMilk
+    if(amountOfMilkChosen==="400ml" || amountOfMilkChosen==="450ml"){
+        bestMilk = "A: 500ml carton";
+    } else if(amountOfMilkChosen==="600ml" || amountOfMilkChosen==="700ml"){
+        bestMilk = "C: 750ml carton";
+    } else if(amountOfMilkChosen==="900ml" || amountOfMilkChosen==="850ml"){
+        bestMilk = "D: 1 litre carton";
+    } else if(amountOfMilkChosen==="1.2 litres" || amountOfMilkChosen==="1.5 litres"){
+        bestMilk = "B: 2 litre carton";
+    }
+
+    document.getElementById("questionText").innerHTML += 
+    `<style>
+    .cupsContainer{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .cups{
+        width: 100px;
+        height: 140px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .sugar{
+        width: 100px;
+        height: 140px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+    }
+
+    .milkCartons{
+        min-width: 600px;
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #amountOfSugar{
+        bottom: 1.5em;
+        font-size: 0.5em;
+        position: absolute;
+        left: 25px;
+        font-weight: bold;
+    }
+
+    .sugarContainer{
+        display: flex;
+    }
+
+    .sugarSpoonContainer{
+        padding-left: 150px;
+    }
+
+    .sugarSpoon{
+        width: auto;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .cups{
+            width: 70px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .milkCartons{
+            width: 400px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    </style>
+    <span class="questionNumber">Q5.</span> A playgroup plans to hold a Coffee Morning to raise money.<br>
+    The play leader needs to buy more cups, sugar and milk.<br><br>
+    She says we need ${chosenCupsNeeded} cups.<br><br> 
+    They have these cups.<br><br>
+    <div class="cupsContainer">
+        <div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div><div class="cups"></div>
+    </div>
+    <div class="cupsContainer">
+        <div id="disapear1" class="cups"></div><div id="disapear2" class="cups"></div><div id="disapear3" class="cups"></div><div id="disapear4" class="cups"></div>
+        <div id="disapear5" class="cups"></div><div id="disapear6" class="cups"></div>
+    </div><br>
+    <span class="questionNumber">a)</span> How many more cups do they need?<br>
+    Show all of your working out. <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <p id="marksGiven">(2 marks)</p>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    She needs to work out how many bags of sugar she needs for ${chosenCupsNeeded} cups.<br>
+    She allows <span style="font-weight:bold;"> one spoonful of sugar</span> for each cup.<br>
+    <div class="sugarContainer">
+        <div class="sugar">
+            <p id="amountOfSugar">${chosenSugarAmount}${gramOrKg}</p>
+        </div>
+        <div class="sugarSpoonContainer">
+            <div class="sugarSpoon"></div>
+            <p>One spoon of sugar weighs ${sugarWeight} grams</p>
+        </div>
+    </div><br><br>
+    <span class="questionNumber">b)</span> How many bags of sugar should the leader buy?<br><br><br><br><br><br>
+    <p id="marksGiven">(3 marks)</p>
+    
+    The play leader works out she needs ${amountOfMilkChosen} of milk.<br><br>
+    <div class=milkCartons>
+    </div>
+    <br>
+    <span class="questionNumber">c)</span> Which size milk should she buy? <span style="font-weight:bold;"> Tick one</span><br>
+    <p id="marksGiven">(1 mark)</p>
+
+    `
+
+    document.getElementById("solutionText").innerHTML +=
+    `a) There are ${cupsPerBox} cups per stack and there is ${howManyBoxes} stacks. Therefore, ${cupsPerBox} &times; ${howManyBoxes} = ${totalNumCups}<br>
+    So there are ${totalNumCups} cups at the moment. ${chosenCupsNeeded} - ${totalNumCups} = ${solutionCupsNeeded}.<br>
+    So ${solutionCupsNeeded} cups are needed.<br><br>
+    b) ${sugarWeight} grams &times; ${chosenCupsNeeded} cups = ${gramsSugarNeeded} grams of sugar needed.<br>
+    ${gramsSugarNeeded}g &divide; ${chosenSugarAmountGrams}g = ${(gramsSugarNeeded / chosenSugarAmountGrams).toFixed(2)} Therefore they need to buy ${numBagsNeeded} ${bagOrBags}.
+    <br><br>
+    c) ${bestMilk}`
+
+    if(howManyBoxes===6){
+        document.getElementById("disapear1").style.display = "none"
+        document.getElementById("disapear2").style.display = "none"
+        document.getElementById("disapear3").style.display = "none"
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===7){
+        document.getElementById("disapear2").style.display = "none"
+        document.getElementById("disapear3").style.display = "none"
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===8){
+        document.getElementById("disapear3").style.display = "none"
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===9){
+        document.getElementById("disapear4").style.display = "none"
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===10){
+        document.getElementById("disapear5").style.display = "none"
+        document.getElementById("disapear6").style.display = "none"
+    } else if(howManyBoxes===11){
+        document.getElementById("disapear6").style.display = "none"
+    }
+
+}
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1158,6 +1724,11 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     interpretBarChart();
     document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br>`
     frontPageCalc();
+    fractionShadedOfShape();
+    sequencesNextNumberDecimal();
+    roundingMoney();
+    bestValueTables();
+    fourOpsWordedQuestion();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";
