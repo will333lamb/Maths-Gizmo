@@ -1289,7 +1289,7 @@ function fractionShadedOfShape(){
     </table>
     </div><br><br><br>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</div>
-    <p id="marksGiven">(1 mark)</p><br><br><br>`
+    <p id="marksGiven">(1 mark)</p><br><br>`
 
     
     row3YayOrNay();
@@ -1331,7 +1331,7 @@ function sequencesNextNumberDecimal(){
     ${num1String}<span class="spaceBetweenSequences">....</span>${num2String}<span class="spaceBetweenSequences">....</span>${num3String}<span class="spaceBetweenSequences">....</span>
     ${num4String}<span class="spaceBetweenSequences">....</span>..........<br>
     </div>
-    <p id="marksGiven">(1 mark)</p><br><br><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
     `
 
     document.getElementById("solutionText").innerHTML +=
@@ -1358,7 +1358,7 @@ function roundingMoney(){
     <span class="questionNumber">Q3.</span> What is £${num1} rounded to the nearest ${roundTo}
     <br><br><br>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</div>
-    <p id="marksGiven">(1 mark)</p><br><br><br>`
+    <p id="marksGiven">(1 mark)</p><br><br>`
 
     document.getElementById("solutionText").innerHTML += 
     `<br><br><span class="questionNumber">Q3.</span> £${solutionRounded}
@@ -1409,6 +1409,7 @@ function bestValueTables(){
     .tableInfoBox{
         border: 1px solid black;
         width: 25%;
+        line-height: 1.2em;
         text-align: center;
         overflow: overlay;
     }
@@ -1431,7 +1432,7 @@ function bestValueTables(){
     <br>
     A man wants to hire tables to cover a length of <span style="font-weight:bold;">${lengthToBeCovered} metres.</span><br>
     Which tables would be <span style="font-weight:bold;">cheapest</span> for him to hire? <span style="font-weight:bold;">Give a reason for your answer. Use numbers to help you explain.</span>
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <p id="marksGiven">(4 marks)</p>
     <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
 
@@ -1471,7 +1472,7 @@ function fourOpsWordedQuestion(){
     })
 
     toDataURL("../Resources/Images/FS Q's/Milk cartons.png", function(dataURL) {
-        document.querySelector(".milkCartons").style.backgroundImage = `url('${dataURL}')`
+        document.getElementById("milkCartons").src = dataURL
     })
 
     let sugarAmountArray=[500, 750, 1];
@@ -1566,11 +1567,15 @@ function fourOpsWordedQuestion(){
         position: absolute;
     }
 
-    .milkCartons{
-        min-width: 600px;
-        height: 300px;
-        background-repeat: no-repeat;
-        background-size: contain;
+    #milkCartons{
+        width: 50%;
+        height: auto;
+        border: 3px solid #f6f6f6;
+        margin: 0 25%;
+    }
+
+    .milkCartonContainer{
+        margin: auto;
     }
 
     #amountOfSugar{
@@ -1604,11 +1609,14 @@ function fourOpsWordedQuestion(){
             background-size: contain;
         }
 
-        .milkCartons{
-            width: 400px;
-            height: 100px;
-            background-repeat: no-repeat;
-            background-size: contain;
+        #milkCartons{
+            width: 50%;
+            height: auto;
+            margin: 0 25%;          
+        }
+
+        .milkCartonContainer{
+            margin: auto;
         }
     }
 
@@ -1626,10 +1634,10 @@ function fourOpsWordedQuestion(){
     </div><br>
     <span class="questionNumber">a)</span> How many more cups do they need?<br>
     Show all of your working out. <br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <p id="marksGiven">(2 marks)</p>
     <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
-    She needs to work out how many bags of sugar she needs for ${chosenCupsNeeded} cups.<br>
+    She needs to work out how many bags of sugar she needs for ${chosenCupsNeeded} cups.<br><br>
     She allows <span style="font-weight:bold;"> one spoonful of sugar</span> for each cup.<br>
     <div class="sugarContainer">
         <div class="sugar">
@@ -1641,12 +1649,13 @@ function fourOpsWordedQuestion(){
         </div>
     </div><br><br>
     <span class="questionNumber">b)</span> How many bags of sugar should the leader buy?<br><br><br><br><br><br>
-    <p id="marksGiven">(3 marks)</p>
+    <p id="marksGiven">(3 marks)</p><br><br><br>
     
     The play leader works out she needs ${amountOfMilkChosen} of milk.<br><br>
-    <div class=milkCartons>
+    <div class="milkCartonContainer">
+        <img id="milkCartons" src="" alt="picture showing different cartons of milk"
     </div>
-    <br>
+    <br><br>
     <span class="questionNumber">c)</span> Which size milk should she buy? <span style="font-weight:bold;"> Tick one</span><br>
     <p id="marksGiven">(1 mark)</p>
 
