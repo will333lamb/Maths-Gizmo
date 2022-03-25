@@ -1446,14 +1446,26 @@ function scaleDrawings(){
     let imageOption6 = "../Resources/Images/FS Q's/TablesChairsPlanQOption6.png"
     let imageOption7 = "../Resources/Images/FS Q's/TablesChairsPlanQOption7.png"
     let imageOption8 = "../Resources/Images/FS Q's/TablesChairsPlanQOption8.png"
-    let imageOptionsArray = [imageOption1,imageOption2,imageOption3,imageOption4,imageOption5,imageOption6,imageOption7,imageOption8];
-    let chosenImage = imageOptionsArray[Math.floor(Math.random()*imageOptionsArray.length)];
 
-    toDataURL(chosenImage, function(dataURL) {
+    let imageOption1S = "../Resources/Images/FS Q's/TablesChairsPlanQOption1Solution.png"
+    let imageOption2S = "../Resources/Images/FS Q's/TablesChairsPlanQOption2Solution.png"
+    let imageOption3S = "../Resources/Images/FS Q's/TablesChairsPlanQOption3Solution.png"
+    let imageOption4S = "../Resources/Images/FS Q's/TablesChairsPlanQOption4Solution.png"
+    let imageOption5S = "../Resources/Images/FS Q's/TablesChairsPlanQOption5Solution.png"
+    let imageOption6S = "../Resources/Images/FS Q's/TablesChairsPlanQOption6Solution.png"
+    let imageOption7S = "../Resources/Images/FS Q's/TablesChairsPlanQOption7Solution.png"
+    let imageOption8S = "../Resources/Images/FS Q's/TablesChairsPlanQOption8Solution.png"
+
+    let imageOptionsArray = [[imageOption1,imageOption1S],[imageOption2,imageOption2S],[imageOption3,imageOption3S],[imageOption4,imageOption4S]
+    ,[imageOption5,imageOption5S],[imageOption6,imageOption6S],[imageOption7,imageOption7S],[imageOption8,imageOption8S]];
+    let chosenImage = imageOptionsArray[Math.floor(Math.random()*imageOptionsArray.length)];
+    
+
+    toDataURL(chosenImage[0], function(dataURL) {
         document.getElementById("tablesChairsPlanImage").src = dataURL
     })
 
-    toDataURL("../Resources/Images/FS Q's/TablesChairsPlanQSolution.png", function(dataURL) {
+    toDataURL(chosenImage[1], function(dataURL) {
         document.getElementById("solutionPlan").src = dataURL
     })
 
@@ -1464,6 +1476,7 @@ function scaleDrawings(){
     .tablesChairsPlanImage{
         width: 50%;
         height: 50%;
+        margin: 0 25%;
     }
 
 
@@ -1471,6 +1484,7 @@ function scaleDrawings(){
         .tablesChairsPlanImage{
             width: 90%;
             height: auto;
+            margin: 0 auto;
         }
     }
     </style>

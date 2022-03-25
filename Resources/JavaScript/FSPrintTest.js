@@ -1658,6 +1658,7 @@ function fourOpsWordedQuestion(){
     <br><br>
     <span class="questionNumber">c)</span> Which size milk should she buy? <span style="font-weight:bold;"> Tick one</span><br>
     <p id="marksGiven">(1 mark)</p>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
 
     `
 
@@ -1708,6 +1709,80 @@ function fourOpsWordedQuestion(){
 
 }
 
+function scaleDrawings(){
+    let imageOption1 = "../Resources/Images/FS Q's/TablesChairsPlanQOption1.png"
+    let imageOption2 = "../Resources/Images/FS Q's/TablesChairsPlanQOption2.png"
+    let imageOption3 = "../Resources/Images/FS Q's/TablesChairsPlanQOption3.png"
+    let imageOption4 = "../Resources/Images/FS Q's/TablesChairsPlanQOption4.png"
+    let imageOption5 = "../Resources/Images/FS Q's/TablesChairsPlanQOption5.png"
+    let imageOption6 = "../Resources/Images/FS Q's/TablesChairsPlanQOption6.png"
+    let imageOption7 = "../Resources/Images/FS Q's/TablesChairsPlanQOption7.png"
+    let imageOption8 = "../Resources/Images/FS Q's/TablesChairsPlanQOption8.png"
+
+    let imageOption1S = "../Resources/Images/FS Q's/TablesChairsPlanQOption1Solution.png"
+    let imageOption2S = "../Resources/Images/FS Q's/TablesChairsPlanQOption2Solution.png"
+    let imageOption3S = "../Resources/Images/FS Q's/TablesChairsPlanQOption3Solution.png"
+    let imageOption4S = "../Resources/Images/FS Q's/TablesChairsPlanQOption4Solution.png"
+    let imageOption5S = "../Resources/Images/FS Q's/TablesChairsPlanQOption5Solution.png"
+    let imageOption6S = "../Resources/Images/FS Q's/TablesChairsPlanQOption6Solution.png"
+    let imageOption7S = "../Resources/Images/FS Q's/TablesChairsPlanQOption7Solution.png"
+    let imageOption8S = "../Resources/Images/FS Q's/TablesChairsPlanQOption8Solution.png"
+
+    let imageOptionsArray = [[imageOption1,imageOption1S],[imageOption2,imageOption2S],[imageOption3,imageOption3S],[imageOption4,imageOption4S]
+    ,[imageOption5,imageOption5S],[imageOption6,imageOption6S],[imageOption7,imageOption7S],[imageOption8,imageOption8S]];
+    let chosenImage = imageOptionsArray[Math.floor(Math.random()*imageOptionsArray.length)];
+
+    toDataURL(chosenImage[0], function(dataURL) {
+        document.getElementById("tablesChairsPlanImage").src = dataURL
+    })
+
+    toDataURL(chosenImage[1], function(dataURL) {
+        document.getElementById("solutionPlan").src = dataURL
+    })
+
+
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .tablesChairsPlanImage{
+        width: 50%;
+        height: 50%;
+    }
+
+
+    @media only screen and (max-width: 800px) {
+        .tablesChairsPlanImage{
+            width: 50%;
+            height: auto;
+        }
+    }
+    </style>
+    <span class="questionNumber">Q6.</span> There will be Afternoon Tea at the community centre. <br>
+    The organiser needs to set up the room.<br><br>
+    He starts to draw a plan to show where he wants the tables and chairs to go. <br><br>
+    He needs <span style="font-weight: bold;">two more tables and eight chairs.</span><br><br>
+    They need to be the same size and the same distance apart as the others.<br><br>
+    <div class="centeredQuestion">
+    <span style="font-weight:bold;">Plan of the room</span><br><br>
+        <img id="tablesChairsPlanImage" class="tablesChairsPlanImage" src="" alt="image showing plan of room">
+    </div><br>
+    Complete the plan to show where the tables and chairs will go.<br>
+    <span style="font-weight:bold;">Put labels on your diagram.</span><br><br>
+    <p id="marksGiven">(4 marks)</p><br><br>
+    `
+
+    document.getElementById("solutionText").innerHTML += 
+    `
+    <br><br><span class="questionNumber">Q6.</span><br>
+    <img id="solutionPlan" class="tablesChairsPlanImage" src=""><br>
+    <p id="marksGiven">(4 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+}
+
+
+
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -1745,6 +1820,7 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     roundingMoney();
     bestValueTables();
     fourOpsWordedQuestion();
+    scaleDrawings();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";
