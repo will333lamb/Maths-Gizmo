@@ -1747,6 +1747,7 @@ function scaleDrawings(){
     .tablesChairsPlanImage{
         width: 50%;
         height: 50%;
+        border: 2px solid black;
     }
 
 
@@ -1769,14 +1770,352 @@ function scaleDrawings(){
     Complete the plan to show where the tables and chairs will go.<br>
     <span style="font-weight:bold;">Put labels on your diagram.</span><br><br>
     <p id="marksGiven">(4 marks)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
     `
 
     document.getElementById("solutionText").innerHTML += 
     `
-    <br><br><span class="questionNumber">Q6.</span><br>
+    <br><br><span class="questionNumber">Q6.</span><br><br>
     <img id="solutionPlan" class="tablesChairsPlanImage" src=""><br>
     <p id="marksGiven">(4 marks)</p><br><br>
     <div class="borderBottomSolution"></div>
+    `
+}
+
+function compassDirections(){
+    let compassNorthWest = "../Resources/Images/FS Q's/compassDirectionNorthWest.png"
+    let compassNorth = "../Resources/Images/FS Q's/compassDirectionsNorth.png"
+    let compassNorthEast = "../Resources/Images/FS Q's/compassDirectionsNorthEast.png"
+    let compassSouthEast = "../Resources/Images/FS Q's/compassDirectionsSouthEast.png"
+    let compassSouth = "../Resources/Images/FS Q's/compassDirectionsSouth.png"
+    let compassSouthWest = "../Resources/Images/FS Q's/compassDirectionsSouthWest.png"
+    let compassWest = "../Resources/Images/FS Q's/compassDirectionsWest.png"
+    let compassArray = [compassNorthWest,compassNorth,compassNorthEast,compassSouthEast,compassSouth,compassSouthWest,compassWest];
+    let chosenCompassImage = compassArray[Math.floor(Math.random()*compassArray.length)];
+
+    toDataURL(chosenCompassImage, function(dataURL) {
+        document.getElementById("compassDirections").src = dataURL
+    })
+
+    let solutionCompassDirection
+    if(chosenCompassImage===compassNorthWest){
+        solutionCompassDirection="North West"
+    } else if(chosenCompassImage===compassNorth){
+        solutionCompassDirection="North"
+    } else if(chosenCompassImage===compassNorthEast){
+        solutionCompassDirection="North East"
+    } else if(chosenCompassImage===compassSouthEast){
+        solutionCompassDirection="South East"
+    } else if(chosenCompassImage===compassSouth){
+        solutionCompassDirection="South"
+    } else if(chosenCompassImage===compassSouthWest){
+        solutionCompassDirection="South West"
+    } else if(chosenCompassImage===compassWest){
+        solutionCompassDirection="West"
+    } 
+
+
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .compassDirections{
+        width: 45%;
+        height: auto;
+        margin: 0 25%;
+        border: 5px solid black;
+    }
+    </style>
+    <span class="questionNumber">Q7.</span> A scout group organises a Treasure Hunt.<br>
+    People will follow directions to look for clues <span style="font-weight:bold;">and</span> then answer questions. <br><br>
+    A group of friends decide to take part.<br><br>
+    Here is the direction to Clue One.<br><br>
+    <div class=centeredQuestion">
+    <img id="compassDirections" class="compassDirections" src="" alt="map showing direction to clue one">
+    </div><br>
+    <span class="questionNumber">a)</span> In which direction is Clue One?
+    <br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</span>
+    <p id="marksGiven">(1 mark)</p><br><br>
+
+    `
+
+    document.getElementById("solutionText").innerHTML += 
+    `
+    <br><br><span class="questionNumber">Q7.</span><br><br>
+    <span class="questionNumber">a)</span> ${solutionCompassDirection}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
+}
+
+function linesOfSymmetry(){
+
+    // 0 Lines of Symmetry
+    let letterFImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/F.png"
+    let letterGImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/G.png"
+    let letterJImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/J.png"
+    let letterLImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/L.png"
+    let letterNImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/N.png"
+    let letterPImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/P.png"
+    let letterQImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/Q.png"
+    let letterRImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/R.png"
+    let letterSImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/S.png"
+    let letterZImage = "../Resources/Images/FS Q's/LettersLOS/0 Line of symmetry/Z.png"
+    let zeroLOSArray = [[letterFImage,"F"],[letterGImage,"G"],[letterJImage,"J"],[letterLImage,"L"],[letterNImage,"N"],[letterPImage,"P"],[letterQImage,"Q"],[letterRImage,"R"],[letterSImage,"S"],[letterZImage,"Z"]];
+    let chosenZeroArrayOptions = zeroLOSArray[Math.floor(Math.random()*zeroLOSArray.length)];
+    for(chosen4thZeroLOS=zeroLOSArray[Math.floor(Math.random()*zeroLOSArray.length)]; chosen4thZeroLOS===chosenZeroArrayOptions;){
+        chosen4thZeroLOS=zeroLOSArray[Math.floor(Math.random()*zeroLOSArray.length)];
+    }
+    
+    // 1 Line of Symmetry
+    let letterAImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/A.png"
+    let letterCImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/C.png"
+    let letterDImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/D.png"
+    let letterEImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/E.png"
+    let letterKImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/K.png"
+    let letterMImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/M.png"
+    let letterTImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/T.png"
+    let letterUImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/U.png"
+    let letterVImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/V.png"
+    let letterWImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/W.png"
+    let letterYImage = "../Resources/Images/FS Q's/LettersLOS/1 Line of symmetry/Y.png"
+    let oneLOSArray = [[letterAImage,"A"],[letterCImage,"C"],[letterDImage,"D"],[letterEImage,"E"],[letterKImage,"K"],[letterMImage,"M"],[letterTImage,"T"],[letterUImage,"U"],[letterVImage,"V"],[letterWImage,"W"],[letterYImage,"Y"]];
+    let choseOneArrayOptions = oneLOSArray[Math.floor(Math.random()*oneLOSArray.length)];
+    let chosen4thOneLOS
+    for(chosen4thOneLOS=oneLOSArray[Math.floor(Math.random()*oneLOSArray.length)]; chosen4thOneLOS===choseOneArrayOptions;){
+        chosen4thOneLOS=oneLOSArray[Math.floor(Math.random()*oneLOSArray.length)];
+    }
+    
+
+    // 2 Lines of Symmetry
+    let letterHImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/H.png"
+    let letterOImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/O.png"
+    let letterXImage = "../Resources/Images/FS Q's/LettersLOS/2 line of symmetry/X.png"
+    let twoLOSArray = [[letterHImage,"H"],[letterOImage,"O"],[letterXImage,"X"]];
+    let chosenTwoArrayOptions = twoLOSArray[Math.floor(Math.random()*twoLOSArray.length)];
+
+
+    let numberLinesOfSymmetryArray = ["no lines","one line","two lines"];
+    let chosenNumberLinesOfSymmetry = numberLinesOfSymmetryArray[Math.floor(Math.random()*numberLinesOfSymmetryArray.length)];
+
+    if(chosenNumberLinesOfSymmetry==="no lines"){
+        chosenZeroLOSImage = chosenZeroArrayOptions[0] 
+        chosenZeroLOSLetter = chosenZeroArrayOptions[1]
+        chosenOneLOSImage = choseOneArrayOptions[0]
+        chosenOneLOSLetter = choseOneArrayOptions[1]
+        chosenTwoLOSImage = chosenTwoArrayOptions[0]
+        chosenTwoLOSLetter = chosenTwoArrayOptions[1]
+        chosen4thLOSImage = chosen4thOneLOS[0]
+        chosen4thOneLOSLetter = chosen4thOneLOS[1]
+        solutionLetter = chosenZeroLOSLetter
+    } else if(chosenNumberLinesOfSymmetry==="one line"){
+        chosenZeroLOSImage = chosenZeroArrayOptions[0] 
+        chosenZeroLOSLetter = chosenZeroArrayOptions[1]
+        chosenOneLOSImage = choseOneArrayOptions[0]
+        chosenOneLOSLetter = choseOneArrayOptions[1]
+        chosenTwoLOSImage = chosenTwoArrayOptions[0]
+        chosenTwoLOSLetter = chosenTwoArrayOptions[1]
+        chosen4thLOSImage = chosen4thZeroLOS[0]
+        chosen4thOneLOSLetter = chosen4thZeroLOS[1]
+        solutionLetter = chosenOneLOSLetter
+    } else if(chosenNumberLinesOfSymmetry==="two lines"){
+        chosenZeroLOSImage = chosenZeroArrayOptions[0] 
+        chosenZeroLOSLetter = chosenZeroArrayOptions[1]
+        chosenOneLOSImage = choseOneArrayOptions[0]
+        chosenOneLOSLetter = choseOneArrayOptions[1]
+        chosenTwoLOSImage = chosenTwoArrayOptions[0]
+        chosenTwoLOSLetter = chosenTwoArrayOptions[1]
+        chosen4thLOSImage = chosen4thZeroLOS[0]
+        chosen4thOneLOSLetter = chosen4thZeroLOS[1]
+        solutionLetter = chosenTwoLOSLetter
+    }
+
+    toDataURL(chosenZeroLOSImage, function(dataURL) {
+        document.getElementById("letter1").src = dataURL
+    })
+    toDataURL(chosenOneLOSImage, function(dataURL) {
+        document.getElementById("letter2").src = dataURL
+    })
+    toDataURL(chosenTwoLOSImage, function(dataURL) {
+        document.getElementById("letter3").src = dataURL
+    })
+    toDataURL(chosen4thLOSImage, function(dataURL) {
+        document.getElementById("letter4").src = dataURL
+    })
+
+    let positionLettersArray = [1,2,3,4]
+    let chosenPosition = positionLettersArray[Math.floor(Math.random()*positionLettersArray.length)];
+
+    if(chosenPosition===1){
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    They read Clue One.<br><br>
+    <div class="centeredQuestion" style="font-weight: bold;">Clue One</div><br><br>
+    
+    <div class="lettersContainer">
+        <img id="letter1" class="letters" src="">
+        <img id="letter2" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+        <img id="letter4" class="letters" src="">
+    </div>
+    <br><br><br>
+    <span class="questionNumber">b)</span> Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</span>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    
+    `
+} else if(chosenPosition===2){
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    They read Clue One.<br><br>
+    <div class="centeredQuestion" style="font-weight: bold;">Clue One</div><br><br>
+    
+    <div class="lettersContainer">
+        <img id="letter2" class="letters" src="">
+        <img id="letter1" class="letters" src="">
+        <img id="letter4" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+    </div>
+    <br><br><br>
+    <span class="questionNumber">b)</span> Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</span>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    
+    `
+} else if(chosenPosition===3){
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    They read Clue One.<br><br>
+    <div class="centeredQuestion" style="font-weight: bold;">Clue One</div><br><br>
+    
+    <div class="lettersContainer">
+        <img id="letter4" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+        <img id="letter2" class="letters" src="">
+        <img id="letter1" class="letters" src="">
+    </div><br><br><br>
+    <span class="questionNumber">b)</span> Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</span>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    
+    `
+} else if(chosenPosition===4){
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+    .lettersContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+    </style>
+    They read Clue One.<br><br>
+    <div class="centeredQuestion" style="font-weight: bold;">Clue One</div><br><br>
+    
+    <div class="lettersContainer">
+        <img id="letter1" class="letters" src="">
+        <img id="letter3" class="letters" src="">
+        <img id="letter4" class="letters" src="">
+        <img id="letter2" class="letters" src="">
+    </div><br><br><br>
+    <span class="questionNumber">b)</span> Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br><br>
+    <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</span>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    
+    `
+}
+
+    document.getElementById("solutionText").innerHTML += 
+    `<br><span class="questionNumber">b)</span>
+    The letter ${solutionLetter} has ${chosenNumberLinesOfSymmetry} of symmetry
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function wordedDivisionAndRoundingUp(){
+
+    let numPeopleArray = [100,200,300,400,500];
+    let chosenNumPeople = numPeopleArray[Math.floor(Math.random()*numPeopleArray.length)];
+    let twoOrThreeArray = [["two",2],["three",3]]
+    let chosenTwoOrThree = twoOrThreeArray[Math.floor(Math.random()*twoOrThreeArray.length)];
+    let numPacksArray = [6,12,18,24,30];
+    let chosenNumPacks
+    let numSausagesNeeded = chosenNumPeople*chosenTwoOrThree[1];
+    for(chosenNumPacks=numPacksArray[Math.floor(Math.random()*numPacksArray.length)];Number.isInteger(numSausagesNeeded/chosenNumPacks)===true;){
+        chosenNumPacks=numPacksArray[Math.floor(Math.random()*numPacksArray.length)];
+    }
+
+    let numPacksUnrounded = numSausagesNeeded / chosenNumPacks;
+    let numPacksRounded = Math.ceil(numPacksUnrounded);
+
+    let denominatorForVegSausagesArray = [10,5,8,6,4]
+    let denominatorForVegSausages
+    for(denominatorForVegSausages=denominatorForVegSausagesArray[Math.floor(Math.random()*denominatorForVegSausagesArray.length)];Number.isInteger(numSausagesNeeded/denominatorForVegSausages)===false;){
+        denominatorForVegSausages=denominatorForVegSausagesArray[Math.floor(Math.random()*denominatorForVegSausagesArray.length)]
+    }
+
+    
+
+    document.getElementById("questionText").innerHTML +=
+
+    `<style>
+        .rightQuestion{
+            text-align: right;
+        }
+    </style>
+    <span class="questionNumber">Q8.</span> A club plans to hold a Barbecue for ${chosenNumPeople} people.<br><br>
+    She allows <span style="font-weight:bold;">${chosenTwoOrThree[0]} sausages</span> for <span style="font-weight:bold;">each person.</span><br><br>
+    A club member needs to order the rolls <span style="font-weight:bold;">and</span> sausages.<br>
+    She needs to order <span style="font-weight:bold;">one long roll</span> for <span style="font-weight:bold;">each sausage.</span><br><br>
+    The rolls are sold in packs of ${chosenNumPacks}<br><br>
+    <span class="questionNumber">a)</span> How many packs of rolls must she order?<br>
+    <span style="font-weight:bold;">Show your working out</span>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="rightQuestion">. . . . . . . . . . . . . . . . . packs of rolls</div>
+    <p id="marksGiven">(4 marks)</p><br><br>
+    She needs to order the sausages.<br><br>
+    <span style="font-weight:bold;"> <sup>1</sup> &frasl;<sub>${denominatorForVegSausages}</sub></span> of the number of sausages need to be vegetarian.<br><br>
+    <span class="questionNumber">b)</span> How many vegetarian sausages will she order?<br>
+    Show your working out.
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="rightQuestion">. . . . . . . . . . . . . . . . . vegetarian sausages</div>
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
+
+    document.getElementById("solutionText").innerHTML += 
+    `<br><br><span class="questionNumber">Q8.</span><br><br>
+    <span class="questionNumber">a)</span> ${chosenNumPeople} &times; ${chosenTwoOrThree[1]} = ${numSausagesNeeded} sausages needed. Therefore ${numSausagesNeeded} rolls are needed.<br>
+    ${numSausagesNeeded} &divide; ${chosenNumPacks} = ${numPacksUnrounded}<br>
+    Rounding up, she needs to order ${numPacksRounded} packs of rolls.<br><br>
+    <p id="marksGiven">(4 marks)</p><br><br>
+    <span class="questionNumber">b)</span> <sup>1</sup> &frasl;<sub>${denominatorForVegSausages}</sub> &times; ${numSausagesNeeded} = ${numSausagesNeeded/denominatorForVegSausages} vegetarian sausages needed.<br>
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
     `
 }
 
@@ -1821,6 +2160,9 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     bestValueTables();
     fourOpsWordedQuestion();
     scaleDrawings();
+    compassDirections();
+    linesOfSymmetry();
+    wordedDivisionAndRoundingUp();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";
