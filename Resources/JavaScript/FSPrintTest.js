@@ -2119,8 +2119,121 @@ function wordedDivisionAndRoundingUp(){
     `
 }
 
+function readingScalesChildsHeight(){
+
+    let childImage57cm = "../Resources/Images/FS Q's/Scales, height of child/57cm.png"
+    let childImage76cm = "../Resources/Images/FS Q's/Scales, height of child/76cm.png"
+    let childImage105cm = "../Resources/Images/FS Q's/Scales, height of child/105cm.png"
+    let childImage111cm = "../Resources/Images/FS Q's/Scales, height of child/111cm.png"
+    let childImage124cm = "../Resources/Images/FS Q's/Scales, height of child/124cm.png"
+    let childImage128cm = "../Resources/Images/FS Q's/Scales, height of child/128cm.png"
+    let childImage136cm = "../Resources/Images/FS Q's/Scales, height of child/136cm.png"
+    let childImage142cm = "../Resources/Images/FS Q's/Scales, height of child/142cm.png"
 
 
+    let childImagesArray = [[childImage76cm,[74,78],76],[childImage105cm,[102,108],105],[childImage111cm,[108,114],111],[childImage124cm,[121,127],124],
+    [childImage128cm,[124,132],128],[childImage136cm,[133,139],136],[childImage57cm,[53,60],57],[childImage142cm,[138,146],142]];
+    let chosenChildImageArray = childImagesArray[Math.floor(Math.random()*childImagesArray.length)];
+    
+    let maxHeightForRide = chosenChildImageArray[1][Math.floor(Math.random()*chosenChildImageArray[1].length)];
+    let childHeight = chosenChildImageArray[2];
+
+    let isChildBigEnough
+    if(childHeight>maxHeightForRide){
+        isChildBigEnough = `yes the child is tall enough to go on the rides since ${childHeight}cm is bigger than ${maxHeightForRide}cm`
+    } else{
+        isChildBigEnough = `no the child is not tall enough to go on the rides since ${childHeight}cm is smaller than ${maxHeightForRide}cm`
+    }
+    
+    toDataURL(chosenChildImageArray[0], function(dataURL) {
+        document.getElementById("childImage").src = dataURL
+    })
+
+
+    document.getElementById("questionText").innerHTML += 
+    `
+    <style>
+        #childImage{
+            margin: 0 25%;
+        }
+    </style>
+    <span class="questionNumber">Q9.</span> A family sees a poster for a Fun Fair.<br><br>
+    It says children have to be <span style="font-weight:bold;"> over ${maxHeightForRide}cm</span> tall to go on the rides.<br>
+    They need to check their child's height before they go to the Fun Fair.<br><br><br>
+    <img id="childImage" src="" alt="picture showing height of child"><br><br>
+    Can the child go on the rides? <span style="font-weight:bold;">Give a reason for your answer.<br>
+    Use numbers to help you explain.</span>
+    <br><br>
+    Yes / No ...................<br><br>
+    Reason
+    <br><br><br><br><br><br><br><br><br>
+    <br><br>
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
+    `
+
+    document.getElementById("solutionText").innerHTML += 
+    `
+    <br><br><span class="questionNumber">Q9.</span> 
+    The child's height is ${childHeight}cm. Therefore, ${isChildBigEnough}.
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+}
+
+function multiplicationMoney(){
+
+    let ticketsSold = Math.floor(Math.random()*49)+50
+    let twentyFiveArray = [25,75]
+    let ticketCost = `${Math.floor(Math.random()*6)+2}.${twentyFiveArray[Math.floor(Math.random()*twentyFiveArray.length)]}`
+    let ticketCostAsNum = parseFloat(ticketCost);
+    let totalSales = (ticketCostAsNum*ticketsSold).toFixed(2);
+    let differenceArray = [50, -50, 30, -30, 40, -40, 60, -60];
+    let chosenDifference = differenceArray[Math.floor(Math.random()*differenceArray.length)];
+    let lastYearAmount = Math.ceil(parseFloat(totalSales) + chosenDifference)
+
+    let ticketsSoldToNearest10 = Math.round(ticketsSold / 10) * 10;
+    
+    let solutionStatement
+    if(chosenDifference<0){
+        solutionStatement = `the organiser is correct since £${totalSales} is more than £${lastYearAmount}`
+    } else{
+        solutionStatement = `the organiser is incorrect since £${totalSales} is less than £${lastYearAmount}`
+    }
+
+
+    document.getElementById("questionText").innerHTML += 
+    `
+    <span class="questionNumber">Q10.</span> A dance school holds a Dance Display every year.<br>
+    <span style="font-weight:bold;">Last year</span> they made £${lastYearAmount} from the ticket sales.<br><br>
+    <span style="font-weight:bold;">This year</span> they sold ${ticketsSold} tickets at £${ticketCost} each.<br><br>
+    The organiser thinks they made <span style="font-weight:bold;">more money</span> this year than they did last year from the ticket sales. <br><br>
+    <span class="questionNumber">a)</span> Is the organiser correct? <span style="font-weight:bold;">Give a reason for your answer. <br>
+    Use numbers to help you explain.</span><br><br>
+    Yes / No ...................<br><br>
+    <br><br><br><br><br><br><br><br><br> 
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <span class="questionNumber">b)</span> Use an approximation to check your answer.
+    <br><br><br><br><br><br><br><br><br> 
+    <p id="marksGiven">(1 mark)</p><br><br><br><br><br>
+    <p id="marksGiven" style="font-weight: bold; font-style: normal;">Total marks: 30</p><br><br><br><br><br>
+    <div class="frontPage">
+    End of calculator paper.
+    </div>
+    `
+
+    document.getElementById("solutionText").innerHTML += 
+    `
+    <br><br><span class="questionNumber">Q10.</span><br><br>
+    <span class="questionNumber">a)</span> ${ticketsSold} &times; £${ticketCost} = £${totalSales} and therefore they made £${totalSales} this year.<br>
+    Last year they made £${lastYearAmount}.<br>
+    Therefore, ${solutionStatement}
+    <p id="marksGiven">(2 marks)</p><br><br>
+
+    <br><span class="questionNumber">b).</span> ${ticketsSoldToNearest10} &times; £${Math.round(ticketCostAsNum)} = £${ticketsSoldToNearest10*Math.round(ticketCostAsNum)}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2163,6 +2276,8 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     compassDirections();
     linesOfSymmetry();
     wordedDivisionAndRoundingUp();
+    readingScalesChildsHeight();
+    multiplicationMoney();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";
