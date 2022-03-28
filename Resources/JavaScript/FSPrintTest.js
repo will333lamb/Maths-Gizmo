@@ -1795,6 +1795,7 @@ function compassDirections(){
 
     toDataURL(chosenCompassImage, function(dataURL) {
         document.getElementById("compassDirections").src = dataURL
+        document.getElementById("compassDirections").style.backgroundImage = `url('${dataURL}')`
     })
 
     let solutionCompassDirection
@@ -1831,7 +1832,8 @@ function compassDirections(){
     Here is the direction to Clue One.<br><br>
     <div class=centeredQuestion">
     <img id="compassDirections" class="compassDirections" src="" alt="map showing direction to clue one">
-    </div><br>
+    </div>
+    <br>
     <span class="questionNumber">a)</span> In which direction is Clue One?
     <br><br><br>
     <div class="centeredQuestion">. . . . . . . . . . . . . . . . .</span>
