@@ -242,7 +242,9 @@ select:hover{
 
 .buttonsAndPrintingContainer {
     width: 100%;
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     background-color: rgba(88, 229, 186, 0.2);
     line-height: 2em;
 
@@ -288,6 +290,21 @@ select:hover{
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
+.infoBox {
+    padding: 1% 2% 1% 2%;
+    border: #009870 1px solid;
+    width: 99%;
+    height: fit-content;
+    margin: 1% 1%;
+    line-height: 1em;
+    font-size: 0.75em;
+    text-align: center;
+    display: none;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
 .questionSolutionContainer {
     padding: 1%;
     width: 100%;
@@ -313,6 +330,7 @@ select:hover{
   font-weight: 600;
   letter-spacing: normal;
   line-height: 1.5;
+  margin: 5px 0;
   outline: none;
   overflow: hidden;
   padding: 8px 8px;

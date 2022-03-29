@@ -134,6 +134,9 @@ let questionNumber = 0
 
 let globalDifficultySelection = 2;
 
+let infoBoxButton = document.getElementById("questionInfoButton");
+let infoBox = document.getElementById("infoBox");
+
 /***Other functions*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
 
@@ -149,6 +152,15 @@ function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(docum
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Qid0001 = () => {
+
+    infoBox.innerHTML = `
+    This question was designed based on question 14 on OCR paper 1 November 2019. It is a calculator paper and OCR awarded 4 marks. I have tried to make the speeds 
+    realistic and each time the two speeds should be fairly close together so that it is not immediately obvious who is fastest.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - There is no minutes included in either persons time and each division to calculate speed will result in an integer.<br><br>
+    Silver - The minutes part for person two's time will alternate between 15, 30 and 45 minutes.<br><br>
+    Gold - The minutes part for person two's time will be a multiple of 3 between 0 and 57 avoiding 15, 30 and 45.`
+
     let name1 = nameArray[Math.floor(Math.random()*nameArray.length)];
 
     let name1Distance = (Math.ceil(Math.random()*19)) + 25 + '0';
@@ -265,6 +277,20 @@ const Qid0001 = () => {
 };
 
 const Qid0002 = () => {
+
+    infoBox.innerHTML = `
+    <style>
+    .infoBox{
+        font-size: 1em;
+    }
+    </style>
+    This question was designed based on question 15 on OCR paper 2 November 2019. It is a non-calculator paper and OCR awarded 6 marks. <br><br>
+    Difficulty settings:<br><br>
+    Bronze - Two numbers in the staff costs are always 10. The guest payment alternates between £2, £5 and £10. Sponsorship is always £1000. <br><br>
+    Silver - Only one number in staff costs is 10. The range of guest payments increase. Sponsorship is always £1000.<br><br>
+    Gold - Same as silver except the sponsorship now alternates. The pence part of food and prizes cost now changes from 95 and 99 respectively.    
+    
+    `
 
     let nameFemale = namesObject.femaleNames.name[Math.floor(Math.random()*femaleNameArray.length)];
     let nameMale = namesObject.maleNames.name[Math.floor(Math.random()*maleNameArray.length)];
@@ -453,6 +479,13 @@ const Qid0002 = () => {
 
 function QidSolveQuadraticFactorising001(){
 
+    infoBox.innerHTML = `
+    This question was designed based on question 27 on OCR paper 3 June 2019 although this style of question comes up in many papers. It is a calculator paper and OCR awarded 3 marks.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - Both signs are always positive <br><br>
+    Silver - The first sign is always negative and the second always positive<br><br>
+    Gold - The first sign alternates whilst the second sign is always negative`
+
     let signArray = ["+","-"];
     let signOne
     if(globalDifficultySelection === 1){
@@ -582,7 +615,13 @@ function QidSolveQuadraticFactorising001(){
 }
 
 function QidSimultaneousEquationsNoContext(){
-
+    infoBox.innerHTML = `
+    This question was designed based on question 21 on OCR paper 2 November 2020. It is a non-calculator paper and OCR awarded 4 marks. I have made it a calculator question
+    due to the random number generators. <br><br>
+    Difficulty settings:<br><br>
+    Bronze - The coefficients of &#119909 in both equations are always equal. <br><br>
+    Silver - The coefficients of &#119909 and &#119910 in both equations are always non-equal. My solution uses the smallest LCM of coefficents but there are many ways you can solve these. <br><br>
+    Gold - Same as silver but also adds negative numbers.`
     
     let xCoefficentEqn1 = Math.ceil((Math.random()*9)+1);
 
@@ -904,6 +943,13 @@ function QidSimultaneousEquationsNoContext(){
 }
 
 function QidSimultaneousEquationsContext(){
+
+    infoBox.innerHTML = `
+    This question was designed based on question 21 on OCR paper 1 May 2019. It is a calculator paper and OCR awarded 5 marks.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The number of shirts each person buys are always equal. <br><br>
+    Silver - The number of shirts and jumpers each person buys are non-equal. <br><br>
+    Gold - Same as silver but the range of numbers generated increases.`
 
     let name1 =  maleNameArray[Math.floor(Math.random()*maleNameArray.length)];
     let name2 = femaleNameArray[Math.floor(Math.random()*femaleNameArray.length)];
@@ -1343,6 +1389,18 @@ function makeFullscreen(){
         document.getElementById("fullscreenButton").innerHTML = "Fullscreen";
         document.querySelector(".questionSolutionContainer").style.height = "100%";
         document.querySelector("body").style.backgroundColor = "#fff";
+    }
+}
+
+function questionInfo(){
+
+    
+    if(infoBoxButton.innerHTML==="Show Info"){
+        infoBox.style.display = "block";
+        infoBoxButton.innerHTML = "Hide Info";
+    } else{
+        infoBox.style.display = "none";
+        infoBoxButton.innerHTML = "Show Info";
     }
 }
 

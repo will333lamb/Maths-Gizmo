@@ -35,7 +35,7 @@
           </label>
           <ul class="GCSENav">
             <li><a href="GCSEDisplay.html">Display questions</a></li>
-            <li><a href="GCSEPrintWorksheet.html">Generate a worksheet</a></li>
+            <li><a href="GCSEPrintWorksheet.html">Generate worksheet</a></li>
           </ul>
         </li>
         <li id="FSLi" onclick="listFS()"><a href="#" id="changeFShtml">Functional Skills</a>
@@ -80,6 +80,7 @@
           <button id="generateQButton" class="button">Generate new question</button>
           <button id="showSolutionButton" class="button">Show Solution</button>
           <button id="fullscreenButton" class="button" onclick="makeFullscreen()">Fullscreen</button>
+          <button id="questionInfoButton" class="button" onclick="questionInfo()">Show Info</button>
           <div class="difficultyContainer">
             <p id="difficultyLabel">Difficulty:</p>
             <select id="difficultyDropDown" onchange="getSelectedDifficultyValue()">
@@ -93,6 +94,10 @@
       </div>
       
       <div class="questionSolutionContainer">
+        <div id="infoBox" class="infoBox">
+          <p id="infoText">Please generate a question to see it's information</p>
+          
+        </div>
         <div class="question-box">
           <p id="questionText">Please use the options to navigate to a question</p>
         </div>
