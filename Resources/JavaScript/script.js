@@ -154,6 +154,7 @@ function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(docum
 const Qid0001 = () => {
 
     infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
     This question was designed based on question 14 on OCR paper 1 November 2019. It is a calculator paper and OCR awarded 4 marks. I have tried to make the speeds 
     realistic and each time the two speeds should be fairly close together so that it is not immediately obvious who is fastest.<br><br>
     Difficulty settings:<br><br>
@@ -284,6 +285,7 @@ const Qid0002 = () => {
         font-size: 1em;
     }
     </style>
+    <h2 style="color: #009870;">Question Info</h2>
     This question was designed based on question 15 on OCR paper 2 November 2019. It is a non-calculator paper and OCR awarded 6 marks. <br><br>
     Difficulty settings:<br><br>
     Bronze - Two numbers in the staff costs are always 10. The guest payment alternates between £2, £5 and £10. Sponsorship is always £1000. <br><br>
@@ -480,6 +482,7 @@ const Qid0002 = () => {
 function QidSolveQuadraticFactorising001(){
 
     infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
     This question was designed based on question 27 on OCR paper 3 June 2019 although this style of question comes up in many papers. It is a calculator paper and OCR awarded 3 marks.<br><br>
     Difficulty settings:<br><br>
     Bronze - Both signs are always positive <br><br>
@@ -616,6 +619,7 @@ function QidSolveQuadraticFactorising001(){
 
 function QidSimultaneousEquationsNoContext(){
     infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
     This question was designed based on question 21 on OCR paper 2 November 2020. It is a non-calculator paper and OCR awarded 4 marks. I have made it a calculator question
     due to the random number generators. <br><br>
     Difficulty settings:<br><br>
@@ -945,6 +949,7 @@ function QidSimultaneousEquationsNoContext(){
 function QidSimultaneousEquationsContext(){
 
     infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
     This question was designed based on question 21 on OCR paper 1 May 2019. It is a calculator paper and OCR awarded 5 marks.<br><br>
     Difficulty settings:<br><br>
     Bronze - The number of shirts each person buys are always equal. <br><br>
