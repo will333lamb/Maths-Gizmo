@@ -100,6 +100,7 @@
         <div class=centerButtonsRow>
           <div class="buttonsRow">
             <button id="generateQButton" class="button">Generate preview</button><br>
+            <button id="questionInfoButton" class="button" onclick="questionInfo()">Show Info</button><br>
             <button id="downloadFile" onclick="generatePDF()" class="button">Download Worksheet</button><br>
             <button id="downloadSolutions" onclick="generateSolutions()" class="button">Download Solutions</button><br>
             <button id="downloadBothFiles" onclick="downloadBothFiles()" class="button">Download both files</button>
@@ -108,6 +109,10 @@
       </div>
     </div>
     <div class="previewPanelContainer">
+      <div id="infoBox" class="infoBox">
+        <h2>Question Info</h2>
+        <p id="infoText">Please generate a question to see it's information</p>
+      </div>
       <h2 class="previewHeadings">Preview Worksheet</h2>
       <p id="instructionsParagraph" class="instructionsParagraph">
         <span id="instructionsHeadingsTop" class="instructionsHeadings">Instructions to create and download a worksheet</span><br><br>
@@ -117,6 +122,7 @@
         <span class="instructionsHeadings">3)</span> Click create preview to generate your worksheet. Solutions will be generated below.<br>
         <span class="instructionsHeadings">4)</span> Use the download options to either download just the worksheet, solutions or both files.<br>
       </p>
+      
       <div class="previewBoxQContainer">
         <div class="previewBoxQ">
           <p id="questionText"></p>
