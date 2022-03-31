@@ -141,8 +141,19 @@ let globalTopicAreaSelection;
 
 //Other Functions /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let practicePaperTitle=""
+let solutionsTitle=""
+function getWorksheetTitle(){
+    
+    if(globalTopicAreaSelection==="communityEvents"){
+        practicePaperTitle="Entry level 3 Community Events practice paper from Maths Gizmo";
+        solutionsTitle="Entry level 3 Community Events Solutions from Maths Gizmo";
+    }
+}
+
 function getSelectedTopicArea(){
     globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
+    getWorksheetTitle();
 };
 
 function toDataURL(src, callback) {
@@ -268,6 +279,8 @@ function frontPageCalc(){
     </div>
     `
 }
+
+
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2293,7 +2306,7 @@ function generatePDF(){
     const element = document.querySelector(".previewBoxQ");
     const options = {
         margin:     [0,0.1],
-        filename:     "tempFileName",
+        filename:     practicePaperTitle,
         image:        { type: 'jpeg', quality: 1 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
@@ -2310,7 +2323,7 @@ function generateSolutions(){
     const element = document.querySelector(".previewBoxSolution");
     const options = {
         margin:     [0,0.1],
-        filename:     "tempSolutionTitle",
+        filename:     solutionsTitle,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, dpi: 192, letterRendering: true},
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
