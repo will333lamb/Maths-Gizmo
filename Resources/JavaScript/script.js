@@ -1343,8 +1343,9 @@ function triangleAndTrapezium(){
     let chosenHeightTriangle = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]
     let lengthSubtractHeight = chosenLengthTriangle - chosenHeightTriangle;
 
-    let randomLengthArrayTrapezoid = [2,3,4,5,6,7,8,9,10,11,12];
+    let randomLengthArrayTrapezoid = [6,7,8,9,10,11,12];
     let chosenArrayTra = randomLengthArrayTrapezoid[Math.floor(Math.random()*randomLengthArrayTrapezoid.length)]
+    
     
     for(chosenHeightTrapezoid = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]; chosenHeightTrapezoid===chosenHeightTriangle;){
         chosenHeightTrapezoid = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)];

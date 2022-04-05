@@ -162,6 +162,9 @@ function getWorksheetTitle(){
     } else if(globalTopicAreaSelection==="simultaneousEquationsContext"){
         worksheetTitle="Simultaneous Equations With Context Worksheet from Maths Gizmo"
         solutionsTitle="Simultaneous Equations With Context Solutions from Maths Gizmo"
+    } else if(globalTopicAreaSelection==="triangleAndTrapezium"){
+        worksheetTitle="Area: Triangles & Trapeziums Worksheet from Maths Gizmo"
+        solutionsTitle="Area: Triangles & Trapeziums Solutions from Maths Gizmo"
     }
 };
 
@@ -224,7 +227,12 @@ $(document).ready(function(e){
     } else if(globalTopicAreaSelection ==="simultaneousEquationsContext" && sumTotalQuestions>30){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
         "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection ==="triangleAndTrapezium" && sumTotalQuestions>30){
+        alert("Sorry, the maximum amount of questions for this topic is 30. " +
+        "Your worksheet may not load properly if you exceed this.");
     }
+
+    
 });
 });
 
@@ -2677,6 +2685,490 @@ if(globalDifficultySelection === 2){
 
 }
 
+//Area: Triangles and Trapeziums
+function triangleAndTrapezium(){
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 17 on OCR paper 3 November 2020. It is a calculator paper and OCR awarded 5 marks.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The height of the trapezium will always equal an integer. <br><br>
+    Silver - The height of the trapezium could become a decimal. <br><br>
+    Gold - Same as the silver but other dimensions of the trapezium could be higher. `
+
+    let randomLengthArrayTriangle =[4,4.5,5,5.5,6,6.5,7,7.5,8];
+    let chosenLengthTriangle = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]
+    let chosenHeightTriangle = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]
+    let lengthSubtractHeight = chosenLengthTriangle - chosenHeightTriangle;
+
+    let randomLengthArrayTrapezoid = [7,8,9,10,11,12];
+    let chosenArrayTra = randomLengthArrayTrapezoid[Math.floor(Math.random()*randomLengthArrayTrapezoid.length)]
+    
+    for(chosenHeightTrapezoid = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]; chosenHeightTrapezoid===chosenHeightTriangle;){
+        chosenHeightTrapezoid = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)];
+    }
+
+
+    triangleBase = Math.ceil(Math.random()*9)+3;
+
+    let triangleHeight
+    
+    if(lengthSubtractHeight === 0){
+        triangleHeight = triangleBase
+    } else if(lengthSubtractHeight === 0.5 || lengthSubtractHeight === 1){
+        triangleHeight = triangleBase - 1;
+    } else if(lengthSubtractHeight === 1.5 || lengthSubtractHeight === 2){
+        triangleHeight = triangleBase - 2;
+    } else if(lengthSubtractHeight >= 2.5){
+        triangleHeight = triangleBase - (Math.ceil(Math.random()*2));
+    } else if(lengthSubtractHeight === -0.5 || lengthSubtractHeight === -1){
+        triangleHeight = triangleBase + 1;
+    } else if(lengthSubtractHeight === -1.5 || lengthSubtractHeight === -2){
+        triangleHeight = triangleBase + 2;
+    } else if(lengthSubtractHeight <= 2.5){
+        triangleHeight = triangleBase + (Math.ceil(Math.random()*2));
+    } 
+
+    let triangleArea = 0.5*triangleBase*triangleHeight;
+    if(globalDifficultySelection===3){
+        arrayHelper = [[0],
+        [0.1,0.125,0.15,0.175,0.2,0.3,0.4,0.25,0.5,0.75,1,1.2,1.3,1.4,1.25,1.5,1.75,2,2.2,2.3,2.4,2.25,2.5,2.75,3,3.2,3.3,3.4,3.25,3.5,3.75,4,4.2,4.3,4.4,5,5.25,5.5,5.75,6,6.25,6.5,6.75,7,7.25,7.5,7.75,8,8.25,8.5,8.75,9,9.25,9.5,9.75,10,(2*triangleHeight),0],
+        [-0.1,-0.125,-0.15,-0.175,-0.2,-0.3,-0.4,-0.25,-0.5,-0.75,-1,-1.2,-1.3,-1.4,-1.25,-1.5,-1.75,-2,-2.2,-2.3,-2.4,-2.25,-2.5,-2.75,-3,-3.2,-3.3,-3.4,-3.25,-3.5,-3.75,-4,-4.2,-4.3,-4.4,-5,-5.25,-5.5,-5.75,-6,-6.25,-6.5,-6.75,-7,-7.25,-7.5,-7.75,-8,-8.25,-8.5,-8.75,-9,-9.25,-9.5,-9.75,-10,(-2*triangleHeight),0]]
+    } else if(globalDifficultySelection===2){
+        arrayHelper = [[0],
+        [0.1,0.125,0.15,0.175,0.2,0.3,0.4,0.25,0.5,0.75,1,1.2,1.3,1.4,1.25,1.5,1.75,2,2.2,2.3,2.4,2.25,2.5,2.75,3,3.2,3.3,3.4,3.25,3.5,3.75,4,0],
+        [-0.1,-0.125,-0.15,-0.175,-0.2,-0.3,-0.4,-0.25,-0.5,-0.75,-1,-1.2,-1.3,-1.4,-1.25,-1.5,-1.75,-2,-2.2,-2.3,-2.4,-2.25,-2.5,-2.75,-3,-3.2,-3.3,-3.4,-3.25,-3.5,-3.75,-4,0]]
+    } else if(globalDifficultySelection===1){
+        arrayHelper = [[0],
+        [1,2,3,4,5,0],
+        [-1,-2,-3,-4,-5,0]]
+    
+    }
+    if(chosenHeightTriangle<chosenHeightTrapezoid){
+        MiniArrayHelper = arrayHelper[1];
+    } else if(chosenHeightTriangle>chosenHeightTrapezoid){
+        MiniArrayHelper = arrayHelper[2];
+    }
+
+    for(chosenArrayHelp = MiniArrayHelper[Math.floor(Math.random()*MiniArrayHelper.length)]; Number.isInteger((2*triangleArea)/(triangleHeight+chosenArrayHelp))===false ;){
+        chosenArrayHelp = MiniArrayHelper[Math.floor(Math.random()*MiniArrayHelper.length)];
+        
+    }
+    let h = Math.abs(triangleHeight + chosenArrayHelp);
+    let sumParallelSides = Math.abs((2*triangleArea)/h);   
+    
+    if(sumParallelSides===1){
+        arr=[[0.1,0.9],[0.2,0.8],[0.3,0.7],[0.4,0.6]]
+        a=arr[Math.floor(Math.random()*arr.length)][0]
+        b=arr[Math.floor(Math.random()*arr.length)][1]
+    } else if(sumParallelSides===2){
+        a=0.5;
+        b=1.5;
+    } else if(sumParallelSides===3){
+        a = 1;
+        b = 2;
+    } else if(sumParallelSides===4){
+        a=1;
+        b=3;
+    } else if(sumParallelSides===5){
+        arr=[[1,4],[2,3]]
+        a=arr[Math.floor(Math.random()*arr.length)][0]
+        b=arr[Math.floor(Math.random()*arr.length)][1]
+    } else{
+        a = Math.round(sumParallelSides/2)-1
+        b = sumParallelSides - a
+    }
+
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+    questionNumber++
+
+    function runQuestion(){
+    document.getElementById("questionText").innerHTML +=
+    `
+    <style>
+
+    .answerLines{
+        float: right;
+    }
+
+
+    .shapeContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        
+    }
+
+    @media only screen and (max-width: 800px) {
+        .shapeContainer{
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+
+        .topTextTrapeziod{
+            grid-area: overlap;
+            transform: translateY(-1.5em);
+            justify-self: center;
+            
+        }
+
+
+        .trapezoidContainer{
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 0.3fr;
+            grid-template-areas: "overlap";
+            align-self: center;
+            justify-self: center;
+            margin: 20px;
+        }
+    }
+
+    .triangleContainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 0.3fr;
+        grid-template-areas: "overlap";
+        width: fit-content;
+        align-self: center;
+        justify-self: center;
+    }
+
+
+    .triangleBig{
+        width: 0;
+        height: 0;
+        border-bottom: ${chosenHeightTriangle}em solid #009870;
+        border-left: ${chosenLengthTriangle}em solid transparent;
+        grid-area: overlap;
+        
+    }
+
+    .triangleSmall{
+        width: 0;
+        height: 0;
+        border-bottom: ${chosenHeightTriangle*0.9}em solid white;
+        border-left: ${chosenLengthTriangle*0.9}em solid transparent;
+        grid-area: overlap;
+        align-self: center;
+        justify-self: center;
+        transform: translate(2.5%,2%);
+        
+    }
+
+    .rightAngleBox{
+        border: 3px solid #009870;
+        grid-area: overlap;
+        height: 20%;
+        width: 20%;
+        align-self: end;
+        justify-self: end;
+        z-index: 1;
+        position: relative;
+       
+    }
+
+    .trapezoidContainer{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 0.3fr;
+        grid-template-areas: "overlap";
+        align-self: center;
+        justify-self: center;
+    }
+
+    .trapezoidBig {
+        border-bottom: ${chosenHeightTrapezoid}em solid #009870;
+        border-left: ${chosenArrayTra/4}em solid transparent;
+        border-right: ${chosenArrayTra/4}em solid transparent;
+        height: 0;
+        width: ${chosenArrayTra}em;
+        grid-area: overlap;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .trapezoidSmall {
+        border-bottom: ${chosenHeightTrapezoid*0.9}em solid White;
+        border-left: ${chosenArrayTra/4*0.9}em solid transparent;
+        border-right: ${chosenArrayTra/4*0.9}em solid transparent;
+        height: 0;
+        width: ${chosenArrayTra*0.9}em;
+        grid-area: overlap;
+        align-self: center;
+        justify-self: center;
+        
+    }
+
+    @media only screen and (min-width: 800px) {
+        .topTextTrapeziod{
+            grid-area: overlap;
+            transform: translateY(-1.5em);
+            justify-self: center;
+            
+        }
+    }
+
+    .heightText{
+        margin: auto 0.5em;
+    }
+
+    .heightTextTrapezoid{
+        padding: 1em 0.5em;
+        border-left: 3px dotted #009870;
+        height: 100%;
+    }
+    
+    .baseText{
+        text-align: center;
+    }
+
+    
+
+
+    </style>
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i> <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    <br>
+    The area of the triangle is equal to the area of the trapezium.<br><br>
+    <span style="font-weight: bold;">Not to scale</span><br>
+    <div class="shapeContainer">
+        <div class="triangleContainer">
+            <div class="triangleBig"></div>
+            <div class="triangleSmall"></div>
+            <div class="rightAngleBox"></div>
+            <p class="heightText">${triangleHeight} cm</p>
+            <p class="baseText">${triangleBase} cm</p>
+        </div>
+        <div class="trapezoidContainer">
+            <p class="topTextTrapeziod">${a} cm</p>
+            <div class="trapezoidBig"></div>
+            <div class="trapezoidSmall"></div>
+            <p class="heightTextTrapezoid">h cm</p>
+            <p class="baseText">${b} cm</p>
+        </div>
+    </div><br><br>
+    Calculate the height, <span style="font-style: italic;">h</span> cm, of the trapezium.
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="answerLines">
+    h =  __________ cm<br><br>
+    <p id="marksGiven">(5 marks)</p>
+    </div><br><br><br><br>
+    `
+    
+    document.getElementById("solutionText").innerHTML += 
+    `
+    <i class="fas fa-calculator"></i>
+    <i id="checkSign" class="fas fa-check"></i> <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    <br>
+    The area of the triangle is 0.5 &times; ${triangleBase} &times; ${triangleHeight} = ${triangleArea}cm<sup>2</sup><br><br>
+    Since the area of the trapezium is equal to this, I can form the following equation and solve:<br><br>
+    <div class="centeredQuestion">
+        0.5 &times; (${a}+${b}) &times; h = ${triangleArea}<br><br>
+        ${(a+b)/2}h = ${triangleArea}<br><br>
+        h = ${h}
+    </div>
+    <br>
+    <div class="borderBottomSolution"></div><br>
+    </div>
+    `
+    }
+
+    //page breaks
+
+    if (questionNumber === 2){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 3){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 4){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 5){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 6){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 7){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 8){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 9){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 10){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 11){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 12){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 13){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 14){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 15){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 16){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 17){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 18){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 19){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 20){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 21){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 22){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 23){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 24){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 25){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 26){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 27){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 28){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 29){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 30){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionNumber === 31){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    };
+    if (questionNumber === 4){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 7){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 10){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 13){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 16){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 19){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 22){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 25){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 28){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 33){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } 
+
+    function reassignValues(){
+    randomLengthArrayTriangle =[4,4.5,5,5.5,6,6.5,7,7.5,8];
+    chosenLengthTriangle = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]
+    chosenHeightTriangle = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]
+    lengthSubtractHeight = chosenLengthTriangle - chosenHeightTriangle;
+
+    randomLengthArrayTrapezoid = [7,8,9,10,11,12];
+    chosenArrayTra = randomLengthArrayTrapezoid[Math.floor(Math.random()*randomLengthArrayTrapezoid.length)]
+    
+    for(chosenHeightTrapezoid = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)]; chosenHeightTrapezoid===chosenHeightTriangle;){
+        chosenHeightTrapezoid = randomLengthArrayTriangle[Math.floor(Math.random()*randomLengthArrayTriangle.length)];
+    }
+
+
+    triangleBase = Math.ceil(Math.random()*9)+3;
+
+    triangleHeight
+    
+    if(lengthSubtractHeight === 0){
+        triangleHeight = triangleBase
+    } else if(lengthSubtractHeight === 0.5 || lengthSubtractHeight === 1){
+        triangleHeight = triangleBase - 1;
+    } else if(lengthSubtractHeight === 1.5 || lengthSubtractHeight === 2){
+        triangleHeight = triangleBase - 2;
+    } else if(lengthSubtractHeight >= 2.5){
+        triangleHeight = triangleBase - (Math.ceil(Math.random()*2));
+    } else if(lengthSubtractHeight === -0.5 || lengthSubtractHeight === -1){
+        triangleHeight = triangleBase + 1;
+    } else if(lengthSubtractHeight === -1.5 || lengthSubtractHeight === -2){
+        triangleHeight = triangleBase + 2;
+    } else if(lengthSubtractHeight <= 2.5){
+        triangleHeight = triangleBase + (Math.ceil(Math.random()*2));
+    } 
+
+    triangleArea = 0.5*triangleBase*triangleHeight;
+    if(globalDifficultySelection===3){
+        arrayHelper = [[0],
+        [0.1,0.125,0.15,0.175,0.2,0.3,0.4,0.25,0.5,0.75,1,1.2,1.3,1.4,1.25,1.5,1.75,2,2.2,2.3,2.4,2.25,2.5,2.75,3,3.2,3.3,3.4,3.25,3.5,3.75,4,4.2,4.3,4.4,5,5.25,5.5,5.75,6,6.25,6.5,6.75,7,7.25,7.5,7.75,8,8.25,8.5,8.75,9,9.25,9.5,9.75,10,(2*triangleHeight),0],
+        [-0.1,-0.125,-0.15,-0.175,-0.2,-0.3,-0.4,-0.25,-0.5,-0.75,-1,-1.2,-1.3,-1.4,-1.25,-1.5,-1.75,-2,-2.2,-2.3,-2.4,-2.25,-2.5,-2.75,-3,-3.2,-3.3,-3.4,-3.25,-3.5,-3.75,-4,-4.2,-4.3,-4.4,-5,-5.25,-5.5,-5.75,-6,-6.25,-6.5,-6.75,-7,-7.25,-7.5,-7.75,-8,-8.25,-8.5,-8.75,-9,-9.25,-9.5,-9.75,-10,(-2*triangleHeight),0]]
+    } else if(globalDifficultySelection===2){
+        arrayHelper = [[0],
+        [0.1,0.125,0.15,0.175,0.2,0.3,0.4,0.25,0.5,0.75,1,1.2,1.3,1.4,1.25,1.5,1.75,2,2.2,2.3,2.4,2.25,2.5,2.75,3,3.2,3.3,3.4,3.25,3.5,3.75,4,0],
+        [-0.1,-0.125,-0.15,-0.175,-0.2,-0.3,-0.4,-0.25,-0.5,-0.75,-1,-1.2,-1.3,-1.4,-1.25,-1.5,-1.75,-2,-2.2,-2.3,-2.4,-2.25,-2.5,-2.75,-3,-3.2,-3.3,-3.4,-3.25,-3.5,-3.75,-4,0]]
+    } else if(globalDifficultySelection===1){
+        arrayHelper = [[0],
+        [1,2,3,4,5,0],
+        [-1,-2,-3,-4,-5,0]]
+    
+    }
+    if(chosenHeightTriangle<chosenHeightTrapezoid){
+        MiniArrayHelper = arrayHelper[1];
+    } else if(chosenHeightTriangle>chosenHeightTrapezoid){
+        MiniArrayHelper = arrayHelper[2];
+    }
+
+    for(chosenArrayHelp = MiniArrayHelper[Math.floor(Math.random()*MiniArrayHelper.length)]; Number.isInteger((2*triangleArea)/(triangleHeight+chosenArrayHelp))===false ;){
+        chosenArrayHelp = MiniArrayHelper[Math.floor(Math.random()*MiniArrayHelper.length)];
+        
+    }
+    h = Math.abs(triangleHeight + chosenArrayHelp);
+    sumParallelSides = Math.abs((2*triangleArea)/h);   
+    
+    if(sumParallelSides===1){
+        arr=[[0.1,0.9],[0.2,0.8],[0.3,0.7],[0.4,0.6]]
+        a=arr[Math.floor(Math.random()*arr.length)][0]
+        b=arr[Math.floor(Math.random()*arr.length)][1]
+    } else if(sumParallelSides===2){
+        a=0.5;
+        b=1.5;
+    } else if(sumParallelSides===3){
+        a = 1;
+        b = 2;
+    } else if(sumParallelSides===4){
+        a=1;
+        b=3;
+    } else if(sumParallelSides===5){
+        arr=[[1,4],[2,3]]
+        a=arr[Math.floor(Math.random()*arr.length)][0]
+        b=arr[Math.floor(Math.random()*arr.length)][1]
+    } else{
+        a = Math.round(sumParallelSides/2)-1
+        b = sumParallelSides - a
+    }
+    }   
+
+    reassignValues();
+    runQuestion();
+}
+
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2795,6 +3287,26 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         QidSimultaneousEquationsContext(i)}
+    document.getElementById("generateQButton").innerHTML="Reset";
+} else if(globalTopicAreaSelection ==="triangleAndTrapezium"){
+    loseInstructions();
+    getBronzeNumber();
+    globalDifficultySelection = 1;
+    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Area of triangles and trapeziums - reverse to calculate height</h3><br>`
+    for (let i = 0; i < bronzeNumber; i++){
+        triangleAndTrapezium(i)}
+    getSilverNumber(); 
+    globalDifficultySelection = 2;
+    questionNumber = 0;
+    for (let i = 0; i < silverNumber; i++){
+        triangleAndTrapezium(i)}
+    getGoldNumber();
+    globalDifficultySelection = 3;
+    questionNumber = 0;
+    for (let i = 0; i < goldNumber; i++){
+        triangleAndTrapezium(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
 }
 };
