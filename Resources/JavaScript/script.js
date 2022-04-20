@@ -117,6 +117,8 @@ let femaleNameArray = ["Amelia", "Ava", "Abigail", "Anna", "Amy", "Alicia",
 "Wendy", 
 "Yasmin", "Yolanda", "Yvonne", "Zara","Zoe"];
 
+
+
 let namesObject = {
     maleNames: {
         name: maleNameArray,
@@ -136,6 +138,8 @@ let globalDifficultySelection = 2;
 
 let infoBoxButton = document.getElementById("questionInfoButton");
 let infoBox = document.getElementById("infoBox");
+let questionText = document.getElementById("questionText");
+let solutionText = document.getElementById("solutionText");
 
 /***Other functions*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
@@ -1603,6 +1607,33 @@ function triangleAndTrapezium(){
     `
 }
 
+function percentageProfit(){
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 11 a) on OCR paper 2 November 2019. It is a non-calculator paper and OCR awarded 3 marks.<br><br>
+    Sorry I am still developing this question.<br><br>
+    Difficulty settings:<br><br>
+    Bronze -  <br><br>
+    Silver -  <br><br>
+    Gold -  `
+
+    let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+
+    let chosenMorF = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
+    let name1 = chosenMorF[0][Math.floor(Math.random()*chosenMorF[0].length)];
+    let heOrShe = chosenMorF[1];
+    
+
+    questionText.innerHTML = `
+    ${name1} buys a concert ticket for £x and later sells it for £y.<br>
+    Find the percentage profit that ${heOrShe} made. 
+    `
+
+    solutionText.innerHTML = `
+    Solution here
+    `
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -1620,6 +1651,8 @@ generateQButton.onclick = function(){
     QidSimultaneousEquationsContext();
 } else if(globalTopicAreaSelection ==="triangleAndTrapezium"){
     triangleAndTrapezium();
+} else if(globalTopicAreaSelection ==="percentageProfit"){
+    percentageProfit();
 }
 };
 
