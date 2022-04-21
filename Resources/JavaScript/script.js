@@ -117,7 +117,7 @@ let femaleNameArray = ["Amelia", "Ava", "Abigail", "Anna", "Amy", "Alicia",
 "Wendy", 
 "Yasmin", "Yolanda", "Yvonne", "Zara","Zoe"];
 
-
+let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
 
 let namesObject = {
     maleNames: {
@@ -140,6 +140,14 @@ let infoBoxButton = document.getElementById("questionInfoButton");
 let infoBox = document.getElementById("infoBox");
 let questionText = document.getElementById("questionText");
 let solutionText = document.getElementById("solutionText");
+
+let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
+<i class="fas fa-calculator fa-stack-1x"></i>
+<i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+</span><br>`
+
+let calcSign = `<i class="fas fa-calculator"></i>
+<i id="checkSign" class="fas fa-check"></i><br>`
 
 /***Other functions*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
@@ -1611,26 +1619,56 @@ function percentageProfit(){
     infoBox.innerHTML = `
     <h2 style="color: #009870;">Question Info</h2>
     This question was designed based on question 11 a) on OCR paper 2 November 2019. It is a non-calculator paper and OCR awarded 3 marks.<br><br>
-    Sorry I am still developing this question.<br><br>
     Difficulty settings:<br><br>
-    Bronze -  <br><br>
-    Silver -  <br><br>
-    Gold -  `
-
-    let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+    Bronze - Numbers are generally smaller and always integers and % increase is a multiple of 10 below 100% <br><br>
+    Silver - Numbers get bigger than bronze and are still integers but % increase is still a multiple of 10 below 100% <br><br>
+    Gold - Numbers are bigger and can include decimals. % increase is larger than 100%. I have made this difficulty calculator allowed. `
 
     let chosenMorF = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
     let name1 = chosenMorF[0][Math.floor(Math.random()*chosenMorF[0].length)];
     let heOrShe = chosenMorF[1];
-    
+
+    let multiplierArray = [/*Bronze*/ [`${Math.ceil(Math.random()*9)}`], /*Silver*/ [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,5,5,6,7,8,9], /*Gold*/ [`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}`]]
+
+    if(globalDifficultySelection===2){
+        chosenMultiplier = multiplierArray[1][Math.floor(Math.random()*multiplierArray[1].length)];
+        actualMultipler = (chosenMultiplier/10 + 1).toFixed(2);
+        x = parseFloat(`${Math.ceil(Math.random()*3)}${Math.ceil(Math.random()*9)}0`)
+        y = (x*actualMultipler).toFixed(0);
+        profit = y - x;
+        calcOrNoCalc = nonCalcSign;
+    } else if(globalDifficultySelection===3){
+        chosenMultiplier = multiplierArray[2];
+        actualMultipler = (chosenMultiplier/100 + Math.ceil(Math.random()*3)+1).toFixed(2);
+        x = parseFloat(`${Math.ceil(Math.random()*3)}${Math.ceil(Math.random()*9)}0`)
+        y = (x*actualMultipler).toFixed(2);
+        profit = (y - x).toFixed(2);
+        calcOrNoCalc = calcSign;
+    } else if(globalDifficultySelection===1){
+        chosenMultiplier = multiplierArray[0];
+        actualMultipler = (chosenMultiplier/10 + 1).toFixed(2);
+        x = parseFloat(`${Math.ceil(Math.random()*9)}0`)
+        y = Math.round(x*actualMultipler);
+        profit = y - x;
+        calcOrNoCalc = nonCalcSign;
+    }
+
+
+
+    let percentageProfitSol = ((actualMultipler*100) - 100).toFixed(0)
+
 
     questionText.innerHTML = `
-    ${name1} buys a concert ticket for £x and later sells it for £y.<br>
+    ${calcOrNoCalc}
+    ${name1} buys a concert ticket for £${x} and later sells it for £${y}<br>
     Find the percentage profit that ${heOrShe} made. 
     `
 
     solutionText.innerHTML = `
-    Solution here
+    The profit is £${y} - £${x} = £${profit}<br>
+    Now, using percentage profit = (profit &divide cost price) &times 100 <br>
+    Percentage profit = (${profit} &divide ${x}) &times 100 = ${percentageProfitSol} <br>
+    Therefore percentage profit is ${percentageProfitSol}%
     `
 }
 
