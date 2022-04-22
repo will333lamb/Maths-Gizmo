@@ -1672,6 +1672,98 @@ function percentageProfit(){
     `
 }
 
+function proportionRateOfWorkProblem(){
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2><br><br>
+    This question is still in development.
+    Difficulty settings:<br><br>
+    Bronze -  <br><br>
+    Silver -  <br><br>
+    Gold -  `
+
+
+    /*x [0builders] can [1build] a [2house] in y days. 
+    each of the [0builders] work at the same rate.
+    z of the [0builders] stop [3working] after w days.
+    The other [0builders] continue [4building the same house] at the same rate until it is finished.
+    How long does it take to [1build] the [2house]?  */
+
+    let contextArray = [["builders","build","house","working","building the same house","builder"],["painters","paint","house","working","painting the same house","painter"],
+    ["developers","develop","website","working","developing the same website","developer"],["architects","design","building","working","designing the same building","architect"],
+    ["manufacturers","make","product","working","making the same product","manufacturer"],["aliens","invade","planet","invading","invading the same planet","alien"],
+    ["mathematicians","solve","very difficult equation","working","solving the same problem","mathematician"],["writers","write","feature-article","working","writing the same article","writer"],
+    ["film-makers","film","movie","working","filming the same movie","film-maker"],["musicians","create","symphony","working","creating the same symphony","musician"],
+    ["beavers","build","dam","working","building the same dam","beaver"],["dancers","choreograph","routine","working","choreographing the same routine","dancer"],
+    ["fashion-designers","design","summer-range","working","designing the same range","fashion-designer"],["mechanics","fix","car","working","fixing the same car","mechanic"]]
+
+    let chosenContext = contextArray[Math.floor(Math.random()*contextArray.length)];
+
+    if(globalDifficultySelection===3){
+        numWorkers = Math.ceil(Math.random()*24)+5; //number of workers for top line of Q
+        numDays = Math.ceil(Math.random()*39)+9; //number of days for top line of Q
+        workerDaysFor1 = numWorkers*numDays;
+        numToBeSubtractedOffWorkers = Math.ceil(Math.random()*3)+1;
+        numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
+        workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
+        daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
+        daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
+        daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
+        remainingWorkers = numWorkers-workersThatStop;
+        totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
+    } else if(globalDifficultySelection===2){
+        numWorkers = Math.ceil(Math.random()*14)+5; //number of workers for top line of Q
+        numDays = Math.ceil(Math.random()*29)+9; //number of days for top line of Q
+        workerDaysFor1 = numWorkers*numDays;
+        numToBeSubtractedOffWorkers = Math.ceil(Math.random()*3)+1;
+        numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
+        workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
+        daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
+        daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
+        daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
+        remainingWorkers = numWorkers-workersThatStop;
+        daysDoneWithRemainingWorkers = daysLeftOver/remainingWorkers;
+        if(Number.isInteger(daysDoneWithRemainingWorkers)===false){
+            proportionRateOfWorkProblem();
+        }
+        totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
+    } else if(globalDifficultySelection===1){
+        numWorkers = Math.ceil(Math.random()*14)+5; //number of workers for top line of Q
+        numDays = Math.ceil(Math.random()*19)+9; //number of days for top line of Q
+        workerDaysFor1 = numWorkers*numDays;
+        numToBeSubtractedOffWorkers = 1
+        numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
+        workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
+        daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
+        daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
+        daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
+        remainingWorkers = numWorkers-workersThatStop;
+        daysDoneWithRemainingWorkers = daysLeftOver/remainingWorkers;
+        if(Number.isInteger(daysDoneWithRemainingWorkers)===false){
+            proportionRateOfWorkProblem();
+        }
+        totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
+    }
+    
+   
+
+    questionText.innerHTML = `
+    ${numWorkers} ${chosenContext[0]} can ${chosenContext[1]} a ${chosenContext[2]} in ${numDays} days.<br>
+    Each of the ${chosenContext[0]} work at the same rate.<br>
+    ${workersThatStop} of the ${chosenContext[0]} stop ${chosenContext[3]} after ${daysWorkersStoppedAfter} days.<br>
+    The other ${chosenContext[0]} continue ${chosenContext[4]} at the same rate until it is finished.<br>
+    How long does it take to ${chosenContext[1]} the ${chosenContext[2]}?
+    `
+
+    solutionText.innerHTML = `
+    ${numWorkers} &times ${numDays} = ${workerDaysFor1} therefore, it takes ${workerDaysFor1} ${chosenContext[5]}-days to ${chosenContext[1]} the ${chosenContext[2]}.<br>
+    ${numWorkers} ${chosenContext[0]} work for <span style="text-decoration: underline">${daysWorkersStoppedAfter} days.</span> ${numWorkers} &times ${daysWorkersStoppedAfter} = ${daysDoneWithAllWorkers} so there are ${daysDoneWithAllWorkers} ${chosenContext[5]}-days accounted for.<br>
+    ${workerDaysFor1} - ${daysDoneWithAllWorkers} = ${daysLeftOver} meaning there is ${daysLeftOver} ${chosenContext[5]}-days to be done by the remaining ${chosenContext[0]}.<br>
+    Since ${numWorkers} - ${workersThatStop} = ${remainingWorkers}, there are ${remainingWorkers} ${chosenContext[0]} left.<br>
+    ${daysLeftOver} &divide ${remainingWorkers} = ${daysLeftOver/remainingWorkers} meaning the remaining ${remainingWorkers} ${chosenContext[0]} will take <span style="text-decoration: underline">${daysLeftOver/remainingWorkers} days</span> to finish it.<br>
+    ${daysLeftOver/remainingWorkers} + ${daysWorkersStoppedAfter} = ${totalDaysForJob} so it takes ${totalDaysForJob} days in total.
+    `
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -1691,6 +1783,8 @@ generateQButton.onclick = function(){
     triangleAndTrapezium();
 } else if(globalTopicAreaSelection ==="percentageProfit"){
     percentageProfit();
+} else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem"){
+    proportionRateOfWorkProblem()
 }
 };
 
