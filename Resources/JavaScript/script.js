@@ -1675,11 +1675,10 @@ function percentageProfit(){
 function proportionRateOfWorkProblem(){
     infoBox.innerHTML = `
     <h2 style="color: #009870;">Question Info</h2><br><br>
-    This question is still in development.
     Difficulty settings:<br><br>
-    Bronze -  <br><br>
-    Silver -  <br><br>
-    Gold -  `
+    Bronze - The amount of days it takes will always be an integer <br><br>
+    Silver - Same as bronze but the numbers can increase in size <br><br>
+    Gold - The amount of days it takes will be non-integer and the question prompts to answer in days plus hours `
 
 
     /*x [0builders] can [1build] a [2house] in y days. 
@@ -1694,7 +1693,8 @@ function proportionRateOfWorkProblem(){
     ["mathematicians","solve","very difficult equation","working","solving the same problem","mathematician"],["writers","write","feature-article","working","writing the same article","writer"],
     ["film-makers","film","movie","working","filming the same movie","film-maker"],["musicians","create","symphony","working","creating the same symphony","musician"],
     ["beavers","build","dam","working","building the same dam","beaver"],["dancers","choreograph","routine","working","choreographing the same routine","dancer"],
-    ["fashion-designers","design","summer-range","working","designing the same range","fashion-designer"],["mechanics","fix","car","working","fixing the same car","mechanic"]]
+    ["fashion-designers","design","summer-range","working","designing the same range","fashion-designer"],["mechanics","fix","car","working","fixing the same car","mechanic"],
+    ["superheroes","save","planet from alien invasion","","saving the same planet","superhero"]];
 
     let chosenContext = contextArray[Math.floor(Math.random()*contextArray.length)];
 
@@ -1709,7 +1709,16 @@ function proportionRateOfWorkProblem(){
         daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
         daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
         remainingWorkers = numWorkers-workersThatStop;
-        totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
+        daysDoneWithRemainingWorkers = parseFloat((daysLeftOver/remainingWorkers).toFixed(4));
+        if(Number.isInteger(daysDoneWithRemainingWorkers)===true){
+            proportionRateOfWorkProblem();
+        }
+        totalDaysForJob = parseFloat(daysDoneWithRemainingWorkers + daysWorkersStoppedAfter);
+        daysPart = Math.floor(totalDaysForJob);
+        decimalPart = totalDaysForJob-daysPart;
+        hoursPart = Math.round(12*decimalPart)
+       
+        
     } else if(globalDifficultySelection===2){
         numWorkers = Math.ceil(Math.random()*14)+5; //number of workers for top line of Q
         numDays = Math.ceil(Math.random()*29)+9; //number of days for top line of Q
@@ -1727,10 +1736,10 @@ function proportionRateOfWorkProblem(){
         }
         totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
     } else if(globalDifficultySelection===1){
-        numWorkers = Math.ceil(Math.random()*14)+5; //number of workers for top line of Q
-        numDays = Math.ceil(Math.random()*19)+9; //number of days for top line of Q
+        numWorkers = Math.ceil(Math.random()*8)+5; //number of workers for top line of Q
+        numDays = Math.ceil(Math.random()*15)+9; //number of days for top line of Q
         workerDaysFor1 = numWorkers*numDays;
-        numToBeSubtractedOffWorkers = 1
+        numToBeSubtractedOffWorkers = Math.ceil(Math.random()*3)+1;
         numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
         workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
         daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
@@ -1747,21 +1756,31 @@ function proportionRateOfWorkProblem(){
    
 
     questionText.innerHTML = `
+    ${calcSign}
     ${numWorkers} ${chosenContext[0]} can ${chosenContext[1]} a ${chosenContext[2]} in ${numDays} days.<br>
     Each of the ${chosenContext[0]} work at the same rate.<br>
     ${workersThatStop} of the ${chosenContext[0]} stop ${chosenContext[3]} after ${daysWorkersStoppedAfter} days.<br>
     The other ${chosenContext[0]} continue ${chosenContext[4]} at the same rate until it is finished.<br>
     How long does it take to ${chosenContext[1]} the ${chosenContext[2]}?
     `
+    if(globalDifficultySelection===3){
+        questionText.innerHTML += `<br>
+        Assuming the ${chosenContext[0]} work for 12 hours a day, give your answer in days and hours.`
+    }
 
     solutionText.innerHTML = `
     ${numWorkers} &times ${numDays} = ${workerDaysFor1} therefore, it takes ${workerDaysFor1} ${chosenContext[5]}-days to ${chosenContext[1]} the ${chosenContext[2]}.<br>
     ${numWorkers} ${chosenContext[0]} work for <span style="text-decoration: underline">${daysWorkersStoppedAfter} days.</span> ${numWorkers} &times ${daysWorkersStoppedAfter} = ${daysDoneWithAllWorkers} so there are ${daysDoneWithAllWorkers} ${chosenContext[5]}-days accounted for.<br>
     ${workerDaysFor1} - ${daysDoneWithAllWorkers} = ${daysLeftOver} meaning there is ${daysLeftOver} ${chosenContext[5]}-days to be done by the remaining ${chosenContext[0]}.<br>
     Since ${numWorkers} - ${workersThatStop} = ${remainingWorkers}, there are ${remainingWorkers} ${chosenContext[0]} left.<br>
-    ${daysLeftOver} &divide ${remainingWorkers} = ${daysLeftOver/remainingWorkers} meaning the remaining ${remainingWorkers} ${chosenContext[0]} will take <span style="text-decoration: underline">${daysLeftOver/remainingWorkers} days</span> to finish it.<br>
-    ${daysLeftOver/remainingWorkers} + ${daysWorkersStoppedAfter} = ${totalDaysForJob} so it takes ${totalDaysForJob} days in total.
+    ${daysLeftOver} &divide ${remainingWorkers} = ${daysDoneWithRemainingWorkers} meaning the remaining ${remainingWorkers} ${chosenContext[0]} will take <span style="text-decoration: underline">${daysDoneWithRemainingWorkers} days</span> to finish it.<br>
+    ${daysDoneWithRemainingWorkers} + ${daysWorkersStoppedAfter} = ${totalDaysForJob} so it takes <span style="text-decoration: underline">${totalDaysForJob} days in total.</span>
     `
+    if(globalDifficultySelection===3){
+        solutionText.innerHTML += `<br>
+        ${parseFloat(decimalPart.toFixed(3))} &times 12 hours = ${hoursPart} hours <br>
+        Therefore, the total time is <span style="text-decoration: underline">${daysPart} days and ${hoursPart} hours</span>`
+    }
 }
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/

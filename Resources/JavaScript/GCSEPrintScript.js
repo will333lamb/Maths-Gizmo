@@ -140,7 +140,16 @@ let globalTopicAreaSelection;
 
 let infoBoxButton = document.getElementById("questionInfoButton");
 let infoBox = document.getElementById("infoBox");
+let questionText = document.getElementById("questionText");
+let solutionText = document.getElementById("solutionText");
 
+let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
+<i class="fas fa-calculator fa-stack-1x"></i>
+<i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+</span><br>`
+
+let calcSign = `<i class="fas fa-calculator"></i>
+<i id="checkSign" class="fas fa-check"></i>`
 //Other Functions /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let worksheetTitle=""
@@ -229,6 +238,9 @@ $(document).ready(function(e){
         "Your worksheet may not load properly if you exceed this.");
     } else if(globalTopicAreaSelection ==="triangleAndTrapezium" && sumTotalQuestions>30){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
+        "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem" && sumTotalQuestions>60){
+        alert("Sorry, the maximum amount of questions for this topic is 60. " +
         "Your worksheet may not load properly if you exceed this.");
     }
 
@@ -3169,6 +3181,290 @@ function triangleAndTrapezium(){
     runQuestion();
 }
 
+//Proportion: rates of work
+function proportionRateOfWorkProblem(){
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2><br><br>
+    Difficulty settings:<br><br>
+    Bronze - The amount of days it takes will always be an integer <br><br>
+    Silver - Same as bronze but the numbers can increase in size <br><br>
+    Gold - The amount of days it takes will be non-integer and the question prompts to answer in days plus hours `
+
+
+    /*x [0builders] can [1build] a [2house] in y days. 
+    each of the [0builders] work at the same rate.
+    z of the [0builders] stop [3working] after w days.
+    The other [0builders] continue [4building the same house] at the same rate until it is finished.
+    How long does it take to [1build] the [2house]?  */
+
+    let contextArray = [["builders","build","house","working","building the same house","builder"],["painters","paint","house","working","painting the same house","painter"],
+    ["developers","develop","website","working","developing the same website","developer"],["architects","design","building","working","designing the same building","architect"],
+    ["manufacturers","make","product","working","making the same product","manufacturer"],["aliens","invade","planet","invading","invading the same planet","alien"],
+    ["mathematicians","solve","very difficult equation","working","solving the same problem","mathematician"],["writers","write","feature-article","working","writing the same article","writer"],
+    ["film-makers","film","movie","working","filming the same movie","film-maker"],["musicians","create","symphony","working","creating the same symphony","musician"],
+    ["beavers","build","dam","working","building the same dam","beaver"],["dancers","choreograph","routine","working","choreographing the same routine","dancer"],
+    ["fashion-designers","design","summer-range","working","designing the same range","fashion-designer"],["mechanics","fix","car","working","fixing the same car","mechanic"],
+    ["superheroes","save","planet from alien invasion","","saving the same planet","superhero"]];
+
+    let chosenContext = contextArray[Math.floor(Math.random()*contextArray.length)];
+    
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+
+    questionNumber++;
+   
+    function reassignValues(){
+        chosenContext = contextArray[Math.floor(Math.random()*contextArray.length)];
+    
+
+        if(globalDifficultySelection===3){
+            numWorkers = Math.ceil(Math.random()*24)+5; //number of workers for top line of Q
+            numDays = Math.ceil(Math.random()*39)+9; //number of days for top line of Q
+            workerDaysFor1 = numWorkers*numDays;
+            numToBeSubtractedOffWorkers = Math.ceil(Math.random()*3)+1;
+            numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
+            workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
+            daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
+            daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
+            daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
+            remainingWorkers = numWorkers-workersThatStop;
+            daysDoneWithRemainingWorkers = parseFloat((daysLeftOver/remainingWorkers).toFixed(4));
+            if(Number.isInteger(daysDoneWithRemainingWorkers)===true){
+                reassignValues();
+            }
+            totalDaysForJob = parseFloat(daysDoneWithRemainingWorkers + daysWorkersStoppedAfter);
+            daysPart = Math.floor(totalDaysForJob);
+            decimalPart = totalDaysForJob-daysPart;
+            hoursPart = Math.round(12*decimalPart)
+        
+            
+        } else if(globalDifficultySelection===2){
+            numWorkers = Math.ceil(Math.random()*14)+5; //number of workers for top line of Q
+            numDays = Math.ceil(Math.random()*29)+9; //number of days for top line of Q
+            workerDaysFor1 = numWorkers*numDays;
+            numToBeSubtractedOffWorkers = Math.ceil(Math.random()*3)+1;
+            numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
+            workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
+            daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
+            daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
+            daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
+            remainingWorkers = numWorkers-workersThatStop;
+            daysDoneWithRemainingWorkers = daysLeftOver/remainingWorkers;
+            if(Number.isInteger(daysDoneWithRemainingWorkers)===false){
+                reassignValues();
+            }
+            totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
+        } else if(globalDifficultySelection===1){
+            numWorkers = Math.ceil(Math.random()*8)+5; //number of workers for top line of Q
+            numDays = Math.ceil(Math.random()*15)+9; //number of days for top line of Q
+            workerDaysFor1 = numWorkers*numDays;
+            numToBeSubtractedOffWorkers = Math.ceil(Math.random()*3)+1;
+            numToBeSubtractedOffDays = Math.ceil(Math.random()*6)+2;
+            workersThatStop = numWorkers - numToBeSubtractedOffWorkers;
+            daysWorkersStoppedAfter = numDays - numToBeSubtractedOffDays;
+            daysDoneWithAllWorkers = numWorkers*daysWorkersStoppedAfter;
+            daysLeftOver = workerDaysFor1 - daysDoneWithAllWorkers;
+            remainingWorkers = numWorkers-workersThatStop;
+            daysDoneWithRemainingWorkers = daysLeftOver/remainingWorkers;
+            if(Number.isInteger(daysDoneWithRemainingWorkers)===false){
+                reassignValues();
+            }
+            totalDaysForJob = daysLeftOver/remainingWorkers + daysWorkersStoppedAfter;
+        }
+    }
+
+    function runQuestion(){
+        
+    questionText.innerHTML += `
+    <style>
+    .answerLines{
+        float: right;
+    }
+    #questionText{
+        font-size: 0.9em;
+    }
+    </style>
+    ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    <br>
+    ${numWorkers} ${chosenContext[0]} can ${chosenContext[1]} a ${chosenContext[2]} in ${numDays} days.<br>
+    Each of the ${chosenContext[0]} work at the same rate.<br>
+    ${workersThatStop} of the ${chosenContext[0]} stop ${chosenContext[3]} after ${daysWorkersStoppedAfter} days.<br>
+    The other ${chosenContext[0]} continue ${chosenContext[4]} at the same rate until it is finished.<br>
+    How long does it take to ${chosenContext[1]} the ${chosenContext[2]}?
+    `
+
+    if(globalDifficultySelection===1 || globalDifficultySelection===2){
+        questionText.innerHTML += `<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="answerLines">
+    __________ days<br>
+    <p id="marksGiven">(5 marks)</p>
+    </div><br><br><br><br>`
+    }
+    else if(globalDifficultySelection===3){
+        questionText.innerHTML += `<br>
+        Assuming the ${chosenContext[0]} work for 12 hours a day, give your answer in days and hours.
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="answerLines">
+      _______ days _______ hours<br>
+    <p id="marksGiven">(5 marks)</p>
+    </div><br><br><br>`
+    }
+
+    solutionText.innerHTML += `
+    ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    <br><br>
+    ${numWorkers} &times ${numDays} = ${workerDaysFor1} therefore, it takes ${workerDaysFor1} ${chosenContext[5]}-days to ${chosenContext[1]} the ${chosenContext[2]}.<br>
+    ${numWorkers} ${chosenContext[0]} work for <span style="text-decoration: underline">${daysWorkersStoppedAfter} days.</span> ${numWorkers} &times ${daysWorkersStoppedAfter} = ${daysDoneWithAllWorkers} so there are ${daysDoneWithAllWorkers} ${chosenContext[5]}-days accounted for.<br>
+    ${workerDaysFor1} - ${daysDoneWithAllWorkers} = ${daysLeftOver} meaning there is ${daysLeftOver} ${chosenContext[5]}-days to be done by the remaining ${chosenContext[0]}.<br>
+    Since ${numWorkers} - ${workersThatStop} = ${remainingWorkers}, there are ${remainingWorkers} ${chosenContext[0]} left.<br>
+    ${daysLeftOver} &divide ${remainingWorkers} = ${daysDoneWithRemainingWorkers} meaning the remaining ${remainingWorkers} ${chosenContext[0]} will take <span style="text-decoration: underline">${daysDoneWithRemainingWorkers} days</span> to finish it.<br>
+    ${daysDoneWithRemainingWorkers} + ${daysWorkersStoppedAfter} = ${totalDaysForJob} so it takes <span style="text-decoration: underline">${totalDaysForJob} days in total.</span>
+    `
+    if(globalDifficultySelection===1 || globalDifficultySelection===2){
+        solutionText.innerHTML += `
+        <br><br>
+        <div class="borderBottomSolution"></div><br>
+        `
+    }
+    else if(globalDifficultySelection===3){
+        solutionText.innerHTML += `<br>
+        ${parseFloat(decimalPart.toFixed(3))} &times 12 hours = ${hoursPart} hours <br>
+        Therefore, the total time is <span style="text-decoration: underline">${daysPart} days and ${hoursPart} hours</span>
+        <br><br>
+        <div class="borderBottomSolution"></div><br>`
+    }
+    }
+
+    //Page Breaks
+    if (questionNumber === 3){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 5){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 7){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 9){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 11){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 13){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 15){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 17){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 19){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 21){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 23){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 25){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 27){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 29){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 31){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 33){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 35){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 37){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 39){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 41){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 43){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 45){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 47){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 49){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 51){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 53){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 55){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 57){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 59){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 61){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    };
+    if (questionNumber === 4){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    }else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 7){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 10){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 13){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 16){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 19){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 22){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 25){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 28){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 34){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 37){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 40){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 43){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 46){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 49){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 52){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 55){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 58){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 61){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 64){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 67){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    }
+    reassignValues();
+    runQuestion();
+    
+}
+
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3307,6 +3603,26 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         triangleAndTrapezium(i)}
+    document.getElementById("generateQButton").innerHTML="Reset";
+} else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem"){
+    loseInstructions();
+    getBronzeNumber();
+    globalDifficultySelection = 1;
+    questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    questionText.innerHTML += `<br><h3 id="worksheetTitle">Proportion: rates of work problems</h3><br>`
+    for (let i = 0; i < bronzeNumber; i++){
+        proportionRateOfWorkProblem(i)}
+    getSilverNumber(); 
+    globalDifficultySelection = 2;
+    questionNumber = 0;
+    for (let i = 0; i < silverNumber; i++){
+        proportionRateOfWorkProblem(i)}
+    getGoldNumber();
+    globalDifficultySelection = 3;
+    questionNumber = 0;
+    for (let i = 0; i < goldNumber; i++){
+        proportionRateOfWorkProblem(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
 }
 };
