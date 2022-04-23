@@ -157,23 +157,26 @@ let solutionsTitle=""
 function getWorksheetTitle(){
     
     if(globalTopicAreaSelection==="speedDistanceTime"){
-        worksheetTitle="Speed Distance Time Worksheet from Maths Gizmo";
-        solutionsTitle="Speed Distance Time Solutions from Maths Gizmo";
+        worksheetTitle="Speed Distance Time Worksheet Maths Gizmo";
+        solutionsTitle="Speed Distance Time Solutions Maths Gizmo";
     } else if(globalTopicAreaSelection==="estimation"){
-        worksheetTitle="Estimation Worksheet from Maths Gizmo"
-        solutionsTitle="Estimation Solutions from Maths Gizmo"
+        worksheetTitle="Estimation Worksheet Maths Gizmo"
+        solutionsTitle="Estimation Solutions Maths Gizmo"
     } else if(globalTopicAreaSelection==="solveQuadraticByFactorising"){
-        worksheetTitle="Solve quadratics via factorising Worksheet from Maths Gizmo"
-        solutionsTitle="Solve quadratics via factorising Solutions from Maths Gizmo"
+        worksheetTitle="Solve quadratics via factorising Worksheet Maths Gizmo"
+        solutionsTitle="Solve quadratics via factorising Solutions Maths Gizmo"
     } else if(globalTopicAreaSelection==="simultaneousEquationsNoContext"){
-        worksheetTitle="Simultaneous Equations No Context Worksheet from Maths Gizmo"
-        solutionsTitle="Simultaneous Equations No Context Solutions from Maths Gizmo"
+        worksheetTitle="Simultaneous Equations No Context Worksheet Maths Gizmo"
+        solutionsTitle="Simultaneous Equations No Context Solutions Maths Gizmo"
     } else if(globalTopicAreaSelection==="simultaneousEquationsContext"){
-        worksheetTitle="Simultaneous Equations With Context Worksheet from Maths Gizmo"
-        solutionsTitle="Simultaneous Equations With Context Solutions from Maths Gizmo"
+        worksheetTitle="Simultaneous Equations With Context Worksheet Maths Gizmo"
+        solutionsTitle="Simultaneous Equations With Context Solutions Maths Gizmo"
     } else if(globalTopicAreaSelection==="triangleAndTrapezium"){
-        worksheetTitle="Area: Triangles & Trapeziums Worksheet from Maths Gizmo"
-        solutionsTitle="Area: Triangles & Trapeziums Solutions from Maths Gizmo"
+        worksheetTitle="Area: Triangles & Trapeziums Worksheet Maths Gizmo"
+        solutionsTitle="Area: Triangles & Trapeziums Solutions Maths Gizmo"
+    } else if(globalTopicAreaSelection==="proportionRateOfWorkProblem"){
+        worksheetTitle="Proportion: Rates of Work Worksheet Maths Gizmo"
+        solutionsTitle="Proportion: Rates of Work Solutions Maths Gizmo"
     }
 };
 
