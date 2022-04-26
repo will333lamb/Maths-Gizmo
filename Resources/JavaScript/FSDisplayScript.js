@@ -116,6 +116,18 @@ let femaleNameArray = ["Amelia", "Ava", "Abigail", "Anna", "Amy", "Alicia",
 "Wendy", 
 "Yasmin", "Yolanda", "Yvonne", "Zara","Zoe"];
 
+let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+
+let questionText = document.getElementById("questionText");
+let solutionText = document.getElementById("solutionText");
+
+let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
+<i class="fas fa-calculator fa-stack-1x"></i>
+<i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+</span><br>`
+
+let calcSign = `<i class="fas fa-calculator"></i>
+<i id="checkSign" class="fas fa-check"></i><br>`
 
 //Other Functions
 
@@ -143,6 +155,7 @@ function toDataURL(src, callback) {
         
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Entry 3 *////////////////////////////////////////////////////////////////////////////////
 function sequencesNextNumberInteger(){
     let num1 = Math.floor((Math.random()*20)+5)
     let progression
@@ -1881,6 +1894,217 @@ function multiplicationMoney(){
     `
 }
 
+//Level 1 *////////////////////////////////////////////////////////////////////////////////
+
+function BIDMAS(){
+    let x=Math.ceil(Math.random()*9);
+    let y=Math.ceil(Math.random()*8)+1;
+    let z=Math.ceil(Math.random()*8)+1;
+    let solution= x + y * z;
+
+    questionText.innerHTML = `
+    ${x} + ${y} &times ${z} = `
+
+    solutionText.innerHTML = `${x} + ${y} &times ${z} = ${solution}`
+}
+
+function squaring(){
+    let x=Math.ceil(Math.random()*25)+10;
+    questionText.innerHTML = `${x}<sup>2</sup> = `
+    solutionText.innerHTML = `${x}<sup>2</sup> = ${x*x}`
+}
+
+function FDPFracToDec(){
+    let mainArray = [[5,[1,2,3,4]],[4,[1,3]],[5,[1,2,3,4]],[4,[1,3]],[5,[1,2,3,4]],[4,[1,3]],[2,[1]]];
+    let chosenArray = mainArray[Math.floor(Math.random()*mainArray.length)];
+    let y=chosenArray[0];
+    let x=chosenArray[1][Math.floor(Math.random()*chosenArray[1].length)];
+
+    questionText.innerHTML = `What is <sup>${x}</sup>&frasl;<sub>${y}</sub> as a decimal?`
+
+    solutionText.innerHTML = `<sup>${x}</sup>&frasl;<sub>${y}</sub> = ${x/y}`
+}
+
+function addingNegatives(){
+    let signArray = ["-","+"];
+    let signOne = "-"
+    let signTwo = signArray[Math.floor(Math.random()*signArray.length)]
+
+    let num1 = Math.floor(Math.random()*19)+2;
+    let num2Array = [num1 +1,num1-1];
+    let num2 = num2Array[Math.floor(Math.random()*num2Array.length)];
+
+    if(signTwo==="-"){
+        solution = num1*(-1) - num2
+    } else{
+        solution = num1*(-1) + num2
+    }
+
+    if(solution===1){
+        solutionLetter = "A"
+    } else if(solution===-1){
+        solutionLetter = "B"
+    } else{
+        solutionLetter = "D"
+    }
+
+    questionText.innerHTML = `
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            outline: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    ${signOne}${num1} ${signTwo} ${num2} = 
+    <br>
+    (tick one box)<br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td>1</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>-1</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>${num1+num2}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>${(num1+num2)*-1}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>    
+    `
+
+    solutionText.innerHTML =`${signOne}${num1} ${signTwo} ${num2} = ${solution}. Therefore, ${solutionLetter} should be ticked`
+}
+
+function percentageOfAnAmountNonCalc(){
+    let array=[2,3,4,6,7,8,9]
+    let x = parseFloat(`${array[Math.floor(Math.random()*array.length)]}0`)
+    let y = parseFloat(`${array[Math.floor(Math.random()*array.length)]}00`)
+
+    let array10 = [10, -10]
+
+    let A1 = Math.round(x/100 * y) +`g`;
+    let A2 = Math.round(x/1000* y )+`g`;
+    let A3 = Math.round(0.5* y )+`g`;
+    let A4 = Math.round(0.1*y)+`g`;
+
+    let orderArrayAnswers = [[A1,A2,A3,A4,"A"],[A1,A2,A4,A3,"A"],[A1,A3,A2,A4,"A"],[A1,A3,A4,A2,"A"],[A1,A4,A3,A2,"A"],[A1,A4,A2,A3,"A"],
+    [A2,A1,A3,A4,"B"],[A2,A1,A4,A3,"B"],[A2,A3,A1,A4,"C"],[A2,A3,A4,A1,"D"],[A2,A4,A1,A3,"C"],[A2,A4,A3,A1,"D"],
+    [A3,A1,A2,A4,"B"],[A3,A1,A4,A2,"B"],[A3,A2,A1,A4,"C"],[A3,A2,A4,A1,"D"],[A3,A4,A1,A2,"C"],[A3,A4,A2,A1,"D"],
+    [A4,A1,A2,A3,"B"],[A4,A1,A3,A2,"B"],[A4,A2,A1,A3,"C"],[A4,A2,A3,A1,"D"],[A4,A3,A1,A2,"C"],[A4,A3,A2,A1,"D"]];
+
+    let chosenOrder = orderArrayAnswers[Math.floor(Math.random()*orderArrayAnswers.length)];
+
+
+    questionText.innerHTML = `
+    
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            outline: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    ${x}% of ${y}g = <br>
+    (tick one box)<br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td>${chosenOrder[0]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>${chosenOrder[1]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>${chosenOrder[2]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>${chosenOrder[3]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>`
+
+    solutionText.innerHTML = `${x}% of ${y}g = ${A1}. Therefore ${chosenOrder[4]} should be ticked.`
+}
+
+function rangeOfNumbers(){
+    let array = [1,-1]
+    let num1=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num2=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num3=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num4=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num5=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num6=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num7=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num8=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num9=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num10=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num11=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num12=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+
+    let maxNum = Math.max(num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12);
+    let minNum = Math.min(num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12);
+
+    let rangeSolution = maxNum - minNum
+
+    questionText.innerHTML = `
+    <style>
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+            text-align: center;
+            background-color: rgba(88, 229, 186, 0.2);
+        }
+    </style>
+    <table>
+        <tr>
+            <td>${num1}</td>
+            <td>${num2}</td>
+            <td>${num3}</td>
+            <td>${num4}</td>
+            <td>${num5}</td>
+            <td>${num6}</td>
+        </tr>
+        <tr>
+            <td>${num7}</td>
+            <td>${num8}</td>
+            <td>${num9}</td>
+            <td>${num10}</td>
+            <td>${num11}</td>
+            <td>${num12}</td>
+        </tr>
+    </table>
+    `
+
+    solutionText.innerHTML = `${maxNum} - ${minNum} = ${rangeSolution}`
+}
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -1929,6 +2153,18 @@ generateQButton.onclick = function(){
         readingScalesChildsHeight();
     } else if(globalTopicAreaSelection==="multiplicationMoney"){
         multiplicationMoney();
+    } else if(globalTopicAreaSelection==="BIDMAS"){
+        BIDMAS();
+    } else if(globalTopicAreaSelection==="squaring"){
+        squaring();
+    } else if(globalTopicAreaSelection==="FDPFracToDec"){
+        FDPFracToDec();
+    } else if(globalTopicAreaSelection==="addingNegatives"){
+        addingNegatives();
+    } else if(globalTopicAreaSelection==="percentageOfAnAmountNonCalc"){
+        percentageOfAnAmountNonCalc();
+    } else if(globalTopicAreaSelection==="rangeOfNumbers"){
+        rangeOfNumbers();
     }
 };
 

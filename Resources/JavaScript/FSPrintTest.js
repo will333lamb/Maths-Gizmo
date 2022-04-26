@@ -130,6 +130,8 @@ let namesObject = {
     }
 };
 
+
+
 //Global Variables/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let questionNumber = 0
@@ -137,6 +139,21 @@ let questionNumber = 0
 let globalDifficultySelection = 2;
 
 let globalTopicAreaSelection;
+
+let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+
+let questionText = document.getElementById("questionText");
+let solutionText = document.getElementById("solutionText");
+
+let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
+<i class="fas fa-calculator fa-stack-1x"></i>
+<i id="banSign" class="fas fa-ban fa-stack-2x"></i>
+</span><br>`
+
+let calcSign = `<i class="fas fa-calculator"></i>
+<i id="checkSign" class="fas fa-check"></i><br>`
+
+let pagebreak = `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`
 
 
 //Other Functions /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,6 +165,9 @@ function getWorksheetTitle(){
     if(globalTopicAreaSelection==="communityEvents"){
         practicePaperTitle="Entry level 3 Community Events practice paper from Maths Gizmo";
         solutionsTitle="Entry level 3 Community Events Solutions from Maths Gizmo";
+    } else if(globalTopicAreaSelection==="level1Sample1"){
+        practicePaperTitle="Level 1 Sample 1 practice paper from Maths Gizmo";
+        solutionsTitle="Level 1 Sample 1 Solutions from Maths Gizmo";
     }
 }
 
@@ -174,6 +194,18 @@ function toDataURL(src, callback) {
 };
 
 function frontPageNonCalc(){
+    if(globalTopicAreaSelection ==="communityEvents"){
+        level = "Entry 3"
+        title = "Community Events"
+        timeAllowed ="25 minutes"
+        marks = 10
+    } else if(globalTopicAreaSelection==="level1Sample1"){
+        level = "Level 1"
+        title = "Sample 1"
+        timeAllowed ="25 minutes"
+        marks = 15
+    }
+
     document.getElementById("questionText").innerHTML += 
     `<style>
     .frontPage{
@@ -191,8 +223,8 @@ function frontPageNonCalc(){
     }
     </style>
     <div class="frontPage">
-    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br>
-    Community Events<br><br>
+    <span style="font-weight: bold;">Functional Skills Mathematics ${level} Practice Paper<br>
+    ${title}<br><br>
     <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div><br>
     Non-Calculator</span><br>
     <span class="fa-stack fa-2x" style="font-size: 7.5rem;">
@@ -200,8 +232,8 @@ function frontPageNonCalc(){
     <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
     </span><br><br> 
     
-    <span style="font-weight: bold;">Time allowed - 25 minutes</span><br>
-    Marks: 10 <br>
+    <span style="font-weight: bold;">Time allowed - ${timeAllowed}</span><br>
+    Marks: ${marks} <br>
     
     <br>
     Name: .................................................<br><br>
@@ -222,8 +254,8 @@ function frontPageNonCalc(){
     </style>
     <div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>
     <div class="frontPage">
-    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper Solutions<br>
-    Community Events<br><br>
+    <span style="font-weight: bold;">Functional Skills Mathematics ${level} Practice Paper Solutions<br>
+    ${title}<br><br>
     </div>
     `
 }
@@ -284,6 +316,8 @@ function frontPageCalc(){
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Entry 3
+//Community Events
 function sequencesNextNumberInteger(){
     let num1 = Math.floor((Math.random()*20)+5)
     let progression
@@ -2250,6 +2284,135 @@ function multiplicationMoney(){
     <div class="borderBottomSolution"></div>`
 }
 
+//Level 1 *////////////////////////////////////////////////////////////////////////////////
+//Sample 1
+function BIDMAS(){
+    let x=Math.ceil(Math.random()*9);
+    let y=Math.ceil(Math.random()*8)+1;
+    let z=Math.ceil(Math.random()*8)+1;
+    let solution= x + y * z;
+
+    questionText.innerHTML += `
+    <span class="questionNumber">Q1.</span><br><br>
+    ${x} + ${y} &times ${z} = <br><br><br><br><br><br>
+    <div class="answerLineRight">______________________<div>
+    <p id="marksGiven">(1 mark)</p><br><br>`
+
+    solutionText.innerHTML += `
+    <span class="questionNumber">Q1.</span><br>
+    ${x} + ${y} &times ${z} = ${solution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function squaring(){
+    let x=Math.ceil(Math.random()*25)+10;
+    questionText.innerHTML += `
+    <span class="questionNumber">Q2.</span><br><br>
+    ${x}<sup>2</sup> = <br><br><br><br><br><br>
+    <div class="answerLineRight">______________________<div>
+    <p id="marksGiven">(1 mark)</p><br><br> `
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q2.</span><br>
+    ${x}<sup>2</sup> = ${x*x}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function FDPFracToDec(){
+    let mainArray = [[5,[1,2,3,4]],[4,[1,3]],[5,[1,2,3,4]],[4,[1,3]],[5,[1,2,3,4]],[4,[1,3]],[2,[1]]];
+    let chosenArray = mainArray[Math.floor(Math.random()*mainArray.length)];
+    let y=chosenArray[0];
+    let x=chosenArray[1][Math.floor(Math.random()*chosenArray[1].length)];
+
+    questionText.innerHTML += `
+    <span class="questionNumber">Q3.</span><br><br>
+    What is <sup>${x}</sup>&frasl;<sub>${y}</sub> as a decimal?
+    <br><br><br><br><br><br>
+    <div class="answerLineRight">______________________<div>
+    <p id="marksGiven">(1 mark)</p><br><br>`
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q3.</span><br><br>
+    <sup>${x}</sup>&frasl;<sub>${y}</sub> = ${x/y}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+}
+
+function addingNegatives(){
+    let signArray = ["-","+"];
+    let signOne = "-"
+    let signTwo = signArray[Math.floor(Math.random()*signArray.length)]
+
+    let num1 = Math.floor(Math.random()*19)+2;
+    let num2Array = [num1 +1,num1-1];
+    let num2 = num2Array[Math.floor(Math.random()*num2Array.length)];
+
+    if(signTwo==="-"){
+        solution = num1*(-1) - num2
+    } else{
+        solution = num1*(-1) + num2
+    }
+
+    if(solution===1){
+        solutionLetter = "A"
+    } else if(solution===-1){
+        solutionLetter = "B"
+    } else{
+        solutionLetter = "D"
+    }
+
+    questionText.innerHTML += `
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            border: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    <span class="questionNumber">Q4.</span><br><br>
+    ${signOne}${num1} ${signTwo} ${num2} = 
+    <br><br>
+    <span style="font-style: italic">(tick one box)</span><br><br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td>1</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>-1</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>${num1+num2}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>${(num1+num2)*-1}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    ${pagebreak}    
+    `
+
+    solutionText.innerHTML +=`
+    <br><br><span class="questionNumber">Q4.</span><br><br>
+    ${signOne}${num1} ${signTwo} ${num2} = ${solution}. Therefore, ${solutionLetter} should be ticked
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2293,10 +2456,18 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     wordedDivisionAndRoundingUp();
     readingScalesChildsHeight();
     multiplicationMoney();
+    document.getElementById("generateQButton").innerHTML="Reset";
+} else if(globalTopicAreaSelection==="level1Sample1"){
+    loseInstructions();
+    frontPageNonCalc();
+    BIDMAS();
+    squaring();
+    FDPFracToDec();
+    addingNegatives();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";
-} 
+}
 };
 
 

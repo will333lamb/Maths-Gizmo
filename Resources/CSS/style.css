@@ -607,6 +607,10 @@ select:hover{
     margin: 0 25%;
 }
 
+.answerLineRight{
+    float: right;
+}
+
 
 
 
