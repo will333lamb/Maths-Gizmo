@@ -130,6 +130,8 @@ let namesObject = {
     }
 };
 
+let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+
 //Global Variables/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let questionNumber = 0
@@ -146,7 +148,7 @@ let solutionText = document.getElementById("solutionText");
 let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
 <i class="fas fa-calculator fa-stack-1x"></i>
 <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
-</span><br>`
+</span>`
 
 let calcSign = `<i class="fas fa-calculator"></i>
 <i id="checkSign" class="fas fa-check"></i>`
@@ -177,6 +179,9 @@ function getWorksheetTitle(){
     } else if(globalTopicAreaSelection==="proportionRateOfWorkProblem"){
         worksheetTitle="Proportion: Rates of Work Worksheet Maths Gizmo"
         solutionsTitle="Proportion: Rates of Work Solutions Maths Gizmo"
+    } else if(globalTopicAreaSelection==="percentageProfit"){
+        worksheetTitle="Percentage Profit Worksheet Maths Gizmo"
+        solutionsTitle="Percentage Profit Solutions Maths Gizmo"
     }
 };
 
@@ -243,6 +248,9 @@ $(document).ready(function(e){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
         "Your worksheet may not load properly if you exceed this.");
     } else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem" && sumTotalQuestions>60){
+        alert("Sorry, the maximum amount of questions for this topic is 60. " +
+        "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection ==="percentageProfit" && sumTotalQuestions>60){
         alert("Sorry, the maximum amount of questions for this topic is 60. " +
         "Your worksheet may not load properly if you exceed this.");
     }
@@ -3184,6 +3192,198 @@ function triangleAndTrapezium(){
     runQuestion();
 }
 
+//Percentage Profit
+function percentageProfit(){
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 11 a) on OCR paper 2 November 2019. It is a non-calculator paper and OCR awarded 3 marks.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - Numbers are generally smaller and always integers and % increase is a multiple of 10 below 100% <br><br>
+    Silver - Numbers get bigger than bronze and are still integers but % increase is still a multiple of 10 below 100% <br><br>
+    Gold - Numbers are bigger and can include decimals. % increase is larger than 100%. I have made this difficulty calculator allowed. `
+
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+
+    questionNumber++;
+
+    function reassignValues(){
+        chosenMorF = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
+        name1 = chosenMorF[0][Math.floor(Math.random()*chosenMorF[0].length)];
+        heOrShe = chosenMorF[1];
+
+        multiplierArray = [/*Bronze*/ [`${Math.ceil(Math.random()*9)}`], /*Silver*/ [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,5,5,6,7,8,9], /*Gold*/ [`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}`]]
+
+        if(globalDifficultySelection===2){
+            chosenMultiplier = multiplierArray[1][Math.floor(Math.random()*multiplierArray[1].length)];
+            actualMultipler = (chosenMultiplier/10 + 1).toFixed(2);
+            x = parseFloat(`${Math.ceil(Math.random()*3)}${Math.ceil(Math.random()*9)}0`)
+            y = (x*actualMultipler).toFixed(0);
+            profit = y - x;
+            calcOrNoCalc = nonCalcSign;
+        } else if(globalDifficultySelection===3){
+            chosenMultiplier = multiplierArray[2];
+            actualMultipler = (chosenMultiplier/100 + Math.ceil(Math.random()*3)+1).toFixed(2);
+            x = parseFloat(`${Math.ceil(Math.random()*3)}${Math.ceil(Math.random()*9)}0`)
+            y = (x*actualMultipler).toFixed(2);
+            profit = (y - x).toFixed(2);
+            calcOrNoCalc = calcSign;
+        } else if(globalDifficultySelection===1){
+            chosenMultiplier = multiplierArray[0];
+            actualMultipler = (chosenMultiplier/10 + 1).toFixed(2);
+            x = parseFloat(`${Math.ceil(Math.random()*9)}0`)
+            y = Math.round(x*actualMultipler);
+            profit = y - x;
+            calcOrNoCalc = nonCalcSign;
+        }
+
+        percentageProfitSol = ((actualMultipler*100) - 100).toFixed(0)
+    }
+
+    function runQuestion(){
+        questionText.innerHTML += `
+        ${calcOrNoCalc} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span><br>
+        ${name1} buys a concert ticket for £${x} and later sells it for £${y}<br>
+        Find the percentage profit that ${heOrShe} made. 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="answerLine">
+        <br>
+        <p id="marksGiven">(3 marks)</p>
+        </div><br><br><br><br>
+
+        `
+
+        solutionText.innerHTML += `
+        ${calcOrNoCalc} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+        <br>
+        The profit is £${y} - £${x} = £${profit}<br>
+        Now, using percentage profit = (profit &divide cost price) &times 100 <br>
+        Percentage profit = (${profit} &divide ${x}) &times 100 = ${percentageProfitSol} <br>
+        Therefore percentage profit is ${percentageProfitSol}%
+        <br><br>
+        <div class="borderBottomSolution"></div><br>
+        `
+    }
+
+    //Page Breaks
+    if (questionNumber === 3){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 5){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 7){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 9){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 11){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 13){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 15){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 17){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 19){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 21){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 23){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 25){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 27){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 29){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 31){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 33){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 35){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 37){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 39){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 41){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 43){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 45){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 47){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 49){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 51){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 53){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 55){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 57){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 59){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 61){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    };
+    if (questionNumber === 6){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    }else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 11){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 16){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 21){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 26){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 36){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 41){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 46){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 51){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 56){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 61){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 66){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } 
+
+    reassignValues();
+    runQuestion();
+
+
+
+    
+
+
+    
+}
+
 //Proportion: rates of work
 function proportionRateOfWorkProblem(){
     infoBox.innerHTML = `
@@ -3626,6 +3826,26 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     questionNumber = 0;
     for (let i = 0; i < goldNumber; i++){
         proportionRateOfWorkProblem(i)}
+    document.getElementById("generateQButton").innerHTML="Reset";
+} else if(globalTopicAreaSelection ==="percentageProfit"){
+    loseInstructions();
+    getBronzeNumber();
+    globalDifficultySelection = 1;
+    questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+    questionText.innerHTML += `<br><h3 id="worksheetTitle">Percentage Profit</h3><br>`
+    for (let i = 0; i < bronzeNumber; i++){
+        percentageProfit(i)}
+    getSilverNumber(); 
+    globalDifficultySelection = 2;
+    questionNumber = 0;
+    for (let i = 0; i < silverNumber; i++){
+        percentageProfit(i)}
+    getGoldNumber();
+    globalDifficultySelection = 3;
+    questionNumber = 0;
+    for (let i = 0; i < goldNumber; i++){
+        percentageProfit(i)}
     document.getElementById("generateQButton").innerHTML="Reset";
 }
 };
