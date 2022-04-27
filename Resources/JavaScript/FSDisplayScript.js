@@ -1986,6 +1986,7 @@ function addingNegatives(){
             <td class="box">&nbsp</td>
         </tr>
     </table>    
+    
     `
 
     solutionText.innerHTML =`${signOne}${num1} ${signTwo} ${num2} = ${solution}. Therefore, ${solutionLetter} should be ticked`
@@ -2055,18 +2056,18 @@ function percentageOfAnAmountNonCalc(){
 
 function rangeOfNumbers(){
     let array = [1,-1]
-    let num1=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num2=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num3=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num4=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num5=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num6=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num7=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num8=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num9=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num10=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num11=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
-    let num12=100+(Math.floor(Math.random()*70)*array[Math.floor(Math.random()*array.length)]);
+    let num1=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num2=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num3=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num4=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num5=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num6=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num7=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num8=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num9=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num10=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num11=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num12=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
 
     let maxNum = Math.max(num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12);
     let minNum = Math.min(num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12);
@@ -2101,10 +2102,113 @@ function rangeOfNumbers(){
             <td>${num12}</td>
         </tr>
     </table>
+    <br>
+    What is the range of these numbers?
     `
 
     solutionText.innerHTML = `${maxNum} - ${minNum} = ${rangeSolution}`
 }
+
+function percentageSavingsAccount(){
+
+    let x=parseFloat(`${Math.ceil(Math.random()*9)+1}000`);
+    let yArray = [[2,0.02],[3,0.03],[4,0.04],[5,0.05],[6,0.06],[7,0.07],[8,0.08],[9,0.09]];
+    let chosenY = yArray[Math.floor(Math.random()*yArray.length)];
+    let y=chosenY[0];
+
+    onePercent=x*0.01
+
+    questionText.innerHTML = `A man puts £${x} into a savings account. <br>
+    the interest is ${y}% per year.<br><br>
+    How much will the interest be for the first year?`
+
+    solutionText.innerHTML = `
+    1% = £${x} &divide 100 = £${onePercent}<br>
+    ${y}% = £${onePercent} &times ${y} = £${Math.round(x*chosenY[1])}
+    `
+}
+
+function probabilityScale(){
+
+    let impossProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/1 - 0.png"
+    let unlikelyProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/2 - 0.25.png"
+    let evensProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/3 - 0.5.png"
+    let likelyProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/4 - 0.75.png"
+    let certainProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/5 - 1.png"
+
+    let probabilitiesArray = [[impossProb,0,"impossible","A"],[unlikelyProb,0.25,"unlikely","B"],[evensProb,0.5,"evens","C"],
+    [likelyProb,0.75,"likely","D"],[certainProb,1,"certain","E"]];
+
+    let chosenProb = probabilitiesArray[Math.floor(Math.random()*probabilitiesArray.length)];
+
+    toDataURL(chosenProb[0], function(dataURL) {
+        document.getElementById("scale").src = dataURL
+    })
+
+    questionText.innerHTML = `
+    <style>
+    .scaleContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    #scale{
+        width: 70%;
+    }
+    </style>
+    This scale shows the probability of something that will happen.<br>
+    <div class="scaleContainer">
+        <img id="scale" src="">
+    </div><br>
+    What probability does the scale show?<br>
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            border: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    (tick one box)<br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td>impossible</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>unlikely</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>evens</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>likely</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>E</th>
+            <td>certain</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>
+    `
+
+    solutionText.innerHTML = `
+    The arrow shows a probability of ${chosenProb[1]}, the word to describe this is ${chosenProb[2]}.
+    Therefore, ${chosenProb[3]} should be ticked.`
+}
+
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -2165,6 +2269,10 @@ generateQButton.onclick = function(){
         percentageOfAnAmountNonCalc();
     } else if(globalTopicAreaSelection==="rangeOfNumbers"){
         rangeOfNumbers();
+    } else if(globalTopicAreaSelection==="percentageSavingsAccount"){
+        percentageSavingsAccount();
+    } else if(globalTopicAreaSelection==="probabilityScale"){
+        probabilityScale();
     }
 };
 

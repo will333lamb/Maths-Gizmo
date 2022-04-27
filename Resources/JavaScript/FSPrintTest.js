@@ -2294,8 +2294,8 @@ function BIDMAS(){
 
     questionText.innerHTML += `
     <span class="questionNumber">Q1.</span><br><br>
-    ${x} + ${y} &times ${z} = <br><br><br><br><br><br>
-    <div class="answerLineRight">______________________<div>
+    ${x} + ${y} &times ${z} = <br><br><br><br><br>
+    <div class="answerLineRight">______________________</div><br>
     <p id="marksGiven">(1 mark)</p><br><br>`
 
     solutionText.innerHTML += `
@@ -2309,8 +2309,8 @@ function squaring(){
     let x=Math.ceil(Math.random()*25)+10;
     questionText.innerHTML += `
     <span class="questionNumber">Q2.</span><br><br>
-    ${x}<sup>2</sup> = <br><br><br><br><br><br>
-    <div class="answerLineRight">______________________<div>
+    ${x}<sup>2</sup> = <br><br><br><br><br>
+    <div class="answerLineRight">______________________</div><br>
     <p id="marksGiven">(1 mark)</p><br><br> `
     solutionText.innerHTML += `
     <br><br><span class="questionNumber">Q2.</span><br>
@@ -2328,8 +2328,8 @@ function FDPFracToDec(){
     questionText.innerHTML += `
     <span class="questionNumber">Q3.</span><br><br>
     What is <sup>${x}</sup>&frasl;<sub>${y}</sub> as a decimal?
-    <br><br><br><br><br><br>
-    <div class="answerLineRight">______________________<div>
+    <br><br><br><br><br>
+    <div class="answerLineRight">______________________</div><br>
     <p id="marksGiven">(1 mark)</p><br><br>`
 
     solutionText.innerHTML += `
@@ -2413,6 +2413,167 @@ function addingNegatives(){
     <div class="borderBottomSolution"></div>`
 }
 
+function percentageOfAnAmountNonCalc(){
+    let array=[2,3,4,6,7,8,9]
+    let x = parseFloat(`${array[Math.floor(Math.random()*array.length)]}0`)
+    let y = parseFloat(`${array[Math.floor(Math.random()*array.length)]}00`)
+
+    let array10 = [10, -10]
+
+    let A1 = Math.round(x/100 * y) +`g`;
+    let A2 = Math.round(x/1000* y )+`g`;
+    let A3 = Math.round(0.5* y )+`g`;
+    let A4 = Math.round(0.1*y)+`g`;
+
+    let orderArrayAnswers = [[A1,A2,A3,A4,"A"],[A1,A2,A4,A3,"A"],[A1,A3,A2,A4,"A"],[A1,A3,A4,A2,"A"],[A1,A4,A3,A2,"A"],[A1,A4,A2,A3,"A"],
+    [A2,A1,A3,A4,"B"],[A2,A1,A4,A3,"B"],[A2,A3,A1,A4,"C"],[A2,A3,A4,A1,"D"],[A2,A4,A1,A3,"C"],[A2,A4,A3,A1,"D"],
+    [A3,A1,A2,A4,"B"],[A3,A1,A4,A2,"B"],[A3,A2,A1,A4,"C"],[A3,A2,A4,A1,"D"],[A3,A4,A1,A2,"C"],[A3,A4,A2,A1,"D"],
+    [A4,A1,A2,A3,"B"],[A4,A1,A3,A2,"B"],[A4,A2,A1,A3,"C"],[A4,A2,A3,A1,"D"],[A4,A3,A1,A2,"C"],[A4,A3,A2,A1,"D"]];
+
+    let chosenOrder = orderArrayAnswers[Math.floor(Math.random()*orderArrayAnswers.length)];
+
+
+    questionText.innerHTML += `
+    
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            outline: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    <span class="questionNumber">Q5.</span><br><br>
+    ${x}% of ${y}g = <br> 
+    <br><br>
+    <span style="font-style: italic">(tick one box)</span><br><br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td>${chosenOrder[0]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>${chosenOrder[1]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>${chosenOrder[2]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>${chosenOrder[3]}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>
+    <p id="marksGiven">(1 mark)</p><br><br>`
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q5.</span><br><br>
+    ${x}% of ${y}g = ${A1}. Therefore, ${chosenOrder[4]} should be ticked.
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function rangeOfNumbers(){
+    let array = [1,-1]
+    let num1=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num2=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num3=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num4=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num5=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num6=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num7=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num8=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num9=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num10=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num11=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+    let num12=100+(Math.floor(Math.random()*50)*array[Math.floor(Math.random()*array.length)]);
+
+    let maxNum = Math.max(num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12);
+    let minNum = Math.min(num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12);
+
+    let rangeSolution = maxNum - minNum
+
+    questionText.innerHTML += `
+    <style>
+        #rangeOfNumbersTable{
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 1em;
+            border: 2px solid black;
+            text-align: center;
+            background-color: rgba(88, 229, 186, 0.2);
+        }
+    </style>
+    <span class="questionNumber">Q6.</span><br><br>
+    <table id="rangeOfNumbersTable">
+        <tr>
+            <td>${num1}</td>
+            <td>${num2}</td>
+            <td>${num3}</td>
+            <td>${num4}</td>
+            <td>${num5}</td>
+            <td>${num6}</td>
+        </tr>
+        <tr>
+            <td>${num7}</td>
+            <td>${num8}</td>
+            <td>${num9}</td>
+            <td>${num10}</td>
+            <td>${num11}</td>
+            <td>${num12}</td>
+        </tr>
+    </table>
+    <br>
+    What is the range of these numbers?
+    <br><br><br><br><br>
+    <div class="answerLineRight">______________________</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q6.</span><br><br>
+    ${maxNum} - ${minNum} = ${rangeSolution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    ${pagebreak}`
+}
+
+function percentageSavingsAccount(){
+
+    let x=parseFloat(`${Math.ceil(Math.random()*9)+1}000`);
+    let yArray = [[2,0.02],[3,0.03],[4,0.04],[5,0.05],[6,0.06],[7,0.07],[8,0.08],[9,0.09]];
+    let chosenY = yArray[Math.floor(Math.random()*yArray.length)];
+    let y=chosenY[0];
+
+    onePercent=x*0.01
+
+    questionText.innerHTML += `
+    <span class="questionNumber">Q7.</span> A man puts £${x} into a savings account. <br>
+    the interest is ${y}% per year.<br><br>
+    How much will the interest be for the first year?
+    <br><br><br><br><br>
+    <div class="answerLineRight">______________________</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    ${pagebreak}`
+
+    solutionText.innerHTML += `
+    <span class="questionNumber">Q7.</span><br><br>
+    1% = £${x} &divide 100 = £${onePercent}<br>
+    ${y}% = £${onePercent} &times ${y} = £${Math.round(x*chosenY[1])}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+}
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2464,6 +2625,9 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     squaring();
     FDPFracToDec();
     addingNegatives();
+    percentageOfAnAmountNonCalc();
+    rangeOfNumbers();
+    percentageSavingsAccount();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";
