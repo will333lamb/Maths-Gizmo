@@ -2760,7 +2760,228 @@ function convertingMixedNumtoImproper(){
     <div class="borderBottomSolution"></div>`
 }
 
+function saleOfGuitar(){
 
+    let guitarPic = "../Resources/Images/FS Q's/Level 1/Sale of guitar/Guitar.png"
+    toDataURL(guitarPic, function(dataURL) {
+        document.getElementById("guitar").src = dataURL
+    })
+    let yArray=[15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,105,110,115,120,125,130,135,140,145,150];
+    let y=yArray[Math.floor(Math.random()*yArray.length)];
+    let wArray=[2,3,4,6,7,8,9];
+    let w=parseFloat(`${wArray[Math.floor(Math.random()*wArray.length)]}0`);
+    let reducedPrice=  parseFloat(w/100 * y).toFixed(2);
+    let reducedPriceRound = Math.round(reducedPrice).toFixed(2);
+    let addOrSubtractArray = [[1,-1,2,-2],[1.50,-1.50,2.5,-2.5]]
+    if(reducedPrice===reducedPriceRound){
+        chosenAddorSubtract = addOrSubtractArray[0][Math.floor(Math.random()*addOrSubtractArray[0].length)];
+        x=parseFloat(reducedPrice) + chosenAddorSubtract
+    } else{
+        chosenAddorSubtract = addOrSubtractArray[1][Math.floor(Math.random()*addOrSubtractArray[1].length)];
+        x=parseFloat(reducedPrice) + chosenAddorSubtract
+    }
+
+    if(reducedPrice<x){
+        concludingStatement = `They have £${x}. Therefore, they can afford the guitar.`
+    } else{
+        concludingStatement =  `They only have £${x}. Therefore, they cannot afford the guitar.`
+    }
+    
+
+    questionText.innerHTML += `
+    <style>
+    .guitarAndSaleGridContainer{
+        width: 100%
+    }
+    .guitarAndSaleGridContainer{
+        display: grid;
+        grid-template-rows: 1fr 0.1fr;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+        
+    }
+    #guitar{
+        height: 10em;
+        width: auto;
+        margin: 0 auto;
+    }
+    .SaleBox{
+        border: 1px solid black;
+        background-color: rgba(88, 229, 186, 0.2);
+        align-self: center;
+        justify-self: center;
+        padding: 1em;
+    }
+
+    .ticketPrice{
+        border: 1px solid black;
+        border-radius: 75%;
+        background-color: rgba(88, 229, 186, 0.2);
+        align-self: center;
+        justify-self: center;
+        padding: 0.35em;
+    }
+
+    </style>
+    <span class="questionNumber">Q11.</span>
+    A customer wants to buy a guitar in the sale at a music shop. They have £${x}.<br><br>
+    <div class="guitarAndSaleContainer">
+        <div class="guitarAndSaleGridContainer">
+            <img id="guitar" src="">
+            <div class="SaleBox">
+                SALE<br>
+                All guitars<br>
+                Reduced to ${w}%<br>
+                Of their ticket price
+            </div>
+            <div class="ticketPrice">
+                £${y}
+            </div>
+        </div>
+    </div><br><br>
+    Can the customer afford to buy the guitar?<br><br>
+    Yes or No ______________ <br><br>
+    Show how you got your answer.<br><br><br><br><br><br><br><br>
+    <p id="marksGiven">(2 marks)</p><br><br>
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q11.</span><br><br>
+    10% of £${y} = £${(y*0.1).toFixed(2)}<br>
+    ${w}% of £${y} = £${(y*0.1).toFixed(2)} &times ${w/10} = £${reducedPrice} &#8594 So the guitar costs £${reducedPrice} in the sale.<br>
+    ${concludingStatement}
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+}
+
+function ratioJumpers(){
+
+    let chosenGender = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
+    let name=chosenGender[0][Math.floor(Math.random()*chosenGender[0].length)];
+
+    function getNumbers(){  
+        x=Math.ceil(Math.random()*4)+1;
+        totalRatio = x+1;
+        y=parseFloat(`${Math.ceil(Math.random()*9)}00`)  ;
+        solution=y/totalRatio;
+        if(Number.isInteger(solution)===false){
+            getNumbers();
+        };
+    }
+    getNumbers();
+    
+
+    questionText.innerHTML += `
+    <span class="questionNumber">Q12.</span>
+    ${name} makes 1 jumper with red fabric for every ${x} jumpers with blue fabric.<br><br>
+    Today, ${chosenGender[1]} needs ${y} jumpers altogether.<br><br>
+    How many jumpers will ${chosenGender[1]} make with red fabric today?
+    <br><br><br><br><br><br><br><br>
+    <div class="answerLineRight">________________ jumpers</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    ${pagebreak}
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q12.</span><br><br>
+    The ratio of red to blue jumpers is 1:${x}<br>
+    The total ratio parts is 1 + ${x} = ${totalRatio}<br>
+    ${y} &divide ${totalRatio} = ${solution}. So ${chosenGender[1]} will make ${solution} red jumpers today.
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    ${pagebreak}`
+}
+
+function probabilityOfficWorker(){
+
+    let name = nameArray[Math.floor(Math.random()*nameArray.length)];
+
+    let x=Math.ceil(Math.random()*20)+1
+
+    questionText.innerHTML += `
+
+    <style>
+    #officeWorker{
+        width: 2em;
+        border-collapse: separate;
+        border-spacing: 0.5em;
+        text-align: center;
+        float: right;
+    }
+    </style>
+    <span class="questionNumber">Q13.</span>
+    ${name} works in an office. <br><br>
+    There are ${x} desks and ${x} staff members. The manager allocates the desks to the staff members randomly at the start of each day.<br>
+    No one likes the desk next to the door.<br><br>
+    What is the probability that ${name} will get the desk next to the door today?
+    <br><br><br><br><br><br>
+    <div class="tableContainer">
+        <table id="officeWorker">
+            <tr>
+                <td class="box">&nbsp</td>
+            </tr>
+            <tr>
+                <td class="hyphen"></td>
+            </tr>
+            <tr>
+                <td class="box">&nbsp</td>
+            </tr>
+        </table><br><br><br>
+    </div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
+
+    solutionText.innerHTML += `
+    <span class="questionNumber">Q13.</span><br><br>
+    Since there is the same amount of staff as desks, somebody will have to sit next to the door.<br>
+    They all have an equal probability of sitting next to the door and there is ${x} staff, so the probability of ${name}
+    sitting by the door is <sup>${1}</sup>&frasl;<sub>${x}</sub>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function readingScalesFuelGauge(){  
+    let fuelGaugePic25 = "../Resources/Images/FS Q's/Level 1/Fuel Gauge/1 - 0.25 full.png"
+    let fuelGaugePic75 = "../Resources/Images/FS Q's/Level 1/Fuel Gauge/2 - 0.75 full.png"
+    let fuelGaugeArray =[[fuelGaugePic25,0.25,"25%"],[fuelGaugePic75,0.75,"75%"]];
+    let chosenFuelGauge = fuelGaugeArray[Math.floor(Math.random()*fuelGaugeArray.length)];
+    
+    toDataURL(chosenFuelGauge[0], function(dataURL) {
+        document.getElementById("fuelGauge").src = dataURL
+    })
+
+    let xArray=[40,44,48,52,56,60,64,68,72,76,80,84,88,92,96]
+    let x=xArray[Math.floor(Math.random()*xArray.length)];
+
+
+    questionText.innerHTML += `
+    <span class="questionNumber">Q14.</span>
+    A van has a fuel tank that holds ${x} litres when full.<br><br>
+    This diagram shows the fuel gauge on the van.<br><br>
+    <div class="centeredQuestion">
+        <image id="fuelGauge" src="">
+    </div><br>
+    <span class="bold">Approximately</span> how many litres of fuel are left in the tank?
+    <span class="bold">Give your answer in whole litres.</span>
+    <br><br><br><br><br><br><br><br>
+    <div class="answerLineRight">________________ litres</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br><br><br>
+    <p id="marksGiven" style="font-weight: bold; font-style: normal;">Total marks: 15</p><br><br><br>
+    <div class="frontPage">
+    End of Non-calculator paper
+    </div>
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q14.</span><br><br>
+    The fuel gauge is showing ${chosenFuelGauge[2]} full.<br>
+    ${chosenFuelGauge[2]} of ${x} litres = ${x*chosenFuelGauge[1]} litres.
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+
+}
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2819,6 +3040,10 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     probabilityScale();
     volumeOfCube();
     convertingMixedNumtoImproper();
+    saleOfGuitar();
+    ratioJumpers();
+    probabilityOfficWorker();
+    readingScalesFuelGauge();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";

@@ -2295,7 +2295,7 @@ function convertingMixedNumtoImproper(){
 
 function saleOfGuitar(){
 
-    let guitarPic = "../Resources/Images/FS Q's/Level 1/Sale of guitar/Guitar.jpg"
+    let guitarPic = "../Resources/Images/FS Q's/Level 1/Sale of guitar/Guitar.png"
     toDataURL(guitarPic, function(dataURL) {
         document.getElementById("guitar").src = dataURL
     })
@@ -2434,7 +2434,7 @@ function readingScalesFuelGauge(){
         document.getElementById("fuelGauge").src = dataURL
     })
 
-    let xArray=[50,60,70,80,90,110,120,130,140,150,160,170,180]
+    let xArray=[40,44,48,52,56,60,64,68,72,76,80,84,88,92,96]
     let x=xArray[Math.floor(Math.random()*xArray.length)];
 
 
