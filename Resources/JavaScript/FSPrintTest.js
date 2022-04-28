@@ -2574,6 +2574,194 @@ function percentageSavingsAccount(){
     `
 }
 
+function probabilityScale(){
+
+    let impossProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/1 - 0.png"
+    let unlikelyProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/2 - 0.25.png"
+    let evensProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/3 - 0.5.png"
+    let likelyProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/4 - 0.75.png"
+    let certainProb = "../Resources/Images/FS Q's/Level 1/Probability Scale/5 - 1.png"
+
+    let probabilitiesArray = [[impossProb,0,"impossible","A"],[unlikelyProb,0.25,"unlikely","B"],[evensProb,0.5,"evens","C"],
+    [likelyProb,0.75,"likely","D"],[certainProb,1,"certain","E"]];
+
+    let chosenProb = probabilitiesArray[Math.floor(Math.random()*probabilitiesArray.length)];
+
+    toDataURL(chosenProb[0], function(dataURL) {
+        document.getElementById("scale").src = dataURL
+    })
+
+    questionText.innerHTML += `
+    <style>
+    .scaleContainer{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        width: 50%;
+    }
+    #scale{
+        width: 70%;
+    }
+    </style>
+    <span class="questionNumber">Q8.</span><br>
+    This scale shows the probability of something that will happen.<br><br>
+    <div class="scaleContainer">
+        <img id="scale" src="">
+    </div><br>
+    What probability does the scale show?<br>
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            border: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    <span style="font-style:italic">(tick one box)</span><br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td>impossible</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>unlikely</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>evens</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>likely</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>E</th>
+            <td>certain</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q8.</span><br><br>
+    The arrow shows a probability of ${chosenProb[1]}<br>
+    The word to describe this is ${chosenProb[2]}.
+    Therefore, ${chosenProb[3]} should be ticked.
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function volumeOfCube(){
+
+    let cubePic = "../Resources/Images/FS Q's/Level 1/VolumeOfCube/Cube.png"
+    toDataURL(cubePic, function(dataURL) {
+        document.getElementById("cube").src = dataURL
+    })
+
+    let xArray = [2,3,4,5,10];
+    let x = xArray[Math.floor(Math.random()*xArray.length)];
+
+
+    questionText.innerHTML += `
+    <style>
+    .cubeContainer{
+        display: grid;
+        grid-template-rows: 1fr 0.1fr;
+        text-align: center;
+        width: 50%;
+    }
+    .length{
+        transform: translateY(-1em);
+    }
+    </style>
+    <span class="questionNumber">Q9.</span><br>
+    <div class="cubeContainer">
+        <div>
+            <img id="cube" src="">
+        </div>
+        <div class="length">
+            ${x}cm
+        </div>
+    </div>
+    What is the volume of this cube?
+    <br>
+    <div class="answerLineRight">______________________</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>`
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q9.</span><br><br>
+    The volume is ${x}<sup>3</sup> = ${x}cm &times ${x}cm &times ${x}cm = ${x*x*x}cm<sup>3</sup>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`;
+}
+
+function convertingMixedNumtoImproper(){
+
+    let x=Math.ceil(Math.random()*9);
+    let mainArray = [[8,[1,3,5,7]],[7,[1,2,3,4,5,6]],[6,[1,5]],[5,[1,2,3,4]],[4,[1,3]],[2,[1]]];
+    let chosenArray = mainArray[Math.floor(Math.random()*mainArray.length)];
+    let b=chosenArray[0];
+    let a=chosenArray[1][Math.floor(Math.random()*chosenArray[1].length)];
+
+    let numeratorSolution = x*b + a
+
+    questionText.innerHTML += `
+    <style>
+    .tableContainer{
+        width: 100%;
+        height: auto;
+    }
+    #convertingMixedNumToImproperQ{
+        width: 2em;
+        border-collapse: separate;
+        border-spacing: 0.5em;
+        text-align: center;
+        float: right;
+    }
+    .box{
+        outline: 1px solid black;
+        width: 2em;
+        min-width: 1.75em;
+    }
+    .hyphen{
+        border-top: 1px solid black;
+    }
+    </style>
+    <span class="questionNumber">Q10.</span><br><br>
+    ${x} <sup>${a}</sup>&frasl;<sub>${b}</sub> is the same as <br><br>
+    <div class="tableContainer">
+        <table id="convertingMixedNumToImproperQ">
+            <tr>
+                <td class="box">&nbsp</td>
+            </tr>
+            <tr>
+                <td class="hyphen">${b}</td>
+            </tr>
+        </table><br><br><br>
+    </div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    ${[pagebreak]}
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q10.</span><br><br>
+    ${x} <sup>${a}</sup>&frasl;<sub>${b}</sub> = <sup>${numeratorSolution}</sup>&frasl;<sub>${b}</sub>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2628,6 +2816,9 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     percentageOfAnAmountNonCalc();
     rangeOfNumbers();
     percentageSavingsAccount();
+    probabilityScale();
+    volumeOfCube();
+    convertingMixedNumtoImproper();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";

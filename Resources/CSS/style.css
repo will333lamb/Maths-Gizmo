@@ -611,6 +611,10 @@ select:hover{
     float: right;
 }
 
+.bold{
+    font-weight: bold
+}
+
 
 
 
