@@ -615,6 +615,9 @@ select:hover{
     font-weight: bold
 }
 
+.italic{
+    font-style: italic;
+}
 
 
 
@@ -1212,6 +1215,18 @@ select:hover{
 
 .centeredTable{
     margin: 0 25%;
+}
+
+.answerLineRight{
+    float: right;
+}
+
+.bold{
+    font-weight: bold
+}
+
+.italic{
+    font-style: italic;
 }
 
 

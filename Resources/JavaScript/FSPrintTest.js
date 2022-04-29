@@ -261,6 +261,17 @@ function frontPageNonCalc(){
 }
 
 function frontPageCalc(){
+    if(globalTopicAreaSelection ==="communityEvents"){
+        level = "Entry 3"
+        title = "Community Events"
+        timeAllowed ="65 minutes"
+        marks = 30
+    } else if(globalTopicAreaSelection==="level1Sample1"){
+        level = "Level 1"
+        title = "Sample 1"
+        timeAllowed ="1 hour 20 minutes"
+        marks = 45
+    }
     document.getElementById("questionText").innerHTML += 
     `<style>
     .frontPage{
@@ -269,7 +280,6 @@ function frontPageCalc(){
         line-height: 3.5rem;
         color: #009870;
     }
-
     .centeredLogo{
         margin: 0 auto;
         width: 300px;
@@ -278,16 +288,16 @@ function frontPageCalc(){
     }
     </style>
     <div class="frontPage">
-    <span style="font-weight: bold;">Functional Skills Mathematics Entry 3 Practice Paper<br>
-    Community Events<br><br>
+    <span style="font-weight: bold;">Functional Skills Mathematics ${level} Practice Paper<br>
+    ${title}<br><br>
     <div class="centeredLogo"><div class="MathsGizmoWhiteBackgroundMiddle"></div></div><br>
     Calculator</span><br>
     <span style="font-size: 7.5rem;"><i class="fas fa-calculator"></i>
     <i id="checkSign" class="fas fa-check"></i></span>
     <br><br> 
     
-    <span style="font-weight: bold;">Time allowed - 65 minutes</span><br>
-    Marks: 30 <br>
+    <span style="font-weight: bold;">Time allowed - ${timeAllowed}</span><br>
+    Marks: ${marks} <br>
     
     <br>
     Name: .................................................<br><br>
@@ -317,6 +327,7 @@ function frontPageCalc(){
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Entry 3
+
 //Community Events
 function sequencesNextNumberInteger(){
     let num1 = Math.floor((Math.random()*20)+5)
@@ -2285,6 +2296,7 @@ function multiplicationMoney(){
 }
 
 //Level 1 *////////////////////////////////////////////////////////////////////////////////
+
 //Sample 1
 function BIDMAS(){
     let x=Math.ceil(Math.random()*9);
@@ -2983,6 +2995,89 @@ function readingScalesFuelGauge(){
 
 }
 
+function writingNumbersInFigures(){
+
+    let numArray = [[1,"one"],[2,"two"],[3,"three"],[4,"four"],[5,"five"],[6,"six"],[7,"seven"],[8,"eight"],[9,"nine"]]
+
+    let aChoice=numArray[Math.floor(Math.random()*numArray.length)];
+    let bChoice=numArray[Math.floor(Math.random()*numArray.length)];
+    let cChoice=numArray[Math.floor(Math.random()*numArray.length)];
+    let dChoice=numArray[Math.floor(Math.random()*numArray.length)];
+
+    let a=aChoice[1];
+    let b=bChoice[1];
+    let c=cChoice[1];
+    let d=dChoice[1];
+
+    let solution = `${aChoice[0]}0${bChoice[0]} ${cChoice[0]}0${dChoice[0]}`
+
+    questionText.innerHTML += `
+    <span class="questionNumber">Q1.</span><br><br>
+    Write <span class="bold">${a} hundred and ${b} thousand, ${c} hundred and ${d}</span> in figures
+    <br><br><br><br><br><br>
+    <div class="answerLineRight">________________</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>`
+
+    solutionText.innerHTML += `
+    <span class="questionNumber">Q1.</span><br><br>
+    ${solution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function roundingNumberToDecimalPlace(){
+
+    let a=Math.ceil(Math.random()*8);
+    let b=`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}`
+    let numDec = Math.ceil(Math.random()*4)+1;
+    let solution = parseFloat(`${b}.${a}${a}${a}${a}${a}${a}`).toFixed(numDec);
+    questionText.innerHTML += `
+    <span class="questionNumber">Q2.</span><br><br>
+    What is
+    ${b}.${a}${a}${a}${a}${a}${a}
+    rounded to ${numDec} decimal places?
+    <br><br><br><br><br><br>
+    <div class="answerLineRight">________________</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q2.</span><br><br>
+    ${solution}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function netOfCube(){
+    let cubeNetPic = "../Resources/Images/FS Q's/Level 1/netOfCube/netOfCube.png"
+    toDataURL(cubeNetPic, function(dataURL) {
+        document.getElementById("netOfCube").src = dataURL
+    })
+
+    questionText.innerHTML += `
+    <style>
+    #netOfCube{
+        width: 75%;
+    }
+    </style>
+    <span class="questionNumber">Q3.</span><br><br>
+    Which of these nets will fold to make a cube?<br>
+    <div class="centeredQuestion">
+        <img id="netOfCube" src="">
+    </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
+
+    `
+
+    solutionText.innerHTML += 
+    `
+    <br><br><span class="questionNumber">Q3.</span><br><br>
+    D should be ticked. 
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
+}
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -3044,6 +3139,11 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     ratioJumpers();
     probabilityOfficWorker();
     readingScalesFuelGauge();
+    questionText.innerHTML += `<div class="html2pdf__page-break"></div><br>`
+    frontPageCalc();
+    writingNumbersInFigures();
+    roundingNumberToDecimalPlace();
+    netOfCube();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";

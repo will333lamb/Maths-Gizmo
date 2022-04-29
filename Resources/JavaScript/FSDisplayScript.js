@@ -2453,6 +2453,121 @@ function readingScalesFuelGauge(){
 
 }
 
+function writingNumbersInFigures(){
+
+    let numArray = [[1,"one"],[2,"two"],[3,"three"],[4,"four"],[5,"five"],[6,"six"],[7,"seven"],[8,"eight"],[9,"nine"]]
+
+    let aChoice=numArray[Math.floor(Math.random()*numArray.length)];
+    let bChoice=numArray[Math.floor(Math.random()*numArray.length)];
+    let cChoice=numArray[Math.floor(Math.random()*numArray.length)];
+    let dChoice=numArray[Math.floor(Math.random()*numArray.length)];
+
+    let a=aChoice[1];
+    let b=bChoice[1];
+    let c=cChoice[1];
+    let d=dChoice[1];
+
+    let solution = `${aChoice[0]}0${bChoice[0]} ${cChoice[0]}0${dChoice[0]}`
+
+    questionText.innerHTML = `Write <span class="bold">${a} hundred and ${b} thousand, ${c} hundred and ${d}</span> in figures`
+
+    solutionText.innerHTML = `${solution}`
+}
+
+function roundingNumberToDecimalPlace(){
+
+    let a=Math.ceil(Math.random()*8);
+    let b=`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}`
+    let numDec = Math.ceil(Math.random()*4)+1;
+    let solution = parseFloat(`${b}.${a}${a}${a}${a}${a}${a}`).toFixed(numDec);
+    questionText.innerHTML = `
+    What is
+    ${b}.${a}${a}${a}${a}${a}${a}
+    rounded to ${numDec} decimal places?
+    `
+
+    solutionText.innerHTML = `${solution}`
+}
+
+function biggestFraction(){
+    let mainArray = [[10,[1,2,3,4,5,6,7,8,9]],[5,[1,2,3,4]],[4,[1,3]],[3,[1,2]],[2,[1]]];
+    function getNumbersForFraction(){
+        chosenA = mainArray[Math.floor(Math.random()*mainArray.length)];
+        aDenom = chosenA[0];
+        aNum = chosenA[1][Math.floor(Math.random()*chosenA[1].length)];
+        a=aNum/aDenom;
+        chosenB = mainArray[Math.floor(Math.random()*mainArray.length)];
+        bDenom = chosenB[0];
+        bNum = chosenB[1][Math.floor(Math.random()*chosenB[1].length)];
+        b=bNum/bDenom;
+        chosenC = mainArray[Math.floor(Math.random()*mainArray.length)];
+        cDenom = chosenC[0];
+        cNum = chosenC[1][Math.floor(Math.random()*chosenC[1].length)];
+        c=cNum/cDenom;
+        chosenD = mainArray[Math.floor(Math.random()*mainArray.length)];
+        dDenom = chosenD[0];
+        dNum = chosenD[1][Math.floor(Math.random()*chosenD[1].length)];
+        d=dNum/dDenom;
+        if(a===b||a===c||a===d||b===c||b===d||c===d){
+            getNumbersForFraction();
+        }
+    }
+
+    getNumbersForFraction();
+    let biggestFraction = Math.max(a,b,c,d);
+    if(biggestFraction===a){
+        solution=`${aNum}</sup>&frasl;<sub>${aDenom}</sub>`
+    } else if(biggestFraction===b){
+        solution=`${bNum}</sup>&frasl;<sub>${bDenom}</sub>`
+    } else if(biggestFraction===c){
+        solution=`<sup>${cNum}</sup>&frasl;<sub>${cDenom}</sub>`
+    } else if(biggestFraction===d){
+        solution=`<sup>${dNum}</sup>&frasl;<sub>${dDenom}</sub>`
+    }
+        
+    
+
+    questionText.innerHTML = `
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            outline: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    Which of these fractions is the <span class="bold">biggest</span> number?<br>
+    <span class="italic">(tick one box)</span><br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td><sup>${aNum}</sup>&frasl;<sub>${aDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td><sup>${bNum}</sup>&frasl;<sub>${bDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td><sup>${cNum}</sup>&frasl;<sub>${cDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td><sup>${dNum}</sup>&frasl;<sub>${dDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table>
+    `
+
+    solutionText.innerHTML = `${solution} is the biggest number`
+}
 
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -2530,6 +2645,12 @@ generateQButton.onclick = function(){
         probabilityOfficWorker();
     } else if(globalTopicAreaSelection==="readingScalesFuelGauge"){
         readingScalesFuelGauge();
+    } else if(globalTopicAreaSelection==="writingNumbersInFigures"){
+        writingNumbersInFigures();
+    } else if(globalTopicAreaSelection==="roundingNumberToDecimalPlace"){
+        roundingNumberToDecimalPlace();
+    } else if(globalTopicAreaSelection==="biggestFraction"){
+        biggestFraction();
     }
 };
 
