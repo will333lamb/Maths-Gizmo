@@ -145,6 +145,8 @@ let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
 let questionText = document.getElementById("questionText");
 let solutionText = document.getElementById("solutionText");
 
+let random9 = Math.ceil(Math.random()*9);
+
 let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
 <i class="fas fa-calculator fa-stack-1x"></i>
 <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
@@ -3066,7 +3068,7 @@ function netOfCube(){
         <img id="netOfCube" src="">
     </div>
     <p id="marksGiven">(1 mark)</p><br><br>
-
+    ${pagebreak}
     `
 
     solutionText.innerHTML += 
@@ -3077,6 +3079,162 @@ function netOfCube(){
     <div class="borderBottomSolution"></div>
     `
 }
+
+function biggestFraction(){
+    let mainArray = [[10,[1,2,3,4,5,6,7,8,9]],[5,[1,2,3,4]],[4,[1,3]],[3,[1,2]],[2,[1]]];
+    function getNumbersForFraction(){
+        chosenA = mainArray[Math.floor(Math.random()*mainArray.length)];
+        aDenom = chosenA[0];
+        aNum = chosenA[1][Math.floor(Math.random()*chosenA[1].length)];
+        a=aNum/aDenom;
+        chosenB = mainArray[Math.floor(Math.random()*mainArray.length)];
+        bDenom = chosenB[0];
+        bNum = chosenB[1][Math.floor(Math.random()*chosenB[1].length)];
+        b=bNum/bDenom;
+        chosenC = mainArray[Math.floor(Math.random()*mainArray.length)];
+        cDenom = chosenC[0];
+        cNum = chosenC[1][Math.floor(Math.random()*chosenC[1].length)];
+        c=cNum/cDenom;
+        chosenD = mainArray[Math.floor(Math.random()*mainArray.length)];
+        dDenom = chosenD[0];
+        dNum = chosenD[1][Math.floor(Math.random()*chosenD[1].length)];
+        d=dNum/dDenom;
+        if(a===b||a===c||a===d||b===c||b===d||c===d){
+            getNumbersForFraction();
+        }
+    }
+
+    getNumbersForFraction();
+    let biggestFraction = Math.max(a,b,c,d);
+    if(biggestFraction===a){
+        solution=`${aNum}</sup>&frasl;<sub>${aDenom}</sub>`
+    } else if(biggestFraction===b){
+        solution=`${bNum}</sup>&frasl;<sub>${bDenom}</sub>`
+    } else if(biggestFraction===c){
+        solution=`<sup>${cNum}</sup>&frasl;<sub>${cDenom}</sub>`
+    } else if(biggestFraction===d){
+        solution=`<sup>${dNum}</sup>&frasl;<sub>${dDenom}</sub>`
+    }
+        
+    
+
+    questionText.innerHTML += `
+    <style>
+        table{
+            width: 20%;
+            border-collapse: seperate;
+            border-spacing: 0.5em;
+        }
+        .box{
+            outline: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style>
+    <span class="questionNumber">Q4.</span><br><br>
+    Which of these fractions is the <span class="bold">biggest</span> number?<br><br>
+    <span class="italic">(tick one box)</span><br><br>
+    <table>
+        <tr>
+            <th>A</th>
+            <td><sup>${aNum}</sup>&frasl;<sub>${aDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td><sup>${bNum}</sup>&frasl;<sub>${bDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td><sup>${cNum}</sup>&frasl;<sub>${cDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td><sup>${dNum}</sup>&frasl;<sub>${dDenom}</sub></td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table><br><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q4.</span><br><br>
+    ${solution} is the biggest number
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    ${pagebreak}`
+}
+
+function orderingBigNumbers(){
+
+    let firstThreeDigits = parseFloat(`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}`);
+    let firstThreeDigitsC = firstThreeDigits - 2
+    let nextDigitsA = `0${random9}0`;
+    let nextDigitsB = `${random9}00`;
+    let nextDigitsC = `${Math.ceil(Math.random()*3)+6}00`;
+    let a = `${firstThreeDigits},${nextDigitsA}`
+    let b = `${firstThreeDigits},${nextDigitsB}`
+    let c = `${firstThreeDigitsC},${nextDigitsC}`
+
+    let decreasingQuestion = `decreasing order from the largest to the smallest?`
+    let increasingQuestion = `increasing order from the smallest to the largest?`
+
+    let questionContextArray = [[decreasingQuestion,"C"],[increasingQuestion,"A"]];
+    let chosenContext = questionContextArray[Math.floor(Math.random()*questionContextArray.length)];
+
+
+    questionText.innerHTML += `
+    <style>
+        #orderingBigNumbersTable{
+            width: fit-content;
+            border-collapse: seperate;
+            border-spacing: 2em 1em;
+        }
+        .box{
+            outline: 1px solid black;
+            width: 2em;
+            min-width: 1.75em;
+        }
+    </style><br>
+    <span class="questionNumber">Q5.</span><br><br>
+    Which one of the following lists is in ${chosenContext[0]}<br><br>
+    <span class="italic">(tick one box)</span><br><br>
+    <table id="orderingBigNumbersTable">
+        <tr>
+            <th>A</th>
+            <td>${c}&nbsp&nbsp&nbsp&nbsp&nbsp${a}&nbsp&nbsp&nbsp&nbsp&nbsp${b}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td>${b}&nbsp&nbsp&nbsp&nbsp&nbsp${c}&nbsp&nbsp&nbsp&nbsp&nbsp${a}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td>${b}&nbsp&nbsp&nbsp&nbsp&nbsp${a}&nbsp&nbsp&nbsp&nbsp&nbsp${c}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td>${c}&nbsp&nbsp&nbsp&nbsp&nbsp${b}&nbsp&nbsp&nbsp&nbsp&nbsp${a}</td>
+            <td class="box">&nbsp</td>
+        </tr>
+    </table><br><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    ${pagebreak}
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q5.</span><br><br>
+    The one that is in ${chosenContext[0]} is ${chosenContext[1]}.
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3144,6 +3302,8 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     writingNumbersInFigures();
     roundingNumberToDecimalPlace();
     netOfCube();
+    biggestFraction();
+    orderingBigNumbers();
 
 
     document.getElementById("generateQButton").innerHTML="Reset";

@@ -2569,6 +2569,31 @@ function biggestFraction(){
     solutionText.innerHTML = `${solution} is the biggest number`
 }
 
+function salesmanMistake(){
+
+    
+
+
+    questionText.innerHTML = `
+    <style>
+    .speechBubble{
+        border: 1px solid black;
+        border-radius: 35%;
+        width: 100%;
+        text-align: center;
+    }
+    </style>
+    A customer wants to buy a saxophone. The salesperson says he must pay a deposit.
+    <div class="speechBubble"><br>
+        "You can pay xx%, thats £yy.yy<br>
+        Or you can pay 2x%, thats £ww.ww"</p>
+        <br>
+    </div>
+    Explain why the salesperson must have made a mistake.
+
+    `
+}
+
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
@@ -2651,6 +2676,8 @@ generateQButton.onclick = function(){
         roundingNumberToDecimalPlace();
     } else if(globalTopicAreaSelection==="biggestFraction"){
         biggestFraction();
+    } else if(globalTopicAreaSelection==="salesmanMistake"){
+        salesmanMistake();
     }
 };
 
