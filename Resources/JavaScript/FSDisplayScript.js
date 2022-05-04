@@ -2571,7 +2571,9 @@ function biggestFraction(){
 
 function salesmanMistake(){
 
-    
+    let x = parseFloat(`${Math.ceil(Math.random()*4)}0`);
+    let y = parseFloat(`${Math.ceil(Math.random()*4)}9.90`).toFixed(2);
+    let w = (parseFloat(y)+x).toFixed(2);
 
 
     questionText.innerHTML = `
@@ -2585,8 +2587,8 @@ function salesmanMistake(){
     </style>
     A customer wants to buy a saxophone. The salesperson says he must pay a deposit.
     <div class="speechBubble"><br>
-        "You can pay xx%, thats £yy.yy<br>
-        Or you can pay 2x%, thats £ww.ww"</p>
+        "You can pay ${x}%, thats £${y}<br>
+        Or you can pay ${2*x}%, thats £${w}"</p>
         <br>
     </div>
     Explain why the salesperson must have made a mistake.
