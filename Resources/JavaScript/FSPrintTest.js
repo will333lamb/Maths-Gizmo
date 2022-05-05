@@ -3234,6 +3234,156 @@ function orderingBigNumbers(){
     <div class="borderBottomSolution"></div>`
 }
 
+function salesmanMistake(){
+
+
+    function getNumbers(){
+        x = parseFloat(`${Math.ceil(Math.random()*4)}0`);
+        y = parseFloat(`${Math.ceil(Math.random()*4)}9.90`).toFixed(2);
+        w = (parseFloat(y)+x).toFixed(2);
+        checkY = Math.round(y - 9.9)
+        checkX = x - 10
+        if(checkX===checkY){
+            getNumbers();
+        }
+        }
+    getNumbers();
+
+
+    questionText.innerHTML += `
+    <style>
+    .speechBubble{
+        border: 1px solid black;
+        border-radius: 35%;
+        width: 100%;
+        text-align: center;
+        
+    }
+    </style>
+    <span class="questionNumber">Q6.</span>
+    A customer wants to buy a saxophone. The salesperson says he must pay a deposit.<br><br>
+    <div class="speechBubble"><br>
+        "You can pay ${x}%, thats £${y}<br>
+        Or you can pay ${2*x}%, thats £${w}"</p>
+        <br>
+    </div><br>
+    Explain why the salesperson must have made a mistake.<br><br><br><br><br><br><br><br><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+
+
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q6.</span><br><br>
+    The salesperson has just added £${x}. They should have multiplied ${y} by 2 to get £${(y*2).toFixed(2)}
+    <p id="marksGiven">(1 mark)</p><br><br><br>
+    <div class="borderBottomSolution"></div>`
+}
+
+function usingAFormula(){
+
+    let heOrSheArray=["he","she"];
+    let chosenGender=heOrSheArray[Math.floor(Math.random()*heOrSheArray.length)];
+
+    let mainArray = [[4,[50]],[6,[25,50,75]],[8,[25,50,75]],[10,[25,75]],[12,[25,50]],[14,[25,50]]]
+    let chosenQ = mainArray[Math.floor(Math.random()*mainArray.length)];
+    let x = chosenQ[0];
+    let y = chosenQ[1][Math.floor(Math.random()*chosenQ[1].length)];
+
+    let solutionGrams = x*x*y;
+    let solutionKg = solutionGrams/1000
+    
+    if(solutionKg<1){
+        solutionBag = "1kg bag"
+    } else if(solutionKg>1&&solutionKg<2){
+        solutionBag = "2kg bag"
+    } else if(solutionKg>2&&solutionKg<5){
+        solutionBag = "5kg bag"
+    } else if(solutionKg>5&&solutionKg<10){
+        solutionBag = "10kg bag"
+    }
+
+    questionText.innerHTML += `
+    <style>
+    .formulaBox{
+        border: 1px solid #009870;
+        text-align: center;
+        font-weight: bold;
+        padding: 0.3em;
+    }
+    .seedPicsContainer{
+        
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        flex-wrap: wrap;
+    }
+    .individualSeedBoxes{
+        padding: 1em;
+    }
+    .seed1kg{
+        padding: 0.2em;
+        border: 3px #009870 solid;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+    .seed2kg{
+        padding: 0.4em;
+        border: 3px #009870 solid;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+    .seed5kg{
+        padding: 0.8em;
+        border: 3px #009870 solid;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+    .seed10kg{
+        padding: 1.5em;
+        border: 3px #009870 solid;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+
+    </style>
+    <span class="questionNumber">Q7.</span>
+    A gardener needs to order grass seeds for a garden.<br>
+    The garden is a square with sides measuring ${x} metres.<br><br>
+    This formula shows how many <span class="bold">grams</span> of seeds ${chosenGender} needs.<br><br>
+    <div class="formulaBox">
+        Grams of seeds needed = length in metres &times width in metres &times ${y}
+    </div><br>
+    The supplier sells these bags of seeds.<br>
+    <div class="seedPicsContainer">
+        <div class="individualSeedBoxes">
+            <div class="seed1kg">1kg</div>
+        </div>
+        <div class="individualSeedBoxes">
+            <div class="seed2kg">2kg</div>
+        </div>
+        <div class="individualSeedBoxes">
+            <div class="seed5kg">5kg</div>
+        </div>
+        <div class="individualSeedBoxes">
+            <div class="seed10kg">10kg</div>
+        </div>
+    </div><br>
+    <span class="bold">The gardener only wants to buy one bag</span><br><br>
+    Which bag of seeds should the gardener buy? include figures to explain your answer.
+    <br><br><br><br><br><br><br><br><br><br>
+    <p id="marksGiven">(3 marks)</p><br><br>
+    ${pagebreak}
+
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q7.</span><br><br>
+    Grams of seeds needed is ${x} &times ${x} &times ${y} = ${solutionGrams}g<br>
+    ${solutionGrams}g = ${solutionKg}kg<br>
+    Therefore, they should buy the ${solutionBag}
+    <p id="marksGiven">(3 marks)</p><br><br><br>
+    <div class="borderBottomSolution"></div>.
+    `
+}
+
 
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3304,7 +3454,8 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     netOfCube();
     biggestFraction();
     orderingBigNumbers();
-
+    salesmanMistake();
+    usingAFormula();
 
     document.getElementById("generateQButton").innerHTML="Reset";
 }
