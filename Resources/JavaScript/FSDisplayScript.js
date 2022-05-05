@@ -2571,9 +2571,18 @@ function biggestFraction(){
 
 function salesmanMistake(){
 
-    let x = parseFloat(`${Math.ceil(Math.random()*4)}0`);
-    let y = parseFloat(`${Math.ceil(Math.random()*4)}9.90`).toFixed(2);
-    let w = (parseFloat(y)+x).toFixed(2);
+
+    function getNumbers(){
+        x = parseFloat(`${Math.ceil(Math.random()*4)}0`);
+        y = parseFloat(`${Math.ceil(Math.random()*4)}9.90`).toFixed(2);
+        w = (parseFloat(y)+x).toFixed(2);
+        checkY = Math.round(y - 9.9)
+        checkX = x - 10
+        if(checkX===checkY){
+            getNumbers();
+        }
+        }
+    getNumbers();
 
 
     questionText.innerHTML = `
@@ -2594,6 +2603,8 @@ function salesmanMistake(){
     Explain why the salesperson must have made a mistake.
 
     `
+
+    solutionText.innerHTML = `The salesperson has just added £${x}. They should have multiplied ${y} by 2 to get £${(y*2).toFixed(2)}`
 }
 
 
