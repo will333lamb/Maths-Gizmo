@@ -2830,6 +2830,71 @@ function elevations(){
     `
 }
 
+function scalesUsingMap(){
+
+    let hogwartsPic = "../Resources/Images/FS Q's/Level 1/Maps/Hogwarts.png";
+    let LOTRPic = "../Resources/Images/FS Q's/Level 1/Maps/LOTR.png";
+    let GOTPic = "../Resources/Images/FS Q's/Level 1/Maps/GOT.png";
+    let FortnitePic = "../Resources/Images/FS Q's/Level 1/Maps/Fortnite.png";
+    let NorwichPic = "../Resources/Images/FS Q's/Level 1/Maps/Norwich.png";
+
+    let hogwartsText = `Harry Potter and his friends want to know how long it will take to walk to Hogsmeade.`;
+    let LOTRText = `A group of Orcs want to know how long it will take to walk to Rohan.`;
+    let GOTText = `Jon Snow wants to know how long it will take to walk to Kings Landing.`;
+    let FortniteText = `A player wants to know how long it will take to walk to Tiled Towers.`;
+    let NorwichText = `A tourist wants to know how long it will take to walk to Norwich Castle.`;
+
+    let hogwartsText2 = `Harry Potter and his friends to walk to Hogsmeade?`;
+    let LOTRText2 = `The group of Orcs to walk to Rohan?`;
+    let GOTText2 = `Jon Snow to walk to Kings Landing?`;
+    let FortniteText2 = `The player to Tiled Towers?`;
+    let NorwichText2 = `The tourist to walk to Norwich Castle?`;
+
+    let mainArray = [[hogwartsPic,hogwartsText,hogwartsText2],[LOTRPic,LOTRText,LOTRText2],
+    [GOTPic, GOTText,GOTText2],[FortnitePic,FortniteText,FortniteText2],[NorwichPic,NorwichText,NorwichText2]];
+    let chosenContext = mainArray[Math.floor(Math.random()*mainArray.length)];
+
+
+    toDataURL(chosenContext[0], function(dataURL) {
+        document.getElementById("mapPic").src = dataURL
+    });
+
+    let scaleMetresArray = [50,100];
+    let timeArray = [10];
+    let chosenTime = timeArray[Math.floor(Math.random()*timeArray.length)];
+    let scaleMetres = scaleMetresArray[Math.floor(Math.random()*scaleMetresArray.length)];
+    let routeMeasurement = parseFloat(`${Math.floor(Math.random()*9)}.5`);
+
+    questionText.innerHTML = `
+    <style>
+    .mapPicContainer{
+        object-fit: contain;
+        width: inherit;
+    }
+    #mapPic{
+        max-width: 100%;
+    }
+    </style>
+    ${chosenContext[1]}<br>
+    This map shows the route they will take.<br>
+    <div class="centeredQuestion">
+        <span class="bold">Scale: 1cm represents ${scaleMetres}m
+        <div class="mapPicContainer">
+            <img id="mapPic" src="">
+        </div>
+    </div>
+    The route measures ${routeMeasurement}cm on the map.<br>
+    It takes ${chosenTime} minutes to walk a kilometre.<br>
+    How long will it take ${chosenContext[2]}<br>
+    <span class="bold">Give units in your answer.</span>
+    `
+    
+    solutionText.innerHTML = `${routeMeasurement}cm on the map represents ${routeMeasurement*scaleMetres}m<br>
+    1000m takes 10 mins therefore 1m will take 0.01 of a minute. (This is 6 seconds)<br>
+    0.01 &times ${routeMeasurement*scaleMetres} = ${routeMeasurement*scaleMetres*0.01} minutes `
+}
+    
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2917,6 +2982,8 @@ generateQButton.onclick = function(){
         usingAFormula();
     } else if(globalTopicAreaSelection==="elevations"){
         elevations();
+    } else if(globalTopicAreaSelection==="scalesUsingMap"){
+        scalesUsingMap();
     }
 };
 
