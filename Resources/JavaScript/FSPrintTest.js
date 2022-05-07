@@ -3384,6 +3384,144 @@ function usingAFormula(){
     `
 }
 
+function elevations(){
+
+
+    let displayPic1 = "../Resources/Images/FS Q's/Level 1/Elevations/shape1.png";
+    let displayPic2 = "../Resources/Images/FS Q's/Level 1/Elevations/shape2.png";
+    let displayPic3 = "../Resources/Images/FS Q's/Level 1/Elevations/shape3.png";
+    let displayPic4 = "../Resources/Images/FS Q's/Level 1/Elevations/shape4.png";
+
+
+    let spf = ["side","plan","front"];
+
+    let displayPicArray = [[displayPic1,5,[["side","B",4],["plan","C",4],["front","A",3]]],[displayPic2,8,[["side","D",4],["plan","E",6],["front","B",4]]]
+    ,[displayPic3,4,[["side","G",2],["plan","B",4],["front","F",3]]],[displayPic4,4,[["side","F",3],["plan","H",4],["front","G",2]]]];
+
+    let chosenDisplayPic = displayPicArray[Math.floor(Math.random()*displayPicArray.length)];
+    toDataURL(chosenDisplayPic[0], function(dataURL) {
+        document.getElementById("displayPic").src = dataURL
+    })
+
+    let chosenElevationArray = chosenDisplayPic[2][Math.floor(Math.random()*chosenDisplayPic[2].length)]
+    let chosenElevation = chosenElevationArray[0];
+    let solutionPartA = chosenElevationArray[1]
+    let numberBoxes = chosenElevationArray[2]
+    
+    let shapeA = "../Resources/Images/FS Q's/Level 1/Elevations/shapeA.png";
+    let shapeB = "../Resources/Images/FS Q's/Level 1/Elevations/shapeB.png";
+    let shapeC = "../Resources/Images/FS Q's/Level 1/Elevations/shapeC.png";
+    let shapeD = "../Resources/Images/FS Q's/Level 1/Elevations/shapeD.png";
+    let shapeE = "../Resources/Images/FS Q's/Level 1/Elevations/shapeE.png";
+    let shapeF = "../Resources/Images/FS Q's/Level 1/Elevations/shapeF.png";
+    let shapeG = "../Resources/Images/FS Q's/Level 1/Elevations/shapeG.png";
+    let shapeH = "../Resources/Images/FS Q's/Level 1/Elevations/shapeH.png";
+
+    toDataURL(shapeA, function(dataURL) {
+        document.getElementById("shapeA").src = dataURL
+    });
+    toDataURL(shapeB, function(dataURL) {
+        document.getElementById("shapeB").src = dataURL
+    });
+    toDataURL(shapeC, function(dataURL) {
+        document.getElementById("shapeC").src = dataURL
+    });
+    toDataURL(shapeD, function(dataURL) {
+        document.getElementById("shapeD").src = dataURL
+    });
+    toDataURL(shapeE, function(dataURL) {
+        document.getElementById("shapeE").src = dataURL
+    });
+    toDataURL(shapeF, function(dataURL) {
+        document.getElementById("shapeF").src = dataURL
+    });
+    toDataURL(shapeG, function(dataURL) {
+        document.getElementById("shapeG").src = dataURL
+    });
+    toDataURL(shapeH, function(dataURL) {
+        document.getElementById("shapeH").src = dataURL
+    });
+
+
+    let x = parseFloat(`${Math.floor(Math.random()*9)}50`);
+    questionText.innerHTML += `
+    <style>
+    .optionsContainer{
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        flex-wrap: wrap;
+    }
+    .individualShapeBoxes{
+        padding: 1em;
+    }
+    </style>
+    <span class="questionNumber">Q8.</span>
+    A toy-maker is making a display in a shop. It is made from ${chosenDisplayPic[1]} identical boxes. Each box is a cube.
+    <div class="centeredQuestion">
+        <img id="displayPic" src="">
+    </div>
+    <span class="questionNumber">a)</span> Circle the shape below that shows a ${chosenElevation} view (elevation) of the display?<br><br>
+    <div class="optionsContainer">
+        <div class="individualShapeBoxes">
+            <img id="shapeA" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeB" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeC" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeD" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeE" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeF" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeG" src="">
+        </div>
+        <div class="individualShapeBoxes">
+            <img id="shapeH" src="">
+        </div>
+    </div>
+    <p id="marksGiven">(1 mark)</p><br><br>
+
+    <span class="questionNumber">b)</span> Each box has sides measuring <span class="bold">0.5m</span><br>
+    Work out the area of this side of the display. <span class="bold"> Give units in your answer.</span>
+    <br><br><br><br><br><br><br><br>
+    <div class="answerLineRight">Area _________________</div><br>
+    <p id="marksGiven">(2 marks)</p><br><br>
+
+    <span class="questionNumber">c)</span> Each box weighs ${x}g<br>
+    What is the weight of the whole display in <span class="bold">kilograms</span>
+    <br><br><br><br><br><br><br>
+    <div class="answerLineRight"> _________________ kg</div><br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q8.</span><br><br>
+    <span class="questionNumber">a)</span> The ${chosenElevation} view (elevation) is Shape ${solutionPartA}
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <span class="questionNumber">b)</span> 0.5m &times 0.5m = 0.25m<sup>2</sup>. Therefore the area of one square is 0.25m<sup>2</sup>. <br>
+    There are ${numberBoxes} squares on shape ${solutionPartA}.<br>
+    ${numberBoxes} &times 0.25m<sup>2</sup> = ${numberBoxes*0.25}m<sup>2</sup>
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <span class="questionNumber">c)</span> ${chosenDisplayPic[1]} boxes &times ${x}g = ${chosenDisplayPic[1]*x}g<br>
+    ${chosenDisplayPic[1]*x}g = ${(chosenDisplayPic[1]*x)/1000}kg
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    
+    `
+}
+
+
 
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3456,6 +3594,7 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     orderingBigNumbers();
     salesmanMistake();
     usingAFormula();
+    elevations();
 
     document.getElementById("generateQButton").innerHTML="Reset";
 }

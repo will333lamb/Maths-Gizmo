@@ -2763,6 +2763,9 @@ function elevations(){
     toDataURL(shapeH, function(dataURL) {
         document.getElementById("shapeH").src = dataURL
     });
+
+
+    let x = parseFloat(`${Math.floor(Math.random()*9)}50`);
     questionText.innerHTML = `
     <style>
     .optionsContainer{
@@ -2811,13 +2814,18 @@ function elevations(){
     b) Each box has sides measuring <span class="bold">0.5m</span><br>
     Work out the area of this side of the display. <span class="bold"> Give units in your answer.</span>
     <br>
+
+    c) Each box weighs ${x}g<br>
+    What is the weight of the whole display in <span class="bold">kilograms</span>
     
     `
 
     solutionText.innerHTML = `a) The ${chosenElevation} view (elevation) is Shape ${solutionPartA}<br>
-    b) 0.5m &times 0.5m = 0.25m<sup>2</sup>. Therefore the area of one box is 0.25m<sup>2</sup>. <br>
-    There are ${numberBoxes} boxes on shape ${solutionPartA}.<br>
-    ${numberBoxes} &times 0.25m<sup>2</sup> = ${numberBoxes*0.25}m<sup>2</sup>
+    b) 0.5m &times 0.5m = 0.25m<sup>2</sup>. Therefore the area of one square is 0.25m<sup>2</sup>. <br>
+    There are ${numberBoxes} squares on shape ${solutionPartA}.<br>
+    ${numberBoxes} &times 0.25m<sup>2</sup> = ${numberBoxes*0.25}m<sup>2</sup><br>
+    c) ${chosenDisplayPic[1]} boxes &times ${x}g = ${chosenDisplayPic[1]*x}g<br>
+    ${chosenDisplayPic[1]*x}g = ${(chosenDisplayPic[1]*x)/1000}kg
     
     `
 }
