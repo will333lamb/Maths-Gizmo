@@ -3582,6 +3582,7 @@ function scalesUsingMap(){
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="answerLineRight"> Amount of time to walk _________________</div><br>
     <p id="marksGiven">(4 marks)</p><br><br>
+    ${pagebreak}
     `
     
     solutionText.innerHTML += `
@@ -3592,6 +3593,113 @@ function scalesUsingMap(){
     <p id="marksGiven">(4 marks)</p><br><br>
     <div class="borderBottomSolution"></div>
     ${pagebreak} `
+}
+
+function volumeOfCuboid(){
+
+    let x1 = (Math.ceil(Math.random()*11)+1)*5;
+    let x2 = (Math.ceil(Math.random()*11)+1)*5;
+    let x3 = (Math.ceil(Math.random()*11)+1)*5;
+    let y1 = (Math.ceil(Math.random()*11)+1)*5;
+    let y2 = (Math.ceil(Math.random()*11)+1)*5;
+    let y3 = (Math.ceil(Math.random()*11)+1)*5;
+    let z1 = (Math.ceil(Math.random()*11)+1)*5;
+    let z2 = (Math.ceil(Math.random()*11)+1)*5;
+    let z3 = (Math.ceil(Math.random()*11)+1)*5;
+
+    let fluvalVolume = x1*x2*x3;
+    let aquaOneVolume = y1*y2*y3;
+    let cianoVolume = z1*z2*z3;
+
+    let maxVolume = Math.max(fluvalVolume,aquaOneVolume,cianoVolume);
+    
+    if(maxVolume===fluvalVolume){
+        maxModel = "Fluval";
+    } else if(maxVolume===aquaOneVolume){
+        maxModel = "AquaOne";
+    } else if(maxVolume===cianoVolume){
+        maxModel = "Ciano";
+    };
+
+
+
+    let aquariumPic = "../Resources/Images/FS Q's/Level 1/VolumeOfCuboid/Aquarium.png";
+    toDataURL(aquariumPic, function(dataURL) {
+        document.getElementById("aquariumPic").src = dataURL
+    });
+    questionText.innerHTML += `
+    <style>
+    .picAndTableContainer{
+        display: inline-flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    #aquariumModels{
+        border-collapse: collapse;
+    }
+
+    #aquariumModels th, #aquariumModels td{
+        border: 1px solid #009870;
+        padding: 0.5em;
+        text-align: center;
+    }
+
+    #aquariumPic{
+        height: 100%;
+        margin: auto 0;
+    }
+
+
+    </style>
+    <span class="questionNumber">Q10.</span><br>
+    John wants to buy a new aquarium.<br><br> The local fish store has three different sized models.<br><br>
+    <div class="picAndTableContainer">
+        <img id="aquariumPic" src="">
+        <table id="aquariumModels">
+            <tr>
+                <th>Model</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th>Height</th>
+            </tr>
+            <tr>
+                <td>Fluval</td>
+                <td>${x1}cm</td>
+                <td>${x2}cm</td>
+                <td>${x3}cm</td>
+            </tr>
+            <tr>
+                <td>AquaOne</td>
+                <td>${y1}cm</td>
+                <td>${y2}cm</td>
+                <td>${y3}cm</td>
+            </tr>
+            <tr>
+                <td>Ciano</td>
+                <td>${z1}cm</td>
+                <td>${z2}cm</td>
+                <td>${z3}cm</td>
+            </tr>
+        </table>
+    </div><br><br>
+    Which aquarium has the largest volume? Include figures to support your explanation.
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="answerLineRight"> _________________</div><br>
+    <p id="marksGiven">(4 marks)</p><br><br>
+    ${pagebreak}
+    `
+
+    solutionText.innerHTML += `
+    <span class="questionNumber">Q10.</span><br><br>
+    Fluval volume is ${x1}cm &times ${x2}cm &times ${x3}cm = ${fluvalVolume}cm<sup>3</sup><br>
+    AquaOne volume is ${y1}cm &times ${y2}cm &times ${y3}cm = ${aquaOneVolume}cm<sup>3</sup><br>
+    Ciano volume is ${z1}cm &times ${z2}cm &times ${z3}cm = ${cianoVolume}cm<sup>3</sup><br>
+    Clearly, the ${maxModel} model has the largest volume.
+    <p id="marksGiven">(4 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    `
 }
 
 
@@ -3668,6 +3776,7 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     usingAFormula();
     elevations();
     scalesUsingMap();
+    volumeOfCuboid();
 
     document.getElementById("generateQButton").innerHTML="Reset";
 }

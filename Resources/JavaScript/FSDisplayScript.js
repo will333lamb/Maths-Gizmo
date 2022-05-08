@@ -2893,6 +2893,104 @@ function scalesUsingMap(){
     1000m takes 10 mins therefore 1m will take 0.01 of a minute. (This is 6 seconds)<br>
     0.01 &times ${routeMeasurement*scaleMetres} = ${routeMeasurement*scaleMetres*0.01} minutes `
 }
+
+function volumeOfCuboid(){
+
+    let x1 = (Math.ceil(Math.random()*11)+1)*5;
+    let x2 = (Math.ceil(Math.random()*11)+1)*5;
+    let x3 = (Math.ceil(Math.random()*11)+1)*5;
+    let y1 = (Math.ceil(Math.random()*11)+1)*5;
+    let y2 = (Math.ceil(Math.random()*11)+1)*5;
+    let y3 = (Math.ceil(Math.random()*11)+1)*5;
+    let z1 = (Math.ceil(Math.random()*11)+1)*5;
+    let z2 = (Math.ceil(Math.random()*11)+1)*5;
+    let z3 = (Math.ceil(Math.random()*11)+1)*5;
+
+    let fluvalVolume = x1*x2*x3;
+    let aquaOneVolume = y1*y2*y3;
+    let cianoVolume = z1*z2*z3;
+
+    let maxVolume = Math.max(fluvalVolume,aquaOneVolume,cianoVolume);
+    
+    if(maxVolume===fluvalVolume){
+        maxModel = "Fluval";
+    } else if(maxVolume===aquaOneVolume){
+        maxModel = "AquaOne";
+    } else if(maxVolume===cianoVolume){
+        maxModel = "Ciano";
+    };
+
+
+
+    let aquariumPic = "../Resources/Images/FS Q's/Level 1/VolumeOfCuboid/Aquarium.png";
+    toDataURL(aquariumPic, function(dataURL) {
+        document.getElementById("aquariumPic").src = dataURL
+    });
+    questionText.innerHTML = `
+    <style>
+    .picAndTableContainer{
+        display: inline-flex;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    #aquariumModels{
+        border-collapse: collapse;
+    }
+
+    #aquariumModels th, td{
+        border: 2px solid #009870;
+        padding: 0.5em;
+        text-align: center;
+    }
+
+    #aquariumPic{
+        height: 100%;
+        margin: auto 0;
+    }
+
+
+    </style>
+    John wants to buy a new aquarium. The local fish store has three different sized models.<br>
+    <div class="picAndTableContainer">
+        <img id="aquariumPic" src="">
+        <table id="aquariumModels">
+            <tr>
+                <th>Model</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th>Height</th>
+            </tr>
+            <tr>
+                <td>Fluval</td>
+                <td>${x1}cm</td>
+                <td>${x2}cm</td>
+                <td>${x3}cm</td>
+            </tr>
+            <tr>
+                <td>AquaOne</td>
+                <td>${y1}cm</td>
+                <td>${y2}cm</td>
+                <td>${y3}cm</td>
+            </tr>
+            <tr>
+                <td>Ciano</td>
+                <td>${z1}cm</td>
+                <td>${z2}cm</td>
+                <td>${z3}cm</td>
+            </tr>
+        </table>
+    </div>
+    Which aquarium has the largest volume? Include figures to support your explanation.
+    `
+
+    solutionText.innerHTML = `
+    Fluval volume is ${x1}cm &times ${x2}cm &times ${x3}cm = ${fluvalVolume}cm<sup>3</sup><br>
+    AquaOne volume is ${y1}cm &times ${y2}cm &times ${y3}cm = ${aquaOneVolume}cm<sup>3</sup><br>
+    Ciano volume is ${z1}cm &times ${z2}cm &times ${z3}cm = ${cianoVolume}cm<sup>3</sup><br>
+    Clearly, the ${maxModel} model has the largest volume.
+    `
+}
     
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -2984,6 +3082,8 @@ generateQButton.onclick = function(){
         elevations();
     } else if(globalTopicAreaSelection==="scalesUsingMap"){
         scalesUsingMap();
+    } else if(globalTopicAreaSelection==="volumeOfCuboid"){
+        volumeOfCuboid();
     }
 };
 
