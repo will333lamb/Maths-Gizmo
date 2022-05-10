@@ -274,7 +274,7 @@ select:hover{
     height: fit-content;
     width: 99%;
     margin: 1% 1%;
-    border-radius: 30px;
+    border-radius: 15px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
@@ -285,7 +285,7 @@ select:hover{
     width: 99%;
     height: fit-content;
     margin: 1% 1%;
-    border-radius: 30px;
+    border-radius: 15px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
@@ -308,8 +308,8 @@ select:hover{
 .questionSolutionContainer {
     padding: 1%;
     width: 100%;
-    font-size: 1.5rem;
-    line-height: 3rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     min-height: 850px;
     background-color: rgba(88, 229, 186, 0.2);
 }

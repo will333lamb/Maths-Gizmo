@@ -121,6 +121,8 @@ let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
 let questionText = document.getElementById("questionText");
 let solutionText = document.getElementById("solutionText");
 
+let random9 = Math.ceil(Math.random()*9);
+
 let nonCalcSign = `<span class="fa-stack fa-2x" style="font-size: 1rem;">
 <i class="fas fa-calculator fa-stack-1x"></i>
 <i id="banSign" class="fas fa-ban fa-stack-2x"></i>
@@ -176,8 +178,14 @@ function sequencesNextNumberInteger(){
     .centeredQuestion{
         text-align: center;
     }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
     </style>
-    What is the next number in this sequence?<br>
+    What is the next number in this sequence?<br><br>
     <div class="centeredQuestion">
     ${num1}<span class="spaceBetweenSequences">....</span>${num2}<span class="spaceBetweenSequences">....</span>${num3}<span class="spaceBetweenSequences">....</span>
     ${num4}<span class="spaceBetweenSequences">....</span>..........<br>
@@ -227,7 +235,16 @@ function writeNumberInFigures(){
 
 
     document.getElementById("questionText").innerHTML = 
-    `Write <span style="font-weight:bold;">${num1} hundred and ${num2}</span> in figures.`
+    `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    Write <span style="font-weight:bold;">${num1} hundred and ${num2}</span> in figures.`
 
     document.getElementById("solutionText").innerHTML = 
     `${concatedSolution}`
@@ -278,10 +295,30 @@ function highestNumberWithDecimals(){
     .centeredQuestion{
         text-align: center;
     }
+    
+    .decimalsHighestContainer{
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .decimalOption{
+        padding: 1em;
+    }
+
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
     </style>
-    Which of these is the <span style="font-weight:bold;">highest</span> number?<br>
-    <div class="centeredQuestion">${num1}<span class="spaceBetweenSequences">......</span>${num2}<span class="spaceBetweenSequences">......</span>
-    ${num3}<span class="spaceBetweenSequences">......</span>${num4}
+    Which of these is the <span style="font-weight:bold;">highest</span> number?<br><br>
+    <div class="decimalsHighestContainer">
+    <span class="decimalOption">${num1}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="decimalOption">${num2}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="decimalOption">${num3}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="decimalOption">${num4}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     `
 
@@ -306,7 +343,16 @@ function subtraction3DigitBy3Digit(){
     let subtractedSolution = num2AsNumber-num1AsNumber;
 
     document.getElementById("questionText").innerHTML = 
-    `Subtract ${num1} from ${num2}`
+    `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    Subtract <span class="bold">${num1}</span> from <span class="bold">${num2}?</span>`
 
     document.getElementById("solutionText").innerHTML = 
     `${subtractedSolution}`
@@ -405,6 +451,12 @@ function tellTheTimeOnAnalogueClock(){
 
     .centeredQuestion{
         text-align: center;
+    }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
     }
     </style>
     What time does the clock show?<br><br>
@@ -610,10 +662,29 @@ function identifyCorrectMeasuringTool(){
 
     document.getElementById("questionText").innerHTML = 
     `
+    <style>
+    .measuringToolsContainer{
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .toolOption{
+        padding: 1em;
+    }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
     Which one of these measuring instruments is best ${chosenQuestion}?<br><br>
-    <div class="centeredQuestion">
-    ${option1}<span class="spaceBetween">.....</span>${option2}<span class="spaceBetween">.....</span>
-    ${option3}<span class="spaceBetween">.....</span>${option4}
+    <div class="measuringToolsContainer">
+    <span class="toolOption">${option1}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="toolOption">${option2}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="toolOption">${option3}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="toolOption">${option4}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     `
 
@@ -875,7 +946,7 @@ function interpretBarChart(){
     }
     </style>
     
-    This chart shows the numbers of people attending different community events last year.<br>
+    This chart shows the numbers of people attending different community events last year.<br><br>
     <div class="barChartContainer">
         <div class="barChartContainerChild">
             <canvas id="FSBarChart" width="10" height="10"></canvas>
@@ -1101,8 +1172,14 @@ function sequencesNextNumberDecimal(){
     .centeredQuestion{
         text-align: center;
     }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
     </style>
-    What is the next number in this sequence?<br>
+    What is the next number in this sequence?<br><br>
     <div class="centeredQuestion">
     ${num1String}<span class="spaceBetweenSequences">....</span>${num2String}<span class="spaceBetweenSequences">....</span>${num3String}<span class="spaceBetweenSequences">....</span>
     ${num4String}<span class="spaceBetweenSequences">....</span>..........<br>
@@ -1127,7 +1204,16 @@ function roundingMoney(){
     }
 
     document.getElementById("questionText").innerHTML = 
-    `What is £${num1} rounded to the nearest ${roundTo}`
+    `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    What is <span class="bold">£${num1}</span> rounded to the nearest <span class="bold">${roundTo}</span>`
 
     document.getElementById("solutionText").innerHTML = 
     `£${solutionRounded}`
@@ -1182,7 +1268,7 @@ function bestValueTables(){
     </style>
     A youth club plans to hold a Charity Sale.<br>
     People hire tables to sell things from. <br>
-    The youth club has these different size tables.<br>
+    The youth club has these different size tables.<br><br>
     <div class="tableCostsContainer">
         <div class="tableInfoBox">
         Small table<br>
@@ -1488,6 +1574,7 @@ function scaleDrawings(){
         width: 50%;
         height: 50%;
         margin: 0 25%;
+        max-width: 600px;
     }
 
 
@@ -1503,7 +1590,7 @@ function scaleDrawings(){
     The organiser needs to set up the room.<br>
     He starts to draw a plan to show where he wants the tables and chairs to go. <br>
     He needs <span style="font-weight: bold;">two more tables and eight chairs.</span><br>
-    They need to be the same size and the same distance apart as the others.<br>
+    They need to be the same size and the same distance apart as the others.<br><br>
     <div class="centeredQuestion">
     <span style="font-weight:bold;">Plan of the room</span><br>
         <img id="tablesChairsPlanImage" class="tablesChairsPlanImage" src="" alt="image showing plan of room">
@@ -1554,13 +1641,13 @@ function compassDirections(){
     `
     <style>
     .compassDirections{
-        width: 65%;
+        width: 400px;
         height: auto;
         margin: 0 12.5%;
         border: 5px solid black;
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 535px) {
         .compassDirections{
             width: 90%;
             height: auto;
@@ -1572,10 +1659,10 @@ function compassDirections(){
     A scout group organises a Treasure Hunt.<br>
     People will follow directions to look for clues and then answer questions. <br>
     A group of friends decide to take part.<br>
-    Here is the direction to Clue One.<br>
+    Here is the direction to Clue One.<br><br>
     <div class=centeredQuestion">
     <img id="compassDirections" class="compassDirections" src="" alt="map showing direction to clue one">
-    </div>
+    </div><br>
     In which direction is Clue One?
     `
 
@@ -1681,83 +1768,107 @@ function linesOfSymmetry(){
     let positionLettersArray = [1,2,3,4]
     let chosenPosition = positionLettersArray[Math.floor(Math.random()*positionLettersArray.length)];
 
-    if(chosenPosition===1){
-    document.getElementById("questionText").innerHTML = 
-    `
-    <style>
-    .lettersContainer{
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
+        if(chosenPosition===1){
+        document.getElementById("questionText").innerHTML = 
+        `
+        <style>
+        .lettersContainer{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+        </style>
+        Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br>
+        <div class="lettersContainer">
+            <img id="letter1" class="letters" src="">
+            <img id="letter2" class="letters" src="">
+            <img id="letter3" class="letters" src="">
+            <img id="letter4" class="letters" src="">
+        </div>
+        
+        `
+    } else if(chosenPosition===2){
+        document.getElementById("questionText").innerHTML = 
+        `
+        <style>
+        .lettersContainer{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+        </style>
+        Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br>
+        <div class="lettersContainer">
+            <img id="letter2" class="letters" src="">
+            <img id="letter1" class="letters" src="">
+            <img id="letter4" class="letters" src="">
+            <img id="letter3" class="letters" src="">
+        </div>
+        
+        `
+    } else if(chosenPosition===3){
+        document.getElementById("questionText").innerHTML = 
+        `
+        <style>
+        .lettersContainer{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+        </style>
+        Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br>
+        <div class="lettersContainer">
+            <img id="letter4" class="letters" src="">
+            <img id="letter3" class="letters" src="">
+            <img id="letter2" class="letters" src="">
+            <img id="letter1" class="letters" src="">
+        </div>
+        
+        `
+    } else if(chosenPosition===4){
+        document.getElementById("questionText").innerHTML = 
+        `
+        <style>
+        .lettersContainer{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+        </style>
+        Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br><br>
+        <div class="lettersContainer">
+            <img id="letter1" class="letters" src="">
+            <img id="letter3" class="letters" src="">
+            <img id="letter4" class="letters" src="">
+            <img id="letter2" class="letters" src="">
+        </div>
+        
+        `
     }
-    </style>
-    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
-    <div class="lettersContainer">
-        <img id="letter1" class="letters" src="">
-        <img id="letter2" class="letters" src="">
-        <img id="letter3" class="letters" src="">
-        <img id="letter4" class="letters" src="">
-    </div>
-    
-    `
-} else if(chosenPosition===2){
-    document.getElementById("questionText").innerHTML = 
-    `
-    <style>
-    .lettersContainer{
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-    }
-    </style>
-    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
-    <div class="lettersContainer">
-        <img id="letter2" class="letters" src="">
-        <img id="letter1" class="letters" src="">
-        <img id="letter4" class="letters" src="">
-        <img id="letter3" class="letters" src="">
-    </div>
-    
-    `
-} else if(chosenPosition===3){
-    document.getElementById("questionText").innerHTML = 
-    `
-    <style>
-    .lettersContainer{
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-    }
-    </style>
-    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
-    <div class="lettersContainer">
-        <img id="letter4" class="letters" src="">
-        <img id="letter3" class="letters" src="">
-        <img id="letter2" class="letters" src="">
-        <img id="letter1" class="letters" src="">
-    </div>
-    
-    `
-} else if(chosenPosition===4){
-    document.getElementById("questionText").innerHTML = 
-    `
-    <style>
-    .lettersContainer{
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-    }
-    </style>
-    Which of these letters has <span style="font-weight:bold;">${chosenNumberLinesOfSymmetry}</span> of symmetry?<br>
-    <div class="lettersContainer">
-        <img id="letter1" class="letters" src="">
-        <img id="letter3" class="letters" src="">
-        <img id="letter4" class="letters" src="">
-        <img id="letter2" class="letters" src="">
-    </div>
-    
-    `
-}
 
     document.getElementById("solutionText").innerHTML = 
     `The letter ${solutionLetter} has ${chosenNumberLinesOfSymmetry} of symmetry`
@@ -1840,10 +1951,32 @@ function readingScalesChildsHeight(){
 
     document.getElementById("questionText").innerHTML = 
     `
+    <style>
+    #childImage{
+        width: 35%;
+        margin: 0 auto;
+        max-width:200px;
+    }
+    .childHeightContainer{
+        display: flex;
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 800px) {
+        #childImage{
+            width: 45%;
+            margin: 0 auto;
+            min-width: 150px;
+        }
+    }
+
+    </style>
     A family sees a poster for a Fun Fair.<br>
     It says children have to be <span style="font-weight:bold;"> over ${maxHeightForRide}cm</span> tall to go on the rides.<br>
     They need to check their child's height before they go to the Fun Fair.<br>
-    <img id="childImage" src="" alt="picture showing height of child"><br>
+    <div class="childHeightContainer">
+    <img id="childImage" src="" alt="picture showing height of child">
+    </div><br>
     Can the child go on the rides?
     `
 
@@ -1880,6 +2013,7 @@ function multiplicationMoney(){
     <span style="font-weight:bold;">Last year</span> they made £${lastYearAmount} from the ticket sales.<br>
     <span style="font-weight:bold;">This year</span> they sold ${ticketsSold} tickets at £${ticketCost} each.<br>
     The organiser thinks they made <span style="font-weight:bold;">more money</span> this year than they did last year from the ticket sales. <br>
+    <br>
     a) Is the organiser correct? <br>
     <br>
     b) Use an approximation to check your answer.
@@ -1903,6 +2037,14 @@ function BIDMAS(){
     let solution= x + y * z;
 
     questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
     ${x} + ${y} &times ${z} = `
 
     solutionText.innerHTML = `${x} + ${y} &times ${z} = ${solution}`
@@ -1910,7 +2052,16 @@ function BIDMAS(){
 
 function squaring(){
     let x=Math.ceil(Math.random()*25)+10;
-    questionText.innerHTML = `${x}<sup>2</sup> = `
+    questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    ${x}<sup>2</sup> = `
     solutionText.innerHTML = `${x}<sup>2</sup> = ${x*x}`
 }
 
@@ -1920,7 +2071,16 @@ function FDPFracToDec(){
     let y=chosenArray[0];
     let x=chosenArray[1][Math.floor(Math.random()*chosenArray[1].length)];
 
-    questionText.innerHTML = `What is <sup>${x}</sup>&frasl;<sub>${y}</sub> as a decimal?`
+    questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    What is <span class="bold"><sup>${x}</sup>&frasl;<sub>${y}</sub></span> as a decimal?`
 
     solutionText.innerHTML = `<sup>${x}</sup>&frasl;<sub>${y}</sub> = ${x/y}`
 }
@@ -1959,6 +2119,12 @@ function addingNegatives(){
             outline: 1px solid black;
             width: 2em;
             min-width: 1.75em;
+        }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
         }
     </style>
     ${signOne}${num1} ${signTwo} ${num2} = 
@@ -2025,6 +2191,12 @@ function percentageOfAnAmountNonCalc(){
             width: 2em;
             min-width: 1.75em;
         }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
     </style>
     ${x}% of ${y}g = <br>
     (tick one box)<br>
@@ -2083,6 +2255,12 @@ function rangeOfNumbers(){
             text-align: center;
             background-color: rgba(88, 229, 186, 0.2);
         }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
     </style>
     <table>
         <tr>
@@ -2118,8 +2296,17 @@ function percentageSavingsAccount(){
 
     onePercent=x*0.01
 
-    questionText.innerHTML = `A man puts £${x} into a savings account. <br>
-    the interest is ${y}% per year.<br><br>
+    questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    A man puts £${x} into a savings account. <br>
+    The interest is ${y}% per year.<br><br>
     How much will the interest be for the first year?`
 
     solutionText.innerHTML = `
@@ -2154,7 +2341,8 @@ function probabilityScale(){
         width: 100%;
     }
     #scale{
-        width: 70%;
+        width: 100%;
+        max-width: 500px;
     }
     </style>
     This scale shows the probability of something that will happen.<br>
@@ -2172,6 +2360,12 @@ function probabilityScale(){
             border: 1px solid black;
             width: 2em;
             min-width: 1.75em;
+        }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
         }
     </style>
     (tick one box)<br>
@@ -2230,6 +2424,12 @@ function volumeOfCube(){
     .length{
         transform: translateY(-1em);
     }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
     </style>
     <div class="cubeContainer">
         <div class="cube">
@@ -2274,6 +2474,13 @@ function convertingMixedNumtoImproper(){
     }
     .hyphen{
         border-top: 1px solid black;
+    }
+
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
     }
     </style>
     ${x} <sup>${a}</sup>&frasl;<sub>${b}</sub> is the same as <br><br>
@@ -2354,6 +2561,12 @@ function saleOfGuitar(){
         justify-self: center;
         padding: 0.35em;
     }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            
+        }
+    }
 
     </style>
     A customer wants to buy a guitar in the sale at a music shop. They have £${x}.<br><br>
@@ -2399,6 +2612,14 @@ function ratioJumpers(){
     
 
     questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
     ${name} makes 1 jumper with red fabric for every ${x} jumpers with blue fabric.<br>
     Today, ${chosenGender[1]} needs ${y} jumpers altogether.<br><br>
     How many jumpers will ${chosenGender[1]} make with red fabric today?`
@@ -2414,7 +2635,16 @@ function probabilityOfficWorker(){
 
     let x=Math.ceil(Math.random()*20)+1
 
-    questionText.innerHTML = `${name} works in an office. <br>
+    questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+    }
+    </style>
+    ${name} works in an office. <br>
     There are ${x} desks and ${x} staff members. The manager allocates the desks to the staff members randomly at the start of each day.<br>
     No one likes the desk next to the door.<br>
     What is the probability that ${name} will get the desk next to the door today?`
@@ -2439,6 +2669,15 @@ function readingScalesFuelGauge(){
 
 
     questionText.innerHTML = `
+
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+    }
+    </style>
     A van has a fuel tank that holds ${x} litres when full.<br>
     This diagram shows the fuel gauge on the van.<br>
     <div class="centeredQuestion">
@@ -2469,7 +2708,16 @@ function writingNumbersInFigures(){
 
     let solution = `${aChoice[0]}0${bChoice[0]} ${cChoice[0]}0${dChoice[0]}`
 
-    questionText.innerHTML = `Write <span class="bold">${a} hundred and ${b} thousand, ${c} hundred and ${d}</span> in figures`
+    questionText.innerHTML = `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
+    Write <span class="bold">${a} hundred and ${b} thousand, ${c} hundred and ${d}</span> in figures`
 
     solutionText.innerHTML = `${solution}`
 }
@@ -2481,6 +2729,15 @@ function roundingNumberToDecimalPlace(){
     let numDec = Math.ceil(Math.random()*4)+1;
     let solution = parseFloat(`${b}.${a}${a}${a}${a}${a}${a}`).toFixed(numDec);
     questionText.innerHTML = `
+
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
     What is
     ${b}.${a}${a}${a}${a}${a}${a}
     rounded to ${numDec} decimal places?
@@ -2539,6 +2796,12 @@ function biggestFraction(){
             width: 2em;
             min-width: 1.75em;
         }
+        @media only screen and (min-width: 800px) {
+            .questionSolutionContainer{
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
     </style>
     Which of these fractions is the <span class="bold">biggest</span> number?<br>
     <span class="italic">(tick one box)</span><br>
@@ -2593,13 +2856,19 @@ function salesmanMistake(){
         width: 100%;
         text-align: center;
     }
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
     </style>
-    A customer wants to buy a saxophone. The salesperson says he must pay a deposit.
+    A customer wants to buy a saxophone. The salesperson says he must pay a deposit.<br><br>
     <div class="speechBubble"><br>
         "You can pay ${x}%, thats £${y}<br>
         Or you can pay ${2*x}%, thats £${w}"</p>
         <br>
-    </div>
+    </div><br>
     Explain why the salesperson must have made a mistake.
 
     `
@@ -2672,6 +2941,13 @@ function usingAFormula(){
         border-radius: 1em;
         background-color: rgba(88, 229, 186, 0.3);
     }
+
+    
+    .questionSolutionContainer{
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+    
 
     </style>
     A gardener needs to order grass seeds for a garden.<br>
@@ -2932,6 +3208,7 @@ function volumeOfCuboid(){
         display: inline-flex;
         justify-content: space-evenly;
         width: 100%;
+        flex-wrap: wrap;
     }
 
     #aquariumModels{
@@ -2945,10 +3222,17 @@ function volumeOfCuboid(){
     }
 
     #aquariumPic{
-        height: 100%;
+        height: 200px;
         margin: auto 0;
+        
     }
 
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+    }
 
     </style>
     John wants to buy a new aquarium. The local fish store has three different sized models.<br>
@@ -2980,7 +3264,7 @@ function volumeOfCuboid(){
                 <td>${z3}cm</td>
             </tr>
         </table>
-    </div>
+    </div><br>
     Which aquarium has the largest volume? Include figures to support your explanation.
     `
 
@@ -3060,7 +3344,7 @@ function perimeterProblemSolving(){
 
     #bottomText{
         text-align: left;
-        transform: translateY(250%);
+        transform: translateY(350%);
     }
 
     #rightText{
@@ -3182,6 +3466,178 @@ function perimeterProblemSolving(){
 
 
 }
+
+function percentagesBestBuyPorblemSolving(){
+
+    let tvPic1 = "../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv1.png";
+    let tvPic2 = "../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv2.png";
+
+    function getNumbers(){
+        multiplierArray = [1.05,1.06,1.07,1.12,1.13,1.14]
+        chosenMultiplier = multiplierArray[Math.floor(Math.random()*multiplierArray.length)];
+        tv1Price = parseFloat(`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}0`);
+        tv1PriceWithIntrest = (tv1Price*1.15).toFixed(2);
+        tv2Price = Math.round((tv1Price*chosenMultiplier)/5) * 5;
+        tv2PriceWithInterest = (tv2Price*1.05).toFixed(2);
+        if(Number.isInteger(tv2PriceWithInterest/3)===false){
+            getNumbers();
+        }
+    }
+    getNumbers();
+    let cheapestTV = Math.min(tv1PriceWithIntrest,tv2PriceWithInterest).toFixed(2);
+    if(cheapestTV===tv1PriceWithIntrest){
+        cheapestShop = "TV Direct";
+        payToday = `£${tv1PriceWithIntrest} &divide 10 = £${(tv1PriceWithIntrest/10).toFixed(2)}`
+    } else{
+        cheapestShop = "Planet TV";
+        payToday = `£${tv2PriceWithInterest} &divide 3 = £${(tv2PriceWithInterest/3).toFixed(2)}`
+    }
+
+    let expensiveTV = Math.max(tv1PriceWithIntrest,tv2PriceWithInterest).toFixed(2);
+
+    let differencePrice = (expensiveTV - cheapestTV).toFixed(2);
+
+    toDataURL(tvPic1, function(dataURL) {
+        document.getElementById("tv1").src = dataURL
+    })
+
+    toDataURL(tvPic2, function(dataURL) {
+        document.getElementById("tv2").src = dataURL
+    })
+
+    questionText.innerHTML = `
+    <style>
+    .tvShopContainer{
+        display: inline-flex;
+        justify-content: space-evenly;
+    }
+
+    .tvShopContainer img{
+        width: 30%;
+    }
+
+    .tvShop{
+        border: 2px solid #009780;
+        width: 40%; 
+        padding: 0.2em;
+        text-align: center;
+    }
+
+    </style>
+    
+    A customer wants to buy a television. They want to pay monthly.<br>
+    Two different shops have the television he wants.<br><br>
+    <div class="tvShopContainer">
+        <div id="tvDirect" class="tvShop">
+        <span class="bold">TV Direct<br>
+        <img id="tv1" src=""><br>
+        Price £${tv1Price}</span><br>
+        Pay monthly offer:
+        <p>Interest is 15% of the price.
+        Pay the total amount in 10 equal monthly instalments. First instalment must be paid today.</p>
+        </div>
+        <div id="planetTv" class="tvShop">
+        <span class="bold">Planet TV<br>
+        <img id="tv2" src=""><br>
+        Price £${tv2Price}</span><br>
+        Pay monthly offer:
+        <p>Interest is 5% of the price.
+        Pay <sup>1</sup>&frasl;<sub>3</sub> today and the rest in 4 equal monthly payments.</p>
+        </div>
+    </div><br><br>
+    Work out which offer is cheaper and by how much. How much would the customer need to pay today? 
+    
+    `
+
+    solutionText.innerHTML = `
+    £${tv1Price} &times 1.15 = £${tv1PriceWithIntrest} therefore the total cost from TV Direct is £${tv1PriceWithIntrest} (interest is £${(tv1Price*0.15).toFixed(2)}) <br>
+    £${tv2Price} &times 1.05 = £${tv2PriceWithInterest} therefore the total cost from Planet TV is £${tv2PriceWithInterest} (interest is £${(tv2Price*0.05).toFixed(2)}) <br>
+    Therefore, ${cheapestShop} is the cheapest. The difference is £${expensiveTV} &minus; £${cheapestTV} = £${differencePrice}<br>
+    The amount to pay today is ${payToday}
+
+    `
+}
+
+function lineChart(){
+
+
+    let lineChartPaper = "../Resources/Images/FS Q's/Level 1/LineChart/BlankGraph.png";
+
+    toDataURL(lineChartPaper, function(dataURL) {
+        document.getElementById("lineChartBlank").src = dataURL
+    })
+
+    questionText.innerHTML = `
+    <style>
+    #lineChartTable{
+        border: 1px solid #009780;
+        border-collapse: collapse;
+        text-align: center;
+        margin: 0 auto;
+    }
+    #lineChartTable th{
+        border: 1px solid #009780;
+        padding: 0.15em;
+        background-color: rgba(88, 229, 186, 0.3);
+    } 
+    
+    #lineChartTable td{
+        border: 1px solid #009780;
+        padding: 0.1em;
+    }
+
+    #lineChartBlank{
+        width: 100%;
+        margin: 0 auto;
+        padding: 1em;
+        max-width: 500px;
+    }
+
+    .lineChartBlankContainer{
+        width: 100%;
+        display: flex;
+    }
+
+    </style>
+    This table shows the number of orders a cake-maker got in six months.<br><br>
+    
+    <table id="lineChartTable">
+        <tr>
+            <th>Month</th>
+            <th>Number of orders</th>
+        </tr>
+        <tr>
+            <td>January</td>
+            <td>x1</td>
+        </tr>
+        <tr>
+            <td>February</td>
+            <td>x2</td>
+        </tr>
+        <tr>
+            <td>March</td>
+            <td>x3</td>
+        </tr>
+        <tr>
+            <td>April</td>
+            <td>x4</td>
+        </tr>
+        <tr>
+            <td>May</td>
+            <td>x5</td>
+        </tr>
+        <tr>
+            <td>June</td>
+            <td>x6</td>
+        </tr>
+    </table>
+    Draw a line chart to show this information.<br>
+    <div class="lineChartBlankContainer">
+    <img id="lineChartBlank" src="">
+    </div>
+
+    `
+}
     
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -3277,6 +3733,10 @@ generateQButton.onclick = function(){
         volumeOfCuboid();
     } else if(globalTopicAreaSelection==="perimeterProblemSolving"){
         perimeterProblemSolving();
+    } else if(globalTopicAreaSelection==="percentagesBestBuyPorblemSolving"){
+        percentagesBestBuyPorblemSolving();
+    } else if(globalTopicAreaSelection==="lineChart"){
+        lineChart();
     }
 };
 

@@ -3899,7 +3899,236 @@ function perimeterProblemSolving(){
 
 }
 
+function doctorsReception(){
 
+
+    function getNumbers(){
+        x1 = Math.ceil(Math.random()*12);
+        x2 = Math.ceil(Math.random()*12);
+        x3 = Math.ceil(Math.random()*12);
+        x4 = Math.ceil(Math.random()*12);
+        x5 = Math.ceil(Math.random()*12);
+        x6 = Math.ceil(Math.random()*12);
+        x7 = Math.ceil(Math.random()*12);
+        x8 = Math.ceil(Math.random()*12);
+        x9 = Math.ceil(Math.random()*12);
+        x10 = Math.ceil(Math.random()*12);
+        x11 = Math.ceil(Math.random()*12);
+        x12 = Math.ceil(Math.random()*12);
+
+        total = x1+x2+x3+x4+x5+x6+x7+x8+x9+x10+x11+x12;
+        if(Number.isInteger(total/12)===false){
+            getNumbers();
+        }
+    }
+    getNumbers();
+
+    questionText.innerHTML += `
+    <style>
+    #dentistReceptionTable{
+        text-align: center;
+        border: 1px solid #009780;
+        border-collapse: collapse;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    #dentistReceptionTable td{
+        border: 1px solid #009780;
+        padding: 0.2em;
+    }
+    #dentistReceptionTable th{
+        padding: 0.3em;
+    }
+    .notice{
+        font-weight: bold;
+        border: 1px solid #009780;
+        text-align: left;
+        padding: 1em;
+    }
+
+    .notice p{
+        text-align: center;
+    }
+
+    .bigSquare{
+        font-size: 50px;
+    }
+
+    .workingBox{
+        border: 1px solid #009780;
+        padding: 1em;
+        font-weight: bold;
+
+    }
+
+    </style>
+    <span class="questionNumber">Q12.</span>
+    A dental surgery wants to display a notice to show patients how long, on average, they will wait to see a dentist.<br><br>
+    The receptionist recorded how long past their appointment time patients at the surgery waited to see their dentist yesterday morning.<br><br>
+    <table id="dentistReceptionTable">
+        <tr>
+            <th colspan="3">Minutes waiting <br> (to the nearest minute)</th>
+        </tr>
+        <tr>
+            <td>${x1}</td>
+            <td>${x2}</td>
+            <td>${x3}</td>
+        </tr>
+        <tr>
+            <td>${x4}</td>
+            <td>${x5}</td>
+            <td>${x6}</td>
+        </tr>
+        <tr>
+            <td>${x7}</td>
+            <td>${x8}</td>
+            <td>${x9}</td>
+        </tr>
+        <tr>
+            <td>${x10}</td>
+            <td>${x11}</td>
+            <td>${x12}</td>
+        </tr>
+    </table> <br>
+    <span class="questionNumber">a) </span>Complete the notice.<br><br>
+    <div class="notice">
+        <p>TOOTH HURTY SURGERY</p>
+        Average waiting time<br>
+        You should expect to wait <span class="bigSquare">&#9744;</span> minutes to see a dentist today.
+    </div><br>
+    <div class="workingBox">
+    Show all your working.
+    <br><br><br><br><br><br><br><br>
+    </div><br>
+    <span class="questionNumber">b)</span> Explain why using the waiting times for yesterday morning might not give a suitable waiting time to put on the notice.<br><br>
+    <div class="workingBox">
+    Explanation.
+    <br><br><br><br><br><br>
+    </div>
+    <p id="marksGiven">(3 marks)</p><br><br>
+    ${pagebreak}
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q12.</span><br><br>
+    <span class="questionNumber">a)</span> <span style="text-decoration: underline;">Calculating the mean</span><br>
+    The sum of the waiting times is ${total}<br>
+    ${total} &divide 12 = ${total/12}<br>
+    Therefore, they should expect to wait ${total/12} minutes to see a dentist today.
+    <p id="marksGiven">(2 marks)</p><br><br>
+    <span class="questionNumber">b)</span> Valid explanation eg 'yesterday may not have been a typical day' or 'the average time should be based on more patients'
+    <p id="marksGiven">(1 mark)</p><br><br>
+    <div class="borderBottomSolution"></div>
+
+
+    `
+}
+
+function percentagesBestBuyPorblemSolving(){
+
+    let tvPic1 = "../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv1.png";
+    let tvPic2 = "../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv2.png";
+
+    function getNumbers(){
+        multiplierArray = [1.05,1.06,1.07,1.12,1.13,1.14]
+        chosenMultiplier = multiplierArray[Math.floor(Math.random()*multiplierArray.length)];
+        tv1Price = parseFloat(`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}0`);
+        tv1PriceWithIntrest = (tv1Price*1.15).toFixed(2);
+        tv2Price = Math.round((tv1Price*chosenMultiplier)/5) * 5;
+        tv2PriceWithInterest = (tv2Price*1.05).toFixed(2);
+        if(Number.isInteger(tv2PriceWithInterest/3)===false){
+            getNumbers();
+        }
+    }
+    getNumbers();
+    let cheapestTV = Math.min(tv1PriceWithIntrest,tv2PriceWithInterest).toFixed(2);
+    if(cheapestTV===tv1PriceWithIntrest){
+        cheapestShop = "TV Direct";
+        payToday = `£${tv1PriceWithIntrest} &divide 10 = £${(tv1PriceWithIntrest/10).toFixed(2)}`
+    } else{
+        cheapestShop = "Planet TV";
+        payToday = `£${tv2PriceWithInterest} &divide 3 = £${(tv2PriceWithInterest/3).toFixed(2)}`
+    }
+
+    let expensiveTV = Math.max(tv1PriceWithIntrest,tv2PriceWithInterest).toFixed(2);
+
+    let differencePrice = (expensiveTV - cheapestTV).toFixed(2);
+
+    toDataURL(tvPic1, function(dataURL) {
+        document.getElementById("tv1").src = dataURL
+    })
+
+    toDataURL(tvPic2, function(dataURL) {
+        document.getElementById("tv2").src = dataURL
+    })
+
+    questionText.innerHTML += `
+    <style>
+    .tvShopContainer{
+        display: inline-flex;
+        justify-content: space-evenly;
+    }
+
+    .tvShopContainer img{
+        width: 30%;
+    }
+
+    .tvShop{
+        border: 2px solid #009780;
+        width: 40%; 
+        padding: 0.2em;
+        text-align: center;
+        font-size: 0.85em; 
+        line-height: 1.5em;
+    }
+
+    </style>
+    <span class="questionNumber">Q13.</span>
+    A customer wants to buy a television. They want to pay monthly.<br>
+    Two different shops have the television he wants.<br><br>
+    <div class="tvShopContainer">
+        <div id="tvDirect" class="tvShop">
+        <span class="bold">TV Direct<br>
+        <img id="tv1" src=""><br>
+        Price £${tv1Price}</span><br>
+        Pay monthly offer:
+        <p>Interest is 15% of the price.
+        Pay the total amount in 10 equal monthly instalments. First instalment must be paid today.</p>
+        </div>
+        <div id="planetTv" class="tvShop">
+        <span class="bold">Planet TV<br>
+        <img id="tv2" src=""><br>
+        Price £${tv2Price}</span><br>
+        Pay monthly offer:
+        <p>Interest is 5% of the price.
+        Pay <sup>1</sup>&frasl;<sub>3</sub> today and the rest in 4 equal monthly payments.</p>
+        </div>
+    </div><br><br><br>
+    Work out which offer is cheaper and by how much. How much would the customer need to pay today? 
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="answerLineRight"> Shop ___________ offer is cheaper by £______________</div><br><br><br><br>
+    <div class="answerLineRight"> Amount to pay today £___________</div><br>
+    <p id="marksGiven">(5 marks)</p><br><br>
+    ${pagebreak}
+
+
+    
+    `
+
+    solutionText.innerHTML += `
+    <br><br><span class="questionNumber">Q13.</span><br><br>
+    £${tv1Price} &times 1.15 = £${tv1PriceWithIntrest} therefore the total cost from TV Direct is £${tv1PriceWithIntrest} (interest is £${(tv1Price*0.15).toFixed(2)}) <br>
+    £${tv2Price} &times 1.05 = £${tv2PriceWithInterest} therefore the total cost from Planet TV is £${tv2PriceWithInterest} (interest is £${(tv2Price*0.05).toFixed(2)}) <br>
+    Therefore, ${cheapestShop} is the cheapest. The difference is £${expensiveTV} &minus; £${cheapestTV} = £${differencePrice}<br>
+    The amount to pay today is ${payToday}
+    <p id="marksGiven">(5 marks)</p><br><br>
+    <div class="borderBottomSolution"></div>
+    ${pagebreak}
+
+
+    `
+}
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3975,6 +4204,8 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     scalesUsingMap();
     volumeOfCuboid();
     perimeterProblemSolving();
+    doctorsReception();
+    percentagesBestBuyPorblemSolving();
 
     document.getElementById("generateQButton").innerHTML="Reset";
 }

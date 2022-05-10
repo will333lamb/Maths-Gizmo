@@ -404,8 +404,8 @@ const Qid0002 = () => {
     ${name1} writes down ${hisOrHer} costs and income. <br>
     <style>
     .questionSolutionContainer{
-        font-size: 0.97rem;
-        line-height: 2;
+        font-size: 1rem;
+        line-height: 1.5rem;
         width: 100%;
     }
     table {
@@ -1081,9 +1081,6 @@ function QidSimultaneousEquationsContext(){
         text-align: center;
         font-family: 'sans-serif';
     }
-    #questionText{
-        line-height: 2rem;
-    }
     </style>
     <i class="fas fa-calculator"></i>
     <i id="checkSign" class="fas fa-check"></i><br>
@@ -1437,10 +1434,6 @@ function triangleAndTrapezium(){
     document.getElementById("questionText").innerHTML =
     `
     <style>
-
-    .question-box{
-        min-height: 600px;
-    }
 
     .shapeContainer{
         display: grid;
