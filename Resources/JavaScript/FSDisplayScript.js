@@ -154,6 +154,11 @@ function toDataURL(src, callback) {
     image.src = src;
 }
 
+function loseSolutionOnNewQ(){
+    showSolutionButton.innerHTML = 'Show Solution';
+    document.querySelector('.solution-box').style.display = 'none';
+}
+
         
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -194,6 +199,8 @@ function sequencesNextNumberInteger(){
 
     document.getElementById("solutionText").innerHTML =
     `The term to term rule is +${progression}, and the next term is ${num5Solution}`
+
+    loseSolutionOnNewQ();
 }
 
 function roundToPowerOfTen(){
@@ -208,13 +215,23 @@ function roundToPowerOfTen(){
 
     document.getElementById("questionText").innerHTML =
     `
+    <style>
+    @media only screen and (min-width: 800px) {
+        .questionSolutionContainer{
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+    }
+    </style>
     
-    What is ${numToBeRounded} rounded to the nearest ${powerOfTenChosen}? <br>
+    What is <span class="bold">${numToBeRounded}</span> rounded to the nearest <span class="bold">${powerOfTenChosen}?</span> <br>
 
     `
 
     document.getElementById("solutionText").innerHTML =
     `${roundedNumSolution}`
+
+    loseSolutionOnNewQ();
     
 }
 
@@ -248,6 +265,8 @@ function writeNumberInFigures(){
 
     document.getElementById("solutionText").innerHTML = 
     `${concatedSolution}`
+
+    loseSolutionOnNewQ();
 }
 
 function highestNumberWithDecimals(){
@@ -324,6 +343,8 @@ function highestNumberWithDecimals(){
 
     document.getElementById("solutionText").innerHTML = 
     `${largestNumberSolution}`
+
+    loseSolutionOnNewQ();
 }
 
 function subtraction3DigitBy3Digit(){
@@ -357,6 +378,8 @@ function subtraction3DigitBy3Digit(){
     document.getElementById("solutionText").innerHTML = 
     `${subtractedSolution}`
 
+
+    loseSolutionOnNewQ();
 }
 
 function tellTheTimeOnAnalogueClock(){
@@ -575,6 +598,7 @@ function tellTheTimeOnAnalogueClock(){
     document.getElementById("solutionText").innerHTML =
     `${solutionHour}:${solutionMinute} ${solutionAmPm}`
 
+    loseSolutionOnNewQ();
     
 }
 
@@ -691,6 +715,8 @@ function identifyCorrectMeasuringTool(){
     document.getElementById("solutionText").innerHTML =
     `${solution}`
 
+
+    loseSolutionOnNewQ();
 }
 
 function fastestTime(){
@@ -768,6 +794,8 @@ function fastestTime(){
     `
     document.getElementById("solutionText").innerHTML = 
     `${solutionFastestFriend} is the fastest at ${solutionFastestFriendNum} minutes`
+
+    loseSolutionOnNewQ();
 }
 
 function completeFrequencyTable(){
@@ -863,6 +891,8 @@ function completeFrequencyTable(){
 
     document.getElementById("solutionText").innerHTML = 
     `Quiz = ${quizCount} and Talent Show = ${talentShowCount}`
+
+    loseSolutionOnNewQ();
 }
 
 function interpretBarChart(){
@@ -989,6 +1019,8 @@ function interpretBarChart(){
         duration: 0
     }
 });
+
+loseSolutionOnNewQ();
 }
 
 function fractionShadedOfShape(){
@@ -1140,6 +1172,7 @@ function fractionShadedOfShape(){
 
     
     row3YayOrNay();
+    loseSolutionOnNewQ();
 
     
 }
@@ -1188,6 +1221,8 @@ function sequencesNextNumberDecimal(){
 
     document.getElementById("solutionText").innerHTML =
     `The term to term rule is +${progression}, and the next term is ${num5SolutionString}`
+
+    loseSolutionOnNewQ();
 }
 
 function roundingMoney(){
@@ -1217,6 +1252,8 @@ function roundingMoney(){
 
     document.getElementById("solutionText").innerHTML = 
     `£${solutionRounded}`
+
+    loseSolutionOnNewQ();
 }
 
 function bestValueTables(){
@@ -1289,6 +1326,8 @@ function bestValueTables(){
     `Small tables: £${smallTableCost}&times;${lengthToBeCovered} = £${totalCostSmallTable.toFixed(2)}<br>
     Large tables: £${largeTablecost.toFixed(2)}&times;${lengthToBeCovered / largeTableLength} = £${(largeTablecost*lengthToBeCovered/largeTableLength).toFixed(2)}
     <br> Therefore the cheapest tables for him to hire are the ${solutionBestValue}s`
+
+    loseSolutionOnNewQ();
 }
 
 function fourOpsWordedQuestion(){
@@ -1532,6 +1571,8 @@ function fourOpsWordedQuestion(){
         document.getElementById("disapear6").style.display = "none"
     }
 
+
+    loseSolutionOnNewQ();
 }
 
 function scaleDrawings(){
@@ -1602,6 +1643,8 @@ function scaleDrawings(){
     `
     <img id="solutionPlan" class="tablesChairsPlanImage" src="">
     `
+
+    loseSolutionOnNewQ();
 }
 
 function compassDirections(){
@@ -1668,6 +1711,8 @@ function compassDirections(){
 
     document.getElementById("solutionText").innerHTML = 
     `${solutionCompassDirection}`
+
+    loseSolutionOnNewQ();
 }
 
 function linesOfSymmetry(){
@@ -1872,6 +1917,8 @@ function linesOfSymmetry(){
 
     document.getElementById("solutionText").innerHTML = 
     `The letter ${solutionLetter} has ${chosenNumberLinesOfSymmetry} of symmetry`
+
+    loseSolutionOnNewQ();
 }
 
 function wordedDivisionAndRoundingUp(){
@@ -1916,6 +1963,8 @@ function wordedDivisionAndRoundingUp(){
     Rounding up, she needs to order ${numPacksRounded} packs of rolls.<br><br>
     b) <sup>1</sup> &frasl;<sub>${denominatorForVegSausages}</sub> &times; ${numSausagesNeeded} = ${numSausagesNeeded/denominatorForVegSausages} vegetarian sausages needed.<br>
     `
+
+    loseSolutionOnNewQ();
 }
 
 function readingScalesChildsHeight(){
@@ -1984,6 +2033,8 @@ function readingScalesChildsHeight(){
     `
     The child's height is ${childHeight}cm. Therefore, ${isChildBigEnough}.
     `
+
+    loseSolutionOnNewQ();
 }
 
 function multiplicationMoney(){
@@ -2026,6 +2077,8 @@ function multiplicationMoney(){
     Therefore, ${solutionStatement}<br><br>
     b) ${ticketsSoldToNearest10} &times; £${Math.round(ticketCostAsNum)} = £${ticketsSoldToNearest10*Math.round(ticketCostAsNum)}
     `
+
+    loseSolutionOnNewQ();
 }
 
 //Level 1 *////////////////////////////////////////////////////////////////////////////////
@@ -2048,6 +2101,8 @@ function BIDMAS(){
     ${x} + ${y} &times ${z} = `
 
     solutionText.innerHTML = `${x} + ${y} &times ${z} = ${solution}`
+
+    loseSolutionOnNewQ();
 }
 
 function squaring(){
@@ -2063,6 +2118,8 @@ function squaring(){
     </style>
     ${x}<sup>2</sup> = `
     solutionText.innerHTML = `${x}<sup>2</sup> = ${x*x}`
+
+    loseSolutionOnNewQ();
 }
 
 function FDPFracToDec(){
@@ -2083,6 +2140,8 @@ function FDPFracToDec(){
     What is <span class="bold"><sup>${x}</sup>&frasl;<sub>${y}</sub></span> as a decimal?`
 
     solutionText.innerHTML = `<sup>${x}</sup>&frasl;<sub>${y}</sub> = ${x/y}`
+
+    loseSolutionOnNewQ();
 }
 
 function addingNegatives(){
@@ -2156,6 +2215,8 @@ function addingNegatives(){
     `
 
     solutionText.innerHTML =`${signOne}${num1} ${signTwo} ${num2} = ${solution}. Therefore, ${solutionLetter} should be ticked`
+
+    loseSolutionOnNewQ();
 }
 
 function percentageOfAnAmountNonCalc(){
@@ -2224,6 +2285,8 @@ function percentageOfAnAmountNonCalc(){
     </table>`
 
     solutionText.innerHTML = `${x}% of ${y}g = ${A1}. Therefore ${chosenOrder[4]} should be ticked.`
+
+    loseSolutionOnNewQ();
 }
 
 function rangeOfNumbers(){
@@ -2285,6 +2348,8 @@ function rangeOfNumbers(){
     `
 
     solutionText.innerHTML = `${maxNum} - ${minNum} = ${rangeSolution}`
+
+    loseSolutionOnNewQ();
 }
 
 function percentageSavingsAccount(){
@@ -2313,6 +2378,8 @@ function percentageSavingsAccount(){
     1% = £${x} &divide 100 = £${onePercent}<br>
     ${y}% = £${onePercent} &times ${y} = £${Math.round(x*chosenY[1])}
     `
+
+    loseSolutionOnNewQ();
 }
 
 function probabilityScale(){
@@ -2401,6 +2468,8 @@ function probabilityScale(){
     solutionText.innerHTML = `
     The arrow shows a probability of ${chosenProb[1]}, the word to describe this is ${chosenProb[2]}.
     Therefore, ${chosenProb[3]} should be ticked.`
+
+    loseSolutionOnNewQ();
 }
 
 function volumeOfCube(){
@@ -2442,6 +2511,8 @@ function volumeOfCube(){
     What is the volume of this cube?`
 
     solutionText.innerHTML = `The volume is ${x}<sup>3</sup> = ${x}cm &times ${x}cm &times ${x}cm = ${x*x*x}cm<sup>3</sup>`;
+
+    loseSolutionOnNewQ();
 }
 
 function convertingMixedNumtoImproper(){
@@ -2498,6 +2569,8 @@ function convertingMixedNumtoImproper(){
     `
 
     solutionText.innerHTML = `${x} <sup>${a}</sup>&frasl;<sub>${b}</sub> = <sup>${numeratorSolution}</sup>&frasl;<sub>${b}</sub>`
+
+    loseSolutionOnNewQ();
 }
 
 function saleOfGuitar(){
@@ -2592,6 +2665,8 @@ function saleOfGuitar(){
     ${w}% of £${y} = £${(y*0.1).toFixed(2)} &times ${w/10} = £${reducedPrice} &#8594 So the guitar costs £${reducedPrice} in the sale.<br>
     ${concludingStatement}
     `
+
+    loseSolutionOnNewQ();
 }
 
 function ratioJumpers(){
@@ -2627,6 +2702,8 @@ function ratioJumpers(){
     solutionText.innerHTML = `The ratio of red to blue jumpers is 1:${x}<br>
     The total ratio parts is 1 + ${x} = ${totalRatio}<br>
     ${y} &divide ${totalRatio} = ${solution}. So ${chosenGender[1]} will make ${solution} red jumpers today.`
+
+    loseSolutionOnNewQ();
 }
 
 function probabilityOfficWorker(){
@@ -2652,6 +2729,8 @@ function probabilityOfficWorker(){
     solutionText.innerHTML = `Since there is the same amount of staff as desks, somebody will have to sit next to the door.<br>
     They all have an equal probability of sitting next to the door and there is ${x} staff, so the probability of ${name}
     sitting by the door is <sup>${1}</sup>&frasl;<sub>${x}</sub>`
+
+    loseSolutionOnNewQ();
 }
 
 function readingScalesFuelGauge(){  
@@ -2690,6 +2769,8 @@ function readingScalesFuelGauge(){
     solutionText.innerHTML = `The fuel gauge is showing ${chosenFuelGauge[2]} full.<br>
     ${chosenFuelGauge[2]} of ${x} litres = ${x*chosenFuelGauge[1]} litres.`
 
+    loseSolutionOnNewQ();
+
 }
 
 function writingNumbersInFigures(){
@@ -2720,6 +2801,8 @@ function writingNumbersInFigures(){
     Write <span class="bold">${a} hundred and ${b} thousand, ${c} hundred and ${d}</span> in figures`
 
     solutionText.innerHTML = `${solution}`
+
+    loseSolutionOnNewQ();
 }
 
 function roundingNumberToDecimalPlace(){
@@ -2744,6 +2827,8 @@ function roundingNumberToDecimalPlace(){
     `
 
     solutionText.innerHTML = `${solution}`
+
+    loseSolutionOnNewQ();
 }
 
 function biggestFraction(){
@@ -2830,6 +2915,8 @@ function biggestFraction(){
     `
 
     solutionText.innerHTML = `${solution} is the biggest number`
+
+    loseSolutionOnNewQ();
 }
 
 function salesmanMistake(){
@@ -2874,6 +2961,8 @@ function salesmanMistake(){
     `
 
     solutionText.innerHTML = `The salesperson has just added £${x}. They should have multiplied ${y} by 2 to get £${(y*2).toFixed(2)}`
+
+    loseSolutionOnNewQ();
 }
 
 function usingAFormula(){
@@ -2980,6 +3069,8 @@ function usingAFormula(){
     ${solutionGrams}g = ${solutionKg}kg<br>
     Therefore, they should buy the ${solutionBag}.
     `
+
+    loseSolutionOnNewQ();
 }
 
 function elevations(){
@@ -3104,6 +3195,8 @@ function elevations(){
     ${chosenDisplayPic[1]*x}g = ${(chosenDisplayPic[1]*x)/1000}kg
     
     `
+
+    loseSolutionOnNewQ();
 }
 
 function scalesUsingMap(){
@@ -3168,6 +3261,8 @@ function scalesUsingMap(){
     solutionText.innerHTML = `${routeMeasurement}cm on the map represents ${routeMeasurement*scaleMetres}m<br>
     1000m takes 10 mins therefore 1m will take 0.01 of a minute. (This is 6 seconds)<br>
     0.01 &times ${routeMeasurement*scaleMetres} = ${routeMeasurement*scaleMetres*0.01} minutes `
+
+    loseSolutionOnNewQ();
 }
 
 function volumeOfCuboid(){
@@ -3274,6 +3369,8 @@ function volumeOfCuboid(){
     Ciano volume is ${z1}cm &times ${z2}cm &times ${z3}cm = ${cianoVolume}cm<sup>3</sup><br>
     Clearly, the ${maxModel} model has the largest volume.
     `
+
+    loseSolutionOnNewQ();
 }
 
 function perimeterProblemSolving(){
@@ -3430,7 +3527,7 @@ function perimeterProblemSolving(){
     }
 
     </style>
-    A carpet fitter needs to order some fixing strips to hold the carpet all around the edges of this floor.<br><br>
+    A carpet fitter needs to order some fixing strips to hold the carpet all around the edges of this floor.<br><br><br>
     <div class="floorplanContainer">
         <div id="topBox" class="green"><p id="topText">${topWidth}m</p></div>
         <div class="notToScale">Not to scale</div>
@@ -3449,7 +3546,7 @@ function perimeterProblemSolving(){
         Fixing strips: ${stripLength}-metre packs £${stripCostPounds}.99 per pack<br>
         *** Buy one get one free ***
         </div>
-    </div>
+    </div><br>
     Work out the total cost for the packs of fixing strips the carpet fitter needs to order.
     `
 
@@ -3463,7 +3560,9 @@ function perimeterProblemSolving(){
     ${howManyPacksPayingFor} &times £${parseFloat(`${stripCostPounds}.99`)} = £${(howManyPacksPayingFor*parseFloat(`${stripCostPounds}.99`)).toFixed(2)}
     
     `
-
+    
+    showSolutionButton.innerHTML = 'Show Solution';
+    document.querySelector('.solution-box').style.display = 'none';
 
 }
 
@@ -3556,16 +3655,44 @@ function percentagesBestBuyPorblemSolving(){
     The amount to pay today is ${payToday}
 
     `
+    showSolutionButton.innerHTML = 'Show Solution';
+    document.querySelector('.solution-box').style.display = 'none';
 }
 
 function lineChart(){
 
+    document.querySelector('.solution-box').style.display = 'block';
+    showSolutionButton.innerHTML = 'Hide solution';
 
     let lineChartPaper = "../Resources/Images/FS Q's/Level 1/LineChart/BlankGraph.png";
 
     toDataURL(lineChartPaper, function(dataURL) {
         document.getElementById("lineChartBlank").src = dataURL
     })
+
+    let multipleOfArray = [2,3,4,5,6,10,20,30];
+    let chosenMultipleOf = multipleOfArray[Math.floor(Math.random()*multipleOfArray.length)];
+
+    let increaseOrDecreaseArray = ["increasing","decreasing"];
+    let chosenIncreaseOrDecrease = increaseOrDecreaseArray[Math.floor(Math.random()*increaseOrDecreaseArray.length)];
+
+    if(chosenIncreaseOrDecrease==="increasing"){
+        x1 = Math.ceil(Math.random()*3) * chosenMultipleOf;
+        x2 = (Math.ceil(Math.random()*3)+3) * chosenMultipleOf;
+        x3 = (Math.ceil(Math.random()*3)+5) * chosenMultipleOf;
+        x4 = (Math.ceil(Math.random()*3)+7) * chosenMultipleOf;
+        x5 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+        x6 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+    } else {
+        x6 = Math.ceil(Math.random()*3) * chosenMultipleOf;
+        x5 = (Math.ceil(Math.random()*3)+3) * chosenMultipleOf;
+        x4 = (Math.ceil(Math.random()*3)+5) * chosenMultipleOf;
+        x3 = (Math.ceil(Math.random()*3)+7) * chosenMultipleOf;
+        x2 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+        x1 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+    }
+
+    
 
     questionText.innerHTML = `
     <style>
@@ -3608,35 +3735,140 @@ function lineChart(){
         </tr>
         <tr>
             <td>January</td>
-            <td>x1</td>
+            <td>${x1}</td>
         </tr>
         <tr>
             <td>February</td>
-            <td>x2</td>
+            <td>${x2}</td>
         </tr>
         <tr>
             <td>March</td>
-            <td>x3</td>
+            <td>${x3}</td>
         </tr>
         <tr>
             <td>April</td>
-            <td>x4</td>
+            <td>${x4}</td>
         </tr>
         <tr>
             <td>May</td>
-            <td>x5</td>
+            <td>${x5}</td>
         </tr>
         <tr>
             <td>June</td>
-            <td>x6</td>
+            <td>${x6}</td>
         </tr>
     </table>
-    Draw a line chart to show this information.<br>
+    a) Draw a line chart to show this information.<br>
     <div class="lineChartBlankContainer">
     <img id="lineChartBlank" src="">
-    </div>
+    </div><br>
+    b) Explain what your graph shows about the number of orders.<br><br>
 
     `
+
+    solutionText.innerHTML = `
+    <style>
+    .lineChartImageContainer{
+        display: flex;
+        width: 100%;
+    }    
+
+    .lineChartImageContainerChild{
+        width: 100%;
+        display: flex;
+    }
+
+    #lineChartImg{
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 800px) {
+
+        #lineChartImg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    </style>
+    a)
+    <div class="lineChartContainer">
+        <div class="lineChartContainerChild">
+            <canvas id="lineChart" width="10" height="10"></canvas>
+        </div>
+    </div>
+
+    <div class="lineChartImageContainer">
+        <div class="lineChartImageContainerChild">
+            <img id="lineChartImg" src="">
+        </div>
+    </div>
+    <br>
+    b) Valid explanation, eg 'The number of orders is generally ${chosenIncreaseOrDecrease} over the six months. 
+    
+    `
+
+    Chart.defaults.font.size = 18;
+    let windowWidth = window.innerWidth;
+
+    if(windowWidth>800){
+        Chart.defaults.font.size = 60;
+    }
+    
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr','May','Jun'],
+        datasets: [{
+            label: 'Number of orders',
+            data: [x1,x2,x3,x4,x5,x6],
+            backgroundColor: [
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+            ],
+            borderColor: [
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+            ],
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: chosenMultipleOf,
+                },
+                
+                
+            }
+        },
+        animation: {
+            duration: 0
+        },
+        
+    }
+});
+
+document.getElementById('lineChartImg').src = myChart.toBase64Image();
+document.querySelector(".lineChartContainer").style.display = "none";
+document.querySelector(".lineChartContainerChild").style.display = "none";
+showSolutionButton.innerHTML = 'Show Solution';
+document.querySelector('.solution-box').style.display = 'none';
+
+
+    
 }
     
 
