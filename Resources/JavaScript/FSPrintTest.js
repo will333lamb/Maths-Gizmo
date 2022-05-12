@@ -4371,72 +4371,76 @@ generateQButton.onclick = function(){
         document.getElementById("downloadSolutions").style.display = "block";
         document.getElementById("downloadBothFiles").style.display = "block";
     }
-if(document.getElementById("generateQButton").innerHTML==="Reset"){
-    window.location.reload(); 
-} else if(globalTopicAreaSelection ==="communityEvents"){
-    loseInstructions();
-    frontPageNonCalc();
-    sequencesNextNumberInteger();
-    roundToPowerOfTen();
-    writeNumberInFigures();
-    highestNumberWithDecimals();
-    subtraction3DigitBy3Digit();
-    tellTheTimeOnAnalogueClock();
-    identifyCorrectMeasuringTool();
-    fastestTime();
-    completeFrequencyTable();
-    interpretBarChart();
-    document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br>`
-    frontPageCalc();
-    fractionShadedOfShape();
-    sequencesNextNumberDecimal();
-    roundingMoney();
-    bestValueTables();
-    fourOpsWordedQuestion();
-    scaleDrawings();
-    compassDirections();
-    linesOfSymmetry();
-    wordedDivisionAndRoundingUp();
-    readingScalesChildsHeight();
-    multiplicationMoney();
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection==="level1Sample1"){
-    loseInstructions();
-    frontPageNonCalc();
-    BIDMAS();
-    squaring();
-    FDPFracToDec();
-    addingNegatives();
-    percentageOfAnAmountNonCalc();
-    rangeOfNumbers();
-    percentageSavingsAccount();
-    probabilityScale();
-    volumeOfCube();
-    convertingMixedNumtoImproper();
-    saleOfGuitar();
-    ratioJumpers();
-    probabilityOfficWorker();
-    readingScalesFuelGauge();
-    questionText.innerHTML += `<div class="html2pdf__page-break"></div><br>`
-    frontPageCalc();
-    writingNumbersInFigures();
-    roundingNumberToDecimalPlace();
-    netOfCube();
-    biggestFraction();
-    orderingBigNumbers();
-    salesmanMistake();
-    usingAFormula();
-    elevations();
-    scalesUsingMap();
-    volumeOfCuboid();
-    perimeterProblemSolving();
-    doctorsReception();
-    percentagesBestBuyPorblemSolving();
-    lineChart();
-
-    document.getElementById("generateQButton").innerHTML="Reset";
+    if(document.getElementById("generateQButton").innerHTML==="Reset"){
+        window.location.reload(); 
+    }
+    switch(globalTopicAreaSelection){
+        case "communityEvents":
+            loseInstructions();
+            frontPageNonCalc();
+            sequencesNextNumberInteger();
+            roundToPowerOfTen();
+            writeNumberInFigures();
+            highestNumberWithDecimals();
+            subtraction3DigitBy3Digit();
+            tellTheTimeOnAnalogueClock();
+            identifyCorrectMeasuringTool();
+            fastestTime();
+            completeFrequencyTable();
+            interpretBarChart();
+            document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br>`
+            frontPageCalc();
+            fractionShadedOfShape();
+            sequencesNextNumberDecimal();
+            roundingMoney();
+            bestValueTables();
+            fourOpsWordedQuestion();
+            scaleDrawings();
+            compassDirections();
+            linesOfSymmetry();
+            wordedDivisionAndRoundingUp();
+            readingScalesChildsHeight();
+            multiplicationMoney();
+            document.getElementById("generateQButton").innerHTML="Reset";
+        break;
+        case "level1Sample1":
+            loseInstructions();
+        frontPageNonCalc();
+        BIDMAS();
+        squaring();
+        FDPFracToDec();
+        addingNegatives();
+        percentageOfAnAmountNonCalc();
+        rangeOfNumbers();
+        percentageSavingsAccount();
+        probabilityScale();
+        volumeOfCube();
+        convertingMixedNumtoImproper();
+        saleOfGuitar();
+        ratioJumpers();
+        probabilityOfficWorker();
+        readingScalesFuelGauge();
+        questionText.innerHTML += `<div class="html2pdf__page-break"></div><br>`
+        frontPageCalc();
+        writingNumbersInFigures();
+        roundingNumberToDecimalPlace();
+        netOfCube();
+        biggestFraction();
+        orderingBigNumbers();
+        salesmanMistake();
+        usingAFormula();
+        elevations();
+        scalesUsingMap();
+        volumeOfCuboid();
+        perimeterProblemSolving();
+        doctorsReception();
+        percentagesBestBuyPorblemSolving();
+        lineChart();
+        document.getElementById("generateQButton").innerHTML="Reset";
+        break;
+    }
 }
-};
+
 
 
 //Download Options/////////////////////////////////////////////////////////////////////////////////////////////////////

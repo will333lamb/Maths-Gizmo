@@ -3680,171 +3680,180 @@ generateQButton.onclick = function(){
         document.getElementById("downloadSolutions").style.display = "block";
         document.getElementById("downloadBothFiles").style.display = "block";
     }
-if(document.getElementById("generateQButton").innerHTML==="Reset"){
-    window.location.reload(); 
-} else if(globalTopicAreaSelection ==="speedDistanceTime"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("questionText").innerHTML += `<h3 id="worksheetTitle">Comparing speeds using speed, distance time</h3>`
-    for (let i = 0; i < bronzeNumber; i++){
-        Qid0001(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        Qid0001(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        Qid0001(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-
-} else if(globalTopicAreaSelection ==="estimation"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("questionText").innerHTML += `<h3 id="worksheetTitle">Estimation</h3>`
-    for (let i = 0; i < bronzeNumber; i++){
-        Qid0002(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        Qid0002(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        Qid0002(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection ==="solveQuadraticByFactorising"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Solving a quadratic equation by factorising</h3><br>`
-    for (let i = 0; i < bronzeNumber; i++){
-        QidSolveQuadraticFactorising001(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0
-    for (let i = 0; i < silverNumber; i++){
-        QidSolveQuadraticFactorising001(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        QidSolveQuadraticFactorising001(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations no Context</h3><br>`
-    for (let i = 0; i < bronzeNumber; i++){
-        QidSimultaneousEquationsNoContext(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        QidSimultaneousEquationsNoContext(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        QidSimultaneousEquationsNoContext(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection ==="simultaneousEquationsContext"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations with Context</h3><br>`
-    for (let i = 0; i < bronzeNumber; i++){
-        QidSimultaneousEquationsContext(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        QidSimultaneousEquationsContext(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        QidSimultaneousEquationsContext(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection ==="triangleAndTrapezium"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Area of triangles and trapeziums - reverse to calculate height</h3><br>`
-    for (let i = 0; i < bronzeNumber; i++){
-        triangleAndTrapezium(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        triangleAndTrapezium(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        triangleAndTrapezium(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    questionText.innerHTML += `<br><h3 id="worksheetTitle">Proportion: rates of work problems</h3><br>`
-    for (let i = 0; i < bronzeNumber; i++){
-        proportionRateOfWorkProblem(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        proportionRateOfWorkProblem(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        proportionRateOfWorkProblem(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
-} else if(globalTopicAreaSelection ==="percentageProfit"){
-    loseInstructions();
-    getBronzeNumber();
-    globalDifficultySelection = 1;
-    questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-    questionText.innerHTML += `<br><h3 id="worksheetTitle">Percentage Profit</h3><br>`
-    for (let i = 0; i < bronzeNumber; i++){
-        percentageProfit(i)}
-    getSilverNumber(); 
-    globalDifficultySelection = 2;
-    questionNumber = 0;
-    for (let i = 0; i < silverNumber; i++){
-        percentageProfit(i)}
-    getGoldNumber();
-    globalDifficultySelection = 3;
-    questionNumber = 0;
-    for (let i = 0; i < goldNumber; i++){
-        percentageProfit(i)}
-    document.getElementById("generateQButton").innerHTML="Reset";
+    if(document.getElementById("generateQButton").innerHTML==="Reset"){
+        window.location.reload(); 
+    }
+    switch (globalTopicAreaSelection){
+        case "speedDistanceTime":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("questionText").innerHTML += `<h3 id="worksheetTitle">Comparing speeds using speed, distance time</h3>`
+            for (let i = 0; i < bronzeNumber; i++){
+                Qid0001(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                Qid0001(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                Qid0001(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "estimation":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("questionText").innerHTML += `<h3 id="worksheetTitle">Estimation</h3>`
+            for (let i = 0; i < bronzeNumber; i++){
+                Qid0002(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                Qid0002(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                Qid0002(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "solveQuadraticByFactorising":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Solving a quadratic equation by factorising</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                QidSolveQuadraticFactorising001(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0
+            for (let i = 0; i < silverNumber; i++){
+                QidSolveQuadraticFactorising001(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                QidSolveQuadraticFactorising001(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "simultaneousEquationsNoContext":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations no Context</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                QidSimultaneousEquationsNoContext(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                QidSimultaneousEquationsNoContext(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                QidSimultaneousEquationsNoContext(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "simultaneousEquationsContext":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Simultaneous Equations with Context</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                QidSimultaneousEquationsContext(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                QidSimultaneousEquationsContext(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                QidSimultaneousEquationsContext(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "triangleAndTrapezium":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            document.getElementById("questionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("solutionText").innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            document.getElementById("questionText").innerHTML += `<br><h3 id="worksheetTitle">Area of triangles and trapeziums - reverse to calculate height</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                triangleAndTrapezium(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                triangleAndTrapezium(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                triangleAndTrapezium(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "proportionRateOfWorkProblem":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            questionText.innerHTML += `<br><h3 id="worksheetTitle">Proportion: rates of work problems</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                proportionRateOfWorkProblem(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                proportionRateOfWorkProblem(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                proportionRateOfWorkProblem(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "percentageProfit":
+                loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            questionText.innerHTML += `<br><h3 id="worksheetTitle">Percentage Profit</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                percentageProfit(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                percentageProfit(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                percentageProfit(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+    }
 }
-};
 
 
 //Download Options/////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1799,26 +1799,36 @@ function proportionRateOfWorkProblem(){
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection==="0"){
-        alert("Please select a topic from the drop down menu before generating a question");
-    } else if(globalTopicAreaSelection ==="speedDistanceTime"){
-    Qid0001();
-    } else if(globalTopicAreaSelection ==="estimation"){
-        Qid0002();
-    } else if(globalTopicAreaSelection ==="solveQuadraticByFactorising"){
-        QidSolveQuadraticFactorising001();
-    } else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
-        QidSimultaneousEquationsNoContext();
-    } else if(globalTopicAreaSelection ==="simultaneousEquationsContext"){
-        QidSimultaneousEquationsContext();
-    } else if(globalTopicAreaSelection ==="triangleAndTrapezium"){
-        triangleAndTrapezium();
-    } else if(globalTopicAreaSelection ==="percentageProfit"){
-        percentageProfit();
-    } else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem"){
-        proportionRateOfWorkProblem()
+    switch (globalTopicAreaSelection){
+        case "0":
+            alert("Please select a topic from the drop down menu before generating a question");
+            break;
+        case "speedDistanceTime":
+            Qid0001();
+            break;
+        case "estimation":
+            Qid0002();
+            break;
+        case "solveQuadraticByFactorising":
+            QidSolveQuadraticFactorising001();
+            break;
+        case "simultaneousEquationsNoContext":
+            QidSimultaneousEquationsNoContext();
+            break;
+        case "simultaneousEquationsContext":
+            QidSimultaneousEquationsContext();
+            break;
+        case "triangleAndTrapezium":
+            triangleAndTrapezium();
+            break;
+        case "percentageProfit":
+            percentageProfit();
+            break;
+        case "proportionRateOfWorkProblem":
+            proportionRateOfWorkProblem();
+            break;
     }
-    };
+}
 
 let showSolutionButton = document.getElementById("showSolutionButton");
 

@@ -3878,102 +3878,152 @@ document.querySelector('.solution-box').style.display = 'none';
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection==="0"){
-        alert("Please select a topic from the drop down menu before generating a question");
-    } else if(globalTopicAreaSelection ==="sequencesNextNumberInteger"){
-        sequencesNextNumberInteger();
-    } else if(globalTopicAreaSelection==="roundToPowerOfTen"){
-        roundToPowerOfTen();
-    } else if(globalTopicAreaSelection==="writeNumberInFigures"){
-        writeNumberInFigures();
-    } else if(globalTopicAreaSelection==="highestNumberWithDecimals"){
-        highestNumberWithDecimals();
-    } else if(globalTopicAreaSelection==="subtraction3DigitBy3Digit"){
-        subtraction3DigitBy3Digit();
-    } else if(globalTopicAreaSelection==="tellTheTimeOnAnalogueClock"){
-        tellTheTimeOnAnalogueClock();
-    } else if(globalTopicAreaSelection==="identifyCorrectMeasuringTool"){
-        identifyCorrectMeasuringTool();
-    } else if(globalTopicAreaSelection==="fastestTime"){
-        fastestTime();
-    } else if(globalTopicAreaSelection==="completeFrequencyTable"){
-        completeFrequencyTable();
-    } else if(globalTopicAreaSelection==="interpretBarChart"){
-        interpretBarChart();
-    } else if(globalTopicAreaSelection==="fractionShadedOfShape"){
-        fractionShadedOfShape();
-    } else if(globalTopicAreaSelection==="sequencesNextNumberDecimal"){
-        sequencesNextNumberDecimal();
-    } else if(globalTopicAreaSelection==="roundingMoney"){
-        roundingMoney();
-    } else if(globalTopicAreaSelection==="bestValueTables"){
-        bestValueTables();
-    } else if(globalTopicAreaSelection==="fourOpsWordedQuestion"){
-        fourOpsWordedQuestion();
-    } else if(globalTopicAreaSelection==="scaleDrawings"){
-        scaleDrawings();
-    } else if(globalTopicAreaSelection==="compassDirections"){
-        compassDirections();
-    } else if(globalTopicAreaSelection==="linesOfSymmetry"){
-        linesOfSymmetry();
-    } else if(globalTopicAreaSelection==="wordedDivisionAndRoundingUp"){
-        wordedDivisionAndRoundingUp();
-    } else if(globalTopicAreaSelection==="readingScalesChildsHeight"){
-        readingScalesChildsHeight();
-    } else if(globalTopicAreaSelection==="multiplicationMoney"){
-        multiplicationMoney();
-    } else if(globalTopicAreaSelection==="BIDMAS"){
-        BIDMAS();
-    } else if(globalTopicAreaSelection==="squaring"){
-        squaring();
-    } else if(globalTopicAreaSelection==="FDPFracToDec"){
-        FDPFracToDec();
-    } else if(globalTopicAreaSelection==="addingNegatives"){
-        addingNegatives();
-    } else if(globalTopicAreaSelection==="percentageOfAnAmountNonCalc"){
-        percentageOfAnAmountNonCalc();
-    } else if(globalTopicAreaSelection==="rangeOfNumbers"){
-        rangeOfNumbers();
-    } else if(globalTopicAreaSelection==="percentageSavingsAccount"){
-        percentageSavingsAccount();
-    } else if(globalTopicAreaSelection==="probabilityScale"){
-        probabilityScale();
-    } else if(globalTopicAreaSelection==="volumeOfCube"){
-        volumeOfCube();
-    } else if(globalTopicAreaSelection==="convertingMixedNumtoImproper"){
-        convertingMixedNumtoImproper();
-    } else if(globalTopicAreaSelection==="saleOfGuitar"){
-        saleOfGuitar();
-    } else if(globalTopicAreaSelection==="ratioJumpers"){
-        ratioJumpers();
-    } else if(globalTopicAreaSelection==="probabilityOfficWorker"){
-        probabilityOfficWorker();
-    } else if(globalTopicAreaSelection==="readingScalesFuelGauge"){
-        readingScalesFuelGauge();
-    } else if(globalTopicAreaSelection==="writingNumbersInFigures"){
-        writingNumbersInFigures();
-    } else if(globalTopicAreaSelection==="roundingNumberToDecimalPlace"){
-        roundingNumberToDecimalPlace();
-    } else if(globalTopicAreaSelection==="biggestFraction"){
-        biggestFraction();
-    } else if(globalTopicAreaSelection==="salesmanMistake"){
-        salesmanMistake();
-    } else if(globalTopicAreaSelection==="usingAFormula"){
-        usingAFormula();
-    } else if(globalTopicAreaSelection==="elevations"){
-        elevations();
-    } else if(globalTopicAreaSelection==="scalesUsingMap"){
-        scalesUsingMap();
-    } else if(globalTopicAreaSelection==="volumeOfCuboid"){
-        volumeOfCuboid();
-    } else if(globalTopicAreaSelection==="perimeterProblemSolving"){
-        perimeterProblemSolving();
-    } else if(globalTopicAreaSelection==="percentagesBestBuyPorblemSolving"){
-        percentagesBestBuyPorblemSolving();
-    } else if(globalTopicAreaSelection==="lineChart"){
-        lineChart();
+    switch (globalTopicAreaSelection){
+        /////////////////////Entry 3///////////////////////////
+        case "0":
+            alert("Please select a topic from the drop down menu before generating a question");
+            break;
+        case "sequencesNextNumberInteger":
+            sequencesNextNumberInteger();
+            break;
+        case "roundToPowerOfTen":
+            roundToPowerOfTen();
+            break;
+        case "writeNumberInFigures":
+            writeNumberInFigures();
+            break;
+        case "highestNumberWithDecimals":
+            highestNumberWithDecimals();
+            break;
+        case "subtraction3DigitBy3Digit":
+            subtraction3DigitBy3Digit();
+            break;
+        case "tellTheTimeOnAnalogueClock":
+            tellTheTimeOnAnalogueClock();
+            break;
+        case "identifyCorrectMeasuringTool":
+            identifyCorrectMeasuringTool();
+            break;
+        case "fastestTime":
+            fastestTime();
+            break;
+        case "completeFrequencyTable":
+            completeFrequencyTable();
+            break;
+        case "interpretBarChart":
+            interpretBarChart();
+            break;
+        case "fractionShadedOfShape":
+            fractionShadedOfShape();
+            break;
+        case "sequencesNextNumberDecimal":
+            sequencesNextNumberDecimal();
+            break;
+        case "roundingMoney":
+            roundingMoney();
+            break;
+        case "bestValueTables":
+            bestValueTables();
+            break;
+        case "fourOpsWordedQuestion":
+            fourOpsWordedQuestion();
+            break;
+        case "scaleDrawings":
+            scaleDrawings();
+            break;
+        case "compassDirections":
+            compassDirections();
+            break;
+        case "linesOfSymmetry":
+            linesOfSymmetry();
+            break;
+        case "wordedDivisionAndRoundingUp":
+            wordedDivisionAndRoundingUp();
+            break;
+        case "readingScalesChildsHeight":
+            readingScalesChildsHeight();
+            break;
+        case "multiplicationMoney":
+            multiplicationMoney();
+            break;
+        /////////////////////Level 1///////////////////////////
+        case "BIDMAS":
+            BIDMAS();
+            break;
+        case "squaring":
+            squaring();
+            break;
+        case "FDPFracToDec":
+            FDPFracToDec();
+            break;
+        case "addingNegatives":
+            addingNegatives();
+            break;
+        case "percentageOfAnAmountNonCalc":
+            percentageOfAnAmountNonCalc();
+            break;
+        case "rangeOfNumbers":
+            rangeOfNumbers();
+            break;
+        case "percentageSavingsAccount":
+            percentageSavingsAccount();
+            break;
+        case "probabilityScale":
+            probabilityScale();
+            break;
+        case "volumeOfCube":
+            volumeOfCube();
+            break;
+        case "convertingMixedNumtoImproper":
+            convertingMixedNumtoImproper();
+            break;
+        case "saleOfGuitar":
+            saleOfGuitar();
+            break;
+        case "ratioJumpers":
+            ratioJumpers();
+            break;
+        case "probabilityOfficWorker":
+            probabilityOfficWorker();
+            break;
+        case "readingScalesFuelGauge":
+            readingScalesFuelGauge();
+            break;
+        case "writingNumbersInFigures":
+            writeNumberInFigures();
+            break;
+        case "roundingNumberToDecimalPlace":
+            roundingNumberToDecimalPlace();
+            break;
+        case "biggestFraction":
+            biggestFraction();
+            break;
+        case "salesmanMistake":
+            salesmanMistake();
+            break;
+        case "usingAFormula":
+            usingAFormula();
+            break;
+        case "elevations":
+            elevations();
+            break;
+        case "scalesUsingMap":
+            scalesUsingMap();
+            break;
+        case "volumeOfCuboid":
+            volumeOfCuboid();
+            break;
+        case "perimeterProblemSolving":
+            perimeterProblemSolving();
+            break;
+        case "percentagesBestBuyPorblemSolving":
+            percentagesBestBuyPorblemSolving();
+            break;
+        case "lineChart":
+            lineChart();
+            break;
     }
-};
+}
 
 let showSolutionButton = document.getElementById("showSolutionButton");
 
