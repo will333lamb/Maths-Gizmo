@@ -4273,9 +4273,9 @@ function lineChart(){
     <p id="marksGiven">(1 mark)</p><br><br>
     Suitable title and labels. eg, Jan, Feb etc and number of orders.<br>
     <p id="marksGiven">(1 mark)</p><br><br>
-    6 plots correct AND line joining them. (1 mark if 6 plots correct with no line joining OR at least 4 plots correct with line joining them)
+    6 plots correct AND line joining them. (1 mark if 6 plots correct with no line joining OR at least 4 plots correct with line joining them)<br>
     <p id="marksGiven">(2 marks)</p><br><br>
-    Eg:<br>
+    Eg:<br><br>
     <div class="lineChartContainer">
         <div class="lineChartContainerChild">
             <canvas id="lineChart" width="10" height="10"></canvas>
@@ -4288,8 +4288,8 @@ function lineChart(){
         </div>
     </div>
     <br>
-    <p id="marksGiven">(4 marks)</p><br><br><br>
-    <span class="questionNumber">b)</span><br><br> Valid explanation, eg 'The number of orders is generally ${chosenIncreaseOrDecrease} over the six months.
+    
+    <span class="questionNumber">b)</span><br><br> Valid explanation, eg 'The number of orders is generally ${chosenIncreaseOrDecrease} over the six months.<br>
     <p id="marksGiven">(1 mark)</p><br><br><br> 
     <div class="borderBottomSolution"></div>
     
