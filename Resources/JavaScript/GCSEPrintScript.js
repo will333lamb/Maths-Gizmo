@@ -216,10 +216,6 @@ function questionInfo(){
     }
 }
 
-
-
-
-
 //Function to auto sum total questions
 $(document).ready(function(e){
     $("input").change(function(){

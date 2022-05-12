@@ -155,11 +155,16 @@ let calcSign = `<i class="fas fa-calculator"></i>
 function getSelectedTopicArea(){
     globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
 };
+getSelectedTopicArea();
 
 function getSelectedTopic(){globalSelectedTopic = document.getElementById("topicSelect").value}
 
 function getSelectedDifficultyValue(){globalDifficultySelection = parseInt(document.getElementById("difficultyDropDown").value)};
 
+function loseSolutionOnNewQ(){
+    showSolutionButton.innerHTML = 'Show Solution';
+    document.querySelector('.solution-box').style.display = 'none';
+}
 
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -287,6 +292,8 @@ const Qid0001 = () => {
     ${name2DistanceBronze} ÷ ${name2TimeBronze} = ${name2SpeedBronze}. Therefore, ${name2}'s speed is ${name2SpeedBronze} km/h <br>
     Hence, ${fastestNameBronze} is the fastest.`
     }
+
+    loseSolutionOnNewQ()
 };
 
 const Qid0002 = () => {
@@ -489,6 +496,7 @@ const Qid0002 = () => {
     Therefore the total income is £${guestTotalIncome} + £${sponsorshipSigFig} = <span class="totalCostIncome">£${totalIncome}</span> <br>
     ${conclusionStatement}` 
 
+    loseSolutionOnNewQ()
 };
 
 function QidSolveQuadraticFactorising001(){
@@ -627,6 +635,7 @@ function QidSolveQuadraticFactorising001(){
 
     `
 
+    loseSolutionOnNewQ()
 }
 
 function QidSimultaneousEquationsNoContext(){
@@ -956,6 +965,7 @@ function QidSimultaneousEquationsNoContext(){
     }
     
 
+    loseSolutionOnNewQ()
 }
 
 function QidSimultaneousEquationsContext(){
@@ -1335,6 +1345,7 @@ function QidSimultaneousEquationsContext(){
         }
     }
     
+    loseSolutionOnNewQ()
 
 }
 
@@ -1606,6 +1617,9 @@ function triangleAndTrapezium(){
         h = ${h}
     </div>
     `
+
+    loseSolutionOnNewQ()
+
 }
 
 function percentageProfit(){
@@ -1663,6 +1677,8 @@ function percentageProfit(){
     Percentage profit = (${profit} &divide ${x}) &times 100 = ${percentageProfitSol} <br>
     Therefore percentage profit is ${percentageProfitSol}%
     `
+
+    loseSolutionOnNewQ()
 }
 
 function proportionRateOfWorkProblem(){
@@ -1774,6 +1790,8 @@ function proportionRateOfWorkProblem(){
         ${parseFloat(decimalPart.toFixed(3))} &times 12 hours = ${hoursPart} hours <br>
         Therefore, the total time is <span style="text-decoration: underline">${daysPart} days and ${hoursPart} hours</span>`
     }
+
+    loseSolutionOnNewQ()
 }
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -1781,24 +1799,26 @@ function proportionRateOfWorkProblem(){
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection ==="speedDistanceTime"){
+    if(globalTopicAreaSelection==="0"){
+        alert("Please select a topic from the drop down menu before generating a question");
+    } else if(globalTopicAreaSelection ==="speedDistanceTime"){
     Qid0001();
-} else if(globalTopicAreaSelection ==="estimation"){
-    Qid0002();
-} else if(globalTopicAreaSelection ==="solveQuadraticByFactorising"){
-    QidSolveQuadraticFactorising001();
-} else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
-    QidSimultaneousEquationsNoContext();
-} else if(globalTopicAreaSelection ==="simultaneousEquationsContext"){
-    QidSimultaneousEquationsContext();
-} else if(globalTopicAreaSelection ==="triangleAndTrapezium"){
-    triangleAndTrapezium();
-} else if(globalTopicAreaSelection ==="percentageProfit"){
-    percentageProfit();
-} else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem"){
-    proportionRateOfWorkProblem()
-}
-};
+    } else if(globalTopicAreaSelection ==="estimation"){
+        Qid0002();
+    } else if(globalTopicAreaSelection ==="solveQuadraticByFactorising"){
+        QidSolveQuadraticFactorising001();
+    } else if(globalTopicAreaSelection ==="simultaneousEquationsNoContext"){
+        QidSimultaneousEquationsNoContext();
+    } else if(globalTopicAreaSelection ==="simultaneousEquationsContext"){
+        QidSimultaneousEquationsContext();
+    } else if(globalTopicAreaSelection ==="triangleAndTrapezium"){
+        triangleAndTrapezium();
+    } else if(globalTopicAreaSelection ==="percentageProfit"){
+        percentageProfit();
+    } else if(globalTopicAreaSelection ==="proportionRateOfWorkProblem"){
+        proportionRateOfWorkProblem()
+    }
+    };
 
 let showSolutionButton = document.getElementById("showSolutionButton");
 

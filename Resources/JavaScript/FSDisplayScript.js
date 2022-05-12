@@ -136,6 +136,7 @@ let calcSign = `<i class="fas fa-calculator"></i>
 function getSelectedTopicArea(){
     globalTopicAreaSelection = document.getElementById("topicAreaSelect").value;
 };
+getSelectedTopicArea();
 
 function toDataURL(src, callback) {
     var image = new Image();
@@ -3877,7 +3878,9 @@ document.querySelector('.solution-box').style.display = 'none';
 let generateQButton = document.getElementById("generateQButton");
 
 generateQButton.onclick = function(){
-    if(globalTopicAreaSelection ==="sequencesNextNumberInteger"){
+    if(globalTopicAreaSelection==="0"){
+        alert("Please select a topic from the drop down menu before generating a question");
+    } else if(globalTopicAreaSelection ==="sequencesNextNumberInteger"){
         sequencesNextNumberInteger();
     } else if(globalTopicAreaSelection==="roundToPowerOfTen"){
         roundToPowerOfTen();
