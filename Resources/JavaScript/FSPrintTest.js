@@ -4130,6 +4130,232 @@ function percentagesBestBuyPorblemSolving(){
     `
 }
 
+function lineChart(){
+
+    let lineChartPaper = "../Resources/Images/FS Q's/Level 1/LineChart/BlankGraph.png";
+
+    toDataURL(lineChartPaper, function(dataURL) {
+        document.getElementById("lineChartBlank").src = dataURL
+    })
+
+    let multipleOfArray = [2,3,4,5,6,10,20,30];
+    let chosenMultipleOf = multipleOfArray[Math.floor(Math.random()*multipleOfArray.length)];
+
+    let increaseOrDecreaseArray = ["increasing","decreasing"];
+    let chosenIncreaseOrDecrease = increaseOrDecreaseArray[Math.floor(Math.random()*increaseOrDecreaseArray.length)];
+
+    if(chosenIncreaseOrDecrease==="increasing"){
+        x1 = Math.ceil(Math.random()*3) * chosenMultipleOf;
+        x2 = (Math.ceil(Math.random()*3)+3) * chosenMultipleOf;
+        x3 = (Math.ceil(Math.random()*3)+5) * chosenMultipleOf;
+        x4 = (Math.ceil(Math.random()*3)+7) * chosenMultipleOf;
+        x5 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+        x6 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+    } else {
+        x6 = Math.ceil(Math.random()*3) * chosenMultipleOf;
+        x5 = (Math.ceil(Math.random()*3)+3) * chosenMultipleOf;
+        x4 = (Math.ceil(Math.random()*3)+5) * chosenMultipleOf;
+        x3 = (Math.ceil(Math.random()*3)+7) * chosenMultipleOf;
+        x2 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+        x1 = (Math.ceil(Math.random()*3)+8) * chosenMultipleOf;
+    }
+
+    
+
+    questionText.innerHTML += `
+    <style>
+    #lineChartTable{
+        border: 1px solid #009780;
+        border-collapse: collapse;
+        text-align: center;
+        margin: 0 auto;
+        width: 75%;
+        line-height: 1em;
+    }
+    #lineChartTable th{
+        border: 1px solid #009780;
+        padding: 0.15em;
+        background-color: rgba(88, 229, 186, 0.3);
+    } 
+    
+    #lineChartTable td{
+        border: 1px solid #009780;
+        padding: 0.1em;
+    }
+
+    #lineChartBlank{
+        width: 65%;
+        margin: 0 auto;
+        padding: 1em;
+        max-width: 500px;
+    }
+
+    .lineChartBlankContainer{
+        width: 100%;
+        display: flex;
+    }
+
+    </style>
+    <span class="questionNumber">Q14.</span>
+    This table shows the number of orders a cake-maker got in six months.<br><br>
+    
+    <table id="lineChartTable">
+        <tr>
+            <th>Month</th>
+            <th>Number of orders</th>
+        </tr>
+        <tr>
+            <td>January</td>
+            <td>${x1}</td>
+        </tr>
+        <tr>
+            <td>February</td>
+            <td>${x2}</td>
+        </tr>
+        <tr>
+            <td>March</td>
+            <td>${x3}</td>
+        </tr>
+        <tr>
+            <td>April</td>
+            <td>${x4}</td>
+        </tr>
+        <tr>
+            <td>May</td>
+            <td>${x5}</td>
+        </tr>
+        <tr>
+            <td>June</td>
+            <td>${x6}</td>
+        </tr>
+    </table><br>
+    <span class="questionNumber">a)</span> Draw a line chart to show this information.<br>
+    <div class="lineChartBlankContainer">
+    <img id="lineChartBlank" src="">
+    </div><br><br><br>
+    <span class="questionNumber">b)</span> Explain what your graph shows about the number of orders.<br><br>
+    <br><br><br><br><br>
+    <p id="marksGiven">(5 marks)</p><br><br>
+    ${pagebreak}
+
+    `
+
+    solutionText.innerHTML += `
+    <style>
+    .lineChartImageContainer{
+        display: flex;
+        width: 100%;
+    }    
+
+    .lineChartImageContainerChild{
+        width: 100%;
+        display: flex;
+    }
+
+    #lineChartImg{
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 800px) {
+
+        #lineChartImg{
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    </style>
+    <span class="questionNumber">Q14.</span><br><br>
+    <span class="questionNumber">a)</span><br><br>
+    Line chart needs the following: <br>
+    Suitable axes and scale to plot all the data<br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    Suitable title and labels. eg, Jan, Feb etc and number of orders.<br>
+    <p id="marksGiven">(1 mark)</p><br><br>
+    6 plots correct AND line joining them. (1 mark if 6 plots correct with no line joining OR at least 4 plots correct with line joining them)
+    <p id="marksGiven">(2 marks)</p><br><br>
+    Eg:<br>
+    <div class="lineChartContainer">
+        <div class="lineChartContainerChild">
+            <canvas id="lineChart" width="10" height="10"></canvas>
+        </div>
+    </div>
+
+    <div class="lineChartImageContainer">
+        <div class="lineChartImageContainerChild">
+            <img id="lineChartImg" src="">
+        </div>
+    </div>
+    <br>
+    <p id="marksGiven">(4 marks)</p><br><br><br>
+    <span class="questionNumber">b)</span><br><br> Valid explanation, eg 'The number of orders is generally ${chosenIncreaseOrDecrease} over the six months.
+    <p id="marksGiven">(1 mark)</p><br><br><br> 
+    <div class="borderBottomSolution"></div>
+    
+    `
+
+    Chart.defaults.font.size = 18;
+    let windowWidth = window.innerWidth;
+
+    if(windowWidth>800){
+        Chart.defaults.font.size = 60;
+    }
+    
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr','May','Jun'],
+        datasets: [{
+            label: 'Number of orders',
+            data: [x1,x2,x3,x4,x5,x6],
+            backgroundColor: [
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+                'rgba(88, 229, 186, 0.5)',
+            ],
+            borderColor: [
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+                'rgba(88, 229, 186, 1)',
+            ],
+            borderWidth: 5
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: chosenMultipleOf,
+                },
+                
+                
+            }
+        },
+        animation: {
+            duration: 0
+        },
+        
+    }
+});
+
+document.getElementById('lineChartImg').src = myChart.toBase64Image();
+document.querySelector(".lineChartContainer").style.display = "none";
+document.querySelector(".lineChartContainerChild").style.display = "none";
+
+
+
+    
+}
+
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let generateQButton = document.getElementById("generateQButton");
@@ -4206,6 +4432,7 @@ if(document.getElementById("generateQButton").innerHTML==="Reset"){
     perimeterProblemSolving();
     doctorsReception();
     percentagesBestBuyPorblemSolving();
+    lineChart();
 
     document.getElementById("generateQButton").innerHTML="Reset";
 }
