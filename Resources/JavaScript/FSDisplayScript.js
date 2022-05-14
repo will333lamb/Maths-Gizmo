@@ -116,7 +116,7 @@ let femaleNameArray = ["Amelia", "Ava", "Abigail", "Anna", "Amy", "Alicia",
 "Wendy", 
 "Yasmin", "Yolanda", "Yvonne", "Zara","Zoe"];
 
-let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+let allNamesArray = [[maleNameArray, "he","He","him"],[femaleNameArray,"she","She","her"]];
 
 let questionText = document.getElementById("questionText");
 let solutionText = document.getElementById("solutionText");
@@ -3871,6 +3871,265 @@ document.querySelector('.solution-box').style.display = 'none';
 
     
 }
+
+function trainTimetable(){
+    let nameMF = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
+    let name = nameMF[0][Math.floor(Math.random()*nameMF[0].length)];
+    let heOrShe = nameMF[2];
+    let himOrHer = nameMF[3];
+
+    let allTimeArray =
+    [
+    [["0915","0945","1045","1145"],["1015","1045","1145","1245"],["1030","1050","1150","1250"],["1110","1140","1240","1325"],["1130","1200","1245","1342"],["1150","1220","1320","1408"]],
+    [["0920","0950","1050","1150"],["1020","1050","1150","1250"],["1035","1055","1155","1255"],["1115","1145","1245","1330"],["1135","1205","1250","1347"],["1155","1225","1325","1413"]],
+    [["0925","0956","1055","1155"],["1025","1055","1145","1255"],["1040","1100","1201","1258"],["1120","1150","1250","1335"],["1140","1210","1255","1353"],["1158","1230","1330","1418"]],
+    [["0930","1000","1100","1200"],["1030","1100","1200","1300"],["1045","1115","1215","1315"],["1125","1155","1255","1355"],["1145","1215","1315","1415"],["1200","1230","1330","1430"]],
+    [["0926","0957","1056","1156"],["1026","1056","1146","1256"],["1041","1101","1202","1259"],["1121","1151","1251","1336"],["1141","1211","1256","1354"],["1159","1231","1331","1419"]],
+    ]
+
+    let meetingStartTimeArray = [["13:00",780],["13:25",805],["13:50",830],["14:05",845],["14:10",850],["14:30",870],["14:45",885]];
+    let meetingStartTime1 = meetingStartTimeArray[Math.floor(Math.random()*meetingStartTimeArray.length)];
+    let meetingStartTime = meetingStartTime1[0];
+    let meetingStartTimeMins = meetingStartTime1[1];
+
+    function time_convert(num)
+    { 
+    var hours = Math.floor(num / 60);  
+    var minutes = num % 60;
+    return hours + ":" + minutes;         
+    }
+    let trainNeedsToArriveBefore = time_convert(meetingStartTimeMins-15);
+
+    let chosenTimeArray1 = allTimeArray[Math.floor(Math.random()*allTimeArray.length)];
+
+    let hoursPart1 = parseFloat(`${chosenTimeArray1[0][3].charAt(0)}${chosenTimeArray1[0][3].charAt(1)}`);
+    let minutesPart1 = parseFloat(`${chosenTimeArray1[0][3].charAt(2)}${chosenTimeArray1[0][3].charAt(3)}`);
+    let hoursPart2 = parseFloat(`${chosenTimeArray1[1][3].charAt(0)}${chosenTimeArray1[1][3].charAt(1)}`);
+    let minutesPart2 = parseFloat(`${chosenTimeArray1[1][3].charAt(2)}${chosenTimeArray1[1][3].charAt(3)}`);
+    let hoursPart3 = parseFloat(`${chosenTimeArray1[2][3].charAt(0)}${chosenTimeArray1[2][3].charAt(1)}`);
+    let minutesPart3 = parseFloat(`${chosenTimeArray1[2][3].charAt(2)}${chosenTimeArray1[2][3].charAt(3)}`);
+    let hoursPart4 = parseFloat(`${chosenTimeArray1[3][3].charAt(0)}${chosenTimeArray1[3][3].charAt(1)}`);
+    let minutesPart4 = parseFloat(`${chosenTimeArray1[3][3].charAt(2)}${chosenTimeArray1[3][3].charAt(3)}`);
+    let hoursPart5 = parseFloat(`${chosenTimeArray1[4][3].charAt(0)}${chosenTimeArray1[4][3].charAt(1)}`);
+    let minutesPart5 = parseFloat(`${chosenTimeArray1[4][3].charAt(2)}${chosenTimeArray1[4][3].charAt(3)}`);
+    let hoursPart6 = parseFloat(`${chosenTimeArray1[5][3].charAt(0)}${chosenTimeArray1[5][3].charAt(1)}`);
+    let minutesPart6 = parseFloat(`${chosenTimeArray1[5][3].charAt(2)}${chosenTimeArray1[5][3].charAt(3)}`);
+
+    let totalMinsCol1 = hoursPart1*60 + minutesPart1 +15;
+    let totalMinsCol2 = hoursPart2*60 + minutesPart2 +15;
+    let totalMinsCol3 = hoursPart3*60 + minutesPart3 +15;
+    let totalMinsCol4 = hoursPart4*60 + minutesPart4 +15;
+    let totalMinsCol5 = hoursPart5*60 + minutesPart5 +15;
+    let totalMinsCol6 = hoursPart6*60 + minutesPart6 +15;
+
+    let findBestTrainArray = 
+    [
+    meetingStartTimeMins-totalMinsCol1, meetingStartTimeMins-totalMinsCol2, meetingStartTimeMins-totalMinsCol3,
+    meetingStartTimeMins-totalMinsCol4, meetingStartTimeMins-totalMinsCol5, meetingStartTimeMins-totalMinsCol6
+    ];
+    
+    // Array filter to lose the negative values in array
+    findBestTrainArray = findBestTrainArray.filter(function(x){ return x >=0 });
+
+    let minVal = Math.min(...findBestTrainArray);
+    switch(minVal){
+        case findBestTrainArray[0]:
+            bestTrainNorwich = chosenTimeArray1[0][1];
+            bestTrainLondon = chosenTimeArray1[0][3];
+            break;
+        case findBestTrainArray[1]:
+            bestTrainNorwich = chosenTimeArray1[1][1];
+            bestTrainLondon = chosenTimeArray1[1][3];
+            break;
+        case findBestTrainArray[2]:
+            bestTrainNorwich = chosenTimeArray1[2][1];
+            bestTrainLondon = chosenTimeArray1[2][3];
+            break;
+        case findBestTrainArray[3]:
+            bestTrainNorwich = chosenTimeArray1[3][1];
+            bestTrainLondon = chosenTimeArray1[3][3];
+            break;
+        case findBestTrainArray[4]:
+            bestTrainNorwich = chosenTimeArray1[4][1];
+            bestTrainLondon = chosenTimeArray1[4][3];
+            break;
+        case findBestTrainArray[5]:
+            bestTrainNorwich = chosenTimeArray1[5][1];
+            bestTrainLondon = chosenTimeArray1[5][3];
+            break;
+    }
+    
+    //Col1
+    let Lw1 = chosenTimeArray1[0][0];
+    let N1 = chosenTimeArray1[0][1];
+    let C1 = chosenTimeArray1[0][2];
+    let Lo1 = chosenTimeArray1[0][3];
+    //Col2
+    let Lw2 = chosenTimeArray1[1][0];
+    let N2 = chosenTimeArray1[1][1];
+    let C2 = chosenTimeArray1[1][2];
+    let Lo2 = chosenTimeArray1[1][3];
+    //Col3
+    let Lw3 = chosenTimeArray1[2][0];
+    let N3 = chosenTimeArray1[2][1];
+    let C3 = chosenTimeArray1[2][2];
+    let Lo3 = chosenTimeArray1[2][3];
+    //Col4
+    let Lw4 = chosenTimeArray1[3][0];
+    let N4 = chosenTimeArray1[3][1];
+    let C4 = chosenTimeArray1[3][2];
+    let Lo4 = chosenTimeArray1[3][3];
+    //Col5
+    let Lw5 = chosenTimeArray1[4][0];
+    let N5 = chosenTimeArray1[4][1];
+    let C5 = chosenTimeArray1[4][2];
+    let Lo5 = chosenTimeArray1[4][3];
+    //Col6
+    let Lw6 = chosenTimeArray1[5][0];
+    let N6 = chosenTimeArray1[5][1];
+    let C6 = chosenTimeArray1[5][2];
+    let Lo6 = chosenTimeArray1[5][3];
+    
+    //Part B/////////////////////////////////////////////////////////////////////////////////////////////////
+    let singleOffPeak = parseFloat(`${Math.ceil(Math.random()*5)}${Math.ceil(Math.random()*9)}.${Math.ceil(Math.random()*9)}5`);
+    let returnOffPeak = (singleOffPeak*2).toFixed(2);
+    let singlePeak = parseFloat(`1${Math.ceil(Math.random()*5)}${Math.ceil(Math.random()*9)}.00`).toFixed(2);
+    let returnPeakArray = [[5,"The two singles work out cheaper"],[-5,"The return peak ticket is cheaper"]];
+    let chosenReturnPeak = returnPeakArray[Math.floor(Math.random()*returnPeakArray.length)];
+    let returnPeak = Math.round(parseFloat(singlePeak) + singleOffPeak + chosenReturnPeak[0]).toFixed(2);
+
+    let cheapestPrice = Math.min(returnPeak,parseFloat(singlePeak) + singleOffPeak)
+
+    
+    questionText.innerHTML = `
+    <style>
+        #trainTimetable{
+            border: 1px solid #009780;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        #trainTimetable td{
+            padding: 0.2em 1em;
+            border-bottom: 1px solid #009780;
+        }
+
+        #trainTimetable th{
+            padding: 0.2em 1em;
+            background-color: rgba(88, 229, 186, 0.3);
+            border-bottom: 1px solid #009780;
+
+        }
+
+        #trainTicketPricesTable{
+            border: 1px solid #009780;
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #trainTicketPricesTable td{
+            padding: 0.2em 1em;
+            border: 1px solid #009780;
+        }
+
+        #trainTicketPricesTable th{
+            padding: 0.2em 1em;
+            background-color: rgba(88, 229, 186, 0.3);
+            border: 1px solid #009780;
+
+        }
+    </style>
+
+    ${name} needs to go to a meeting in London on Sunday.<br>
+    ${heOrShe} lives a half hour drive from Norwich Station.<br>
+    ${heOrShe} wants to get the latest train possible that gets ${himOrHer} there in time for the meeting. <br><br>
+    The meeting starts at ${meetingStartTime}. It is in a hotel a 15-minute walk from the station in London. <br>
+    This is the train timetable for Sunday:<br><br>
+    <table id="trainTimetable">
+        <tr>
+            <th colspan="7">Sundays</th>
+        </tr>
+        <tr>
+            <td><span class="bold">Lowestoft</span></td>
+            <td>${Lw1}</td>
+            <td>${Lw2}</td>
+            <td>${Lw3}</td>
+            <td>${Lw4}</td>
+            <td>${Lw5}</td>
+            <td>${Lw6}</td>
+        </tr>
+        <tr>
+            <td>Norwich</td>
+            <td>${N1}</td>
+            <td>${N2}</td>
+            <td>${N3}</td>
+            <td>${N4}</td>
+            <td>${N5}</td>
+            <td>${N6}</td>
+        </tr>
+        <tr>
+            <td>Cambridge</td>
+            <td>${C1}</td>
+            <td>${C2}</td>
+            <td>${C3}</td>
+            <td>${C4}</td>
+            <td>${C5}</td>
+            <td>${C6}</td>
+        </tr>
+        <tr>
+            <td><span class="bold">London</span></td>
+            <td>${Lo1}</td>
+            <td>${Lo2}</td>
+            <td>${Lo3}</td>
+            <td>${Lo4}</td>
+            <td>${Lo5}</td>
+            <td>${Lo6}</td>
+        </tr>
+    </table>
+    <br>
+    a) Work out the best train for ${name} to catch.<br><br>
+    The website also has information about ticket prices.<br><br>
+    <table id="trainTicketPricesTable">
+        <tr>
+            <th colspan="3">Prices between Norwich and London</th>
+        </tr>
+        <tr>
+            <td><span class="bold">Ticket type</span></td>
+            <td><span class="bold">Off-peak (weekends)</span></td>
+            <td><span class="bold">Peak (any day)</span></td>
+        </tr>
+        <tr>
+            <td><span class="bold">Single (one way)</span></td>
+            <td> £${singleOffPeak} </td>
+            <td> £${singlePeak} </td>
+        </tr>
+        <tr>
+            <td><span class="bold">Return (two journeys)</span></td>
+            <td> £${returnOffPeak} </td>
+            <td> £${returnPeak} </td>
+        </tr>
+    </table>
+    <br>
+    b) ${name} will travel back on Monday. Work out the cheapest cost for ${himOrHer} to travel to London and back.<br>
+    `
+
+
+
+    solutionText.innerHTML = 
+    `
+    a) As it is a 15 minute walk from the station in London, the train needs to arrive in London 15 minutes before ${meetingStartTime}.<br>
+    This means the train needs to arrive on or before ${trainNeedsToArriveBefore}.<br>
+    The latest train to catch that gets ${himOrHer} there in time for the meeting is the ${bestTrainNorwich} from Norwich that
+    arrives in London at ${bestTrainLondon}<br>
+    <br>
+    b) If ${name} was to buy two single tickets, since ${name} is travelling out on a Sunday and returning on a Monday. ${heOrShe} will need to buy an off peak single
+    to London and a peak single on the way back. This would cost ${himOrHer} £${singleOffPeak} + £${singlePeak} =
+     £${parseFloat(singlePeak) + singleOffPeak} <br>
+    ${heOrShe} could also buy a peak return ticket that allows ${himOrHer} to travel any day for £${returnPeak} <br>
+    ${chosenReturnPeak[1]} so the cost is £${cheapestPrice}    
+    `
+    loseSolutionOnNewQ();
+}
     
 
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -4021,6 +4280,9 @@ generateQButton.onclick = function(){
             break;
         case "lineChart":
             lineChart();
+            break;
+        case "trainTimetable":
+            trainTimetable();
             break;
     }
 }
