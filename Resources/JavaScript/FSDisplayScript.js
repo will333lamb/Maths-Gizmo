@@ -4007,6 +4007,9 @@ function trainTimetable(){
             border: 1px solid #009780;
             border-collapse: collapse;
             margin: 0 auto;
+            width: 100%;
+            overflow-wrap: break-word;
+            table-layout: fixed;
         }
         #trainTimetable td{
             padding: 0.2em 1em;
@@ -4025,6 +4028,9 @@ function trainTimetable(){
             border-collapse: collapse;
             margin: 0 auto;
             text-align: center;
+            width: 100%;
+            overflow-wrap: break-word;
+            table-layout: fixed;
         }
 
         #trainTicketPricesTable td{
@@ -4038,6 +4044,7 @@ function trainTimetable(){
             border: 1px solid #009780;
 
         }
+
     </style>
 
     ${name} needs to go to a meeting in London on Sunday.<br>
