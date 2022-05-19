@@ -3085,8 +3085,8 @@ function elevations(){
 
     let spf = ["side","plan","front"];
 
-    let displayPicArray = [[displayPic1,5,[["side","B",4],["plan","C",4],["front","A",3]]],[displayPic2,8,[["side","D",4],["plan","E",6],["front","B",4]]]
-    ,[displayPic3,4,[["side","G",2],["plan","B",4],["front","F",3]]],[displayPic4,4,[["side","F",3],["plan","H",4],["front","G",2]]]];
+    let displayPicArray = [[displayPic1,5,[["side view (elevation)","B",4],["plan view","C",4],["front view (elevation)","A",3]]],[displayPic2,8,[["side view (elevation)","D",4],["plan view","E",6],["front view (elevation)","B",4]]]
+    ,[displayPic3,4,[["side view (elevation)","G",2],["plan view","B",4],["front view (elevation)","F",3]]],[displayPic4,4,[["side view (elevation)","F",3],["plan view","H",4],["front view (elevation)","G",2]]]];
 
     let chosenDisplayPic = displayPicArray[Math.floor(Math.random()*displayPicArray.length)];
     toDataURL(chosenDisplayPic[0], function(dataURL) {
@@ -3151,7 +3151,7 @@ function elevations(){
     <div class="centeredQuestion">
         <img id="displayPic" src="">
     </div>
-    a) Which of the shapes below is a ${chosenElevation} view (elevation) of the display?<br>
+    a) Which of the shapes below is a ${chosenElevation} of the display?<br>
     <div class="optionsContainer">
         <div class="individualShapeBoxes">
             <img id="shapeA" src="">
@@ -3188,7 +3188,7 @@ function elevations(){
     
     `
 
-    solutionText.innerHTML = `a) The ${chosenElevation} view (elevation) is Shape ${solutionPartA}<br>
+    solutionText.innerHTML = `a) The ${chosenElevation} is Shape ${solutionPartA}<br>
     b) 0.5m &times 0.5m = 0.25m<sup>2</sup>. Therefore the area of one square is 0.25m<sup>2</sup>. <br>
     There are ${numberBoxes} squares on shape ${solutionPartA}.<br>
     ${numberBoxes} &times 0.25m<sup>2</sup> = ${numberBoxes*0.25}m<sup>2</sup><br>
