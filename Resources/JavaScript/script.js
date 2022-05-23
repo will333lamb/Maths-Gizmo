@@ -1794,6 +1794,267 @@ function proportionRateOfWorkProblem(){
     loseSolutionOnNewQ()
 }
 
+function perimeterProblemSolving(){
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2><br>
+    This question was inspired by a functional skills level 1 question.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The side lengths of the L shape are always integers and the total perimeter is a multiple of the strip length.<br><br>
+    Silver - The side lengths of the L shape include decimals and the number of packs can be even or odd. <br><br>
+    Gold - The numbers can be larger than silver and the number of packs needed is always odd. `
+
+    let heOrSheArray = ["He","She"]
+    let chosenHeOrShe = heOrSheArray[Math.floor(Math.random()*heOrSheArray.length)];
+
+    function getNumbers(){
+        if(globalDifficultySelection===2){
+            bottomWidth = parseFloat(`${Math.ceil(Math.random()*14)+10}.5`);
+            oneOrTwoArray = [1.25,2.25];
+            topWidth = bottomWidth/2 - oneOrTwoArray[Math.floor(Math.random()*oneOrTwoArray.length)];
+            leftArrayAdd = [1.5, 2.5,1,2];
+            leftHeight = topWidth + leftArrayAdd[Math.floor(Math.random()*leftArrayAdd.length)];
+            rightArrayMinus = [0.5,1];
+            rightWidth = Math.ceil(leftHeight/2) - rightArrayMinus[Math.floor(Math.random()*rightArrayMinus.length)];
+
+            stripLengthArray = [3,4,5,6,7,8];
+            stripLength = stripLengthArray[Math.floor(Math.random()*stripLengthArray.length)];
+            stripCostPounds = stripLengthArray[Math.floor(Math.random()*stripLengthArray.length)];
+
+            missingHorizontalLength = bottomWidth - topWidth;
+            missingVerticalLength = leftHeight - rightWidth;
+
+            totalPerimeter = missingVerticalLength+missingHorizontalLength+rightWidth+leftHeight+topWidth+bottomWidth;
+
+            howManyPacksExact = parseFloat((totalPerimeter/stripLength).toFixed(3));
+            if(Number.isInteger(howManyPacksExact)===true){
+                getNumbers();
+            }
+
+            howManyPacksNeeded = Math.ceil(totalPerimeter/stripLength);
+            howManyPacksPayingFor = Math.ceil(howManyPacksNeeded/2);
+        } else if(globalDifficultySelection===1){
+            bottomWidth = parseFloat(`${Math.ceil(Math.random()*14)+10}`);
+            oneOrTwoArray = [1,2];
+            topWidth = Math.round(bottomWidth/2 - oneOrTwoArray[Math.floor(Math.random()*oneOrTwoArray.length)]);
+            leftArrayAdd = [1,2];
+            leftHeight = topWidth + leftArrayAdd[Math.floor(Math.random()*leftArrayAdd.length)];
+            rightArrayMinus = [1,2];
+            rightWidth = Math.ceil(leftHeight/2) - rightArrayMinus[Math.floor(Math.random()*rightArrayMinus.length)];
+
+            stripLengthArray = [4,6,8];
+            stripLength = stripLengthArray[Math.floor(Math.random()*stripLengthArray.length)];
+            stripCostPounds = stripLengthArray[Math.floor(Math.random()*stripLengthArray.length)];
+
+            missingHorizontalLength = bottomWidth - topWidth;
+            missingVerticalLength = leftHeight - rightWidth;
+
+            totalPerimeter = missingVerticalLength+missingHorizontalLength+rightWidth+leftHeight+topWidth+bottomWidth;
+
+            howManyPacksExact = parseFloat((totalPerimeter/stripLength).toFixed(3));
+            if(Number.isInteger(howManyPacksExact)===false){
+                getNumbers();
+            }
+
+            howManyPacksNeeded = Math.ceil(totalPerimeter/stripLength);
+            if(Number.isInteger(howManyPacksNeeded/2)===false){
+                getNumbers();
+            }
+            howManyPacksPayingFor = Math.ceil(howManyPacksNeeded/2);
+        } else if(globalDifficultySelection === 3){
+            bottomWidth = parseFloat(`${Math.ceil(Math.random()*34)+10}.5`);
+            oneOrTwoArray = [1.25,2.25];
+            topWidth = bottomWidth/2 - oneOrTwoArray[Math.floor(Math.random()*oneOrTwoArray.length)];
+            leftArrayAdd = [1.5, 2.5];
+            leftHeight = topWidth + leftArrayAdd[Math.floor(Math.random()*leftArrayAdd.length)];
+            rightArrayMinus = [0.5,1.5];
+            rightWidth = Math.ceil(leftHeight/2) - rightArrayMinus[Math.floor(Math.random()*rightArrayMinus.length)];
+
+            stripLengthArray = [3,4,5,6,7,8];
+            stripLength = stripLengthArray[Math.floor(Math.random()*stripLengthArray.length)];
+            stripCostPounds = stripLengthArray[Math.floor(Math.random()*stripLengthArray.length)];
+
+            missingHorizontalLength = bottomWidth - topWidth;
+            missingVerticalLength = leftHeight - rightWidth;
+
+            totalPerimeter = missingVerticalLength+missingHorizontalLength+rightWidth+leftHeight+topWidth+bottomWidth;
+
+            howManyPacksExact = parseFloat((totalPerimeter/stripLength).toFixed(3));
+            if(Number.isInteger(howManyPacksExact)===true){
+                getNumbers();
+            }
+
+            howManyPacksNeeded = Math.ceil(totalPerimeter/stripLength);
+            howManyPacksPayingFor = Math.ceil(howManyPacksNeeded/2);
+
+            if(Number.isInteger(howManyPacksNeeded/2)===true){
+                getNumbers();
+            }
+        }
+
+    }
+
+    getNumbers();
+
+    questionText.innerHTML = `
+    <style>
+    .floorplanContainer{
+        display: grid;
+        grid-template-columns: 0.4fr 0.6fr;
+        grid-template-rows: 0.4fr 0.6fr;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .green{
+        width: 100%;
+        height: 5em;
+        background-color: rgba(88, 229, 186, 0.6);
+    }
+
+    .notToScale{
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #topText{
+        text-align: center;
+        transform: translateY(-100%);
+    }
+    
+    #leftText{
+        text-align: left;
+        transform: translate(-27.5%, -25%);
+    }
+
+    #bottomText{
+        text-align: left;
+        transform: translateY(350%);
+    }
+
+    #rightText{
+        text-align: center;
+        transform: translateX(60%);
+    }
+
+    #topBox{
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
+
+    #bottomLeftBox{
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+    }
+
+    #bottomRightBox{
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    #floorText{
+        text-align: center;
+        transform: translate(-50%, -120%);
+    }
+
+    .offerBox{
+        border: 1px solid #009870;
+        width: fit-content;
+        padding: 1em;
+        margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 1275px){
+
+
+        #rightText{
+            text-align: right;
+            transform: translateX(calc(20% + 15px));
+        }
+    }
+
+
+    @media only screen and (max-width:1630px){
+
+
+        #leftText{
+            text-align: left;
+            transform: translate(-35%, -25%);
+        }
+    }
+
+    @media only screen and (max-width: 800px){
+
+        #bottomText{
+            text-align: left;
+            transform: translateY(calc(250% + 20px));
+        }
+
+        #rightText{
+            text-align: center;
+            transform: translateX(65%);
+        }
+    }   
+    
+    @media only screen and (max-width: 730px){
+        #leftText{
+            text-align: left;
+            transform: translate(calc(-35% - 25px), -25%);
+        }
+
+    }
+
+    @media only screen and (max-width: 555px){
+        #rightText{
+            text-align: center;
+            transform: translateX(75%);
+        }
+
+    }
+
+    </style>
+    ${calcSign}
+    A carpet fitter needs to order some fixing strips to hold the carpet all around the edges of this floor.<br><br><br>
+    <div class="floorplanContainer">
+        <div id="topBox" class="green"><p id="topText">${topWidth}m</p></div>
+        <div class="notToScale">Not to scale</div>
+        <div id="bottomLeftBox" class="green"><p id="leftText">${leftHeight}m</p></div>
+        <div id="bottomRightBox" class="green">
+            <p id="bottomText">${bottomWidth}m</p>
+            <p id="rightText">${rightWidth}m</p>
+            <p id="floorText">Floor</p>
+        </div>
+    </div><br><br>
+    ${chosenHeOrShe} can cut and join fixing strips.<br>
+    An online shop has packs of fixing strips on offer<br>
+    <div class="centeredQuestion">
+        <div class="offerBox">
+        <span class="bold">Carpet Supplies Direct</span><br>
+        Fixing strips: ${stripLength}-metre packs £${stripCostPounds}.99 per pack<br>
+        *** Buy one get one free ***
+        </div>
+    </div><br>
+    Work out the total cost for the packs of fixing strips the carpet fitter needs to order.
+    `
+
+    solutionText.innerHTML = `
+    
+    The missing horizontal side is ${bottomWidth}m - ${topWidth}m = ${missingHorizontalLength}m<br>
+    The missing vertical side is ${leftHeight}m - ${rightWidth}m = ${missingVerticalLength}m <br>
+    The total perimeter is ${totalPerimeter}m<br>
+    Since they come in ${stripLength}-metre packs, ${totalPerimeter} &divide ${stripLength} = ${howManyPacksExact} <br>
+    This means they will need ${howManyPacksNeeded} packs. Because of the BOGOF offer, they only need to pay for ${howManyPacksPayingFor} packs.<br>
+    ${howManyPacksPayingFor} &times £${parseFloat(`${stripCostPounds}.99`)} = £${(howManyPacksPayingFor*parseFloat(`${stripCostPounds}.99`)).toFixed(2)}
+    
+    `
+    
+    showSolutionButton.innerHTML = 'Show Solution';
+    document.querySelector('.solution-box').style.display = 'none';
+
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -1826,6 +2087,9 @@ generateQButton.onclick = function(){
             break;
         case "proportionRateOfWorkProblem":
             proportionRateOfWorkProblem();
+            break;
+        case "perimeterProblemSolving":
+            perimeterProblemSolving();
             break;
     }
 }
