@@ -187,6 +187,9 @@ function getWorksheetTitle(){
     } else if(globalTopicAreaSelection==="perimeterProblemSolving"){
         worksheetTitle="Perimeter L shape Worksheet Maths Gizmo"
         solutionsTitle="Perimeter L shape Solutions Maths Gizmo"
+    } else if(globalTopicAreaSelection==="usingAFormula"){
+        worksheetTitle="Garden seeds worksheet Maths Gizmo"
+        solutionsTitle="Garden seeds solutions Maths Gizmo"
     }
 };
 
@@ -255,6 +258,9 @@ $(document).ready(function(e){
         alert("Sorry, the maximum amount of questions for this topic is 60. " +
         "Your worksheet may not load properly if you exceed this.");
     } else if(globalTopicAreaSelection ==="perimeterProblemSolving" && sumTotalQuestions>30){
+        alert("Sorry, the maximum amount of questions for this topic is 30. " +
+        "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection==="usingAFormula" && sumTotalQuestions>30){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
         "Your worksheet may not load properly if you exceed this.");
     }
@@ -3677,7 +3683,8 @@ function perimeterProblemSolving(){
 
     infoBox.innerHTML = `
     <h2 style="color: #009870;">Question Info</h2><br>
-    This question was inspired by a functional skills level 1 question.<br><br>
+    This question was inspired by a functional skills level 1 question. Since I already made it on the functional skills generators, I thought I would put it here and add some
+    different difficulty settings.<br><br>
     Difficulty settings:<br><br>
     Bronze - The side lengths of the L shape are always integers and the total perimeter is a multiple of the strip length.<br><br>
     Silver - The side lengths of the L shape include decimals and the number of packs can be even or odd. <br><br>
@@ -3783,8 +3790,6 @@ function perimeterProblemSolving(){
         }
 
     }
-
-    getNumbers();
 
     function runQuestion(){
         questionText.innerHTML += `
@@ -3951,7 +3956,6 @@ function perimeterProblemSolving(){
     `
     }
 
-    runQuestion();
 
     //pagebreaks
     if (questionNumber === 4){
@@ -3982,9 +3986,194 @@ function perimeterProblemSolving(){
         document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
     }
     
+    getNumbers();
+    runQuestion();
 
+    
 }
 
+//Using a formlula garden seeds Q. 
+function usingAFormula(){
+
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2><br>
+    This question was inspired by a functional skills level 1 question. Since I already made it on the functional skills generators, I thought I would put it here and add some
+    different difficulty settings and change it so that it reflects a GCSE style question.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The grams of seeds needed will always be a multiple of 1000. Please note there is only 4 variations on bronze difficulty.<br><br>
+    Silver - The grams of seeds needed will not be a multiple of 1000.<br><br>
+    Gold -  The conversion to kg is more difficult.`
+
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+
+    questionNumber++;
+
+    function reassignValues(){
+        heOrSheArray=["he","she"];
+        chosenGender=heOrSheArray[Math.floor(Math.random()*heOrSheArray.length)];
+        if(globalDifficultySelection===2){
+            mainArray = [[4,[50]],[6,[25,50,75]],[8,[25,50,75]],[10,[25,75]],[12,[25,50]],[14,[25,50]]];
+            bagSizes = [1,2,5,10]
+        } else if(globalDifficultySelection===1){
+            mainArray = [[10,[10]],[20,[10]],[30,[10]],[40,[10]]];
+            bagSizes = [1,5,10,20]
+        } else if(globalDifficultySelection===3){
+            mainArray = [[5,[25,50,75]],[7,[25,50,75]],[9,[25,50,75]],[11,[25,50,75]],[13,[25,50,75]],[15,[25,50,75]],[17,[25,50]],[19,[25,50]],[21,[25]]];
+            bagSizes = [2,5,10,20]
+        }
+        chosenQ = mainArray[Math.floor(Math.random()*mainArray.length)];
+        x = chosenQ[0];
+        y = chosenQ[1][Math.floor(Math.random()*chosenQ[1].length)];
+
+        solutionGrams = x*x*y;
+        solutionKg = solutionGrams/1000
+        
+        if(solutionKg<=1){
+            solutionBag = "1kg bag"
+        } else if(solutionKg>1&&solutionKg<2){
+            solutionBag = "2kg bag"
+        } else if(solutionKg>2&&solutionKg<5){
+            solutionBag = "5kg bag"
+        } else if(solutionKg>5&&solutionKg<10){
+            solutionBag = "10kg bag"
+        } else if(solutionKg>10){
+            solutionBag = "20kg bag"
+        }
+
+        if(solutionKg<=1 && globalDifficultySelection===3){
+            solutionBag = "2kg bag"
+        }
+        
+    }
+    
+    function runQuestion(){
+        questionText.innerHTML += `
+        <style>
+        .formulaBox{
+            border: 1px solid #009870;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+        }
+        .seedPicsContainer{
+            
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-evenly;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .individualSeedBoxes{
+            padding: 1em;
+        }
+        .seed1kg{
+            padding: 0.2em;
+            border: 3px #009870 solid;
+            border-radius: 1em;
+            background-color: rgba(88, 229, 186, 0.3);
+        }
+        .seed2kg{
+            padding: 0.4em;
+            border: 3px #009870 solid;
+            border-radius: 1em;
+            background-color: rgba(88, 229, 186, 0.3);
+        }
+        .seed5kg{
+            padding: 0.8em;
+            border: 3px #009870 solid;
+            border-radius: 1em;
+            background-color: rgba(88, 229, 186, 0.3);
+        }
+        .seed10kg{
+            padding: 1.5em;
+            border: 3px #009870 solid;
+            border-radius: 1em;
+            background-color: rgba(88, 229, 186, 0.3);
+        }
+    
+        
+        .questionSolutionContainer{
+            font-size: 1rem;
+            line-height: 2.5rem;
+        }
+        
+    
+        </style> ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+        <br>
+        A gardener needs to order grass seeds for a garden.<br>
+        The garden is a square with sides measuring ${x} metres.<br>
+        This formula shows how many <span class="bold">grams</span> of seeds ${chosenGender} needs.<br><br>
+        <div class="formulaBox">
+            Grams of seeds needed = Area of garden (in square metres) &times ${y}
+        </div><br>
+        The supplier sells these bags of seeds.<br>
+        <div class="seedPicsContainer">
+            <div class="individualSeedBoxes">
+                <div class="seed1kg">${bagSizes[0]}kg</div>
+            </div>
+            <div class="individualSeedBoxes">
+                <div class="seed2kg">${bagSizes[1]}kg</div>
+            </div>
+            <div class="individualSeedBoxes">
+                <div class="seed5kg">${bagSizes[2]}kg</div>
+            </div>
+            <div class="individualSeedBoxes">
+                <div class="seed10kg">${bagSizes[3]}kg</div>
+            </div>
+        </div>
+        <span class="bold">The gardener only wants to buy one bag</span><br>
+        Which bag of seeds should the gardener buy? 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="answerLine"></div><br>
+        <p id="marksGiven">(5 marks)</p>
+        ${pagebreak}
+    
+        `
+    
+        solutionText.innerHTML += `
+        ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+        <br><br>
+        Grams of seeds needed is ${x} &times ${x} &times ${y} = ${solutionGrams}g<br>
+        ${solutionGrams}g = ${solutionKg}kg<br>
+        Therefore, they should buy the ${solutionBag}.
+        <br><br>
+        <div class="borderBottomSolution"></div><br>
+        `
+    }
+
+  //pagebreaks
+    if (questionNumber === 7){
+        solutionText.innerHTML += `${pagebreak}`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        solutionText.innerHTML += `${pagebreak}`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 13){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 19){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 25){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } 
+
+        
+    reassignValues();
+    runQuestion();
+
+    
+}
 
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4194,6 +4383,27 @@ generateQButton.onclick = function(){
             questionNumber = 0;
             for (let i = 0; i < goldNumber; i++){
                 perimeterProblemSolving(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "usingAFormula":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            questionText.innerHTML += `<br><h3 id="worksheetTitle">Garden Seeds</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                usingAFormula(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                usingAFormula(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                usingAFormula(i)}
             document.getElementById("generateQButton").innerHTML="Reset";
             break;
 

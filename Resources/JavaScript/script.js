@@ -1798,7 +1798,8 @@ function perimeterProblemSolving(){
 
     infoBox.innerHTML = `
     <h2 style="color: #009870;">Question Info</h2><br>
-    This question was inspired by a functional skills level 1 question.<br><br>
+    This question was inspired by a functional skills level 1 question. Since I already made it on the functional skills generators, I thought I would put it here and add some
+    different difficulty settings.<br><br>
     Difficulty settings:<br><br>
     Bronze - The side lengths of the L shape are always integers and the total perimeter is a multiple of the strip length.<br><br>
     Silver - The side lengths of the L shape include decimals and the number of packs can be even or odd. <br><br>
@@ -2055,6 +2056,140 @@ function perimeterProblemSolving(){
 
 }
 
+function usingAFormula(){
+
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2><br>
+    This question was inspired by a functional skills level 1 question. Since I already made it on the functional skills generators, I thought I would put it here and add some
+    different difficulty settings and change it so that it reflects a GCSE style question.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The grams of seeds needed will always be a multiple of 1000. Please note there is only 4 variations on bronze difficulty.<br><br>
+    Silver - The grams of seeds needed will not be a multiple of 1000.<br><br>
+    Gold -  The conversion to kg is more difficult.`
+
+    
+    let heOrSheArray=["he","she"];
+    let chosenGender=heOrSheArray[Math.floor(Math.random()*heOrSheArray.length)];
+    if(globalDifficultySelection===2){
+        mainArray = [[4,[50]],[6,[25,50,75]],[8,[25,50,75]],[10,[25,75]],[12,[25,50]],[14,[25,50]]];
+        bagSizes = [1,2,5,10]
+    } else if(globalDifficultySelection===1){
+        mainArray = [[10,[10]],[20,[10]],[30,[10]],[40,[10]]];
+        bagSizes = [1,5,10,20]
+    } else if(globalDifficultySelection===3){
+        mainArray = [[5,[25,50,75]],[7,[25,50,75]],[9,[25,50,75]],[11,[25,50,75]],[13,[25,50,75]],[15,[25,50,75]],[17,[25,50]],[19,[25,50]],[21,[25]]];
+        bagSizes = [2,5,10,20]
+    }
+    let chosenQ = mainArray[Math.floor(Math.random()*mainArray.length)];
+    let x = chosenQ[0];
+    let y = chosenQ[1][Math.floor(Math.random()*chosenQ[1].length)];
+
+    let solutionGrams = x*x*y;
+    let solutionKg = solutionGrams/1000
+      
+    if(solutionKg<=1){
+        solutionBag = "1kg bag"
+    } else if(solutionKg>1&&solutionKg<2){
+        solutionBag = "2kg bag"
+    } else if(solutionKg>2&&solutionKg<5){
+        solutionBag = "5kg bag"
+    } else if(solutionKg>5&&solutionKg<10){
+        solutionBag = "10kg bag"
+    } else if(solutionKg>10){
+        solutionBag = "20kg bag"
+    }
+
+    if(solutionKg<=1 && globalDifficultySelection===3){
+        solutionBag = "2kg bag"
+    }
+    
+
+    questionText.innerHTML = `
+    <style>
+    .formulaBox{
+        border: 1px solid #009870;
+        text-align: center;
+        font-weight: bold;
+    }
+    .seedPicsContainer{
+        
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        flex-wrap: wrap;
+    }
+    .individualSeedBoxes{
+        padding: 1em;
+    }
+    .seed1kg{
+        padding: 0.2em;
+        border: 3px #009870 solid;
+        border-radius: 1em;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+    .seed2kg{
+        padding: 0.4em;
+        border: 3px #009870 solid;
+        border-radius: 1em;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+    .seed5kg{
+        padding: 0.8em;
+        border: 3px #009870 solid;
+        border-radius: 1em;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+    .seed10kg{
+        padding: 1.5em;
+        border: 3px #009870 solid;
+        border-radius: 1em;
+        background-color: rgba(88, 229, 186, 0.3);
+    }
+
+    
+    .questionSolutionContainer{
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+    
+
+    </style> ${calcSign}
+    A gardener needs to order grass seeds for a garden.<br>
+    The garden is a square with sides measuring ${x} metres.<br>
+    This formula shows how many <span class="bold">grams</span> of seeds ${chosenGender} needs.<br>
+    <div class="formulaBox">
+        Grams of seeds needed = Area of garden (in square metres) &times ${y}
+    </div>
+    The supplier sells these bags of seeds.<br>
+    <div class="seedPicsContainer">
+        <div class="individualSeedBoxes">
+            <div class="seed1kg">${bagSizes[0]}kg</div>
+        </div>
+        <div class="individualSeedBoxes">
+            <div class="seed2kg">${bagSizes[1]}kg</div>
+        </div>
+        <div class="individualSeedBoxes">
+            <div class="seed5kg">${bagSizes[2]}kg</div>
+        </div>
+        <div class="individualSeedBoxes">
+            <div class="seed10kg">${bagSizes[3]}kg</div>
+        </div>
+    </div>
+    <span class="bold">The gardener only wants to buy one bag</span><br>
+    Which bag of seeds should the gardener buy? 
+
+    `
+
+    solutionText.innerHTML = `Grams of seeds needed is ${x} &times ${x} &times ${y} = ${solutionGrams}g<br>
+    ${solutionGrams}g = ${solutionKg}kg<br>
+    Therefore, they should buy the ${solutionBag}.
+    `
+
+    loseSolutionOnNewQ();
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2090,6 +2225,9 @@ generateQButton.onclick = function(){
             break;
         case "perimeterProblemSolving":
             perimeterProblemSolving();
+            break;
+        case "usingAFormula":
+            usingAFormula();
             break;
     }
 }
