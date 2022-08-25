@@ -166,6 +166,23 @@ function loseSolutionOnNewQ(){
     document.querySelector('.solution-box').style.display = 'none';
 }
 
+function toDataURL(src, callback) {
+    var image = new Image();
+    image.crossOrigin = 'Anonymous';
+ 
+    image.onload = function() {
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.height = this.naturalHeight;
+        canvas.width = this.naturalWidth;
+        context.drawImage(this, 0, 0);
+        var dataURL = canvas.toDataURL('image/jpeg');
+        callback(dataURL);
+    };
+
+    image.src = src;
+}
+
 //Question ID Functions/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Qid0001 = () => {
@@ -2190,6 +2207,130 @@ function usingAFormula(){
     loseSolutionOnNewQ();
 }
 
+function percentagesBestBuyPorblemSolving(){
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2><br>
+    This question was inspired by a functional skills level 1 question. Since I already made it on the functional skills generators, I thought I would put it here and add some
+    different difficulty settings and change it so that it reflects a GCSE style question.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The percentages that need to be calculated are only 10% and 5%. Tv direct price will be a multiple of 100<br><br>
+    Silver - The percentages that need to be calculated are only 15% and 5%. Tv direct price will be a multiple of 10<br><br>
+    Gold -  The Tv Direct percentage that needs to be calculated varies and is a little more difficult.<br><br>
+    Note that on all difficulties the difference between the two final costs should always be below £10 so the cheapest should not be immediately obvious.`
+
+    let tvPic1 = "../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv1.png";
+    let tvPic2 = "../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv2.png";
+
+    function getNumbers(){
+        multiplierArray = [1.05,1.06,1.07,1.12,1.13,1.14];
+        chosenMultiplier = multiplierArray[Math.floor(Math.random()*multiplierArray.length)];
+        if(globalDifficultySelection===2){
+            tv1Price = parseFloat(`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}0`);
+            multiplerTvDirect = 1.15;
+            multiplerTvDirectString = multiplerTvDirect
+            interest = 15;
+            tv2Price = Math.round((tv1Price*chosenMultiplier)/5) * 5;
+        }else if(globalDifficultySelection===1){
+            tv1Price = parseFloat(`${Math.ceil(Math.random()*9)}00`);
+            multiplerTvDirect = 1.10;
+            multiplerTvDirectString = `1.10`
+            interest = 10
+            increaseDecreaseArray = [20,-20];
+            chosenIncreaseDecrease = increaseDecreaseArray[Math.floor(Math.random()*increaseDecreaseArray.length)];
+            tv2Price = tv1Price + chosenIncreaseDecrease;
+        }else if(globalDifficultySelection===3){
+            tv1Price = parseFloat(`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}0`);
+            interestArray = [11,12,13,14,16,17,18,19];
+            interest = interestArray[Math.floor(Math.random()*interestArray.length)];
+            multiplerTvDirect = (interest/100)+1;
+            multiplerTvDirectString = multiplerTvDirect.toFixed(2);
+            tv2Price = Math.round((tv1Price*chosenMultiplier)/5) * 5;
+        }
+        tv1PriceWithIntrest = (tv1Price*multiplerTvDirect).toFixed(2);
+        tv2PriceWithInterest = (tv2Price*1.05).toFixed(2);
+        if(Number.isInteger(tv2PriceWithInterest/3)===false){
+            getNumbers();
+        }
+        cheapestTV = Math.min(tv1PriceWithIntrest,tv2PriceWithInterest).toFixed(2);
+        if(cheapestTV===tv1PriceWithIntrest){
+            cheapestShop = "TV Direct";
+            payToday = `£${tv1PriceWithIntrest} &divide 10 = £${(tv1PriceWithIntrest/10).toFixed(2)}`
+        } else{
+            cheapestShop = "Planet TV";
+            payToday = `£${tv2PriceWithInterest} &divide 3 = £${(tv2PriceWithInterest/3).toFixed(2)}`
+        }
+        expensiveTV = Math.max(tv1PriceWithIntrest,tv2PriceWithInterest).toFixed(2);
+        differencePrice = (expensiveTV - cheapestTV).toFixed(2);
+        differencePriceNum = parseFloat(differencePrice);
+        if(differencePriceNum>10 || differencePrice===0){
+            getNumbers();
+        }
+    }
+    getNumbers();    
+
+    toDataURL(tvPic1, function(dataURL) {
+        document.getElementById("tv1").src = dataURL
+    })
+
+    toDataURL(tvPic2, function(dataURL) {
+        document.getElementById("tv2").src = dataURL
+    })
+
+    questionText.innerHTML = `
+    <style>
+    .tvShopContainer{
+        display: inline-flex;
+        justify-content: space-evenly;
+    }
+
+    .tvShopContainer img{
+        width: 30%;
+    }
+
+    .tvShop{
+        border: 2px solid #009780;
+        width: 40%; 
+        padding: 0.2em;
+        text-align: center;
+    }
+
+    </style>
+    ${calcSign}
+    A customer wants to buy a television. They want to pay monthly.<br>
+    Two different shops have the television he wants.<br><br>
+    <div class="tvShopContainer">
+        <div id="tvDirect" class="tvShop">
+        <span class="bold">TV Direct<br>
+        <img id="tv1" src=""><br>
+        Price £${tv1Price}</span><br>
+        Pay monthly offer:
+        <p>Interest is ${interest}% of the price.
+        Pay the total amount in 10 equal monthly instalments. First instalment must be paid today.</p>
+        </div>
+        <div id="planetTv" class="tvShop">
+        <span class="bold">Planet TV<br>
+        <img id="tv2" src=""><br>
+        Price £${tv2Price}</span><br>
+        Pay monthly offer:
+        <p>Interest is 5% of the price.
+        Pay <sup>1</sup>&frasl;<sub>3</sub> today and the rest in 4 equal monthly payments.</p>
+        </div>
+    </div><br><br>
+    Work out which offer is cheaper and by how much. How much would the customer need to pay today? 
+    
+    `
+
+    solutionText.innerHTML = `
+    £${tv1Price} &times ${multiplerTvDirectString} = £${tv1PriceWithIntrest} therefore the total cost from TV Direct is <span class="bold">£${tv1PriceWithIntrest}</span> (interest is £${(tv1Price*(multiplerTvDirect-1)).toFixed(2)}) <br>
+    £${tv2Price} &times 1.05 = £${tv2PriceWithInterest} therefore the total cost from Planet TV is <span class="bold">£${tv2PriceWithInterest}</span> (interest is £${(tv2Price*0.05).toFixed(2)}) <br>
+    Therefore, <span class="bold">${cheapestShop} is the cheapest.</span> The difference is £${expensiveTV} &minus; £${cheapestTV} = <span class="bold">£${differencePrice}</span><br>
+    The amount to pay today is <span class="bold">${payToday}</span>
+
+    `
+    loseSolutionOnNewQ();
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2228,6 +2369,9 @@ generateQButton.onclick = function(){
             break;
         case "usingAFormula":
             usingAFormula();
+            break;
+        case "percentagesBestBuyPorblemSolving":
+            percentagesBestBuyPorblemSolving();
             break;
     }
 }
