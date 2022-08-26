@@ -130,7 +130,7 @@ let namesObject = {
     }
 };
 
-let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+let allNamesArray = [[maleNameArray, "he","He","his"],[femaleNameArray,"she","She","her"]];
 
 //Global Variables/////////////////////////////////////////////////////////////////////////////////////////////////////
 
