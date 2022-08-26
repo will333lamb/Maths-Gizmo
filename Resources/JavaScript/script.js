@@ -117,7 +117,7 @@ let femaleNameArray = ["Amelia", "Ava", "Abigail", "Anna", "Amy", "Alicia",
 "Wendy", 
 "Yasmin", "Yolanda", "Yvonne", "Zara","Zoe"];
 
-let allNamesArray = [[maleNameArray, "he"],[femaleNameArray,"she"]];
+let allNamesArray = [[maleNameArray, "he","He","his"],[femaleNameArray,"she","She","her"]];
 
 let namesObject = {
     maleNames: {
@@ -2331,6 +2331,119 @@ function percentagesBestBuyPorblemSolving(){
     loseSolutionOnNewQ();
 }
 
+function moneySkillsWithFractionsAndMixedNumbers(){
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 14 on OCR paper 1 November 2020. It is a calculator paper and OCR awarded 6 marks.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - The numbers should be fairly easy to work out.  <br><br>
+    Silver - The numbers are a little more difficult to work with. <br><br>
+    Gold - The numbers are even harder to work with. `
+
+    function getNumbers(){
+        chosenGender = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
+        name1 = chosenGender[0][Math.floor(Math.random()*chosenGender[0].length)];
+        heOrShe = chosenGender[1];
+        hisOrHer = chosenGender[3];
+        Number.prototype.countDecimals = function () {
+            if(Math.floor(this.valueOf()) === this.valueOf()) return 0;
+            return this.toString().split(".")[1].length || 0; 
+        }
+        if(globalDifficultySelection===2){
+            payrate1 = `${Math.ceil(Math.random()*5)+4}.${Math.ceil(Math.random()*9)}0`;
+            numHours1 = `${Math.ceil(Math.random()*4)}0`;
+            numeratorArray = [[1,2,1.5],[1,4,1.25],[3,4,1.75]];
+            chosenMixedNum = numeratorArray[Math.floor(Math.random()*numeratorArray.length)];
+            mixedNumNum = chosenMixedNum[0];
+            mixedNumDenom = chosenMixedNum[1];
+            mixedNumAsDec = chosenMixedNum[2];
+            payrate2 = payrate1*mixedNumAsDec;
+            payrate2DecNum = payrate2.countDecimals();
+            
+            totalHoursWorked = parseFloat(numHours1) + Math.ceil(Math.random()*10)+10;
+            bonusArray = [[1,10],[1,5]];
+            chosenBonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
+            bonusNum = chosenBonus[0];
+            bonusDenom = chosenBonus[1];
+
+            pay1 = payrate1*numHours1;
+            pay2 = (totalHoursWorked-numHours1)*payrate2;
+            pay3 = pay1+pay2;
+            bonusAmount = pay3*(bonusNum/bonusDenom);
+            bonusAmountDecNum = bonusAmount.countDecimals();
+            if(payrate2DecNum!==2 || bonusAmountDecNum!==2){
+                getNumbers();
+            }
+            
+        } else if(globalDifficultySelection===1){
+            payrate1 = `${Math.ceil(Math.random()*5)+4}.00`;
+            numHours1 = 10;
+            mixedNumNum = 1;
+            mixedNumDenom = 2;
+            payrate2 = (payrate1*1.5).toFixed(2);
+            totalHoursWorked = numHours1 + Math.ceil(Math.random()*3)*10;
+            bonusNum = 1;
+            bonusDenom = 10;
+
+            pay1 = payrate1*numHours1;
+            pay2 = (totalHoursWorked-numHours1)*payrate2;
+            pay3 = pay1+pay2;
+            bonusAmount = (pay3*(bonusNum/bonusDenom));
+        } else if(globalDifficultySelection===3){
+            payrate1 = `${Math.ceil(Math.random()*5)+4}.${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*9)}`;
+            numHours1 = `${Math.ceil(Math.random()*4)}${Math.ceil(Math.random()*9)}`;
+            numeratorArray = [[1,3,(4/3)],[2,3,(5/3)],[1,5,(6/5)],[2,5,(7/5)]];
+            chosenMixedNum = numeratorArray[Math.floor(Math.random()*numeratorArray.length)];
+            mixedNumNum = chosenMixedNum[0];
+            mixedNumDenom = chosenMixedNum[1];
+            mixedNumAsDec = chosenMixedNum[2];
+            payrate2 = payrate1*mixedNumAsDec;
+            payrate2DecNum = payrate2.countDecimals();
+            
+            totalHoursWorked = parseFloat(numHours1) + Math.ceil(Math.random()*10)+10;
+            bonusArray = [[3,7],[5,8],[1,8],[3,8],[4,7]];
+            chosenBonus = bonusArray[Math.floor(Math.random()*bonusArray.length)];
+            bonusNum = chosenBonus[0];
+            bonusDenom = chosenBonus[1];
+
+            pay1 = payrate1*numHours1;
+            pay2 = (totalHoursWorked-numHours1)*payrate2;
+            pay3 = pay1+pay2;
+            bonusAmount = pay3*(bonusNum/bonusDenom);
+            bonusAmountDecNum = bonusAmount.countDecimals();
+            if(payrate2DecNum!==2 || bonusAmountDecNum!==2){
+                getNumbers();
+            }
+        }
+        
+    }
+    getNumbers();
+
+    questionText.innerHTML = `
+    ${calcSign}
+    ${name1} is paid £${payrate1} per hour for the first ${numHours1} hours ${heOrShe} works each week.<br>
+    After ${numHours1} hours, ${heOrShe} is paid 1 <sup>${mixedNumNum}</sup>&frasl;<sub>${mixedNumDenom}</sub> times the hourly rate.<br>
+    Last week, ${name1} worked for ${totalHoursWorked} hours.<br>
+    ${chosenGender[2]} was also paid a bouns of &nbsp;<sup>${bonusNum}</sup>&frasl;<sub>${bonusDenom}</sub>&nbsp; of ${hisOrHer} earnings for that week.<br>
+    Calculate how much ${name1} was paid <span class="bold">in total</span> last week. 
+    `
+
+    solutionText.innerHTML = `
+    ${payrate1} &times ${numHours1} = ${(payrate1*numHours1).toFixed(2)} therefore, ${name1} is paid £${(payrate1*numHours1).toFixed(2)} for the first ${numHours1} hours of the week.<br>
+    ${payrate1} &times 1 <sup>${mixedNumNum}</sup>&frasl;<sub>${mixedNumDenom}</sub> = ${payrate2} 
+    therefore, ${name1}'s hourly rate after ${numHours1} hours is £${payrate2}<br>
+    ${totalHoursWorked} &minus; ${numHours1} = ${totalHoursWorked-numHours1} therefore ${name1} works ${totalHoursWorked-numHours1} hours over ${numHours1} hours.<br>
+    ${totalHoursWorked-numHours1} &times ${payrate2} = ${((totalHoursWorked-numHours1)*payrate2).toFixed(2)} 
+    therefore, ${name1} earns £${((totalHoursWorked-numHours1)*payrate2).toFixed(2)} for the time worked after ${numHours1} hours.<br>
+    £${pay1.toFixed(2)} + £${pay2.toFixed(2)} = £${(pay1+pay2).toFixed(2)} therefore, ${name1}'s income for the week is £${(pay1+pay2).toFixed(2)} <br>
+    <sup>${bonusNum}</sup>&frasl;<sub>${bonusDenom}</sub> &times £${(pay1+pay2).toFixed(2)} = £${(Math.round((bonusAmount + Number.EPSILON) * 100) / 100).toFixed(2)}
+    therefore, ${name1}'s bonus is £${(Math.round((bonusAmount + Number.EPSILON) * 100) / 100).toFixed(2)}<br>
+    Therefore the total amount ${name1} earns in the week is £${(Math.round((bonusAmount + Number.EPSILON) * 100) / 100).toFixed(2)} + £${(pay1+pay2).toFixed(2)} = <span class="bold">£${(parseFloat((Math.round((bonusAmount + Number.EPSILON) * 100) / 100).toFixed(2))+pay1+pay2).toFixed(2)}</span>
+    `
+    loseSolutionOnNewQ();
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2372,6 +2485,9 @@ generateQButton.onclick = function(){
             break;
         case "percentagesBestBuyPorblemSolving":
             percentagesBestBuyPorblemSolving();
+            break;
+        case "moneySkillsWithFractionsAndMixedNumbers":
+            moneySkillsWithFractionsAndMixedNumbers();
             break;
     }
 }
