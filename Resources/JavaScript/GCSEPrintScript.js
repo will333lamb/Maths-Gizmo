@@ -4324,7 +4324,7 @@ function percentagesBestBuyPorblemSolving(){
         <div class="tvShopContainer">
             <div id="tvDirect" class="tvShop">
             <span class="bold">TV Direct<br>
-            <img id="tv1" src=""><br>
+            <img id="tv1" src="../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv1.png"><br>
             Price £${tv1Price}</span><br>
             Pay monthly offer:
             <p>Interest is ${interest}% of the price.
@@ -4332,7 +4332,7 @@ function percentagesBestBuyPorblemSolving(){
             </div>
             <div id="planetTv" class="tvShop">
             <span class="bold">Planet TV<br>
-            <img id="tv2" src=""><br>
+            <img id="tv2" src="../Resources/Images/FS Q's/Level 1/PercentagesBestBuys/tv2.png"><br>
             Price £${tv2Price}</span><br>
             Pay monthly offer:
             <p>Interest is 5% of the price.
