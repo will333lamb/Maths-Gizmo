@@ -196,6 +196,9 @@ function getWorksheetTitle(){
     } else if(globalTopicAreaSelection==="moneySkillsWithFractionsAndMixedNumbers"){
         worksheetTitle="Money skills with mixed numbers worksheet maths gizmo";
         solutionsTitle="Money skills with mixed numbers solutions maths gizmo";
+    } else if(globalTopicAreaSelection==="areaOfSemiCircles"){
+        worksheetTitle="Area of semi-circles worksheet maths gizmo";
+        solutionsTitle="Area of semi-circles solutions maths gizmo";
     }
 };
 
@@ -290,6 +293,9 @@ $(document).ready(function(e){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
         "Your worksheet may not load properly if you exceed this.");
     } else if(globalTopicAreaSelection==="moneySkillsWithFractionsAndMixedNumbers" && sumTotalQuestions>30){
+        alert("Sorry, the maximum amount of questions for this topic is 30. " +
+        "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection==="areaOfSemiCircles" && sumTotalQuestions>30){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
         "Your worksheet may not load properly if you exceed this.");
     }
@@ -4558,6 +4564,145 @@ function moneySkillsWithFractionsAndMixedNumbers(){
     runQuestion();
 }
 
+//Area Semi Circles
+function areaOfSemiCircles(){
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 25 on OCR paper 1 November 2020. It is a calculator paper and OCR awarded 6 marks.<br><br>
+    Difficulty settings:<br><br>
+    Bronze - All numbers are multiples of 10.  <br><br>
+    Silver - The square length will be even and bag cost pence will be a multiple of 10. <br><br>
+    Gold - The square length is odd and the bag cost will include more difficult numbers. `
+
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+
+    questionNumber++;
+
+
+    function reassignValues(){
+        lawnPic = "../Resources/Images/GCSE/Area semi circles/Pic1.png"
+        chosenGender = allNamesArray[Math.floor(Math.random()*allNamesArray.length)];
+        name1 = chosenGender[0][Math.floor(Math.random()*chosenGender[0].length)];
+        heOrShe = chosenGender[2];
+
+        toDataURL(lawnPic, function(dataURL) {
+            document.getElementById("lawnPic").src = dataURL
+        })
+
+        function getNumbers(){
+            if(globalDifficultySelection===2){
+                squareLength = parseFloat(`${Math.ceil(Math.random()*5)}${Math.ceil(Math.random()*4)*2}`);
+                rateOfSpread = parseFloat(`${Math.ceil(Math.random()*4)}0`);
+                bagSize = 10;
+                bagCost = parseFloat(`1${Math.ceil(Math.random()*4)}.${Math.ceil(Math.random()*9)}0`).toFixed(2);
+            } else if(globalDifficultySelection===1){
+                squareLength = parseFloat(`${Math.ceil(Math.random()*5)}0`);
+                rateOfSpread = 10
+                bagSize = 10;
+                bagCost = parseFloat(`${Math.ceil(Math.random()*3)}0`);
+            } else if(globalDifficultySelection===3){
+                squareLength = parseFloat(`${Math.ceil(Math.random()*9)}${Math.ceil(Math.random()*4)*2+1}`);
+                rateOfSpread = parseFloat(`${Math.ceil(Math.random()*4)}0`);
+                bagSize = Math.ceil(Math.random()*5)*5
+                bagCost = parseFloat(`1${Math.ceil(Math.random()*4)}.${Math.ceil(Math.random()*9)}9`);
+            }
+            areaSquare = squareLength*squareLength;
+            area1semicircle = ((squareLength/2)*Math.PI*Math.PI)/2;
+            area3semiCircles = area1semicircle*3;
+            totalAreaLawn = Math.round(area3semiCircles + areaSquare);
+            fertiliserNeeded = rateOfSpread/1000 * totalAreaLawn;
+            bagsNeeded = Math.ceil(fertiliserNeeded / bagSize) * bagSize;
+            bagsNeeded2 = Math.round(bagsNeeded/bagSize);
+            totalCost = (bagsNeeded2 * bagCost).toFixed(2);
+            if(bagsNeeded2===1){
+                getNumbers();
+            }
+        
+        }
+        getNumbers();
+    }
+
+    function runQuestion(){
+        questionText.innerHTML += `
+        ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+        <br>
+        The diagram shows ${name1}'s lawn.<br>
+        It is in the shape of a square of side ${squareLength}m and three semi-circles.<br>
+        <img id="lawnPic" class="lawnPic" src="../Resources/Images/GCSE/Area semi circles/Pic1.png"><br>
+        ${heOrShe} is going to spread fertiliser on the lawn at a rate of ${rateOfSpread}g per square metre.<br>
+        The fertiliser is only sold in ${bagSize}kg bags costing £${bagCost} each.<br>
+        Calculate the cost of buying the bags of fertiliser for her lawn.<br>
+        You must show all your working.
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="answerLine"></div><br>
+        <p id="marksGiven">(6 marks)</p>
+        ${pagebreak}
+        `
+    
+        solutionText.innerHTML += `
+        ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+        <br>
+        The area of the square is ${squareLength} &times ${squareLength} = ${areaSquare}m<sup>2</sup><br>
+        The radius of the semi-circle is ${squareLength} &divide 2 = ${squareLength/2} <br>
+        The area of one semi circle is ${squareLength/2} &times &#8508;<sup>2</sup> &divide 2 = ${area1semicircle}m<sup>2</sup><br>
+        Therefore, the area of three semi-circles is ${area1semicircle} &times 3 = ${area3semiCircles}m<sup>2</sup><br>
+        Therefore, the total area of the lawn is ${areaSquare} + ${area3semiCircles} = ${totalAreaLawn}m<sup>2</sup> to the nearest square metre<br>
+        ${rateOfSpread}g = ${rateOfSpread/1000}kg. To work out the amount of fertiliser needed, 
+        we can do ${rateOfSpread/1000} &times ${totalAreaLawn} = ${fertiliserNeeded.toFixed(2)}kg<br>
+        ${fertiliserNeeded.toFixed(2)} &divide ${bagSize} = ${(fertiliserNeeded/bagSize).toFixed(2)} Therefore, this means they need ${bagsNeeded2} bags of fertiliser.<br>
+        ${bagsNeeded2} &times £${bagCost} = £${totalCost}
+        <br><br>
+        <div class="borderBottomSolution"></div><br>
+        `
+    }
+
+    //pagebreaks
+    if (questionNumber === 4){
+        solutionText.innerHTML += `${pagebreak}`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        solutionText.innerHTML += `${pagebreak}`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 7){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 10){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 13){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 16){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 19){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 22){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 25){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 28){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 34){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    }
+
+    reassignValues();
+    runQuestion();
+
+    
+
+ 
+
+}
+
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -4829,6 +4974,27 @@ generateQButton.onclick = function(){
                 questionNumber = 0;
                 for (let i = 0; i < goldNumber; i++){
                     moneySkillsWithFractionsAndMixedNumbers(i)}
+                document.getElementById("generateQButton").innerHTML="Reset";
+                break;
+            case "areaOfSemiCircles":
+                loseInstructions();
+                getBronzeNumber();
+                globalDifficultySelection = 1;
+                questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+                solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+                questionText.innerHTML += `<br><h3 id="worksheetTitle">Area of semi-circles</h3><br>`
+                for (let i = 0; i < bronzeNumber; i++){
+                    areaOfSemiCircles(i)}
+                getSilverNumber(); 
+                globalDifficultySelection = 2;
+                questionNumber = 0;
+                for (let i = 0; i < silverNumber; i++){
+                    areaOfSemiCircles(i)}
+                getGoldNumber();
+                globalDifficultySelection = 3;
+                questionNumber = 0;
+                for (let i = 0; i < goldNumber; i++){
+                    areaOfSemiCircles(i)}
                 document.getElementById("generateQButton").innerHTML="Reset";
                 break;
 
