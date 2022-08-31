@@ -2495,6 +2495,14 @@ function areaOfSemiCircles(){
     getNumbers();
 
     questionText.innerHTML = `
+    <style>
+
+    @media only screen and (max-width: 800px) {
+        #lawnPic{
+            width: 100%;
+        }
+    }
+    </style>
     ${calcSign}
     The diagram shows ${name1}'s lawn.<br>
     It is in the shape of a square of side ${squareLength}m and three semi-circles.<br>
