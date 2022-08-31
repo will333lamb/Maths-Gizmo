@@ -1,4 +1,6 @@
 
+//Names///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 let nameArray = ["Alex", "Amelia", "Ava", "Abigail", "Anthony", "Andrew", "Aaron", "Adam", "Anna", "Amy", "Andy", "Alan", "Alicia",
 "Archie", "Angie", "Angela", "Abdullah", "Agnes", "Ben", "Brandon", "Brian", "Bruce", "Bernard", "Boris", "Bradley", "Bobby", "Bella",
 "Bridget", "Bria", "Belinda", "Beatriz", "Betsy", "Britney", "Billie", "Becky", "Brooke", "Bethany", "Barry", "Blake", "Brianna",
@@ -132,6 +134,20 @@ let namesObject = {
 
 let allNamesArray = [[maleNameArray, "he","He","his"],[femaleNameArray,"she","She","her"]];
 
+//Names starting with certain letters
+//A
+let startsWithAMale = maleNameArray.filter((name) => name.startsWith("A"));
+let startsWithAFemale = femaleNameArray.filter((name) => name.startsWith("A"));
+let allNamesStartsWithA = [[startsWithAMale, "he", "He", "his"],[startsWithAFemale, "she", "She", "her"]];
+//B
+let startsWithBMale = maleNameArray.filter((name) => name.startsWith("B"));
+let startsWithBFemale = femaleNameArray.filter((name) => name.startsWith("B"));
+let allNamesStartsWithB = [[startsWithBMale, "he", "He", "his"],[startsWithBFemale, "she", "She", "her"]];
+//C
+let startsWithCMale = maleNameArray.filter((name) => name.startsWith("C"));
+let startsWithCFemale = femaleNameArray.filter((name) => name.startsWith("C"));
+let allNamesStartsWithC = [[startsWithCMale, "he", "He", "his"],[startsWithCFemale, "she", "She", "her"]];
+
 //Global Variables/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let questionNumber = 0
@@ -199,6 +215,9 @@ function getWorksheetTitle(){
     } else if(globalTopicAreaSelection==="areaOfSemiCircles"){
         worksheetTitle="Area of semi-circles worksheet maths gizmo";
         solutionsTitle="Area of semi-circles solutions maths gizmo";
+    } else if(globalTopicAreaSelection==="ratioWithFractions"){
+        worksheetTitle="Ratio: Converting to Fractions worksheet maths gizmo";
+        solutionsTitle="Ratio: Converting to Fractions solutions maths gizmo";
     }
 };
 
@@ -297,6 +316,9 @@ $(document).ready(function(e){
         "Your worksheet may not load properly if you exceed this.");
     } else if(globalTopicAreaSelection==="areaOfSemiCircles" && sumTotalQuestions>30){
         alert("Sorry, the maximum amount of questions for this topic is 30. " +
+        "Your worksheet may not load properly if you exceed this.");
+    } else if(globalTopicAreaSelection==="ratioWithFractions" && sumTotalQuestions>60){
+        alert("Sorry, the maximum amount of questions for this topic is 60. " +
         "Your worksheet may not load properly if you exceed this.");
     }
 
@@ -4703,6 +4725,235 @@ function areaOfSemiCircles(){
 
 }
 
+//Ratio: Converting to fractions
+function ratioWithFractions(){
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 19a on OCR paper 1 May 2019. It is a calculator paper and OCR awarded 3 marks.<br><br>
+    Difficulty settings:<br><br>
+    The only real difference on the difficulty settings here is that the numbers gradually get bigger in the ratio as you increase in difficluty. 
+    On gold, the fraction that they give to charity is more difficult. `
+
+    let questionDifficulty
+    if(globalDifficultySelection === 1){
+        questionDifficulty = "Bronze";
+    } else if(globalDifficultySelection === 2){
+        questionDifficulty = "Silver";
+    } else if(globalDifficultySelection === 3){
+        questionDifficulty = "Gold";
+    };
+
+    questionNumber++;
+
+    function reassignValues(){
+        function getNumbers(){
+            chosenGenderA = allNamesStartsWithA[Math.floor(Math.random()*allNamesStartsWithA.length)];
+            nameA = chosenGenderA[0][Math.floor(Math.random()*chosenGenderA[0].length)];
+            chosenGenderB = allNamesStartsWithB[Math.floor(Math.random()*allNamesStartsWithB.length)];
+            nameB = chosenGenderB[0][Math.floor(Math.random()*chosenGenderB[0].length)];
+            chosenGenderC = allNamesStartsWithC[Math.floor(Math.random()*allNamesStartsWithC.length)];
+            nameC = chosenGenderC[0][Math.floor(Math.random()*chosenGenderC[0].length)];
+    
+            if(globalDifficultySelection===2){
+                ratioA = Math.ceil(Math.random()*9)+1;
+                ratioB = Math.ceil(Math.random()*9)+1;
+                ratioC = Math.ceil(Math.random()*9)+1;
+                fracNum = 1;
+                fracDenom = Math.ceil(Math.random()*3)+2;
+            } else if(globalDifficultySelection===1){
+                ratioA = Math.ceil(Math.random()*5)+1;
+                ratioB = Math.ceil(Math.random()*5)+1;
+                ratioC = Math.ceil(Math.random()*5)+1;
+                fracNum = 1;
+                fracDenom = 2;
+            } else if(globalDifficultySelection===3){
+                ratioA = Math.ceil(Math.random()*15)+1;
+                ratioB = Math.ceil(Math.random()*15)+1;
+                ratioC = Math.ceil(Math.random()*15)+1;
+                fracNumArray = [[3,[7,8,11]],[4,[7,9,11]],[5,[7,8,9,11,12]],[6,[7,11,13]],[7,[8,9,11]]];
+                chosenFrac = fracNumArray[Math.floor(Math.random()*fracNumArray.length)];
+                fracNum = chosenFrac[0];
+                fracDenom = chosenFrac[1][Math.floor(Math.random()*chosenFrac[1].length)];
+            }
+    
+            if(ratioA===ratioB || ratioA===ratioC || ratioB===ratioC){
+                getNumbers();
+            }
+    
+            totalRatioParts = ratioA+ratioB+ratioC;
+            ratioNumAns = fracNum*ratioC;
+            ratioDenomAns = fracDenom*totalRatioParts;
+            
+            function findHCF(){
+                // program to find the HCF or GCD of two integers
+    
+                // take input
+                let number1 = ratioNumAns;
+                let number2 = ratioDenomAns;
+    
+                // looping until both numbers are equal
+                while(number1 != number2){
+                    if(number1 > number2) {
+                        number1 -= number2;
+                    }
+                    else {
+                        number2 -= number1;
+                    }
+                }
+    
+                // save the hcf
+                hcf = number1
+            }
+            findHCF();
+            simplifiedFracNum = ratioNumAns / hcf;
+            simplifiedFracDenom = ratioDenomAns / hcf;
+        }
+    
+        getNumbers();
+
+    }
+
+    function runQuestion(){
+    questionText.innerHTML += `
+    ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    <br>
+    ${nameA}, ${nameB}, and ${nameC} share a prize in the ratio ${ratioA} : ${ratioB} : ${ratioC}. <br>
+    ${nameC} gives <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> of ${chosenGenderC[3]} share to a charity. <br>
+    What fraction of the whole prize does ${nameC} give to the charity?
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="answerLine"></div><br>
+    <p id="marksGiven">(3 marks)</p>
+
+    `
+
+    solutionText.innerHTML += `
+    ${calcSign} <span class="questionNumber">${questionDifficulty} Q${questionNumber}.</span>
+    <br>
+    The total ratio parts is ${ratioA} + ${ratioB} + ${ratioC} = ${totalRatioParts} and the ratio part associated with ${nameC} is ${ratioC}<br>
+    This means that the fraction of the prize ${nameC} gets is <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> <br>
+    ${nameC} gives <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> of ${chosenGenderC[3]} <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> to charity. 
+    So we need to calculate <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> of <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> <br>
+    <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> &times <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> =
+    <sup>${fracNum} &times ${ratioC}</sup>&frasl;<sub>${fracDenom} &times ${totalRatioParts}</sub> = 
+    <sup>${ratioNumAns}</sup>&frasl;<sub>${ratioDenomAns}</sub>
+    
+    `
+    if(hcf!==1){
+        solutionText.innerHTML += ` which simplifies to <sup>${simplifiedFracNum}</sup>&frasl;<sub>${simplifiedFracDenom}</sub>`
+    }
+
+    solutionText.innerHTML += ` which is the fraction of the whole prize that ${nameC} gives to charity.
+    <br><br>
+    <div class="borderBottomSolution"></div><br>`
+
+    }
+
+    //pagebreaks
+    if (questionNumber === 3){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div><br>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 5){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 7){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 9){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 11){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 13){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 15){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 17){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 19){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 21){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 23){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 25){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 27){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 29){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 31){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 33){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 35){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 37){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 39){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 41){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 43){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 45){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 47){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 49){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 51){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 53){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 55){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 57){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 59){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionNumber === 61){
+        document.getElementById("questionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    };
+    if (questionNumber === 6){
+        solutionText.innerHTML += `${pagebreak}`;
+    } else if (questionDifficulty === "Silver" && questionNumber === 1 && bronzeNumber>0){
+        solutionText.innerHTML += `${pagebreak}`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && bronzeNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if (questionDifficulty === "Gold" && questionNumber === 1 && silverNumber>0){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 11){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 16){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 21){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 26){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 31){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 36){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 41){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 46){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 51){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 56){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    } else if(questionNumber === 61){
+        document.getElementById("solutionText").innerHTML += `<div class="html2pdf__page-break"></div><br><div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`;
+    }
+
+
+    reassignValues();
+    runQuestion();
+
+}
 
 //Generate Preview Button/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -4956,47 +5207,69 @@ generateQButton.onclick = function(){
             document.getElementById("generateQButton").innerHTML="Reset";
             break;
         case "moneySkillsWithFractionsAndMixedNumbers":
-                loseInstructions();
-                getBronzeNumber();
-                globalDifficultySelection = 1;
-                questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-                solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-                questionText.innerHTML += `<br><h3 id="worksheetTitle">Money skills with mixed numbers and fractions</h3><br>`
-                for (let i = 0; i < bronzeNumber; i++){
-                    moneySkillsWithFractionsAndMixedNumbers(i)}
-                getSilverNumber(); 
-                globalDifficultySelection = 2;
-                questionNumber = 0;
-                for (let i = 0; i < silverNumber; i++){
-                    moneySkillsWithFractionsAndMixedNumbers(i)}
-                getGoldNumber();
-                globalDifficultySelection = 3;
-                questionNumber = 0;
-                for (let i = 0; i < goldNumber; i++){
-                    moneySkillsWithFractionsAndMixedNumbers(i)}
-                document.getElementById("generateQButton").innerHTML="Reset";
-                break;
-            case "areaOfSemiCircles":
-                loseInstructions();
-                getBronzeNumber();
-                globalDifficultySelection = 1;
-                questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-                solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
-                questionText.innerHTML += `<br><h3 id="worksheetTitle">Area of semi-circles</h3><br>`
-                for (let i = 0; i < bronzeNumber; i++){
-                    areaOfSemiCircles(i)}
-                getSilverNumber(); 
-                globalDifficultySelection = 2;
-                questionNumber = 0;
-                for (let i = 0; i < silverNumber; i++){
-                    areaOfSemiCircles(i)}
-                getGoldNumber();
-                globalDifficultySelection = 3;
-                questionNumber = 0;
-                for (let i = 0; i < goldNumber; i++){
-                    areaOfSemiCircles(i)}
-                document.getElementById("generateQButton").innerHTML="Reset";
-                break;
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            questionText.innerHTML += `<br><h3 id="worksheetTitle">Money skills with mixed numbers and fractions</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                moneySkillsWithFractionsAndMixedNumbers(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                moneySkillsWithFractionsAndMixedNumbers(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                moneySkillsWithFractionsAndMixedNumbers(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "areaOfSemiCircles":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            questionText.innerHTML += `<br><h3 id="worksheetTitle">Area of semi-circles</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                areaOfSemiCircles(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                areaOfSemiCircles(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                areaOfSemiCircles(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+        case "ratioWithFractions":
+            loseInstructions();
+            getBronzeNumber();
+            globalDifficultySelection = 1;
+            questionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            solutionText.innerHTML += `<div class="MathsGizmoLogoWhiteBackgroundBottomRight"></div>`
+            questionText.innerHTML += `<br><h3 id="worksheetTitle">Ratio: Converting to fractions</h3><br>`
+            for (let i = 0; i < bronzeNumber; i++){
+                ratioWithFractions(i)}
+            getSilverNumber(); 
+            globalDifficultySelection = 2;
+            questionNumber = 0;
+            for (let i = 0; i < silverNumber; i++){
+                ratioWithFractions(i)}
+            getGoldNumber();
+            globalDifficultySelection = 3;
+            questionNumber = 0;
+            for (let i = 0; i < goldNumber; i++){
+                ratioWithFractions(i)}
+            document.getElementById("generateQButton").innerHTML="Reset";
+            break;
+            
 
     }
 }

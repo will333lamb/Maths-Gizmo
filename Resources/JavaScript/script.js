@@ -1,3 +1,4 @@
+//Names/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let nameArray = ["Alex", "Amelia", "Ava", "Abigail", "Anthony", "Andrew", "Aaron", "Adam", "Anna", "Amy", "Andy", "Alan", "Alicia",
 "Archie", "Angie", "Angela", "Abdullah", "Agnes", "Ben", "Brandon", "Brian", "Bruce", "Bernard", "Boris", "Bradley", "Bobby", "Bella",
@@ -131,6 +132,22 @@ let namesObject = {
         hisOrHer: "her"
     }
 };
+
+//Names starting with certain letters
+//A
+let startsWithAMale = maleNameArray.filter((name) => name.startsWith("A"));
+let startsWithAFemale = femaleNameArray.filter((name) => name.startsWith("A"));
+let allNamesStartsWithA = [[startsWithAMale, "he", "He", "his"],[startsWithAFemale, "she", "She", "her"]];
+//B
+let startsWithBMale = maleNameArray.filter((name) => name.startsWith("B"));
+let startsWithBFemale = femaleNameArray.filter((name) => name.startsWith("B"));
+let allNamesStartsWithB = [[startsWithBMale, "he", "He", "his"],[startsWithBFemale, "she", "She", "her"]];
+//C
+let startsWithCMale = maleNameArray.filter((name) => name.startsWith("C"));
+let startsWithCFemale = femaleNameArray.filter((name) => name.startsWith("C"));
+let allNamesStartsWithC = [[startsWithCMale, "he", "He", "his"],[startsWithCFemale, "she", "She", "her"]];
+
+
 
 let questionNumber = 0
 
@@ -2528,6 +2545,105 @@ function areaOfSemiCircles(){
 
 }
 
+function ratioWithFractions(){
+
+    infoBox.innerHTML = `
+    <h2 style="color: #009870;">Question Info</h2>
+    This question was designed based on question 19a on OCR paper 1 May 2019. It is a calculator paper and OCR awarded 3 marks.<br><br>
+    Difficulty settings:<br><br>
+    The only real difference on the difficulty settings here is that the numbers gradually get bigger in the ratio as you increase in difficluty. 
+    On gold, the fraction that they give to charity is more difficult. `
+
+    function getNumbers(){
+        chosenGenderA = allNamesStartsWithA[Math.floor(Math.random()*allNamesStartsWithA.length)];
+        nameA = chosenGenderA[0][Math.floor(Math.random()*chosenGenderA[0].length)];
+        chosenGenderB = allNamesStartsWithB[Math.floor(Math.random()*allNamesStartsWithB.length)];
+        nameB = chosenGenderB[0][Math.floor(Math.random()*chosenGenderB[0].length)];
+        chosenGenderC = allNamesStartsWithC[Math.floor(Math.random()*allNamesStartsWithC.length)];
+        nameC = chosenGenderC[0][Math.floor(Math.random()*chosenGenderC[0].length)];
+
+        if(globalDifficultySelection===2){
+            ratioA = Math.ceil(Math.random()*9)+1;
+            ratioB = Math.ceil(Math.random()*9)+1;
+            ratioC = Math.ceil(Math.random()*9)+1;
+            fracNum = 1;
+            fracDenom = Math.ceil(Math.random()*3)+2;
+        } else if(globalDifficultySelection===1){
+            ratioA = Math.ceil(Math.random()*5)+1;
+            ratioB = Math.ceil(Math.random()*5)+1;
+            ratioC = Math.ceil(Math.random()*5)+1;
+            fracNum = 1;
+            fracDenom = 2;
+        } else if(globalDifficultySelection===3){
+            ratioA = Math.ceil(Math.random()*15)+1;
+            ratioB = Math.ceil(Math.random()*15)+1;
+            ratioC = Math.ceil(Math.random()*15)+1;
+            fracNumArray = [[3,[7,8,11]],[4,[7,9,11]],[5,[7,8,9,11,12]],[6,[7,11,13]],[7,[8,9,11]]];
+            chosenFrac = fracNumArray[Math.floor(Math.random()*fracNumArray.length)];
+            fracNum = chosenFrac[0];
+            fracDenom = chosenFrac[1][Math.floor(Math.random()*chosenFrac[1].length)];
+        }
+
+        if(ratioA===ratioB || ratioA===ratioC || ratioB===ratioC){
+            getNumbers();
+        }
+
+        totalRatioParts = ratioA+ratioB+ratioC;
+        ratioNumAns = fracNum*ratioC;
+        ratioDenomAns = fracDenom*totalRatioParts;
+        
+        function findHCF(){
+            // program to find the HCF or GCD of two integers
+
+            // take input
+            let number1 = ratioNumAns;
+            let number2 = ratioDenomAns;
+
+            // looping until both numbers are equal
+            while(number1 != number2){
+                if(number1 > number2) {
+                    number1 -= number2;
+                }
+                else {
+                    number2 -= number1;
+                }
+            }
+
+            // save the hcf
+            hcf = number1
+        }
+        findHCF();
+        simplifiedFracNum = ratioNumAns / hcf;
+        simplifiedFracDenom = ratioDenomAns / hcf;
+    }
+
+    getNumbers();
+
+    questionText.innerHTML = `
+    ${calcSign}
+    ${nameA}, ${nameB}, and ${nameC} share a prize in the ratio ${ratioA} : ${ratioB} : ${ratioC}. <br>
+    ${nameC} gives <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> of ${chosenGenderC[3]} share to a charity. <br>
+    What fraction of the whole prize does ${nameC} give to the charity?
+    `
+
+    solutionText.innerHTML = `
+    The total ratio parts is ${ratioA} + ${ratioB} + ${ratioC} = ${totalRatioParts} and the ratio part associated with ${nameC} is ${ratioC}<br>
+    This means that the fraction of the prize ${nameC} gets is <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> <br>
+    ${nameC} gives <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> of ${chosenGenderC[3]} <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> to charity. 
+    So we need to calculate <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> of <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> <br>
+    <sup>${fracNum}</sup>&frasl;<sub>${fracDenom}</sub> &times <sup>${ratioC}</sup>&frasl;<sub>${totalRatioParts}</sub> =
+    <sup>${fracNum} &times ${ratioC}</sup>&frasl;<sub>${fracDenom} &times ${totalRatioParts}</sub> = 
+    <sup>${ratioNumAns}</sup>&frasl;<sub>${ratioDenomAns}</sub>
+    `
+    if(hcf!==1){
+        solutionText.innerHTML += ` which simplifies to <sup>${simplifiedFracNum}</sup>&frasl;<sub>${simplifiedFracDenom}</sub>`
+    }
+
+    solutionText.innerHTML += ` which is the fraction of the whole prize that ${nameC} gives to charity.`
+
+    loseSolutionOnNewQ();
+}
+
 /********************************************** Button functions//////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 let generateQButton = document.getElementById("generateQButton");
@@ -2575,6 +2691,9 @@ generateQButton.onclick = function(){
             break;
         case "areaOfSemiCircles":
             areaOfSemiCircles();
+            break;
+        case "ratioWithFractions":
+            ratioWithFractions();
             break;
     }
 }
